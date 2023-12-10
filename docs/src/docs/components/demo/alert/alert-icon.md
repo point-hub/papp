@@ -3,7 +3,7 @@ Alerts can have an icon
 ::: raw
 
 <ClientOnly>
-<AlertIcon />
+  <AlertIcon />
 </ClientOnly>
 
 :::
