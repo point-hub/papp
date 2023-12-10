@@ -18,7 +18,7 @@ RUN bun install --frozen-lockfile
 COPY --chown=node:node . .
 
 # build docs
-RUN bun docs:build
+RUN bun run build
 
 # ---------------------------------------------------------------------------
 # stage 2 - runner
