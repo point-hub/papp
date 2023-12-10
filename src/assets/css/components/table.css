@@ -1,0 +1,31 @@
+.table-container {
+  @apply min-w-full overflow-x-auto;
+}
+
+.table {
+  @apply w-full text-left;
+}
+
+/* basic table */
+.basic-table tr {
+  @apply dark:border-b-slate-500 border border-transparent border-b-slate-200;
+}
+.basic-table th {
+  @apply dark:text-slate-100 font-semibold uppercase text-slate-800 p-2;
+}
+.basic-table td {
+  @apply align-top p-2;
+}
+
+/* bordered table */
+.bordered-table-head {
+  @apply dark:border-slate-500 dark:text-slate-100 border border-slate-200 p-3! font-semibold uppercase text-slate-800;
+}
+.bordered-table-body {
+  @apply dark:border-slate-500 border border-slate-200 p-3! align-top;
+}
+
+table td.expand,
+table th.expand {
+  width: 99%;
+}

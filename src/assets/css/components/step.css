@@ -1,0 +1,24 @@
+.step-container {
+  @apply flex w-full gap-4;
+}
+.step-body {
+  @apply flex flex-col items-center justify-center gap-2;
+}
+.step-icon-container {
+  @apply p-3 bg-blue-100 text-white dark:text-slate-500 rounded-full flex items-center justify-center text-center h-12 w-12;
+}
+.step-icon-container.active {
+  @apply bg-blue-500 dark:text-slate-100;
+}
+.step-icon {
+  @apply h-6 w-6;
+}
+.step-text {
+  @apply text-sm text-center;
+}
+.step-line {
+  @apply w-full bg-blue-100 h-2 rounded mt-5;
+}
+.step-line.active {
+  @apply bg-blue-500;
+}

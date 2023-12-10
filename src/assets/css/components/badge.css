@@ -1,0 +1,67 @@
+.badge {
+  @apply inline-flex items-center justify-center rounded px-2 py-1 text-xs
+   text-center tracking-wide outline-none transition-all duration-200
+   focus:outline-none gap-1;
+}
+
+/* badge color */
+/* badge color - primary */
+.badge-primary {
+  @apply border-primary bg-primary text-white;
+}
+.badge-light-primary {
+  @apply border-primary/0 border bg-primary/20 text-primary;
+}
+.badge-outline-primary {
+  @apply border-primary border border-primary text-primary;
+}
+/* badge color - secondary */
+.badge-secondary {
+  @apply border-secondary bg-secondary text-white;
+}
+.badge-light-secondary {
+  @apply border-secondary/0 border bg-secondary/20 text-secondary;
+}
+.badge-outline-secondary {
+  @apply border-secondary border border-secondary text-secondary;
+}
+/* badge color - info */
+.badge-info {
+  @apply border-info bg-info text-white;
+}
+.badge-light-info {
+  @apply border-info/0 border bg-info/20 text-info;
+}
+.badge-outline-info {
+  @apply border-info border border-info text-info;
+}
+/* badge color - success */
+.badge-success {
+  @apply border-success bg-success text-white;
+}
+.badge-light-success {
+  @apply border-success/0 border bg-success/20 text-success;
+}
+.badge-outline-success {
+  @apply border-success border border-success text-success;
+}
+/* badge color - warning */
+.badge-warning {
+  @apply border-warning bg-warning text-white;
+}
+.badge-light-warning {
+  @apply border-warning/0 border bg-warning/20 text-warning;
+}
+.badge-outline-warning {
+  @apply border-warning border border-warning text-warning;
+}
+/* badge color - danger */
+.badge-danger {
+  @apply border-danger bg-danger text-white;
+}
+.badge-light-danger {
+  @apply border-danger/0 border bg-danger/20 text-danger;
+}
+.badge-outline-danger {
+  @apply border-danger border border-danger text-danger;
+}

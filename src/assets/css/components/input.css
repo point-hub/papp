@@ -1,0 +1,21 @@
+.form-input {
+  @apply focus:border-blue-500 dark:border-slate-500 dark:hover:border-slate-400 dark:focus:border-gray-500 w-full border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 outline-none w-full;
+}
+.input-group {
+  @apply flex -space-x-px;
+}
+.prepend-input {
+  @apply dark:border-slate-500 flex items-center justify-center rounded-l-lg border border-slate-300 px-3.5;
+}
+.append-input {
+  @apply dark:border-slate-500 flex items-center justify-center rounded-r-lg border border-slate-300 px-3.5;
+}
+.border-simple {
+  @apply border-b border-solid border-x-none border-t-none;
+}
+.border-full {
+  @apply border border-solid;
+}
+.input-disabled {
+  @apply bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-400;
+}

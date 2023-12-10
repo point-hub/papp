@@ -1,0 +1,15 @@
+.card {
+  @apply flex flex-col border border-[#e0e6ed] bg-white dark:border-[#1b2e4b] dark:bg-slate-800 p-8 w-full gap-2;
+}
+
+.card-shadow {
+  @apply shadow-[4px_6px_10px_-3px_#bfc9d4] dark:shadow-none;
+}
+
+.card-header {
+  @apply text-2xl;
+}
+
+.card-body {
+  @apply text-slate-600 dark:text-slate-400;
+}

@@ -1,0 +1,29 @@
+:root {
+  @apply [--sidebar-panel-width:4.5rem] [--sidebar-menu-width:15rem];
+}
+
+html.dark {
+  @apply [color-scheme:dark];
+}
+
+body {
+  @apply font-sans text-slate-700 antialiased bg-slate-50;
+  @apply dark:bg-slate-900 dark:text-slate-300;
+}
+
+/* headings */
+h1 {
+  @apply text-2xl font-monserrat;
+}
+
+h2 {
+  @apply text-xl font-monserrat;
+}
+
+h3 {
+  @apply text-lg font-monserrat;
+}
+
+table input.border-none {
+  @apply p-0!;
+}

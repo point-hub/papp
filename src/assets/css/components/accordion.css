@@ -1,0 +1,30 @@
+.accordion-container {
+  @apply flex flex-col gap-2 w-full;
+}
+
+.accordion-item {
+  @apply border border-slate-300 rounded-lg dark:border-slate-700;
+}
+
+.accordion-collapse-item-icon {
+  @apply i-fas-angle-down transform-gpu transition-all duration-200;
+}
+
+.accordion-collapse-item-icon-active {
+  @apply rotate-180;
+}
+
+.accordion-title {
+  @apply inline-flex cursor-pointer items-center justify-center text-center tracking-wide outline-none gap-2;
+  @apply transition-all duration-200;
+  @apply focus:outline-none;
+  @apply px-4 py-2 flex w-full justify-between items-center;
+}
+
+.accordion-content {
+  @apply transform-gpu overflow-hidden border-slate-300 px-4 transition-all duration-200 dark:border-slate-700;
+}
+
+.accordion-content-active {
+  @apply rounded-lg border-t py-4;
+}
