@@ -1,6 +1,8 @@
 ::: raw
 
-<CheckboxColor />
+<ClientOnly>
+  <CheckboxColor />
+</ClientOnly>
 
 :::
 

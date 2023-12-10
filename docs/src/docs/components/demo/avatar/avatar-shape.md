@@ -2,7 +2,9 @@ The Avatar component creates an image within its shape.
 
 ::: raw
 
-<AvatarShape />
+<ClientOnly>
+  <AvatarShape />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<FileUploadHelper />
+<ClientOnly>
+  <FileUploadHelper />
+</ClientOnly>
 
 :::
 

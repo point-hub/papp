@@ -2,7 +2,9 @@ Input range helper `description`, `helper message` and `error message`
 
 ::: raw
 
-<RangeHelper />
+<ClientOnly>
+  <RangeHelper />
+</ClientOnly>
 
 :::
 

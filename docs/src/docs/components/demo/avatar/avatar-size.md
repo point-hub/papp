@@ -2,7 +2,9 @@ The Avatar component can have various size.
 
 ::: raw
 
-<AvatarSize />
+<ClientOnly>
+  <AvatarSize />
+</ClientOnly>
 
 :::
 

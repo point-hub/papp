@@ -2,7 +2,9 @@ Badge can have `fill`, `outline` and `light` variant.
 
 ::: raw
 
-<BadgeVariant />
+<ClientOnly>
+  <BadgeVariant />
+</ClientOnly>
 
 :::
 

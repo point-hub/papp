@@ -2,7 +2,9 @@ Buttons can have `fill`, `outline`, `light` and `text` variant.
 
 ::: raw
 
-<ButtonVariant />
+<ClientOnly>
+  <ButtonVariant />
+</ClientOnly>
 
 :::
 

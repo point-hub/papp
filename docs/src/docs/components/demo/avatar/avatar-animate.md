@@ -2,7 +2,9 @@ Hover the Avatar to activate slide animation.
 
 ::: raw
 
-<AvatarAnimate />
+<ClientOnly>
+  <AvatarAnimate />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<DividerVertical />
+<ClientOnly>
+  <DividerVertical />
+</ClientOnly>
 
 :::
 

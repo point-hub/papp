@@ -2,7 +2,9 @@ The mask can crop the shape of reuleaux triangle.
 
 ::: raw
 
-<MaskReuleauxTriangle />
+<ClientOnly>
+  <MaskReuleauxTriangle />
+</ClientOnly>
 
 :::
 

@@ -2,7 +2,9 @@ The mask can crop the shape of octagon.
 
 ::: raw
 
-<MaskOctagon />
+<ClientOnly>
+  <MaskOctagon />
+</ClientOnly>
 
 :::
 

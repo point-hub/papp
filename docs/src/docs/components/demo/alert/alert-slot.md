@@ -2,7 +2,9 @@ Using slot to render custom style
 
 ::: raw
 
-<AlertSlot />
+<ClientOnly>
+  <AlertSlot />
+</ClientOnly>
 
 :::
 

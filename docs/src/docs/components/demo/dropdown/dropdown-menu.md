@@ -2,7 +2,9 @@ Using `#default` slot to customize menu items
 
 ::: raw
 
-<DropdownMenu />
+<ClientOnly>
+  <DropdownMenu />
+</ClientOnly>
 
 :::
 

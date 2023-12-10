@@ -2,7 +2,9 @@ The alert component can have a title
 
 ::: raw
 
-<AlertTitle />
+<ClientOnly>
+  <AlertTitle />
+</ClientOnly>
 
 :::
 

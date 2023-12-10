@@ -1,6 +1,8 @@
 ::: raw
 
-<TimelineExample />
+<ClientOnly>
+  <TimelineExample />
+</ClientOnly>
 
 :::
 

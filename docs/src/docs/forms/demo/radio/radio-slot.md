@@ -1,6 +1,8 @@
 ::: raw
 
-<RadioSlot />
+<ClientOnly>
+  <RadioSlot />
+</ClientOnly>
 
 :::
 

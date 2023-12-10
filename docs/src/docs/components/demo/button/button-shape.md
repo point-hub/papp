@@ -2,7 +2,9 @@ Buttons have various shape.
 
 ::: raw
 
-<ButtonShape />
+<ClientOnly>
+  <ButtonShape />
+</ClientOnly>
 
 :::
 

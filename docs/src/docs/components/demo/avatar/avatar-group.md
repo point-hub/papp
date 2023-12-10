@@ -2,7 +2,9 @@ The Avatar group renders its children as a stack.
 
 ::: raw
 
-<AvatarGroup />
+<ClientOnly>
+  <AvatarGroup />
+</ClientOnly>
 
 :::
 

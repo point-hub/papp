@@ -1,6 +1,8 @@
 ::: raw
 
-<AutocompleteLabel />
+<ClientOnly>
+  <AutocompleteLabel />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchExample />
+<ClientOnly>
+  <SwitchExample />
+</ClientOnly>
 
 :::
 

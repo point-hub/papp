@@ -1,6 +1,8 @@
 ::: raw
 
-<CardDemo />
+<ClientOnly>
+  <CardDemo />
+</ClientOnly>
 
 :::
 

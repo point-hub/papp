@@ -1,6 +1,8 @@
 ::: raw
 
-<InputMaskExample />
+<ClientOnly>
+  <InputMaskExample />
+</ClientOnly>
 
 :::
 

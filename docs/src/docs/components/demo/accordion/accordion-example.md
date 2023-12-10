@@ -2,7 +2,9 @@ A basic accordion function.
 
 ::: raw
 
-<AccordionExample />
+<ClientOnly>
+  <AccordionExample />
+</ClientOnly>
 
 :::
 

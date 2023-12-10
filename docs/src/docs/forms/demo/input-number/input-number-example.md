@@ -1,6 +1,8 @@
 ::: raw
 
-<InputNumberExample />
+<ClientOnly>
+  <InputNumberExample />
+</ClientOnly>
 
 :::
 

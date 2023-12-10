@@ -2,7 +2,9 @@ Using `#trigger` slot to customize trigger button
 
 ::: raw
 
-<DropdownTrigger />
+<ClientOnly>
+  <DropdownTrigger />
+</ClientOnly>
 
 :::
 

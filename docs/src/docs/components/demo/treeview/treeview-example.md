@@ -2,7 +2,9 @@ Breadcrumb can have a various separator icon.
 
 ::: raw
 
-<TreeviewExample />
+<ClientOnly>
+  <TreeviewExample />
+</ClientOnly>
 
 :::
 

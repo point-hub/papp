@@ -2,7 +2,9 @@ The mask can crop the shape of star.
 
 ::: raw
 
-<MaskStar />
+<ClientOnly>
+  <MaskStar />
+</ClientOnly>
 
 :::
 

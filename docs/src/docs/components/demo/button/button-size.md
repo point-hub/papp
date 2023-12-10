@@ -2,7 +2,9 @@ Button components can have various sizes.
 
 ::: raw
 
-<ButtonSize />
+<ClientOnly>
+  <ButtonSize />
+</ClientOnly>
 
 :::
 

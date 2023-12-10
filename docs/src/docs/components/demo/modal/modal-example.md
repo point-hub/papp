@@ -1,6 +1,8 @@
 ::: raw
 
-<ModalExample />
+<ClientOnly>
+  <ModalExample />
+</ClientOnly>
 
 :::
 

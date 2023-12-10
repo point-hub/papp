@@ -2,7 +2,9 @@
 
 ::: raw
 
-<ButtonColor />
+<ClientOnly>
+  <ButtonColor />
+</ClientOnly>
 
 :::
 

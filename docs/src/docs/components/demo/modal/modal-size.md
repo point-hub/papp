@@ -1,6 +1,8 @@
 ::: raw
 
-<ModalSize />
+<ClientOnly>
+  <ModalSize />
+</ClientOnly>
 
 :::
 

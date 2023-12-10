@@ -1,6 +1,8 @@
 ::: raw
 
-<IconExample />
+<ClientOnly>
+  <IconExample />
+</ClientOnly>
 
 :::
 

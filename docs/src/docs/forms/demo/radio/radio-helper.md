@@ -1,6 +1,8 @@
 ::: raw
 
-<RadioHelper />
+<ClientOnly>
+  <RadioHelper />
+</ClientOnly>
 
 :::
 

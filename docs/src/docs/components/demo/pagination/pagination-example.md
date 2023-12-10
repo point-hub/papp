@@ -1,6 +1,8 @@
 ::: raw
 
-<PaginationExample />
+<ClientOnly>
+  <PaginationExample />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<DividerTextHorizontal />
+<ClientOnly>
+  <DividerTextHorizontal />
+</ClientOnly>
 
 :::
 

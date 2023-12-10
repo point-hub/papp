@@ -2,7 +2,9 @@ You can use indeterminate mode for the progress bar when you do not know how lon
 
 ::: raw
 
-<ProgressIndeterminate />
+<ClientOnly>
+  <ProgressIndeterminate />
+</ClientOnly>
 
 :::
 

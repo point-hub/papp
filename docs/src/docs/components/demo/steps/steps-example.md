@@ -1,6 +1,8 @@
 ::: raw
 
-<StepsExample />
+<ClientOnly>
+  <StepsExample />
+</ClientOnly>
 
 :::
 

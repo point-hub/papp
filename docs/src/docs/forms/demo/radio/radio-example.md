@@ -1,6 +1,8 @@
 ::: raw
 
-<RadioExample />
+<ClientOnly>
+  <RadioExample />
+</ClientOnly>
 
 :::
 

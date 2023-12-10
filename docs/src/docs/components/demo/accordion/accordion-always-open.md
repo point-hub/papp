@@ -2,7 +2,9 @@ The Collapse component is used to create regions of content that can expand/coll
 
 ::: raw
 
-<AccordionAlwaysOpen />
+<ClientOnly>
+  <AccordionAlwaysOpen />
+</ClientOnly>
 
 :::
 

@@ -2,7 +2,9 @@ A Spinner component has various size.
 
 ::: raw
 
-<SpinnerSize />
+<ClientOnly>
+  <SpinnerSize />
+</ClientOnly>
 
 :::
 

@@ -2,7 +2,9 @@ The Progress components can have various sizes.
 
 ::: raw
 
-<ProgressSize />
+<ClientOnly>
+  <ProgressSize />
+</ClientOnly>
 
 :::
 

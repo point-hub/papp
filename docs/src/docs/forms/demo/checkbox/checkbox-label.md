@@ -1,6 +1,8 @@
 ::: raw
 
-<CheckboxLabel />
+<ClientOnly>
+  <CheckboxLabel />
+</ClientOnly>
 
 :::
 

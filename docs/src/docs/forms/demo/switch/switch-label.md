@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchLabel />
+<ClientOnly>
+  <SwitchLabel />
+</ClientOnly>
 
 :::
 

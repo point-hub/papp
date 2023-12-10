@@ -1,6 +1,8 @@
 ::: raw
 
-<TextareaLabel />
+<ClientOnly>
+  <TextareaLabel />
+</ClientOnly>
 
 :::
 

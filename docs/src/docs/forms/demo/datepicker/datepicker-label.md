@@ -1,6 +1,8 @@
 ::: raw
 
-<DatepickerLabel />
+<ClientOnly>
+  <DatepickerLabel />
+</ClientOnly>
 
 :::
 

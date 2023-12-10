@@ -2,7 +2,9 @@ The alert component has various color.
 
 ::: raw
 
-<AlertColor />
+<ClientOnly>
+  <AlertColor />
+</ClientOnly>
 
 :::
 

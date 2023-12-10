@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchText />
+<ClientOnly>
+  <SwitchText />
+</ClientOnly>
 
 :::
 

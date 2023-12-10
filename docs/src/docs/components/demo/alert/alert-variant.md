@@ -2,7 +2,9 @@ Alert can have `fill`, `outline` and `light` variant.
 
 ::: raw
 
-<AlertVariant />
+<ClientOnly>
+  <AlertVariant />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<TooltipDirective />
+<ClientOnly>
+  <TooltipDirective />
+</ClientOnly>
 
 :::
 

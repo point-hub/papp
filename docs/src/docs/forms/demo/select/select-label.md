@@ -1,6 +1,8 @@
 ::: raw
 
-<SelectLabel />
+<ClientOnly>
+  <SelectLabel />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<TooltipComponent />
+<ClientOnly>
+  <TooltipComponent />
+</ClientOnly>
 
 :::
 

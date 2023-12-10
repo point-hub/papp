@@ -1,6 +1,8 @@
 ::: raw
 
-<InputBorder />
+<ClientOnly>
+  <InputBorder />
+</ClientOnly>
 
 :::
 

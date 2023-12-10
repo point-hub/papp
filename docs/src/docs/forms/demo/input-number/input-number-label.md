@@ -1,6 +1,8 @@
 ::: raw
 
-<InputNumberLabel />
+<ClientOnly>
+  <InputNumberLabel />
+</ClientOnly>
 
 :::
 

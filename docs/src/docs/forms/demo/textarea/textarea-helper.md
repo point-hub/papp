@@ -1,6 +1,8 @@
 ::: raw
 
-<TextareaHelper />
+<ClientOnly>
+  <TextareaHelper />
+</ClientOnly>
 
 :::
 

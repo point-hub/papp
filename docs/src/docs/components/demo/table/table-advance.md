@@ -2,7 +2,9 @@ Use of more advanced tables by using search, filter, table settings, pagination,
 
 ::: raw
 
-<TableAdvance />
+<ClientOnly>
+  <TableAdvance />
+</ClientOnly>
 
 :::
 

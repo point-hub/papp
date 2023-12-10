@@ -2,7 +2,9 @@ The mask can crop the shape of squircle.
 
 ::: raw
 
-<MaskSquircle />
+<ClientOnly>
+  <MaskSquircle />
+</ClientOnly>
 
 :::
 

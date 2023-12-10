@@ -1,6 +1,8 @@
 ::: raw
 
-<StepsIcon />
+<ClientOnly>
+  <StepsIcon />
+</ClientOnly>
 
 :::
 

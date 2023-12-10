@@ -2,7 +2,9 @@ Buttons can have an icon.
 
 ::: raw
 
-<ButtonIcon />
+<ClientOnly>
+  <ButtonIcon />
+</ClientOnly>
 
 :::
 

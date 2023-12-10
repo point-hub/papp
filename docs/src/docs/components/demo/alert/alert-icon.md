@@ -2,7 +2,9 @@ Alerts can have an icon
 
 ::: raw
 
+<ClientOnly>
 <AlertIcon />
+</ClientOnly>
 
 :::
 

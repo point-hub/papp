@@ -2,7 +2,9 @@ Avatars can be a dot attached to it. It can be used to indicate the user status.
 
 ::: raw
 
-<AvatarIndicator />
+<ClientOnly>
+  <AvatarIndicator />
+</ClientOnly>
 
 :::
 

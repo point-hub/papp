@@ -2,7 +2,9 @@ The Progress component displays a label.
 
 ::: raw
 
-<ProgressLabel />
+<ClientOnly>
+  <ProgressLabel />
+</ClientOnly>
 
 :::
 

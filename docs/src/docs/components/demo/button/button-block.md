@@ -2,7 +2,9 @@ Button can be blocked with `w-full`.
 
 ::: raw
 
-<ButtonBlock />
+<ClientOnly>
+  <ButtonBlock />
+</ClientOnly>
 
 :::
 

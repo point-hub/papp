@@ -1,6 +1,8 @@
 ::: raw
 
-<TextareaHeight />
+<ClientOnly>
+  <TextareaHeight />
+</ClientOnly>
 
 :::
 

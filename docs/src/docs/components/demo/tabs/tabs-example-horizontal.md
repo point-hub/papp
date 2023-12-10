@@ -1,6 +1,8 @@
 ::: raw
 
-<TabsExampleHorizontal />
+<ClientOnly>
+  <TabsExampleHorizontal />
+</ClientOnly>
 
 :::
 

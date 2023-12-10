@@ -1,6 +1,8 @@
 ::: raw
 
-<DatepickerHelper />
+<ClientOnly>
+  <DatepickerHelper />
+</ClientOnly>
 
 :::
 

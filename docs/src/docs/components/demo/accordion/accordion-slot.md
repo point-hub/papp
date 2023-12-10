@@ -2,7 +2,9 @@ Using slot for rendering accordion item title & content
 
 ::: raw
 
-<AccordionSlot />
+<ClientOnly>
+  <AccordionSlot />
+</ClientOnly>
 
 :::
 

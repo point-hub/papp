@@ -2,7 +2,9 @@ A Spinner component has various color.
 
 ::: raw
 
-<SpinnerColor />
+<ClientOnly>
+  <SpinnerColor />
+</ClientOnly>
 
 :::
 

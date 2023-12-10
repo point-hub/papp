@@ -1,6 +1,8 @@
 ::: raw
 
-<SelectBorder />
+<ClientOnly>
+  <SelectBorder />
+</ClientOnly>
 
 :::
 

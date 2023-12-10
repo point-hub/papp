@@ -2,7 +2,9 @@ The mask can crop the shape of heart.
 
 ::: raw
 
-<MaskHeart />
+<ClientOnly>
+  <MaskHeart />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchDisabled />
+<ClientOnly>
+  <SwitchDisabled />
+</ClientOnly>
 
 :::
 

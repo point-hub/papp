@@ -2,7 +2,9 @@ The height of the Textarea Autosize component automatically adjusts as a respons
 
 ::: raw
 
-<TextareaExample />
+<ClientOnly>
+  <TextareaExample />
+</ClientOnly>
 
 :::
 

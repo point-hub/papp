@@ -1,6 +1,8 @@
 ::: raw
 
-<SelectExample />
+<ClientOnly>
+  <SelectExample />
+</ClientOnly>
 
 :::
 

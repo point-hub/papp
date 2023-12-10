@@ -1,6 +1,8 @@
 ::: raw
 
-<ToastExample />
+<ClientOnly>
+  <ToastExample />
+</ClientOnly>
 
 :::
 

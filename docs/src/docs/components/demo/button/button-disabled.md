@@ -2,7 +2,9 @@ Buttons have their own style when disabled.
 
 ::: raw
 
-<ButtonDisabled />
+<ClientOnly>
+  <ButtonDisabled />
+</ClientOnly>
 
 :::
 

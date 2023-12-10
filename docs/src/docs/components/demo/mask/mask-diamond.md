@@ -2,7 +2,9 @@ The mask can crop the shape of diamond.
 
 ::: raw
 
-<MaskDiamond />
+<ClientOnly>
+  <MaskDiamond />
+</ClientOnly>
 
 :::
 

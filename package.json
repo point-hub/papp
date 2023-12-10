@@ -25,7 +25,7 @@
     "dev:all": "run-s clean-dist && run-p dev:lib dev:type docs:dev",
     "dev:type": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.build.json --watch",
     "dev:lib": "vite build --watch",
-    "build": "run-s clean-dist build:type build:lib",
+    "build": "run-s clean-dist build:type build:lib docs:build",
     "build:type": "vue-tsc --declaration --emitDeclarationOnly -p tsconfig.build.json",
     "build:lib": "vite build",
     "test": "vitest",

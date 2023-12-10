@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchHelper />
+<ClientOnly>
+  <SwitchHelper />
+</ClientOnly>
 
 :::
 

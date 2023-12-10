@@ -2,7 +2,9 @@ Customize treeview content using slot
 
 ::: raw
 
-<TreeviewCustom />
+<ClientOnly>
+  <TreeviewCustom />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<CheckboxHelper />
+<ClientOnly>
+  <CheckboxHelper />
+</ClientOnly>
 
 :::
 

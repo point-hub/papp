@@ -2,7 +2,9 @@ An `animate-spin` class can be used in another element.
 
 ::: raw
 
-<SpinnerIcon />
+<ClientOnly>
+  <SpinnerIcon />
+</ClientOnly>
 
 :::
 

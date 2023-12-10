@@ -2,7 +2,9 @@ The Progress component displays a colored loading bar.
 
 ::: raw
 
-<ProgressColor />
+<ClientOnly>
+  <ProgressColor />
+</ClientOnly>
 
 :::
 

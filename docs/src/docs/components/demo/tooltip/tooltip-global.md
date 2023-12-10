@@ -1,6 +1,8 @@
 ::: raw
 
-<TooltipGlobal />
+<ClientOnly>
+  <TooltipGlobal />
+</ClientOnly>
 
 :::
 

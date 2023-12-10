@@ -1,6 +1,8 @@
 ::: raw
 
-<RadioLabel />
+<ClientOnly>
+  <RadioLabel />
+</ClientOnly>
 
 :::
 

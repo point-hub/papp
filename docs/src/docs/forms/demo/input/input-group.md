@@ -1,6 +1,8 @@
 ::: raw
 
-<InputGroup />
+<ClientOnly>
+  <InputGroup />
+</ClientOnly>
 
 :::
 

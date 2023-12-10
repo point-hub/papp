@@ -1,6 +1,8 @@
 ::: raw
 
-<FileUploadLabel />
+<ClientOnly>
+  <FileUploadLabel />
+</ClientOnly>
 
 :::
 

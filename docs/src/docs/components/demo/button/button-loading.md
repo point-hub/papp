@@ -2,7 +2,9 @@ Button can have loading indicator. Click the button to trigger loading start / s
 
 ::: raw
 
-<ButtonLoading />
+<ClientOnly>
+  <ButtonLoading />
+</ClientOnly>
 
 :::
 

@@ -2,7 +2,9 @@ In the absence of a image, you can use the initial. Initials can be used in vari
 
 ::: raw
 
-<AvatarInitial />
+<ClientOnly>
+  <AvatarInitial />
+</ClientOnly>
 
 :::
 

@@ -1,6 +1,8 @@
 ::: raw
 
-<SwitchSize />
+<ClientOnly>
+  <SwitchSize />
+</ClientOnly>
 
 :::
 

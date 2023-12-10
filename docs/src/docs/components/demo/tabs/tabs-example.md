@@ -1,6 +1,8 @@
 ::: raw
 
-<TabsExample />
+<ClientOnly>
+  <TabsExample />
+</ClientOnly>
 
 :::
 

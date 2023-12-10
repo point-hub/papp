@@ -1,6 +1,8 @@
 ::: raw
 
-<TextareaBorder />
+<ClientOnly>
+  <TextareaBorder />
+</ClientOnly>
 
 :::
 

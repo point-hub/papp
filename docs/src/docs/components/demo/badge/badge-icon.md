@@ -2,7 +2,9 @@ Badges can have an icon.
 
 ::: raw
 
-<BadgeIcon />
+<ClientOnly>
+  <BadgeIcon />
+</ClientOnly>
 
 :::
 

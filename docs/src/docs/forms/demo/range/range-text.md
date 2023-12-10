@@ -2,7 +2,9 @@ Show value text
 
 ::: raw
 
-<RangeText />
+<ClientOnly>
+  <RangeText />
+</ClientOnly>
 
 :::
 

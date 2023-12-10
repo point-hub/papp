@@ -1,6 +1,8 @@
 ::: raw
 
-<InputMaskHelper />
+<ClientOnly>
+  <InputMaskHelper />
+</ClientOnly>
 
 :::
 

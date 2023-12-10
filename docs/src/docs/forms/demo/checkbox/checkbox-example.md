@@ -1,6 +1,8 @@
 ::: raw
 
-<CheckboxExample />
+<ClientOnly>
+  <CheckboxExample />
+</ClientOnly>
 
 :::
 

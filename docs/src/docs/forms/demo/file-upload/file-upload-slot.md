@@ -1,6 +1,8 @@
 ::: raw
 
-<FileUploadSlot />
+<ClientOnly>
+  <FileUploadSlot />
+</ClientOnly>
 
 :::
 

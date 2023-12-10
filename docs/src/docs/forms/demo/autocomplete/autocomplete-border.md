@@ -1,6 +1,8 @@
 ::: raw
 
-<AutocompleteBorder />
+<ClientOnly>
+  <AutocompleteBorder />
+</ClientOnly>
 
 :::
 

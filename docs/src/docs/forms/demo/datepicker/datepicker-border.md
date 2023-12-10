@@ -1,6 +1,8 @@
 ::: raw
 
-<DatepickerBorder />
+<ClientOnly>
+  <DatepickerBorder />
+</ClientOnly>
 
 :::
 

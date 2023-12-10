@@ -1,6 +1,8 @@
 ::: raw
 
-<RangeExample />
+<ClientOnly>
+  <RangeExample />
+</ClientOnly>
 
 :::
 

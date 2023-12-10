@@ -1,6 +1,8 @@
 ::: raw
 
-<AutocompleteExample />
+<ClientOnly>
+  <AutocompleteExample />
+</ClientOnly>
 
 :::
 

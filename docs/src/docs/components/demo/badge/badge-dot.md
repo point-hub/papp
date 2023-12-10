@@ -2,7 +2,9 @@ Badges can have a dot attached to it.
 
 ::: raw
 
-<BadgeDot />
+<ClientOnly>
+  <BadgeDot />
+</ClientOnly>
 
 :::
 

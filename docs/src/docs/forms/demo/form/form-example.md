@@ -1,6 +1,8 @@
 ::: raw
 
-<FormExample />
+<ClientOnly>
+  <FormExample />
+</ClientOnly>
 
 :::
 

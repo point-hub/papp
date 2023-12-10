@@ -1,6 +1,8 @@
 ::: raw
 
-<TableExample />
+<ClientOnly>
+  <TableExample />
+</ClientOnly>
 
 :::
 

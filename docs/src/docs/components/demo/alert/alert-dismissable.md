@@ -2,7 +2,9 @@ Alerts can be dismissable.
 
 ::: raw
 
-<AlertDismissable />
+<ClientOnly>
+  <AlertDismissable />
+</ClientOnly>
 
 :::
 

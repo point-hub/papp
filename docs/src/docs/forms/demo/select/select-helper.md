@@ -1,6 +1,8 @@
 ::: raw
 
-<SelectHelper />
+<ClientOnly>
+  <SelectHelper />
+</ClientOnly>
 
 :::
 

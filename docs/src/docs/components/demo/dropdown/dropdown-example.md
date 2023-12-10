@@ -1,6 +1,8 @@
 ::: raw
 
-<DropdownExample />
+<ClientOnly>
+  <DropdownExample />
+</ClientOnly>
 
 :::
 

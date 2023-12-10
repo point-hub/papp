@@ -2,7 +2,9 @@ Add label to input range
 
 ::: raw
 
-<RangeLabel />
+<ClientOnly>
+  <RangeLabel />
+</ClientOnly>
 
 :::
 

@@ -2,7 +2,9 @@ The mask can crop the shape of hexagon.
 
 ::: raw
 
-<MaskHexagon />
+<ClientOnly>
+  <MaskHexagon />
+</ClientOnly>
 
 :::
 
