@@ -8,10 +8,10 @@ on:
     tags:
       - 'v*.*.*'
   pull_request:
-    branches:    
+    branches:
       - main
       - staging
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -58,16 +58,15 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout master
         uses: actions/checkout@main
-      
+
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      
+
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 300 ${{ secrets.KUBERNETES_CLUSTER_ID }}
 
