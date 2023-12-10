@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { BaseStep } from '@point-hub/papp'
 
-const items = [
+const items = ref([
   {
     label: 'Step 1',
     active: true
@@ -14,7 +15,7 @@ const items = [
     label: 'Step 3',
     active: false
   }
-]
+])
 </script>
 
 <template>

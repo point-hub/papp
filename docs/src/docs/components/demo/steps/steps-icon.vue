@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { BaseStep } from '@point-hub/papp'
 
-const items = [
+const items = ref([
   {
     label: 'Step 1',
     active: true,
@@ -17,7 +18,7 @@ const items = [
     active: false,
     icon: 'i-far-file-lines'
   }
-]
+])
 </script>
 
 <template>
