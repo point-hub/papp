@@ -27,7 +27,7 @@ Create Github tag (use the same version in `package.json` from step 1)
 Publishes a package to the registry so that it can be installed by other apps
 
 ```sh
-npm publish --access public
+npm publish
 ```
 
 ## Build & Deploy
