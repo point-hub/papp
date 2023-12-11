@@ -76,11 +76,11 @@ const value = computed({
 
 <style lang="postcss">
 .switch::before {
-  @apply absolute transition-all duration-200 ease-in-out content-empty top-2px left-2px h-[calc(100%-2px*2)] w-[calc((100%/2)-(2px*2))];
+  @apply absolute transition-all duration-200 ease-in-out content-empty top-2px left-2px h-[calc(100% - 2px * 2)] w-[calc((100% / 2) - (2px * 2))];
 }
 
 .switch {
-  @apply select-none focus-visible:ring checked:before:translate-x-[calc(100%+(2px*2))] before:bg-slate-50;
+  @apply select-none focus-visible:ring checked:before:translate-x-[calc(100% + (2px * 2))] before:bg-slate-50;
   @apply relative shrink-0 cursor-pointer select-none appearance-none overflow-hidden outline-none focus:outline-none h-5 w-10 rounded-full before:rounded-full;
   @apply bg-slate-300 checked:bg-primary;
   @apply dark:bg-slate-600 dark:checked:bg-info;

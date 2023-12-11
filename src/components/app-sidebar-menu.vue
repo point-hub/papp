@@ -123,7 +123,7 @@ defineProps<{
 }
 
 .sidebar-menu-body {
-  @apply h-[calc(100%-4.5rem)] overflow-x-hidden pb-6;
+  @apply h-[calc(100% - 4.5rem)] overflow-x-hidden pb-6;
 }
 
 .sidebar-menu-body .menu-separator {

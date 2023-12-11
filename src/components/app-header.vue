@@ -37,7 +37,7 @@ nav.header {
 }
 
 .is-sidebar-open nav.header {
-  @apply lg:w-[calc(100%-(var(--sidebar-panel-width)+var(--sidebar-menu-width)))] lg:ml-[calc(var(--sidebar-panel-width)+var(--sidebar-menu-width))] duration-300 transition-all;
+  @apply lg:w-[calc(100% - (var(--sidebar-panel-width) + var(--sidebar-menu-width)))] lg:ml-[calc(var(--sidebar-panel-width) + var(--sidebar-menu-width))] duration-300 transition-all;
 }
 
 .header-container {
