@@ -50,7 +50,7 @@ function nav(): DefaultTheme.NavItem[] {
       items: [
         {
           text: 'Changelog',
-          link: 'https://github.com/point-hub/papp'
+          link: 'https://github.com/point-hub/papp/commits/main/'
         },
         {
           text: 'Contributing',
