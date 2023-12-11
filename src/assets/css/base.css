@@ -27,3 +27,12 @@ h3 {
 table input.border-none {
   @apply p-0!;
 }
+
+/* scrollbar */
+.scrollbar-hidden {
+  @apply [scrollbar-width:none]; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  @apply hidden;
+}
