@@ -10,6 +10,7 @@ export default defineConfig({
   description: 'Pointhub App Components',
   cleanUrls: true,
   srcDir: './src',
+  base: '/library/papp/',
   vite: {
     plugins: [Unocss()],
     resolve: {
@@ -19,7 +20,7 @@ export default defineConfig({
     }
   },
   sitemap: {
-    hostname: 'https://papp.pointhub.net'
+    hostname: 'https://dev.pointhub.net'
   },
   head: [['link', { rel: 'icon', type: 'image/png', href: '/favicon-32x32.png' }]],
   themeConfig: {
