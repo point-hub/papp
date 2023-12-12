@@ -7,7 +7,7 @@ import './custom.css'
 import '../../../dist/style.css'
 import 'virtual:uno.css'
 import Demo from './components/demo.vue'
-import { PluginInputMask, PluginTooltip } from '@point-hub/papp'
+import { PluginInputMask, PluginIcon, PluginTooltip } from '@point-hub/papp'
 
 export default {
   extends: DefaultTheme,
@@ -18,6 +18,7 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     app.component('Demo', Demo)
+    app.use(PluginIcon)
     app.use(PluginInputMask)
     app.use(PluginTooltip)
   }

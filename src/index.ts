@@ -55,5 +55,6 @@ export { default as BaseSwitch } from '@/components/base-switch.vue'
 export { directive as vTooltip } from 'vue-tippy'
 
 // Global Plugin
+export { default as PluginIcon } from './plugins/icon'
 export { default as PluginInputMask } from './plugins/input-mask'
 export { default as PluginTooltip } from './plugins/tooltip'
