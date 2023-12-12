@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseModal } from '@point-hub/papp'
+import { BaseModal, type BaseModalSizeType } from '@point-hub/papp'
 
 const showModal = ref(false)
-const sizeModal = ref('md')
-const openModal = (size: string) => {
-  sizeModal.value = size
+let sizeModal: BaseModalSizeType = 'md'
+const openModal = (size: BaseModalSizeType) => {
+  sizeModal = size
   showModal.value = true
 }
 </script>

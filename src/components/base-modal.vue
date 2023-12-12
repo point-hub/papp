@@ -2,12 +2,12 @@
 import { ref, watch } from 'vue'
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel } from '@headlessui/vue'
 
-export type SizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'maximize'
+export type BaseModalSizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'maximize'
 
 const props = withDefaults(
   defineProps<{
     isOpen: boolean
-    size?: SizeType
+    size?: BaseModalSizeType
   }>(),
   {
     size: 'md'

@@ -18,6 +18,7 @@ export { default as BaseDropdownItem } from '@/components/base-dropdown-item.vue
 export { default as BaseIcon } from '@/components/base-icon.vue'
 export { default as BaseMask } from '@/components/base-mask.vue'
 export { default as BaseModal } from '@/components/base-modal.vue'
+export type { BaseModalSizeType } from '@/components/base-modal.vue'
 export { default as BasePagination } from '@/components/base-pagination.vue'
 export { default as BasePopover } from '@/components/base-popover.vue'
 export { default as BaseProgress } from '@/components/base-progress.vue'

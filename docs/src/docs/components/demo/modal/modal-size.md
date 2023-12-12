@@ -11,25 +11,23 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseModal } from '@point-hub/papp'
+import { BaseModal, type BaseModalSizeType } from '@point-hub/papp'
 
 const showModal = ref(false)
-const sizeModal = ref('md')
-const openModal = (size: string) => {
-  sizeModal.value = size
+let sizeModal: BaseModalSizeType = 'md'
+const openModal = (size: BaseModalSizeType) => {
+  sizeModal = size
   showModal.value = true
 }
 </script>
 
 <template>
-  <!-- Trigger Button -->
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('sm')">SM</button>
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('md')">MD</button>
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('lg')">LG</button>
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('xl')">XL</button>
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('full')">Full</button>
   <button class="btn btn-md btn-primary rounded-lg" @click="openModal('maximize')">Maximize</button>
-  <!-- Modal Dialog -->
   <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" :size="sizeModal">
     <div class="max-h-90vh overflow-auto p-4">
       <h2 class="py-4 text-2xl font-bold">Lorem Ipsum</h2>
