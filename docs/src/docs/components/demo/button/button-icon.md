@@ -12,22 +12,20 @@ Buttons can have an icon.
 
 ```vue
 <script setup lang="ts">
-import { BaseButton, BaseIcon } from '@point-hub/papp'
+import { BaseButton } from '@point-hub/papp'
 </script>
 
 <template>
-  <div>
-    <component :is="BaseButton">
-      <component :is="BaseIcon" icon="i-fad-books" />
-    </component>
-    <component :is="BaseButton" variant="outline" shape="pill">
-      <component :is="BaseIcon" icon="i-fad-books" />
-    </component>
-    <component :is="BaseButton"><component :is="BaseIcon" icon="i-fad-books" /> Button</component>
-    <component :is="BaseButton" variant="outline"
-      >Button <component :is="BaseIcon" icon="i-fad-books"
-    /></component>
-  </div>
+  <component :is="BaseButton">
+    <base-icon icon="i-fad-books" />
+  </component>
+  <component :is="BaseButton" variant="outline" shape="pill">
+    <base-icon icon="i-fad-books" />
+  </component>
+  <component :is="BaseButton"><base-icon icon="i-fad-books" /> Button</component>
+  <component :is="BaseButton" variant="outline">
+    Button <base-icon icon="i-fad-books" />
+  </component>
 </template>
 ```
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseAlert, BaseIcon } from '@point-hub/papp'
+import { BaseAlert } from '@point-hub/papp'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { BaseAlert, BaseIcon } from '@point-hub/papp'
     <component :is="BaseAlert" color="danger">
       <template #title>
         <div class="flex items-center gap-2">
-          <component :is="BaseIcon" icon="i-far-triangle-exclamation" class="text-2xl" />
+          <base-icon icon="i-far-triangle-exclamation" class="text-2xl" />
           <span class="text-2xl font-extrabold">Alert</span>
         </div>
       </template>

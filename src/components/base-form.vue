@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BaseIcon from './base-icon.vue'
-
 export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 export interface Props {
@@ -57,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="flex flex-col mt-1 gap-1" v-if="errors">
         <slot name="error">
           <div class="flex items-center gap-1" v-for="(error, index) in errors" :key="index">
-            <component :is="BaseIcon" icon="i-far-triangle-exclamation" class="text-danger" />
+            <base-icon icon="i-far-triangle-exclamation" class="text-danger" />
             <p class="text-xs text-danger">
               {{ error }}
             </p>
