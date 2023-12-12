@@ -1,5 +1,5 @@
 <script setup lang="ts">
-export type colorType =
+export type BaseSpinnerColorType =
   | 'primary'
   | 'secondary'
   | 'info'
@@ -8,12 +8,13 @@ export type colorType =
   | 'danger'
   | 'black'
   | 'white'
-export type sizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+export type BaseSpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
 const props = withDefaults(
   defineProps<{
-    size?: sizeType
-    color?: colorType
+    size?: BaseSpinnerSizeType
+    color?: BaseSpinnerColorType
   }>(),
   {
     size: 'md',

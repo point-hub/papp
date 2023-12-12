@@ -1,10 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+export type BaseProgressColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
+export type BaseProgressSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
 export interface Props {
-  modelValue: string
-  color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  modelValue: number
+  color?: BaseProgressColorType
+  size?: BaseProgressSizeType
   isIndeterminate?: boolean
 }
 
@@ -15,11 +25,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: number): void
 }>()
 
 const value = computed({
-  set: (text: string) => {
+  set: (text: number) => {
     emit('update:modelValue', text)
   },
   get: () => props.modelValue

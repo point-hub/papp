@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import { ref, watch, computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+
+export type BaseDatepickerBorderType = 'simple' | 'full' | 'none'
 
 export interface Props {
   modelValue: string
   id?: string
   label?: string
   description?: string
-  border?: 'simple' | 'full' | 'none'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseDatepickerBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -27,8 +29,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
   (e: 'isoValue', value: string): void
+  (e: 'update:modelValue', value: string): void
 }>()
 
 const value = computed({

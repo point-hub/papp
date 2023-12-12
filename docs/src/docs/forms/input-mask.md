@@ -23,6 +23,13 @@ To provide an easy way to increase input field readability by formatting your ty
 
 ## Input Mask API
 
+### Types
+
+```ts
+export type BaseInputMaskBorderType = 'none' | 'simple' | 'full'
+export type BaseFormLayoutType = `horizontal` `vertical`
+```
+
 ### Props
 
 | Name        | Type                    | Default    | Description                       |
@@ -32,8 +39,8 @@ To provide an easy way to increase input field readability by formatting your ty
 | label       | string                  |            | Input label.                      |
 | description | string                  |            | Input description.                |
 | placeholder | string                  |            | Input placeholder.                |
-| border      | `simple` `full` `none`  | `simple`   | Input border.                     |
-| layout      | `horizontal` `vertical` | `vertical` | Input layout.                     |
+| border      | BaseInputMaskBorderType | `simple`   | Input border.                     |
+| layout      | BaseFormLayoutType      | `vertical` | Input layout.                     |
 | required    | boolean                 | false      | if true input mask is `required`. |
 | disabled    | boolean                 | false      | if true input mask is `disabled`. |
 | helpers     | string[]                |            | Input helper message.             |

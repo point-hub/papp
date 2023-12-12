@@ -33,21 +33,27 @@ Input elements with type "file" let the user choose one or more files from their
 
 ## File Upload API
 
+### Types
+
+```ts
+export type BaseFileUploadBorderType = 'none' | 'simple' | 'full'
+export type BaseFormLayoutType = 'vertical' | 'horizontal'
+```
+
 ### Props
 
-| Name        | Type                    | Default    | Description                  |
-| ----------- | ----------------------- | ---------- | ---------------------------- |
-| v-model     | string                  |            | v-model is `required`.       |
-| id          | string                  |            | Input id.                    |
-| label       | string                  |            | Input label.                 |
-| description | string                  |            | Input description.           |
-| border      | `full` `simple` `none`  | `full`     | Input border.                |
-| layout      | `horizontal` `vertical` | `vertical` | Input layout.                |
-| multiple    | boolean                 | false      | Upload multiple files.       |
-| required    | boolean                 | false      | if true input is `required`. |
-| disabled    | boolean                 | false      | if true input is `disabled`. |
-| helpers     | string[]                |            | Input helper message.        |
-| errors      | string[]                |            | Input error message.         |
+| Name        | Type                     | Default    | Description                  |
+| ----------- | ------------------------ | ---------- | ---------------------------- |
+| id          | string                   |            | Input id.                    |
+| label       | string                   |            | Input label.                 |
+| description | string                   |            | Input description.           |
+| border      | BaseFileUploadBorderType | `full`     | Input border.                |
+| layout      | BaseFormLayoutType       | `vertical` | Input layout.                |
+| multiple    | boolean                  | false      | Upload multiple files.       |
+| required    | boolean                  | false      | if true input is `required`. |
+| disabled    | boolean                  | false      | if true input is `disabled`. |
+| helpers     | string[]                 |            | Input helper message.        |
+| errors      | string[]                 |            | Input error message.         |
 
 ### Slot
 

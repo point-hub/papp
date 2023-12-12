@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+
+export type BaseInputMaskBorderType = 'simple' | 'full' | 'none'
 
 export interface Props {
-  modelValue: string
+  modelValue: string | number | boolean | null
   id?: string
   label?: string
   description?: string
   placeholder?: string
-  border?: 'simple' | 'full' | 'none'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseInputMaskBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -25,11 +27,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: string | number | boolean | null): void
 }>()
 
 const value = computed({
-  set: (text: string) => {
+  set: (text: string | number | boolean | null) => {
     emit('update:modelValue', text)
   },
   get: () => props.modelValue

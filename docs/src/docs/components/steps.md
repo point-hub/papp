@@ -23,10 +23,24 @@ Lead the user through a series of tasks in a specific order.
 
 ## Steps API
 
+### Types
+
+```ts
+export interface BaseStepItemInterface {
+  label: string
+  active: boolean
+  icon?: string
+  [key: string]: any
+}
+```
+
 ### Props
 
-| Name   | Type    | Default | Description                    |
-| ------ | ------- | ------- | ------------------------------ |
-| label  | boolean |         | Step item label is `required`. |
-| active | boolean | false   | Step item active.              |
-| icon   | boolean |         | Step item icon.                |
+| Name      | Type                    | Default | Description                    |
+| --------- | ----------------------- | ------- | ------------------------------ |
+| v-model   | BaseStepItemInterface[] |         | v-model is `required`.         |
+| showLabel | boolean                 | true    | if `true` item label is shown. |
+
+### Event
+
+`@choosen(item: BaseStepItemInterface)` Event for clicked step.

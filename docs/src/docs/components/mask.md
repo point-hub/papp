@@ -48,9 +48,24 @@ Mask crops the content of the element to common shapes.
 
 ## Mask API
 
+### Types
+
+```ts
+export type BaseMaskShapeType =
+  | 'squircle'
+  | 'diamond'
+  | 'reuleaux-triangle'
+  | 'hexagon'
+  | 'hexagon-2'
+  | 'heart'
+  | 'octagon'
+  | 'star'
+  | 'star-2'
+```
+
 ### Props
 
-| Name  | Type                                                                                             | Default | Description                 |
-| ----- | ------------------------------------------------------------------------------------------------ | ------- | --------------------------- |
-| src   | string                                                                                           |         | Image source is `required`. |
-| shape | `squircle` `diamond` `reuleaux triangle` `heart` `octagon` `hexagon` `hexagon-2` `star` `star-2` |         | Image masking shape.        |
+| Name  | Type              | Default | Description                 |
+| ----- | ----------------- | ------- | --------------------------- |
+| src   | string            |         | Image source is `required`. |
+| shape | BaseMaskShapeType |         | Image masking shape.        |

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
-const fileRef = ref()
+export type BaseFileUploadBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   id?: string
   label?: string
   description?: string
   placeholder?: string
-  border?: 'none' | 'simple' | 'full'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseFileUploadBorderType
+  layout?: BaseFormLayoutType
   multiple?: boolean
   required?: boolean
   disabled?: boolean
@@ -33,6 +33,8 @@ const emit = defineEmits<{
 const onUpload = (e: any) => {
   emit('change', e)
 }
+
+const fileRef = ref()
 </script>
 
 <template>

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { BaseInputNumber } from '@point-hub/papp'
 
 const form = ref({
-  number: ''
+  number: null
 })
 </script>
 

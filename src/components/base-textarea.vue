@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, nextTick } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+
+export type BaseTextareaBorderType = 'simple' | 'full' | 'none'
 
 export interface Props {
   modelValue: string
@@ -8,8 +10,8 @@ export interface Props {
   label?: string
   description?: string
   placeholder?: string
-  border?: 'simple' | 'full' | 'none'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseTextareaBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]

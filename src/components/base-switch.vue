@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+
+export type BaseSwitchTextPosition = 'left' | 'right'
+export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
 
 export interface Props {
-  modelValue: string
+  modelValue: boolean
   id?: string
   label?: string
   text?: string
   description?: string
   placeholder?: string
-  textPosition?: 'left' | 'right'
-  size?: 'sm' | 'md' | 'lg' | 'xl'
-  layout?: 'vertical' | 'horizontal'
+  textPosition?: BaseSwitchTextPosition
+  size?: BaseSwitchSize
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -27,11 +30,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: boolean): void
 }>()
 
 const value = computed({
-  set: (text: string) => {
+  set: (text: boolean) => {
     emit('update:modelValue', text)
   },
   get: () => props.modelValue
@@ -76,11 +79,11 @@ const value = computed({
 
 <style lang="postcss">
 .switch::before {
-  @apply absolute transition-all duration-200 ease-in-out content-empty top-2px left-2px h-[calc(100% - 2px * 2)] w-[calc((100% / 2) - (2px * 2))];
+  @apply absolute transition-all duration-200 ease-in-out content-empty top-2px left-2px h-[calc(100%-2px*2)] w-[calc((100%/2)-(2px*2))];
 }
 
 .switch {
-  @apply select-none focus-visible:ring checked:before:translate-x-[calc(100% + (2px * 2))] before:bg-slate-50;
+  @apply select-none focus-visible:ring checked:before:translate-x-[calc(100%+(2px*2))] before:bg-slate-50;
   @apply relative shrink-0 cursor-pointer select-none appearance-none overflow-hidden outline-none focus:outline-none h-5 w-10 rounded-full before:rounded-full;
   @apply bg-slate-300 checked:bg-primary;
   @apply dark:bg-slate-600 dark:checked:bg-info;

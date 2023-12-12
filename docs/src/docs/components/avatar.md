@@ -54,6 +54,20 @@ Use the avatar component to show a visual representation of a user profile using
 
 ## Avatar API
 
+### Types
+
+```ts
+export type BaseAvatarColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+export type BaseAvatarShapeType = 'square' | 'squircle' | 'circle'
+export type BaseAvatarSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
 ### Props
 
 | Name           | Type                                                      | Default     | Description                |

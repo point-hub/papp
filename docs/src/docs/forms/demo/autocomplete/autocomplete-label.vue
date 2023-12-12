@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseAutocomplete } from '@point-hub/papp'
+import { BaseAutocomplete, type BaseAutocompleteOptionInterface } from '@point-hub/papp'
 
-interface OptionInterface {
+interface OptionInterface extends BaseAutocompleteOptionInterface {
+  id: number
   label: string
-  [key: string]: any
 }
 
 const options: OptionInterface[] = [
@@ -14,17 +14,20 @@ const options: OptionInterface[] = [
   { id: 4, label: 'Benedict Kessler' }
 ]
 
-const selected1 = ref<OptionInterface>()
-const selected2 = ref<OptionInterface>()
+const selected1 = ref()
+const selected2 = ref()
 
-const form = ref({
-  name1: '',
-  name2: ''
+const form = ref<{
+  name1: string | null
+  name2: string | null
+}>({
+  name1: null,
+  name2: null
 })
 
 const onSubmit = () => {
-  form.value.name1 = selected1.value?.label ?? ''
-  form.value.name2 = selected2.value?.label ?? ''
+  form.value.name1 = selected1.value?.label ?? null
+  form.value.name2 = selected2.value?.label ?? null
 }
 </script>
 
@@ -33,7 +36,7 @@ const onSubmit = () => {
     <form @submit.prevent="onSubmit()">
       <component
         :is="BaseAutocomplete"
-        v-model="form.name1"
+        v-model="selected1"
         :options="options"
         label="Label"
         description="Vertical Layout"
@@ -41,7 +44,7 @@ const onSubmit = () => {
       />
       <component
         :is="BaseAutocomplete"
-        v-model="form.name2"
+        v-model="selected2"
         :options="options"
         label="Label"
         description="Horizontal Layout"

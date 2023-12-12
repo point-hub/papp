@@ -1,16 +1,22 @@
 <script setup lang="ts">
-export type colorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-export type shapeType = 'square' | 'squircle' | 'circle'
-export type sizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseAvatarColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+export type BaseAvatarShapeType = 'square' | 'squircle' | 'circle'
+export type BaseAvatarSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
 const props = withDefaults(
   defineProps<{
     name: string
     src?: string
-    color?: colorType
-    colorIndicator?: colorType
-    shape?: shapeType
-    size?: sizeType
+    color?: BaseAvatarColorType
+    colorIndicator?: BaseAvatarColorType
+    shape?: BaseAvatarShapeType
+    size?: BaseAvatarSizeType
     indicator?: boolean
     animate?: boolean
   }>(),

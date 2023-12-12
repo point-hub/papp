@@ -38,22 +38,30 @@ The input element with a type attribute whose value is "text" represents a one-l
 
 ## Input API
 
+### Types
+
+```ts
+export type BaseInputType = 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
+export type BaseInputBorderType = 'none' | 'simple' | 'full'
+export type BaseFormLayoutType = `horizontal` `vertical`
+```
+
 ### Props
 
-| Name        | Type                                            | Default    | Description                  |
-| ----------- | ----------------------------------------------- | ---------- | ---------------------------- |
-| v-model     | string                                          |            | v-model is `required`.       |
-| id          | string                                          |            | Input id.                    |
-| label       | string                                          |            | Input label.                 |
-| description | string                                          |            | Input description.           |
-| placeholder | string                                          |            | Input placeholder.           |
-| type        | `text` `tel` `email` `password` `date` `number` | `text`     | Input border.                |
-| border      | `simple` `full` `none`                          | `simple`   | Input border.                |
-| layout      | `horizontal` `vertical`                         | `vertical` | Input layout.                |
-| required    | boolean                                         | false      | if true input is `required`. |
-| disabled    | boolean                                         | false      | if true input is `disabled`. |
-| helpers     | string[]                                        |            | Input helper message.        |
-| errors      | string[]                                        |            | Input error message.         |
+| Name        | Type                | Default    | Description                  |
+| ----------- | ------------------- | ---------- | ---------------------------- |
+| v-model     | string              |            | v-model is `required`.       |
+| id          | string              |            | Input id.                    |
+| label       | string              |            | Input label.                 |
+| description | string              |            | Input description.           |
+| placeholder | string              |            | Input placeholder.           |
+| type        | BaseInputType       | `text`     | Input border.                |
+| border      | BaseInputBorderType | `simple`   | Input border.                |
+| layout      | BaseFormLayoutType  | `vertical` | Input layout.                |
+| required    | boolean             | false      | if true input is `required`. |
+| disabled    | boolean             | false      | if true input is `disabled`. |
+| helpers     | string[]            |            | Input helper message.        |
+| errors      | string[]            |            | Input error message.         |
 
 ### Slot
 

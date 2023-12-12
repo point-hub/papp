@@ -28,9 +28,25 @@ A Spinner component is used to show the user a timely process is currently takin
 
 ## Spinner API
 
+### Types
+
+```ts
+export type BaseSpinnerColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'black'
+  | 'white'
+
+export type BaseSpinnerSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
 ### Props
 
-| Name  | Type                                                                      | Default   | Description   |
-| ----- | ------------------------------------------------------------------------- | --------- | ------------- |
-| color | `primary` `secondary` `info` `success` `warning` `danger` `black` `white` | `primary` | Button color. |
-| size  | `xs` `sm` `md` `lg` `xl` `2xl`                                            | `md`      | Button size.  |
+| Name  | Type                 | Default   | Description   |
+| ----- | -------------------- | --------- | ------------- |
+| color | BaseSpinnerColorType | `primary` | Button color. |
+| size  | BaseSpinnerSizeType  | `md`      | Button size.  |

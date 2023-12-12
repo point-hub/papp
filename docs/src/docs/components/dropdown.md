@@ -28,12 +28,18 @@ Use Dropdown component for actions in forms, dialogs, and more with support for 
 
 ## Dropdown API
 
+### Tyoes
+
+```ts
+export type BaseDropdownPosition = 'left' | 'right'
+```
+
 ### Props
 
-| Name     | Type           | Default | Description            |
-| -------- | -------------- | ------- | ---------------------- |
-| text     | string         | Options | Dropdown button text   |
-| position | `left` `right` | `left`  | Dropdown menu position |
+| Name     | Type                 | Default | Description            |
+| -------- | -------------------- | ------- | ---------------------- |
+| text     | string               | Options | Dropdown button text   |
+| position | BaseDropdownPosition | `left`  | Dropdown menu position |
 
 ### Slot
 

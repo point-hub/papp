@@ -43,15 +43,23 @@ The alert component can be used to provide information to your users such as suc
 
 ## Alert API
 
+### Types
+
+```ts
+export type BaseAlertColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+export type BaseAlertIconType = 'info' | 'success' | 'warning' | 'danger'
+export type BaseAlertVariantType = 'fill' | 'light' | 'outline'
+```
+
 ### Props
 
-| Name          | Type                                                      | Default   | Description    |
-| ------------- | --------------------------------------------------------- | --------- | -------------- |
-| variant       | `fill` `outline` `light` `text`                           | `fill`    | Alert variant. |
-| color         | `primary` `secondary` `info` `success` `warning` `danger` | `primary` | Alert color.   |
-| title         | string                                                    |           | Alert title.   |
-| icon          | `info` `success` `warning` `danger`                       |           | Alert icon.    |
-| isDismissable | boolean                                                   | false     | Alert icon.    |
+| Name          | Type                 | Default   | Description    |
+| ------------- | -------------------- | --------- | -------------- |
+| variant       | BaseAlertVariantType | `fill`    | Alert variant. |
+| color         | BaseAlertColorType   | `primary` | Alert color.   |
+| title         | string               |           | Alert title.   |
+| icon          | BaseAlertIconType    |           | Alert icon.    |
+| isDismissable | boolean              | false     | Alert icon.    |
 
 ### Slot
 

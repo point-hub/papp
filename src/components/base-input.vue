@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+
+export type BaseInputType = 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
+export type BaseInputBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   modelValue: string
@@ -8,9 +11,9 @@ export interface Props {
   label?: string
   description?: string
   placeholder?: string
-  type?: 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
-  border?: 'none' | 'simple' | 'full'
-  layout?: 'vertical' | 'horizontal'
+  type?: BaseInputType
+  border?: BaseInputBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]

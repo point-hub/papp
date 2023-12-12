@@ -33,18 +33,25 @@ Autocomplete gives you a customizable select box with support for searching, tag
 
 ## Autocomplete API
 
+### Types
+
+```ts
+export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
+export type BaseFormLayoutType = 'vertical' | 'horizontal'
+```
+
 ### Props
 
-| Name        | Type                    | Default    | Description                  |
-| ----------- | ----------------------- | ---------- | ---------------------------- |
-| v-model     | string                  |            | v-model is `required`.       |
-| id          | string                  |            | Input id.                    |
-| label       | string                  |            | Input label.                 |
-| description | string                  |            | Input description.           |
-| placeholder | string                  |            | Input placeholder.           |
-| border      | `simple` `full` `none`  | `simple`   | Input border.                |
-| layout      | `horizontal` `vertical` | `vertical` | Input layout.                |
-| required    | boolean                 | false      | if true input is `required`. |
-| disabled    | boolean                 | false      | if true input is `disabled`. |
-| helpers     | string[]                |            | Input helper message.        |
-| errors      | string[]                |            | Input error message.         |
+| Name        | Type                       | Default    | Description                  |
+| ----------- | -------------------------- | ---------- | ---------------------------- |
+| v-model     | string                     |            | v-model is `required`.       |
+| id          | string                     |            | Input id.                    |
+| label       | string                     |            | Input label.                 |
+| description | string                     |            | Input description.           |
+| placeholder | string                     |            | Input placeholder.           |
+| border      | BaseAutocompleteBorderType | `simple`   | Input border.                |
+| layout      | BaseFormLayoutType         | `vertical` | Input layout.                |
+| required    | boolean                    | false      | if true input is `required`. |
+| disabled    | boolean                    | false      | if true input is `disabled`. |
+| helpers     | string[]                   |            | Input helper message.        |
+| errors      | string[]                   |            | Input error message.         |

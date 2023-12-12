@@ -25,10 +25,16 @@ The modal component can be used as an interactive dialog on top of the main cont
 
 ### Props
 
-| Name   | Type                                        | Default | Description                                                  |
-| ------ | ------------------------------------------- | ------- | ------------------------------------------------------------ |
-| isOpen | boolean                                     |         | Modal open state is `required` to trigger open modal dialog. |
-| size   | `sm` `md` `lg` `xl` `2xl` `full` `maximize` | `md`    | Modal container size.                                        |
+### Types
+
+```ts
+export type BaseModalSizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'maximize'
+```
+
+| Name   | Type              | Default | Description                                                  |
+| ------ | ----------------- | ------- | ------------------------------------------------------------ |
+| isOpen | boolean           |         | Modal open state is `required` to trigger open modal dialog. |
+| size   | BaseModalSizeType | `md`    | Modal container size.                                        |
 
 ### Slot
 

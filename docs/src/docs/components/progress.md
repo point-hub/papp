@@ -33,13 +33,27 @@ The Progress component displays a loading bar.
 
 ## Progress API
 
+### Types
+
+```ts
+export type BaseProgressColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
+export type BaseProgressSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
 ### Props
 
-| Name             | Type                                                      | Default   | Description                 |
-| ---------------- | --------------------------------------------------------- | --------- | --------------------------- |
-| color            | `primary` `secondary` `info` `success` `warning` `danger` | `primary` | Progress color.             |
-| size             | `xs` `sm` `md` `lg` `xl` `2xl`                            | `md`      | Progress size.              |
-| isInderterminate | boolean                                                   | false     | Infinite loading animation. |
+| Name             | Type                  | Default   | Description                 |
+| ---------------- | --------------------- | --------- | --------------------------- |
+| color            | BaseProgressColorType | `primary` | Progress color.             |
+| size             | BaseProgressSizeType  | `md`      | Progress size.              |
+| isInderterminate | boolean               | false     | Infinite loading animation. |
 
 ### Slot
 

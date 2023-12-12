@@ -18,20 +18,13 @@ The breadcrumb component is an important part of any website or application that
 
 ### Types
 
-::: code-group
-
-```ts [ItemInterface]
-interface ItemInterface {
+```ts
+export interface ItemInterface {
   name: string
   path?: string
 }
+export type SeparatoryType = 'angle' | 'arrow' | 'slash'
 ```
-
-```ts [SeparatorType]
-type SeparatoryType = 'angle' | 'arrow' | 'slash'
-```
-
-:::
 
 ### Props
 

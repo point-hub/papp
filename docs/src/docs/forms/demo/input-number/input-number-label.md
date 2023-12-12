@@ -14,8 +14,8 @@ import { ref } from 'vue'
 import { BaseInputNumber } from '@point-hub/papp'
 
 const form = ref({
-  number1: '',
-  number2: ''
+  number1: null,
+  number2: null
 })
 </script>
 
@@ -24,16 +24,16 @@ const form = ref({
     <component
       :is="BaseInputNumber"
       v-model="form.number1"
-      label="Horizontal Label"
+      label="Label"
       layout="horizontal"
-      description="description example"
+      description="Horizontal Layout"
     />
     <component
       :is="BaseInputNumber"
       v-model="form.number2"
-      label="Vertical Label"
+      label="Label"
       layout="vertical"
-      description="description example"
+      description="Vertical Layout"
     />
   </form>
 </template>

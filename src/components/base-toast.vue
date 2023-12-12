@@ -2,8 +2,10 @@
 import { ref } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
+export type BaseToastColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+
 export interface Options {
-  color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+  color?: BaseToastColorType
   autoClose?: boolean
   timer?: number
 }

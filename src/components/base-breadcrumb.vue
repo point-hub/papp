@@ -1,14 +1,14 @@
 <script setup lang="ts">
-export interface ItemInterface {
+export interface BaseBreadcrumbItemInterface {
   name: string
   path?: string
 }
-export type SeparatoryType = 'angle' | 'arrow' | 'slash'
+export type BaseBreadcrumbSeparatoryType = 'angle' | 'arrow' | 'slash'
 
 const props = withDefaults(
   defineProps<{
-    items: ItemInterface[]
-    separator: SeparatoryType
+    items: BaseBreadcrumbItemInterface[]
+    separator: BaseBreadcrumbSeparatoryType
   }>(),
   {
     separator: 'angle'

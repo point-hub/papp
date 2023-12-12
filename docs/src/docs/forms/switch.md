@@ -43,13 +43,20 @@ The Switch component is used as an alternative for the checkbox. The option that
 
 ## Switch API
 
+### Types
+
+```ts
+export type BaseSwitchTextPosition = 'left' | 'right'
+export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
+```
+
 ### Props
 
-| Name          | Type                | Default | Description                   |
-| ------------- | ------------------- | ------- | ----------------------------- |
-| v-model       | string              |         | v-model is `required`.        |
-| label         | string              |         | Switch label.                 |
-| text          | string              |         | Switch text.                  |
-| text-position | `left` `right`      | `left`  | Switch text position.         |
-| size          | `sm` `md` `lg` `xl` | `md`    | Switch size.                  |
-| disabled      | boolean             | false   | if true switch is `disabled`. |
+| Name          | Type                   | Default | Description                   |
+| ------------- | ---------------------- | ------- | ----------------------------- |
+| v-model       | boolean                |         | v-model is `required`.        |
+| label         | string                 |         | Switch label.                 |
+| text          | string                 |         | Switch text.                  |
+| text-position | BaseSwitchTextPosition | `left`  | Switch text position.         |
+| size          | BaseSwitchSize         | `md`    | Switch size.                  |
+| disabled      | boolean                | false   | if true switch is `disabled`. |

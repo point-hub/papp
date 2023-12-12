@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import BaseIcon from './base-icon.vue'
 
+export type BaseFormLayoutType = 'vertical' | 'horizontal'
+
 export interface Props {
   id?: string
   label?: string
   description?: string
-  placeholder?: string
-  layout?: 'vertical' | 'horizontal'
+  layout?: BaseFormLayoutType
   required?: boolean
   helpers?: string[]
   errors?: string[]

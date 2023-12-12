@@ -1,7 +1,9 @@
 <script setup lang="ts">
+export type BaseDividerOrientation = 'horizontal' | 'vertical'
+
 const props = defineProps<{
   text?: string
-  orientation: 'horizontal' | 'vertical'
+  orientation: BaseDividerOrientation
 }>()
 </script>
 

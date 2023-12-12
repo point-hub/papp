@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import Cleave from 'cleave.js'
 
+export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
+
 export interface Props {
-  modelValue: string
+  modelValue: number | null
   id?: string
   label?: string
   description?: string
   placeholder?: string
-  border?: 'none' | 'simple' | 'full'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseInputNumberBorderType
+  layout?: BaseFormLayoutType
   decimalLength: number
   required?: boolean
   disabled?: boolean
@@ -38,7 +40,7 @@ onMounted(() => {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
+  (e: 'update:modelValue', value: number | null): void
 }>()
 
 const value = computed({

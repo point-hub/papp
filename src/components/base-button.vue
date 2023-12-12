@@ -1,15 +1,21 @@
 <script setup lang="ts">
-export type colorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-export type variantType = 'fill' | 'light' | 'outline' | 'text'
-export type shapeType = 'sharp' | 'round' | 'pill'
-export type sizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
+export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
+export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
 const props = withDefaults(
   defineProps<{
-    size?: sizeType
-    color?: colorType
-    variant?: variantType
-    shape?: shapeType
+    size?: BaseButtonSizeType
+    color?: BaseButtonColorType
+    variant?: BaseButtonVariantType
+    shape?: BaseButtonShapeType
     isBlock?: boolean
     isLoading?: boolean
   }>(),

@@ -16,11 +16,32 @@ The Popover component is similar to tooltips; it is a pop-up box that appears wh
 
 ## Popover API
 
+### Types
+
+```ts
+export type BasePopoverPlacementType =
+  | 'auto'
+  | 'auto-start'
+  | 'auto-end'
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end'
+```
+
 ### Props
 
-| Name      | Type                                                                                                                                                      | Default  | Description       |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| placement | `auto-start` `auto-end` `top` `top-start` `top-end` `bottom` `bottom-start` `bottom-end` `right` `right-start` `right-end` `left` `left-start` `left-end` | `bottom` | Popover placement |
+| Name      | Type                     | Default  | Description       |
+| --------- | ------------------------ | -------- | ----------------- |
+| placement | BasePopoverPlacementType | `bottom` | Popover placement |
 
 ### Slot
 

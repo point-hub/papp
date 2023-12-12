@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
-export interface OptionInterface {
+export interface BaseSelectOptionInterface {
   label: string
   [key: string]: any
 }
 
+export type BaseSelectBorderType = 'none' | 'simple' | 'full'
+
 export interface Props {
-  modelValue: OptionInterface
-  options: OptionInterface[]
+  modelValue: BaseSelectOptionInterface | null
+  options: BaseSelectOptionInterface[]
   id?: string
   label?: string
   description?: string
   placeholder?: string
-  border?: 'none' | 'simple' | 'full'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseSelectBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -32,18 +34,18 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: OptionInterface): void
+  (e: 'update:modelValue', value: BaseSelectOptionInterface | null): void
 }>()
 
 const selected = computed({
-  set: (obj: OptionInterface) => {
-    emit('update:modelValue', obj)
+  set: (option: BaseSelectOptionInterface | null) => {
+    emit('update:modelValue', option)
   },
   get: () => props.modelValue
 })
 
 const clearSelect = () => {
-  if (!props.disabled) selected.value = { label: '' }
+  if (!props.disabled) selected.value = null
 }
 </script>
 
@@ -68,12 +70,12 @@ const clearSelect = () => {
             'input-disabled': disabled
           }"
         >
-          <span v-if="!selected.label" class="block text-slate-400">
+          <span v-if="!selected?.label" class="block text-slate-400">
             {{ props.placeholder }}
           </span>
-          <span v-else class="block">{{ selected.label }}</span>
+          <span v-else class="block">{{ selected?.label }}</span>
           <span class="list-box-button-icon">
-            <i v-if="!selected.label" class="i-fas-angle-down block h-5 w-5 text-gray-400"></i>
+            <i v-if="!selected?.label" class="i-fas-angle-down block h-5 w-5 text-gray-400"></i>
             <i v-else class="i-fas-xmark block h-5 w-5 text-gray-400" @click="clearSelect()"></i>
           </span>
         </ListboxButton>

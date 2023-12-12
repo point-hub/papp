@@ -33,9 +33,15 @@ Divider is nothing but a partitioning element that has specific dimensions
 
 ## Divider API
 
+### Types
+
+```ts
+export type BaseDividerOrientation = 'horizontal' | 'vertical'
+```
+
 ### Props
 
-| Name        | Type                    | Default | Description                        |
-| ----------- | ----------------------- | ------- | ---------------------------------- |
-| orientation | `horizontal` `vertical` |         | Divider orientation is `required`. |
-| text        | string                  |         | Divider text.                      |
+| Name        | Type                   | Default | Description                        |
+| ----------- | ---------------------- | ------- | ---------------------------------- |
+| orientation | BaseDividerOrientation |         | Divider orientation is `required`. |
+| text        | string                 |         | Divider text.                      |

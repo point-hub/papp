@@ -11,28 +11,30 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseAutocomplete } from '@point-hub/papp'
+import { BaseAutocomplete, type BaseAutocompleteOptionInterface } from '@point-hub/papp'
 
-interface OptionInterface {
+interface OptionInterface extends BaseAutocompleteOptionInterface {
+  id: number
   label: string
-  [key: string]: any
 }
 
-const options = [
+const options: OptionInterface[] = [
   { id: 1, label: 'Durward Reynolds' },
   { id: 2, label: 'Kenton Towne' },
   { id: 3, label: 'Therese Wunsch' },
   { id: 4, label: 'Benedict Kessler' }
 ]
 
-const selected = ref<OptionInterface>()
+const selected = ref()
 
-const form = ref({
-  name: ''
+const form = ref<{
+  name: string | null
+}>({
+  name: null
 })
 
 const onSubmit = () => {
-  form.value.name = selected.value?.label ?? ''
+  form.value.name = selected.value?.label ?? null
 }
 </script>
 

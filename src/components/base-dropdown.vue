@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
 
+export type BaseDropdownPosition = 'left' | 'right'
+
 export interface Props {
-  position?: 'left' | 'right'
+  position?: BaseDropdownPosition
   text?: string
 }
 

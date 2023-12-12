@@ -9,10 +9,10 @@ const options = [
   { id: 4, label: 'Benedict Kessler' }
 ]
 const form = ref({
-  selected1: {},
-  selected2: {},
-  selected3: {},
-  selected4: {},
+  selected1: null,
+  selected2: null,
+  selected3: null,
+  selected4: null,
   selected5: options[1]
 })
 </script>

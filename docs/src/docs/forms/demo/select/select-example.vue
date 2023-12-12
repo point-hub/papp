@@ -9,7 +9,7 @@ const options = [
   { id: 4, label: 'Benedict Kessler' }
 ]
 const form = ref({
-  selected: {}
+  selected: null
 })
 </script>
 

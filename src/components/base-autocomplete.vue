@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import {
   Combobox,
   ComboboxInput,
@@ -10,20 +10,22 @@ import {
   TransitionRoot
 } from '@headlessui/vue'
 
-export interface OptionInterface {
+export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
+
+export interface BaseAutocompleteOptionInterface {
   label: string
   [key: string]: any
 }
 
 export interface Props {
-  modelValue: string
+  modelValue: BaseAutocompleteOptionInterface | null
   id?: string
-  options: OptionInterface[]
+  options: BaseAutocompleteOptionInterface[]
   label?: string
   description?: string
   placeholder?: string
-  border?: 'none' | 'simple' | 'full'
-  layout?: 'vertical' | 'horizontal'
+  border?: BaseAutocompleteBorderType
+  layout?: BaseFormLayoutType
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -31,6 +33,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  modelValue: () => ({ label: '' }),
   border: 'simple',
   layout: 'vertical',
   required: false,
@@ -38,11 +41,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: any): void
+  (e: 'update:modelValue', value: BaseAutocompleteOptionInterface | null): void
 }>()
 
-const selected = computed<{}>({
-  set: (obj: any) => {
+const selected = computed<BaseAutocompleteOptionInterface | null>({
+  set: (obj: BaseAutocompleteOptionInterface | null) => {
     emit('update:modelValue', obj)
   },
   get: () => props.modelValue
@@ -62,7 +65,7 @@ let filtered = computed(() =>
 )
 
 const onClear = () => {
-  if (!props.disabled) selected.value = {}
+  if (!props.disabled) selected.value = null
 }
 </script>
 
@@ -91,7 +94,7 @@ const onClear = () => {
               'border-none': border === 'none',
               'input-disabled': disabled
             }"
-            :displayValue="(data) => (data as OptionInterface).label"
+            :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label"
             @change="query = $event.target.value"
           />
           <ComboboxButton

@@ -56,16 +56,31 @@ Use Button component for actions in forms, dialogs, and more with support for mu
 
 ## Button API
 
+### Types
+
+```ts
+export type BaseButtonColorType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
+export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
+export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
+export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+```
+
 ### Props
 
-| Name      | Type                                                      | Default   | Description                                  |
-| --------- | --------------------------------------------------------- | --------- | -------------------------------------------- |
-| variant   | `fill` `outline` `light` `text`                           | `fill`    | Button variant.                              |
-| color     | `primary` `secondary` `info` `success` `warning` `danger` | `primary` | Button color.                                |
-| shape     | `sharp` `round` `pill`                                    | `round`   | Button shape.                                |
-| size      | `xs` `sm` `md` `lg` `xl` `2xl`                            | `md`      | Button size.                                 |
-| isBlock   | boolean                                                   | false     | Block button with full width.                |
-| isLoading | boolean                                                   | false     | Add spinner loading indicator inside button. |
+| Name      | Type                  | Default   | Description                                  |
+| --------- | --------------------- | --------- | -------------------------------------------- |
+| variant   | BaseButtonVariantType | `fill`    | Button variant.                              |
+| color     | BaseButtonColorType   | `primary` | Button color.                                |
+| shape     | BaseButtonShapeType   | `round`   | Button shape.                                |
+| size      | BaseButtonSizeType    | `md`      | Button size.                                 |
+| isBlock   | boolean               | false     | Block button with full width.                |
+| isLoading | boolean               | false     | Add spinner loading indicator inside button. |
 
 ### Slot
 

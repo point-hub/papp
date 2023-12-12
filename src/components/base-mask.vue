@@ -1,15 +1,17 @@
 <script setup lang="ts">
+export type BaseMaskShapeType =
+  | 'squircle'
+  | 'diamond'
+  | 'reuleaux-triangle'
+  | 'hexagon'
+  | 'hexagon-2'
+  | 'heart'
+  | 'octagon'
+  | 'star'
+  | 'star-2'
+
 interface Props {
-  shape:
-    | 'squircle'
-    | 'diamond'
-    | 'reuleaux-triangle'
-    | 'hexagon'
-    | 'hexagon-2'
-    | 'heart'
-    | 'octagon'
-    | 'star'
-    | 'star-2'
+  shape: BaseMaskShapeType
   src: string
 }
 

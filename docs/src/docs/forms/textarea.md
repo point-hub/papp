@@ -38,20 +38,27 @@ The textarea component is an important part of any website or application that c
 
 ## Textarea API
 
+### Types
+
+```ts
+export type BaseTextareaBorderType = 'simple' | 'full' | 'none'
+export type BaseFormLayoutType = 'vertical' | 'horizontal'
+```
+
 ### Props
 
-| Name        | Type                    | Default | Description                     |
-| ----------- | ----------------------- | ------- | ------------------------------- |
-| v-model     | string                  |         | v-model is `required`.          |
-| id          | string                  |         | Textarea id.                    |
-| label       | string                  |         | Textarea label.                 |
-| description | string                  |         | Textarea description.           |
-| placeholder | string                  |         | Textarea placeholder.           |
-| border      | `simple` `full` `none`  |         | Textarea border.                |
-| layout      | `horizontal` `vertical` |         | Textarea layout.                |
-| required    | boolean                 | false   | if true textarea is `required`. |
-| disabled    | boolean                 | false   | if true textarea is `disabled`. |
-| helpers     | string[]                |         | Textarea helper message.        |
-| errors      | string[]                |         | Textarea error message.         |
-| minHeight   | number                  |         | Textarea min height.            |
-| maxHeight   | number                  |         | Textarea max height.            |
+| Name        | Type                   | Default | Description                     |
+| ----------- | ---------------------- | ------- | ------------------------------- |
+| v-model     | string                 |         | v-model is `required`.          |
+| id          | string                 |         | Textarea id.                    |
+| label       | string                 |         | Textarea label.                 |
+| description | string                 |         | Textarea description.           |
+| placeholder | string                 |         | Textarea placeholder.           |
+| border      | BaseTextareaBorderType |         | Textarea border.                |
+| layout      | BaseFormLayoutType     |         | Textarea layout.                |
+| required    | boolean                | false   | if true textarea is `required`. |
+| disabled    | boolean                | false   | if true textarea is `disabled`. |
+| helpers     | string[]               |         | Textarea helper message.        |
+| errors      | string[]               |         | Textarea error message.         |
+| minHeight   | number                 |         | Textarea min height.            |
+| maxHeight   | number                 |         | Textarea max height.            |

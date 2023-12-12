@@ -33,19 +33,26 @@ The input element with formatting and manipulating numbers.
 
 ## Input Number API
 
+### Types
+
+```ts
+export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
+export type BaseFormLayoutType = `horizontal` `vertical`
+```
+
 ### Props
 
-| Name          | Type                    | Default    | Description                  |
-| ------------- | ----------------------- | ---------- | ---------------------------- |
-| v-model       | string                  |            | v-model is `required`.       |
-| id            | string                  |            | Input id.                    |
-| label         | string                  |            | Input label.                 |
-| description   | string                  |            | Input description.           |
-| placeholder   | string                  |            | Input placeholder.           |
-| border        | `simple` `full` `none`  | `simple`   | Input border.                |
-| layout        | `horizontal` `vertical` | `vertical` | Input layout.                |
-| decimalLength | number                  | 0          | Input decimal length.        |
-| required      | boolean                 | false      | if true input is `required`. |
-| disabled      | boolean                 | false      | if true input is `disabled`. |
-| helpers       | string[]                |            | Input helper message.        |
-| errors        | string[]                |            | Input error message.         |
+| Name          | Type                      | Default    | Description                  |
+| ------------- | ------------------------- | ---------- | ---------------------------- |
+| v-model       | string                    |            | v-model is `required`.       |
+| id            | string                    |            | Input id.                    |
+| label         | string                    |            | Input label.                 |
+| description   | string                    |            | Input description.           |
+| placeholder   | string                    |            | Input placeholder.           |
+| border        | BaseInputNumberBorderType | `simple`   | Input border.                |
+| layout        | BaseFormLayoutType        | `vertical` | Input layout.                |
+| decimalLength | number                    | 0          | Input decimal length.        |
+| required      | boolean                   | false      | if true input is `required`. |
+| disabled      | boolean                   | false      | if true input is `disabled`. |
+| helpers       | string[]                  |            | Input helper message.        |
+| errors        | string[]                  |            | Input error message.         |

@@ -1,43 +1,43 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 
-export interface OptionInterface {
-  label: string
-  value: unknown
-}
+export type BaseRadioOptionsLayout = 'vertical' | 'horizontal'
 
 export interface Props {
-  modelValue: string
+  modelValue: Record<string, any> | null | undefined | string | number | boolean
   id?: string
   label?: string
   description?: string
-  placeholder?: string
-  layout?: 'vertical' | 'horizontal'
-  optionsLayout?: 'vertical' | 'horizontal'
+  layout?: BaseFormLayoutType
+  optionsLayout?: BaseRadioOptionsLayout
   required?: boolean
   disabled?: boolean
   helpers?: string[]
   errors?: string[]
-  options: OptionInterface[]
+  options: Record<string, any>[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
+  optionsLayout: 'horizontal',
   required: false,
   disabled: false
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (
+    e: 'update:modelValue',
+    value: Record<string, any> | null | undefined | string | number | boolean
+  ): void
 }>()
 
 const value = computed({
-  set: (text: string) => {
+  set: (text: Record<string, any> | null | undefined | string | number | boolean) => {
     emit('update:modelValue', text)
   },
-  get: () => props.modelValue
+  get: () => props.modelValue ?? undefined
 })
 </script>
 

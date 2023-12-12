@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { BaseIcon } from '..'
 
-export interface ItemInterface {
+export interface BaseStepItemInterface {
   label: string
   active: boolean
   icon?: string
+  [key: string]: any
 }
 
 export interface Props {
-  modelValue: ItemInterface[]
-  color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  modelValue: BaseStepItemInterface[]
   showLabel?: boolean
 }
 
@@ -22,23 +20,28 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: ItemInterface[]): void
+  (e: 'update:modelValue', value: BaseStepItemInterface[]): void
+  (e: 'choosen', item: BaseStepItemInterface): void
 }>()
 
 const value = computed({
-  set: (text: ItemInterface[]) => {
+  set: (text: BaseStepItemInterface[]) => {
     emit('update:modelValue', text)
   },
   get: () => props.modelValue
 })
+
+const onClick = (item: BaseStepItemInterface) => {
+  emit('choosen', item)
+}
 </script>
 
 <template>
   <div class="step-container">
     <template v-for="(item, index) in value" :key="index">
-      <div class="step-body">
+      <div class="step-body" @click="onClick(item)">
         <div class="step-icon-container" :class="{ active: item.active }">
-          <component :is="BaseIcon" v-if="item.icon" :icon="item.icon" class="step-icon" />
+          <base-icon v-if="item.icon" :icon="item.icon" class="step-icon" />
           <div v-else class="step-icon">{{ index + 1 }}</div>
         </div>
         <p v-if="props.showLabel" class="step-text">{{ item.label }}</p>

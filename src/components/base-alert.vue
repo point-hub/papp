@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-export type colorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-export type iconType = 'info' | 'success' | 'warning' | 'danger'
-export type variantType = 'fill' | 'light' | 'outline'
+export type BaseAlertColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+export type BaseAlertIconType = 'info' | 'success' | 'warning' | 'danger'
+export type BaseAlertVariantType = 'fill' | 'light' | 'outline'
 
 const props = withDefaults(
   defineProps<{
     title?: string
-    icon?: string
-    color?: colorType
-    variant?: variantType
+    icon?: BaseAlertIconType
+    color?: BaseAlertColorType
+    variant?: BaseAlertVariantType
     isClosed?: boolean
     isDismissable?: boolean
   }>(),
   {
     title: '',
-    icon: '',
     color: 'primary',
     variant: 'fill',
     isClosed: false,
@@ -52,12 +51,11 @@ const onClose = () => {
   <div :class="classes" v-if="!closed">
     <div class="alert-icon-container">
       <div v-if="icon" class="alert-icon">
-        <i
-          v-if="icon === 'warning' || icon === 'danger'"
-          class="block i-far-triangle-exclamation"
-        ></i>
-        <i v-if="icon === 'info'" class="block i-far-circle-info"></i>
         <i v-if="icon === 'success'" class="block i-far-circle-check"></i>
+        <base-icon v-if="icon === 'info'" icon="i-far-circle-info"></base-icon>
+        <base-icon v-if="icon === 'success'" icon="i-far-circle-check"></base-icon>
+        <base-icon v-if="icon === 'warning'" icon="i-far-circle-exclamation"></base-icon>
+        <base-icon v-if="icon === 'danger'" icon="i-far-triangle-exclamation"></base-icon>
       </div>
       <div class="alert-text">
         <div>
@@ -71,7 +69,7 @@ const onClose = () => {
       </div>
     </div>
     <button v-if="isDismissable" type="button" class="close-button" @click="onClose()">
-      <i class="i-fas-xmark"></i>
+      <base-icon icon="i-fas-xmark"></base-icon>
     </button>
   </div>
 </template>

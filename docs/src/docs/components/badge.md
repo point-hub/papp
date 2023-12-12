@@ -28,12 +28,19 @@ Badges are used to inform user of the status of specific data.
 
 ## Badge API
 
+### Types
+
+```ts
+export type BaseBadgeColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+export type BaseBadgeVariantType = 'fill' | 'light' | 'outline'
+```
+
 ### Props
 
-| Name    | Type                                                      | Default   | Description    |
-| ------- | --------------------------------------------------------- | --------- | -------------- |
-| variant | `fill` `outline` `light`                                  | `fill`    | Badge variant. |
-| color   | `primary` `secondary` `info` `success` `warning` `danger` | `primary` | Badge color.   |
+| Name    | Type                 | Default   | Description    |
+| ------- | -------------------- | --------- | -------------- |
+| variant | BaseBadgeVariantType | `fill`    | Badge variant. |
+| color   | BaseBadgeColorType   | `primary` | Badge color.   |
 
 ### Slot
 

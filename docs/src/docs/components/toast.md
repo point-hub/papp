@@ -16,6 +16,12 @@ The toast component can be used to enhance your website’s interactivity by pus
 
 ## Toast API
 
+### Types
+
+```ts
+export type BaseToastColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+```
+
 ### Slot
 
 `#default` slot for rendering toast content

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export interface Props {
-  modelValue: string
+  modelValue: number
   id?: string
   label?: string
   description?: string
-  layout?: 'vertical' | 'horizontal'
+  layout?: BaseFormLayoutType
   disabled?: boolean
   showText?: boolean
   helpers?: string[]
@@ -21,11 +21,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: number): void
 }>()
 
 const value = computed({
-  set: (text: string) => {
+  set: (text: number) => {
     emit('update:modelValue', text)
   },
   get: () => props.modelValue

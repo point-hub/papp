@@ -1,11 +1,11 @@
 <script setup lang="ts">
-export type colorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
-export type variantType = 'fill' | 'light' | 'outline'
+export type BaseBadgeColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+export type BaseBadgeVariantType = 'fill' | 'light' | 'outline'
 
 const props = withDefaults(
   defineProps<{
-    color?: colorType
-    variant?: variantType
+    color?: BaseBadgeColorType
+    variant?: BaseBadgeVariantType
     withDot?: boolean
   }>(),
   {

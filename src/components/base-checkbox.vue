@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseForm from './base-form.vue'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import { v4 as uuidv4 } from 'uuid'
+
+export type BaseCheckboxThemeType =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
 
 export interface Props {
   modelValue: boolean
@@ -10,8 +18,8 @@ export interface Props {
   text?: string
   description?: string
   placeholder?: string
-  layout?: 'vertical' | 'horizontal'
-  theme?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
+  layout?: BaseFormLayoutType
+  theme?: BaseCheckboxThemeType
   required?: boolean
   disabled?: boolean
   helpers?: string[]

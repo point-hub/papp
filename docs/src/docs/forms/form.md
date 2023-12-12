@@ -18,25 +18,24 @@ The container for different types of input elements
 
 ## Form API
 
+### Types
+
+```ts
+export type BaseFormLayoutType = 'vertical' | 'horizontal'
+```
+
 ### Props
 
-| Name        | Type                                            | Default    | Description                  |
-| ----------- | ----------------------------------------------- | ---------- | ---------------------------- |
-| v-model     | string                                          |            | v-model is `required`.       |
-| id          | string                                          |            | Form id.                     |
-| label       | string                                          |            | Form label.                  |
-| description | string                                          |            | Form description.            |
-| placeholder | string                                          |            | Form placeholder.            |
-| type        | `text` `tel` `email` `password` `date` `number` | `text`     | Form border.                 |
-| border      | `simple` `full` `none`                          | `simple`   | Form border.                 |
-| layout      | `horizontal` `vertical`                         | `vertical` | Form layout.                 |
-| required    | boolean                                         | false      | if true input is `required`. |
-| disabled    | boolean                                         | false      | if true input is `disabled`. |
-| helpers     | string[]                                        |            | Form helper message.         |
-| errors      | string[]                                        |            | Form error message.          |
+| Name        | Type               | Default    | Description              |
+| ----------- | ------------------ | ---------- | ------------------------ |
+| id          | string             |            | Form id.                 |
+| label       | string             |            | Form label.              |
+| description | string             |            | Form description.        |
+| layout      | BaseFormLayoutType | `vertical` | Form layout.             |
+| required    | boolean            | false      | Form required indicator. |
+| helpers     | string[]           |            | Form helper message.     |
+| errors      | string[]           |            | Form error message.      |
 
 ### Slot
 
-`#prefix` slot for rendering input prefix like icon
-
-`#suffix` slot for rendering input suffix like icon
+`#default` slot for rendering form content
