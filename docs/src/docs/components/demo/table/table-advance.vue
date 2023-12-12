@@ -17,7 +17,7 @@ const options = [
   { id: 3, label: 'Tax Accountant' }
 ]
 
-const selected = ref({})
+const selected = ref()
 const searchAll = ref('')
 const search = ref<string[]>([])
 
@@ -139,8 +139,8 @@ const isCheckedAll = () => {
           <h3 class="font-extrabold text-lg">Column Chooser</h3>
           <div class="space-y-2">
             <component
-              v-for="column in columns"
-              :key="column"
+              v-for="(column, index) in columns"
+              :key="index"
               :id="column.name"
               :is="BaseCheckbox"
               :disabled="!column.isEditable"

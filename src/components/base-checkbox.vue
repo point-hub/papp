@@ -19,6 +19,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  modelValue: false,
   theme: 'primary',
   layout: 'vertical',
   required: false,
