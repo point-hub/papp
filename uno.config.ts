@@ -44,5 +44,7 @@ export default defineConfig({
       warning: '#f9b115',
       danger: '#e55353'
     }
-  }
+  },
+  // https://unocss.dev/guide/extracting#limitations
+  safelist: ['i-fad-house-chimney', 'i-fad-wand-magic-sparkles']
 })

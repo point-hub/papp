@@ -27,7 +27,7 @@ useSidebar(sidebarMenuStore.$state.listPanelMenu)
 .sidebar {
   @apply fixed flex h-full bg-slate-800 z-60;
   /* transition animation */
-  @apply transition-all transform-gpu ease-in-out duration-300 -ml-[calc(var(--sidebar-panel-width) + var(--sidebar-menu-width))];
+  @apply transition-all transform-gpu ease-in-out duration-300 -ml-[calc(var(--sidebar-panel-width)+var(--sidebar-menu-width))];
 }
 
 .is-sidebar-open .sidebar {

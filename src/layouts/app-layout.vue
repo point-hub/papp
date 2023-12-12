@@ -46,7 +46,7 @@ onMounted(() => {
 }
 
 .is-sidebar-open .main-container {
-  @apply lg:w-[calc(100% - (var(--sidebar-panel-width) + var(--sidebar-menu-width)))] lg:ml-[calc(var(--sidebar-panel-width) + var(--sidebar-menu-width))];
+  @apply lg:w-[calc(100%-(var(--sidebar-panel-width)+var(--sidebar-menu-width)))] lg:ml-[calc(var(--sidebar-panel-width)+var(--sidebar-menu-width))];
 }
 
 .main-content {
