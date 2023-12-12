@@ -56,7 +56,7 @@ const props = withDefaults(
         <span>{{ props.title }}</span>
       </slot>
       <i
-        class="accordion-collapse-item-icon"
+        class="accordion-collapse-item-icon i-fas-angle-down"
         :class="{
           'accordiont-collapse-item-icon-active': activeState
         }"
