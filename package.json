@@ -21,8 +21,8 @@
     "./style.css": "./dist/style.css"
   },
   "scripts": {
-    "dev": "vite dev",
-    "dev:all": "run-s clean-dist && run-p dev:lib dev:type docs:dev",
+    "dev": "run-s clean-dist build:lib && run-p dev:lib dev:type docs:dev",
+    "dev:src": "vite dev",
     "dev:type": "vue-tsc -p tsconfig.build.json --watch",
     "dev:lib": "vite build --watch",
     "build": "run-s clean-dist build:type build:lib docs:build",

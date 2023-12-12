@@ -130,15 +130,8 @@ function sidebarContributionGuide(): DefaultTheme.SidebarItem[] {
         { text: 'Introduction', link: 'getting-started/introduction' },
         { text: 'Quickstart', link: 'getting-started/quickstart' },
         { text: 'Directory Structure', link: 'getting-started/directory-structure' },
-        { text: 'Example', link: 'getting-started/example' }
-      ]
-    },
-    {
-      text: 'Documentation',
-      items: [
-        { text: 'Introduction', link: 'documentation/introduction' },
-        { text: 'Quickstart', link: 'documentation/quickstart' },
-        { text: 'Routing', link: 'documentation/routing' }
+        { text: 'Example', link: 'getting-started/example' },
+        { text: 'Documentation', link: 'getting-started/documentation' }
       ]
     },
     {
