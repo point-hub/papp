@@ -80,7 +80,7 @@ watch(nativeDate, (newValue) => {
       class="form-input absolute -z-50 text-transparent bg-transparent"
     />
     <button type="button" class="absolute right-0 top-1 px-4 py-2" @click="onClickDateRef()">
-      <i class="i-far-calendar"></i>
+      <base-icon icon="i-far-calendar" />
     </button>
     <input
       v-model.lazy="value"

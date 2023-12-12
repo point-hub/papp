@@ -25,7 +25,9 @@ const sidebarStore = useSidebarStore()
           <i v-if="isDarkMode" class="i-ph-sun block w-6 h-6"></i>
           <i v-else class="i-ph-moon-fill block w-6 h-6"></i>
         </a>
-        <a href=""><i class="i-fab-github block h-6 w-6"></i></a>
+        <a href="#">
+          <base-icon icon="i-fab-github" class="h-6 w-6" />
+        </a>
       </div>
     </div>
   </nav>

@@ -90,10 +90,10 @@ const isShowPageButton = (i: number) => {
     </div>
     <div class="flex gap-2">
       <button type="button" class="btn btn-xs" @click="onClickFirst()">
-        <i class="i-fas-angles-left"></i>
+        <base-icon icon="i-fas-angles-left" />
       </button>
       <button type="button" class="btn btn-xs" @click="onClickPrev()">
-        <i class="i-fas-angle-left"></i>
+        <base-icon icon="i-fas-angle-left" />
       </button>
       <template v-for="i in totalPage" :key="i">
         <button
@@ -109,10 +109,10 @@ const isShowPageButton = (i: number) => {
         </button>
       </template>
       <button type="button" class="btn btn-xs" @click="onClickNext()">
-        <i class="i-fas-angle-right flex items-center justify-center self-center"></i>
+        <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
       </button>
       <button type="button" class="btn btn-xs" @click="onClickLast()">
-        <i class="i-fas-angles-right"></i>
+        <base-icon icon="i-fas-angles-right" />
       </button>
     </div>
   </div>

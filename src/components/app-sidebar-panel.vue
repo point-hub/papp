@@ -44,7 +44,7 @@ const props = defineProps<{
       </div>
       <div class="my-2">
         <button class="sidebar-panel-link" v-tooltip="{ content: 'logout', placement: 'top' }">
-          <i class="i-fas-power-off bg-slate-300 block text-2xl"></i>
+          <base-icon icon="i-fas-power-off" class="bg-slate-300 text-2xl" />
         </button>
       </div>
     </div>

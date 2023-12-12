@@ -101,7 +101,7 @@ const onClear = () => {
             v-if="Object.keys(selected ?? {}).length === 0"
             class="absolute inset-y-0 right-0 flex items-center pr-2"
           >
-            <i class="i-far-angle-down"></i>
+            <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
           <button
             type="button"
@@ -109,7 +109,7 @@ const onClear = () => {
             class="absolute inset-y-0 right-0 flex items-center pr-2"
             @click="onClear()"
           >
-            <i class="i-far-xmark"></i>
+            <base-icon icon="i-far-xmark" />
           </button>
         </div>
         <TransitionRoot

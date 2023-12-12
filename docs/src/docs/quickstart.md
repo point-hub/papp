@@ -12,12 +12,13 @@ Update your main.ts
 
 ```ts
 import '@point-hub/papp/style.css'
-import { PluginInputMask, PluginTooltip } from '@point-hub/papp'
+import { PluginInputMask, PluginTooltip, PluginIcon } from '@point-hub/papp'
 
 const app = createApp(App)
 
 app.use(PluginInputMask)
 app.use(PluginTooltip)
+app.use(PluginIcon)
 ```
 
 ## Usage

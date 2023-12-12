@@ -25,7 +25,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-house"></i>
+            <base-icon icon="i-far-house" />
             Home
           </a>
         </BaseTab>
@@ -35,7 +35,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-circle-user"></i>
+            <base-icon icon="i-far-circle-user" />
             Profile
           </a>
         </BaseTab>
@@ -45,7 +45,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-phone"></i>
+            <base-icon icon="i-far-phone" />
             Contact 1
           </a>
         </BaseTab>
@@ -55,7 +55,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-phone"></i>
+            <base-icon icon="i-far-phone" />
             Contact 2
           </a>
         </BaseTab>
@@ -65,7 +65,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-phone"></i>
+            <base-icon icon="i-far-phone" />
             Contact 3
           </a>
         </BaseTab>
@@ -75,7 +75,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-phone"></i>
+            <base-icon icon="i-far-phone" />
             Contact 4
           </a>
         </BaseTab>
@@ -85,7 +85,7 @@ import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from 
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <i class="i-far-phone"></i>
+            <base-icon icon="i-far-phone" />
             Contact 5
           </a>
         </BaseTab>

@@ -26,7 +26,7 @@ defineProps<{
         </p>
         <button @click="sidebarStore.closeSidebar()" v-if="isMobileBreakpoint()" class="mr-2">
           <div v-if="sidebarStore.isSidebarOpen">
-            <i class="i-fas-angle-left block text-white"></i>
+            <base-icon icon="i-fas-angle-left" class="text-white" />
           </div>
         </button>
       </div>
@@ -98,7 +98,7 @@ defineProps<{
                 class="menu-link-button !text-slate-200/80"
               >
                 {{ menu.name }}
-                <i class="i-fas-up-right-from-square"></i>
+                <base-icon icon="i-fas-up-right-from-square" />
               </a>
             </template>
             <div v-if="menu.separator" class="menu-separator"></div>

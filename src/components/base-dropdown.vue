@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
         <slot name="trigger">
           <div class="dropdown-trigger-button">
             <span>{{ text }}</span>
-            <i class="i-far-angle-down"></i>
+            <base-icon icon="i-far-angle-down" />
           </div>
         </slot>
       </MenuButton>

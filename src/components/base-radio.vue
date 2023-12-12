@@ -69,10 +69,10 @@ const value = computed({
               >
                 <div class="flex items-center justify-between gap-2">
                   <div v-if="checked" class="shrink-0 text-white">
-                    <i class="i-fas-circle-check"></i>
+                    <base-icon icon="i-fas-circle-check" />
                   </div>
                   <div v-else class="shrink-0">
-                    <i class="i-far-circle"></i>
+                    <base-icon icon="i-far-circle" />
                   </div>
                   <div class="flex items-center">
                     <div class="text-sm">{{ option.label }}</div>

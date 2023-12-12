@@ -27,7 +27,7 @@ const activeTab = ref('all')
               <button
                 class="btn h-7 w-7 rounded-full p-0 -mr-1.5 active:bg-slate-300/25 focus:bg-slate-300/20 hover:bg-slate-300/20 dark:active:bg-slate-300/25 dark:focus:bg-slate-300/20 dark:hover:bg-slate-300/20"
               >
-                <i class="block i-far-maximize"></i>
+                <base-icon icon="i-far-maximize" />
               </button>
             </div>
 
@@ -63,7 +63,7 @@ const activeTab = ref('all')
                 <div
                   class="bg-secondary/10 dark:bg-secondary-light/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
                 >
-                  <i class="block i-far-user"></i>
+                  <base-icon icon="i-far-user" />
                 </div>
                 <div>
                   <p class="font-medium text-slate-600 dark:text-slate-100">User Photo Changed</p>
@@ -76,7 +76,7 @@ const activeTab = ref('all')
                 <div
                   class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
                 >
-                  <i class="block i-far-pencil"></i>
+                  <base-icon icon="i-far-pencil" />
                 </div>
                 <div>
                   <p class="font-medium text-slate-600 dark:text-slate-100">

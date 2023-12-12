@@ -125,7 +125,7 @@ const isCheckedAll = () => {
   <div class="w-full flex items-center gap-4">
     <div class="w-full flex gap-2">
       <button class="btn btn-md btn-primary rounded-none gap-1">
-        <i class="i-far-pen-to-square"></i>
+        <base-icon icon="i-far-pen-to-square" />
         <span>New</span>
       </button>
       <component
@@ -136,11 +136,11 @@ const isCheckedAll = () => {
         class="flex-1"
       >
         <template #prefix>
-          <i class="i-far-magnifying-glass mx-3"></i>
+          <base-icon icon="i-far-magnifying-glass" class="mx-3" />
         </template>
       </component>
       <button class="btn btn-md btn-info rounded-none" @click="openTableSetting()">
-        <i class="i-far-gear"></i>
+        <base-icon class="i-far-gear" />
       </button>
     </div>
   </div>

@@ -66,7 +66,7 @@ defineExpose({ toast, remove })
             {{ data.message }}
           </div>
           <button type="button" @click="remove(data.id)" class="toast-close-button">
-            <i class="i-fas-xmark block w-4 h-4"></i>
+            <base-icon icon="i-fas-xmark" class="w-4 h-4" />
           </button>
         </div>
       </slot>

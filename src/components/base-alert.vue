@@ -52,10 +52,10 @@ const onClose = () => {
     <div class="alert-icon-container">
       <div v-if="icon" class="alert-icon">
         <i v-if="icon === 'success'" class="block i-far-circle-check"></i>
-        <base-icon v-if="icon === 'info'" icon="i-far-circle-info"></base-icon>
-        <base-icon v-if="icon === 'success'" icon="i-far-circle-check"></base-icon>
-        <base-icon v-if="icon === 'warning'" icon="i-far-circle-exclamation"></base-icon>
-        <base-icon v-if="icon === 'danger'" icon="i-far-triangle-exclamation"></base-icon>
+        <base-icon v-if="icon === 'info'" icon="i-far-circle-info" />
+        <base-icon v-if="icon === 'success'" icon="i-far-circle-check" />
+        <base-icon v-if="icon === 'warning'" icon="i-far-circle-exclamation" />
+        <base-icon v-if="icon === 'danger'" icon="i-far-triangle-exclamation" />
       </div>
       <div class="alert-text">
         <div>
@@ -69,7 +69,7 @@ const onClose = () => {
       </div>
     </div>
     <button v-if="isDismissable" type="button" class="close-button" @click="onClose()">
-      <base-icon icon="i-fas-xmark"></base-icon>
+      <base-icon icon="i-fas-xmark" />
     </button>
   </div>
 </template>

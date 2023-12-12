@@ -75,7 +75,7 @@ watch(props, () => {
               }"
             >
               <button type="button" @click="close()" class="btn btn-sm absolute right-0 top-2">
-                <i class="i-fas-xmark"></i>
+                <base-icon icon="i-fas-xmark" />
               </button>
               <slot></slot>
             </DialogPanel>
