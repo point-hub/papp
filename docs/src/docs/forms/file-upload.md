@@ -46,8 +46,8 @@ Input elements with type "file" let the user choose one or more files from their
 | multiple    | boolean                 | false      | Upload multiple files.       |
 | required    | boolean                 | false      | if true input is `required`. |
 | disabled    | boolean                 | false      | if true input is `disabled`. |
-| helper      | string                  |            | Input helper message.        |
-| error       | string                  |            | Input error message.         |
+| helpers     | string[]                |            | Input helper message.        |
+| errors      | string[]                |            | Input error message.         |
 
 ### Slot
 
