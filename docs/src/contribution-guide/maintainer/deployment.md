@@ -20,7 +20,7 @@ Given a version number `MAJOR`.`MINOR`.`PATCH`, increment the:
 
 ## Git Tag & Release
 
-Create Github tag (use the same version in `package.json` from step 1)
+Create Github tag (use the same version in `package.json`)
 
 ## Publish to NPM Registry
 
