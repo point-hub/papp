@@ -15,7 +15,7 @@ export default defineConfig({
     plugins: [Unocss()],
     resolve: {
       alias: {
-        '@point-hub/papp': resolve(__dirname, '../dist/papp.js') // to resolve @ inside docs
+        '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
       }
     }
   },

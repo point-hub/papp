@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     UnoCSS(),
     dts({
-      insertTypesEntry: true
+      entryRoot: './src/'
     })
   ],
   resolve: {
@@ -28,7 +28,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Papp',
       // the proper extensions will be added
-      fileName: 'papp'
+      fileName: 'index'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
