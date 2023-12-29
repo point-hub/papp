@@ -36,3 +36,25 @@ table input.border-none {
 .scrollbar-hidden::-webkit-scrollbar {
   @apply hidden;
 }
+
+/* scrollbar */
+::-webkit-scrollbar {
+  @apply w-1 h-1 rounded-lg;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-500 rounded-lg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-blue-600;
+}
+
+.scrollbar-hidden {
+  @apply [scrollbar-width:none]; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  @apply hidden;
+}

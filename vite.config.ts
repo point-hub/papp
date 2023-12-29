@@ -16,8 +16,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@point-hub/papp': resolve(__dirname, '../dist/papp.js')
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   build: {
