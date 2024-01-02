@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
+    "@point-hub/express-utils": "^0.1.4",
     "@point-hub/preset-papp-icon": "^0.0.2",
     "@unocss/reset": "^0.58.0",
     "cleave.js": "^1.6.0",
