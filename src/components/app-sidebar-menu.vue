@@ -5,7 +5,7 @@ import { useMobileBreakpoint } from '@/composable/mobile-breakpoint'
 
 const sidebarMenuStore = useSidebarMenuStore()
 const sidebarStore = useSidebarStore()
-const { isMobileBreakpoint } = useMobileBreakpoint()
+const { isMobile } = useMobileBreakpoint()
 
 const isActiveMenu = (name: string) => {
   return sidebarMenuStore.$state.activeMenuName === name
@@ -24,7 +24,7 @@ defineProps<{
         <p class="text-base font-extrabold tracking-wider text-slate-100">
           {{ sidebarMenuStore.activePanelName }}
         </p>
-        <button @click="sidebarStore.closeSidebar()" v-if="isMobileBreakpoint()" class="mr-2">
+        <button @click="sidebarStore.closeSidebar()" v-if="isMobile()" class="mr-2">
           <div v-if="sidebarStore.isSidebarOpen">
             <base-icon icon="i-fas-angle-left" class="text-white" />
           </div>

@@ -1,14 +1,12 @@
 import { watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSidebarStore } from '@/stores/sidebar'
-import { useSidebarMenuStore, type PanelMenuInterface } from '@/stores/sidebar-menu'
 import { useMobileBreakpoint } from '@/composable/mobile-breakpoint'
 
-export function useSidebar(panelMenu: PanelMenuInterface[]) {
+export function useSidebar() {
   const sidebarStore = useSidebarStore()
-  const sidebarMenuStore = useSidebarMenuStore()
   const route = useRoute()
-  const { isMobileBreakpoint } = useMobileBreakpoint()
+  const { isMobile } = useMobileBreakpoint()
 
   onMounted(() => {
     setDefaultOpenSidebar()
@@ -18,8 +16,7 @@ export function useSidebar(panelMenu: PanelMenuInterface[]) {
   watch(
     route,
     async () => {
-      sidebarMenuStore.setActiveMenu(route, panelMenu)
-      if (isMobileBreakpoint()) {
+      if (isMobile()) {
         sidebarStore.closeSidebar()
       }
     },
@@ -32,7 +29,7 @@ export function useSidebar(panelMenu: PanelMenuInterface[]) {
    * xl and 2xl default sidebar is closed
    */
   const setDefaultOpenSidebar = () => {
-    if (isMobileBreakpoint()) {
+    if (isMobile()) {
       sidebarStore.closeSidebar()
     } else {
       sidebarStore.openSidebar()

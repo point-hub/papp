@@ -8,7 +8,7 @@ describe('mobile breakpoint', () => {
   })
 
   it('defined', () => {
-    const { isMobileBreakpoint } = useMobileBreakpoint()
-    expect(isMobileBreakpoint).toBeDefined()
+    const { isMobile } = useMobileBreakpoint()
+    expect(isMobile).toBeDefined()
   })
 })
