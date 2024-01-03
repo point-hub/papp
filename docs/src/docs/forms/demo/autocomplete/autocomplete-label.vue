@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseAutocomplete, type BaseAutocompleteOptionInterface } from '@point-hub/papp'
+import { ref } from 'vue'
 
 interface OptionInterface extends BaseAutocompleteOptionInterface {
   id: number

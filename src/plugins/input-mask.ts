@@ -1,5 +1,5 @@
-import { type App } from 'vue'
 import Cleave from 'cleave.js'
+import { type App } from 'vue'
 
 export default {
   install(Vue: App) {

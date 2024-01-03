@@ -1,6 +1,7 @@
-import Unocss from 'unocss/vite'
 import { resolve } from 'path'
-import { defineConfig, type DefaultTheme } from 'vitepress'
+import Unocss from 'unocss/vite'
+import { type DefaultTheme, defineConfig } from 'vitepress'
+
 import { version } from '../package.json'
 
 // https://vitepress.dev/reference/site-config

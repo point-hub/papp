@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useDarkMode } from './composable/dark-mode'
 import { useScreenSize } from '@/composable/screen-size'
+
+import { useDarkMode } from './composable/dark-mode'
 
 useDarkMode()
 useScreenSize()

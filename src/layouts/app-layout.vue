@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import AppHeader from '@/components/app-header.vue'
-import AppSidebar from '@/components/app-sidebar.vue'
+
 import AppFooter from '@/components/app-footer.vue'
+import AppHeader from '@/components/app-header.vue'
 import AppPreloader from '@/components/app-preloader.vue'
+import AppSidebar from '@/components/app-sidebar.vue'
 import { useDarkMode } from '@/composable/dark-mode'
+
 import { version } from '../../package.json'
 
 const { loadDarkMode } = useDarkMode()

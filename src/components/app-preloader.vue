@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, ref, onMounted } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 const loaded = ref(0)
 const loadingText = ref(`is loading ${loaded.value} %`)
 const preloaderRef = ref()

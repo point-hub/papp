@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BasePagination } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const page = ref(1)
 const pageSize = ref(10)

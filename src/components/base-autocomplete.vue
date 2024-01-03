@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import {
   Combobox,
-  ComboboxInput,
   ComboboxButton,
-  ComboboxOptions,
+  ComboboxInput,
   ComboboxOption,
+  ComboboxOptions,
   TransitionRoot
 } from '@headlessui/vue'
+import { computed, ref } from 'vue'
+
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 

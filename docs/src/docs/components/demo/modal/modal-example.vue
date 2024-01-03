@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseModal } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const showModal = ref(false)
 </script>

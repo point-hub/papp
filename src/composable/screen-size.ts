@@ -1,5 +1,6 @@
+import { nextTick, onBeforeUnmount, onMounted } from 'vue'
+
 import { useScreenBreakpointStore } from '@/stores/screen-breakpoint'
-import { onMounted, nextTick, onBeforeUnmount } from 'vue'
 
 export function useScreenSize() {
   const screenBreakpointStore = useScreenBreakpointStore()

@@ -1,4 +1,5 @@
 import { type App } from 'vue'
+
 import BaseIcon from '@/components/base-icon.vue'
 
 export default {

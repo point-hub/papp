@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, provide } from 'vue'
+import { provide, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{

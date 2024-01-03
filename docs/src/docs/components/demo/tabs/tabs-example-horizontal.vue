@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseTabGroup, BaseTabList, BaseTab, BaseTabPanels, BaseTabPanel } from '@point-hub/papp'
+import { BaseTab, BaseTabGroup, BaseTabList, BaseTabPanel, BaseTabPanels } from '@point-hub/papp'
 </script>
 
 <template>

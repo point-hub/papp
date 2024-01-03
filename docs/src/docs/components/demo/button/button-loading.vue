@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseButton } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const isLoading = ref(true)
 

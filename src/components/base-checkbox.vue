@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import { v4 as uuidv4 } from 'uuid'
+import { computed } from 'vue'
+
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseCheckboxThemeType =
   | 'primary'

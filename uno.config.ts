@@ -1,6 +1,6 @@
-import { defineConfig, presetUno, presetWebFonts } from 'unocss'
-import transformerDirectives from '@unocss/transformer-directives'
 import presetPappIcon from '@point-hub/preset-papp-icon'
+import transformerDirectives from '@unocss/transformer-directives'
+import { defineConfig, presetUno, presetWebFonts } from 'unocss'
 
 export default defineConfig({
   presets: [

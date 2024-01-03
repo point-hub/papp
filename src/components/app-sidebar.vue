@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import AppSidebarMenu from './app-sidebar-menu.vue'
-import AppSidebarPanel from './app-sidebar-panel.vue'
 import { useSidebar } from '@/composable/sidebar'
 import { useSidebarStore } from '@/stores/sidebar'
 import { useSidebarMenuStore } from '@/stores/sidebar-menu'
+
+import AppSidebarMenu from './app-sidebar-menu.vue'
+import AppSidebarPanel from './app-sidebar-panel.vue'
 
 const sidebarStore = useSidebarStore()
 const sidebarMenuStore = useSidebarMenuStore()

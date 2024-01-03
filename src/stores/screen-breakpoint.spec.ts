@@ -1,6 +1,7 @@
-import { describe, beforeEach, expect, it } from 'vitest'
+import { createPinia, setActivePinia } from 'pinia'
+import { beforeEach, describe, expect, it } from 'vitest'
+
 import { useScreenBreakpointStore } from './screen-breakpoint'
-import { setActivePinia, createPinia } from 'pinia'
 
 describe('screen breakpoint store', () => {
   beforeEach(() => {

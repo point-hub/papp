@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { computed } from 'vue'
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
+
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export interface BaseSelectOptionInterface {

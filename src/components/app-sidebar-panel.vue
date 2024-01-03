@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSidebarStore } from '@/stores/sidebar'
-import { useSidebarMenuStore, type PanelMenuInterface } from '@/stores/sidebar-menu'
+import { type PanelMenuInterface, useSidebarMenuStore } from '@/stores/sidebar-menu'
 
 const sidebarMenuStore = useSidebarMenuStore()
 const sidebarStore = useSidebarStore()

@@ -1,6 +1,7 @@
+import 'tippy.js/dist/tippy.css' // optional for styling
+
 import { type App } from 'vue'
 import { plugin as VueTippy } from 'vue-tippy'
-import 'tippy.js/dist/tippy.css' // optional for styling
 
 export default {
   install(Vue: App) {

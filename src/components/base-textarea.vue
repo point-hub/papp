@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, nextTick } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
+
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseTextareaBorderType = 'simple' | 'full' | 'none'

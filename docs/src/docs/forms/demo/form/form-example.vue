@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { BaseForm, type BaseFormLayoutType } from '@point-hub/papp'
+import { computed } from 'vue'
 
 export interface Props {
   modelValue: string

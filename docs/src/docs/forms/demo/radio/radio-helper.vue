@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseRadio } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const options = [
   {

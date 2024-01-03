@@ -1,8 +1,9 @@
-import { useMobileBreakpoint } from './mobile-breakpoint'
 import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { useSidebarStore } from '@/stores/sidebar'
+
+import { useMobileBreakpoint } from './mobile-breakpoint'
 
 export function useSidebar() {
   const sidebarStore = useSidebarStore()

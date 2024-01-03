@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseFileUploadBorderType = 'none' | 'simple' | 'full'

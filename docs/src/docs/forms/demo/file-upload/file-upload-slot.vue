@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseFileUpload, BaseButton } from '@point-hub/papp'
+import { BaseButton, BaseFileUpload } from '@point-hub/papp'
 import { ref } from 'vue'
 
 interface HTMLInputEvent extends Event {

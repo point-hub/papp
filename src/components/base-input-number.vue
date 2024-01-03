@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import Cleave from 'cleave.js'
+import { computed, onMounted, ref } from 'vue'
+
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
 

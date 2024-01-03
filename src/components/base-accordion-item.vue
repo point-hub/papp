@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, inject, type Ref, watch } from 'vue'
+import { inject, type Ref, ref, watch } from 'vue'
 
 const alwaysOpen = inject('alwaysOpen') as Ref
 const activeItemId = inject('activeItemId') as Ref

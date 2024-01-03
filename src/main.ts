@@ -1,12 +1,14 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import '@unocss/reset/tailwind.css'
 import '@/assets/css/main.css'
 import 'virtual:uno.css'
+
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+
 import App from './app.vue'
-import router from './router'
 import PluginInputMask from './plugins/input-mask'
 import PluginTooltip from './plugins/tooltip'
+import router from './router'
 
 const app = createApp(App)
 app.use(router)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseCheckbox } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const primaryCheckbox = ref(false)
 const secondaryCheckbox = ref(false)

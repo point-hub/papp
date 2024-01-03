@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSidebarStore } from '@/stores/sidebar'
-import { useSidebarMenuStore, type MenuInterface } from '@/stores/sidebar-menu'
 import { useMobileBreakpoint } from '@/composable/mobile-breakpoint'
+import { useSidebarStore } from '@/stores/sidebar'
+import { type MenuInterface, useSidebarMenuStore } from '@/stores/sidebar-menu'
 
 const sidebarMenuStore = useSidebarMenuStore()
 const sidebarStore = useSidebarStore()

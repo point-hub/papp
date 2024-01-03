@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BaseInput } from '@point-hub/papp'
+import { ref } from 'vue'
 
 const form = ref({
   name: ''
