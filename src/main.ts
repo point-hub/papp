@@ -5,7 +5,8 @@ import 'virtual:uno.css'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 
-import { PluginIcon, PluginInputMask, PluginTooltip } from '../index'
+import { PluginIcon, PluginInputMask, PluginTooltip } from '@/index'
+
 import App from './app.vue'
 import router from './router'
 
