@@ -131,3 +131,6 @@ export { useDarkMode } from './composable/dark-mode'
 export { useNumeric } from './composable/numeric'
 export { useSidebar } from './composable/sidebar'
 export { useSidebarStore } from './stores/sidebar'
+
+// Layouts Component
+export { default as AppFooter } from './components/app-footer.vue'

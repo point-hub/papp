@@ -5,6 +5,7 @@ import AppSidebar from '@/components/app-sidebar.vue'
 import AppFooter from '@/components/app-footer.vue'
 import AppPreloader from '@/components/app-preloader.vue'
 import { useDarkMode } from '@/composable/dark-mode'
+import { version } from '../../package.json'
 
 const { loadDarkMode } = useDarkMode()
 
@@ -31,7 +32,7 @@ onMounted(() => {
       </main>
 
       <!-- Footer -->
-      <component :is="AppFooter" />
+      <component :is="AppFooter" :version="version" />
     </div>
   </div>
 </template>
