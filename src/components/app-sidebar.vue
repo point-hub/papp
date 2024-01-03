@@ -1,24 +1,48 @@
 <script setup lang="ts">
-import { useSidebar } from '@/composable/sidebar'
-import { useSidebarStore } from '@/stores/sidebar'
-import { useSidebarMenuStore } from '@/stores/sidebar-menu'
+import { computed } from 'vue'
 
+import { useSidebarStore } from '../index'
 import AppSidebarMenu from './app-sidebar-menu.vue'
 import AppSidebarPanel from './app-sidebar-panel.vue'
 
 const sidebarStore = useSidebarStore()
-const sidebarMenuStore = useSidebarMenuStore()
-useSidebar(sidebarMenuStore.$state.listPanelMenu)
+
+const props = defineProps<{
+  title: string
+  isMobile: boolean
+  isSidebarOpen: boolean
+  apps: IApps[]
+  menus: IMenu[]
+}>()
+
+const emit = defineEmits<{
+  (e: 'choose', path: string): void
+}>()
+
+const title = computed(() => props.title)
+const isMobile = computed(() => props.isMobile)
+const isSidebarOpen = computed(() => props.isSidebarOpen)
+const menus = computed(() => props.menus)
+
+const onChooseApp = (path: string) => {
+  emit('choose', path)
+}
 </script>
 
 <template>
   <!-- Main Sidebar -->
   <div class="sidebar">
     <!-- Sidebar Panel -->
-    <component :is="AppSidebarPanel" :listPanelMenu="sidebarMenuStore.$state.listPanelMenu" />
+    <component :is="AppSidebarPanel" :apps="apps" @choose="onChooseApp" />
 
     <!-- Sidebar Menu -->
-    <component :is="AppSidebarMenu" :listMenu="sidebarMenuStore.choosenPanelMenu" />
+    <component
+      :is="AppSidebarMenu"
+      :title="title"
+      :menus="menus"
+      :is-sidebar-open="isSidebarOpen"
+      :is-mobile="isMobile"
+    />
   </div>
   <!-- Backdrop -->
   <div class="sidebar-backdrop" @click="sidebarStore.closeSidebar()"></div>

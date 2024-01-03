@@ -135,3 +135,7 @@ export { useWebsocketStore } from './stores/websocket'
 // Layouts Component
 export { default as AppFooter } from './components/app-footer.vue'
 export { default as AppHeader } from './components/app-header.vue'
+export { default as AppPreloader } from './components/app-preloader.vue'
+export { default as AppSidebar } from './components/app-sidebar.vue'
+export { default as AppSidebarMenu } from './components/app-sidebar-menu.vue'
+export { default as AppSidebarPanel } from './components/app-sidebar-panel.vue'

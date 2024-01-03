@@ -1,19 +1,54 @@
 <script setup lang="ts">
-import { useMobileBreakpoint } from '@/composable/mobile-breakpoint'
-import { useSidebarStore } from '@/stores/sidebar'
-import { type MenuInterface, useSidebarMenuStore } from '@/stores/sidebar-menu'
+import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
-const sidebarMenuStore = useSidebarMenuStore()
+import { useSidebarStore } from '../index'
+
+const props = defineProps<{
+  isMobile: boolean
+  title: string
+  menus: IMenu[]
+}>()
+
+const isMobile = computed(() => props.isMobile)
+const menus = computed(() => props.menus)
+
+const route = useRoute()
 const sidebarStore = useSidebarStore()
-const { isMobile } = useMobileBreakpoint()
 
-const isActiveMenu = (name: string) => {
-  return sidebarMenuStore.$state.activeMenuName === name
+const activeMenu = ref()
+const toggleMenu = (name: string) => {
+  if (activeMenu.value === name) {
+    resetActiveMenu()
+  } else {
+    activeMenu.value = name
+  }
+}
+const resetActiveMenu = () => {
+  activeMenu.value = ''
 }
 
-defineProps<{
-  listMenu: MenuInterface[]
-}>()
+onMounted(() => {
+  for (const menu of menus.value) {
+    if (activeMenu.value === menu) {
+      activeMenu.value = menu.name
+    }
+    if (menu.submenu) {
+      for (const submenu of menu.submenu) {
+        if (route.path.includes(submenu.path)) {
+          activeMenu.value = menu.name
+        }
+      }
+    }
+  }
+})
+
+const pathHandler = (path: string) => {
+  if (path.substring(0, 8) === 'https://') {
+    return 'external'
+  }
+  return 'internal'
+}
 </script>
 
 <template>
@@ -21,10 +56,8 @@ defineProps<{
     <div class="sidebar-menu-container">
       <!-- Sidebar Panel Header -->
       <div class="sidebar-menu-header">
-        <p class="text-base font-extrabold tracking-wider text-slate-100">
-          {{ sidebarMenuStore.activePanelName }}
-        </p>
-        <button @click="sidebarStore.closeSidebar()" v-if="isMobile()" class="mr-2">
+        <p class="text-base font-extrabold tracking-wider text-slate-100">{{ title }}</p>
+        <button @click="sidebarStore.closeSidebar()" v-if="isMobile" class="mr-2">
           <div v-if="sidebarStore.isSidebarOpen">
             <base-icon icon="i-fas-angle-left" class="text-white" />
           </div>
@@ -33,45 +66,44 @@ defineProps<{
       <!-- Sidebar Panel Body -->
       <div class="sidebar-menu-body">
         <ul class="flex flex-1 flex-col px-4">
-          <li v-for="menu in listMenu" :key="menu.name">
+          <li v-for="menu in menus" :key="menu.name">
             <!-- Sub Menu Wrapper -->
             <template v-if="menu.submenu">
               <router-link
                 v-if="menu.path"
                 :to="menu.path"
                 class="menu-link-button"
-                @click="sidebarMenuStore.toggleMenu(menu.name)"
+                @click="toggleMenu(menu.name)"
               >
                 <p>{{ menu.name }}</p>
                 <i
                   v-if="menu.submenu"
                   class="i-fas-angle-right"
                   :class="{
-                    'rotate-90 transition transform-gpu': isActiveMenu(menu.name)
+                    'rotate-90 transition transform-gpu': activeMenu === menu.name
                   }"
                 />
               </router-link>
               <div
                 v-else
                 class="menu-link-button"
-                @click="sidebarMenuStore.toggleMenu(menu.name)"
-                :class="{ 'font-extrabold': isActiveMenu(menu.name) }"
+                @click="toggleMenu(menu.name)"
+                :class="{ 'font-extrabold': activeMenu === menu.name }"
               >
                 <p>{{ menu.name }}</p>
                 <i
                   v-if="menu.submenu"
                   class="i-fas-angle-right"
                   :class="{
-                    'rotate-90 transition transform-gpu': isActiveMenu(menu.name)
+                    'rotate-90 transition transform-gpu': activeMenu === menu.name
                   }"
                 />
               </div>
               <ul
                 class="submenu"
                 :class="{
-                  'max-h-[1000px]! overflow-auto bg-slate-700 p-1 rounded-lg': isActiveMenu(
-                    menu.name
-                  )
+                  'max-h-[1000px]! overflow-auto bg-slate-700 p-1 rounded-lg':
+                    activeMenu === menu.name
                 }"
               >
                 <li v-for="submenu in menu.submenu" :key="submenu.name" class="overflow-hidden">
@@ -87,13 +119,19 @@ defineProps<{
             </template>
             <template v-else>
               <!-- Internal Menu -->
-              <router-link v-if="menu.path" :to="menu.path" class="menu-link-button">
+              <router-link
+                v-if="menu.path && pathHandler(menu.path) === 'internal'"
+                :to="menu.path"
+                class="menu-link-button"
+                @click="resetActiveMenu()"
+              >
                 {{ menu.name }}
               </router-link>
               <!-- External Menu -->
               <a
-                v-if="menu.link"
-                :href="menu.link"
+                v-if="menu.path && pathHandler(menu.path) === 'external'"
+                :href="menu.path"
+                @click="resetActiveMenu()"
                 target="_blank"
                 class="menu-link-button !text-slate-200/80"
               >

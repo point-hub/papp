@@ -1,14 +1,3 @@
-<template>
-  <div id="preloader" ref="preloaderRef" class="preloader">
-    <div class="preloader-status">
-      <div status class="preloader-status-text">{{ loadingText }}</div>
-      <div class="preloader-status-loader">
-        <div class="preloader-status-bar" :style="{ width: loaded + '%' }"></div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 const loaded = ref(0)
@@ -41,6 +30,17 @@ const showBodyOverflow = () => {
   document.body.style.overflow = ''
 }
 </script>
+
+<template>
+  <div id="preloader" ref="preloaderRef" class="preloader">
+    <div class="preloader-status">
+      <div status class="preloader-status-text">{{ loadingText }}</div>
+      <div class="preloader-status-loader">
+        <div class="preloader-status-bar" :style="{ width: loaded + '%' }"></div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .preloader {

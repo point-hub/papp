@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { jsonParse } from '@point-hub/express-utils/lib/json/parse'
 import { jsonStringify } from '@point-hub/express-utils/lib/json/stringify'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { emitter } from '@/composable/emitter'
+import { emitter } from '../index'
 
 export const useWebsocketStore = defineStore('websocket', () => {
   const socket = ref<WebSocket>()
@@ -54,25 +55,20 @@ export const useWebsocketStore = defineStore('websocket', () => {
     socket.value.onmessage = (event) => {
       const data = jsonParse(event.data)
       emitter.emit(data.event, data)
-      console.log('message', event)
     }
     // socket opened
     socket.value.onopen = (event) => {
-      console.log('open', event)
       status.value = 1
     }
     // socket closed
     socket.value.onclose = (event) => {
-      console.log('close', event)
       status.value = 0
       if (reconnectingStatus.value === false) {
         setTimeout(reconnect, reconnectingInterval.value)
       }
     }
     // error handler
-    socket.value.onerror = (event) => {
-      console.log('error', event)
-    }
+    socket.value.onerror = (event) => {}
   }
 
   function close() {

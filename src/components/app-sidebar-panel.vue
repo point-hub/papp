@@ -1,50 +1,98 @@
 <script setup lang="ts">
-import { useSidebarStore } from '@/stores/sidebar'
-import { type PanelMenuInterface, useSidebarMenuStore } from '@/stores/sidebar-menu'
-
-const sidebarMenuStore = useSidebarMenuStore()
-const sidebarStore = useSidebarStore()
-
 const props = defineProps<{
-  listPanelMenu: PanelMenuInterface[]
+  apps: IApps[]
 }>()
+
+const emit = defineEmits<{
+  (e: 'choose', path: string): void
+}>()
+
+const pathHandler = (path: string) => {
+  if (path.substring(0, 8) === 'https://') {
+    return 'external'
+  }
+  return 'internal'
+}
+
+const iconHandler = (icon: string) => {
+  if (icon.substring(0, 8) === 'https://') {
+    return 'img'
+  }
+}
+
+const chooseApp = (path: string) => {
+  emit('choose', path)
+}
 </script>
 
 <template>
-  <div class="sidebar-panel" :class="{ 'delay-100 duration-200': !sidebarStore.isSidebarOpen }">
+  <div class="sidebar-panel">
     <div class="sidebar-panel-container">
-      <div class="flex pt-4">
-        <router-link to="/">
-          <img
-            class="sidebar-logo"
-            src="https://assets.pointhub.net/assets/images/logo/primary/icon-circle.png"
-            alt="logo"
-          />
-        </router-link>
-      </div>
       <div class="sidebar-panel-body">
-        <template v-for="(panelMenu, index) in props.listPanelMenu" :key="panelMenu.icon">
+        <template v-for="(app, index) in props.apps">
           <!-- Internal Menu -->
           <router-link
-            v-if="panelMenu.path"
-            :to="panelMenu.path"
+            v-if="pathHandler(app.path) === 'internal'"
+            :key="`internal-${index}`"
+            :to="app.path"
+            @click="chooseApp(app.path)"
             class="sidebar-panel-link"
-            :class="{
-              'bg-slate-300/20': sidebarMenuStore.$state.activePanelIndex === index
-            }"
-            v-tooltip="{ content: panelMenu.name, placement: 'bottom' }"
           >
-            <i :class="`block text-2xl ${panelMenu.icon}`"></i>
+            <div class="flex flex-col items-center">
+              <img
+                v-if="app.icon && iconHandler(app.icon) === 'img'"
+                :src="app.icon"
+                class="pt-2 px-1 max-w-12 max-h-12"
+              />
+              <img
+                v-else
+                src="@/assets/images/placeholder-app-icon.png"
+                class="pt-2 px-1 max-w-12 max-h-12"
+              />
+              <div
+                class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere"
+              >
+                {{ app.name }}
+              </div>
+            </div>
           </router-link>
           <!-- External Menu -->
-          <a v-else-if="panelMenu.link" :href="panelMenu.link" class="sidebar-panel-link">
-            <i :class="`block text-2xl ${panelMenu.icon}`"></i>
+          <a
+            v-else-if="pathHandler(app.path) === 'external'"
+            :key="`external-${index}`"
+            :href="app.path"
+            class="sidebar-panel-link"
+          >
+            <div class="flex flex-col items-center">
+              <img
+                v-if="app.icon && iconHandler(app.icon) === 'img'"
+                :src="app.icon"
+                class="pt-2 px-1 max-w-12 max-h-12"
+              />
+              <img
+                v-else
+                src="@/assets/images/placeholder-app-icon.png"
+                class="pt-2 px-1 max-w-12 max-h-12"
+              />
+              <div
+                class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere"
+              >
+                {{ app.name }}
+              </div>
+            </div>
           </a>
         </template>
       </div>
       <div class="my-2">
         <button class="sidebar-panel-link" v-tooltip="{ content: 'logout', placement: 'top' }">
-          <base-icon icon="i-fas-power-off" class="bg-slate-300 text-2xl" />
+          <div class="flex flex-col items-center">
+            <base-icon icon="i-ph-sign-out-duotone" class="bg-slate-300 mt-1 text-2xl" />
+            <div
+              class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere text-white"
+            >
+              Sign Out
+            </div>
+          </div>
         </button>
       </div>
     </div>
@@ -52,8 +100,15 @@ const props = defineProps<{
 </template>
 
 <style scoped>
-.sidebar-logo {
-  @apply h-10 w-10 transition-transform duration-500 hover:rotate-[360deg];
+.break-anywhere {
+  word-break: break-word;
+}
+
+@supports (overflow-wrap: anywhere) {
+  .break-anywhere {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
 }
 
 .sidebar-panel {
@@ -65,11 +120,11 @@ const props = defineProps<{
 }
 
 .sidebar-panel-body {
-  @apply flex grow flex-col space-y-4 overflow-y-auto pt-6 text-slate-200;
+  @apply flex grow flex-col w-full overflow-y-auto pt-6 text-slate-200;
 }
 
 .sidebar-panel-link {
-  @apply flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-slate-300/20;
+  @apply flex w-full text-xs items-center justify-center  outline-none transition-colors duration-200 hover:bg-slate-300/20;
 }
 
 .sidebar-panel-link.router-link-active {
