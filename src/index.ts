@@ -134,3 +134,4 @@ export { useWebsocketStore } from './stores/websocket'
 
 // Layouts Component
 export { default as AppFooter } from './components/app-footer.vue'
+export { default as AppHeader } from './components/app-header.vue'
