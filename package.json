@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -40,7 +40,6 @@
     "@headlessui/vue": "^1.7.16",
     "@point-hub/express-utils": "^0.1.4",
     "@point-hub/preset-papp-icon": "^0.0.2",
-    "@unocss/reset": "^0.58.3",
     "cleave.js": "^1.6.0",
     "dayjs": "^1.11.10",
     "pinia": "^2.1.7",

@@ -83,18 +83,6 @@ const chooseApp = (path: string) => {
           </a>
         </template>
       </div>
-      <div class="my-2">
-        <button class="sidebar-panel-link" v-tooltip="{ content: 'logout', placement: 'top' }">
-          <div class="flex flex-col items-center">
-            <base-icon icon="i-ph-sign-out-duotone" class="bg-slate-300 mt-1 text-2xl" />
-            <div
-              class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere text-white"
-            >
-              Sign Out
-            </div>
-          </div>
-        </button>
-      </div>
     </div>
   </div>
 </template>
