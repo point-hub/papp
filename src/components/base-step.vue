@@ -50,3 +50,7 @@ const onClick = (item: BaseStepItemInterface) => {
     </template>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/step.css');
+</style>

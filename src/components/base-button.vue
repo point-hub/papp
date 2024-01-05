@@ -1,5 +1,6 @@
 <script setup lang="ts">
 export type BaseButtonColorType =
+  | 'none'
   | 'primary'
   | 'secondary'
   | 'info'
@@ -21,7 +22,7 @@ const props = withDefaults(
   }>(),
   {
     size: 'md',
-    color: 'primary',
+    color: 'none',
     shape: 'round',
     variant: 'fill',
     isBlock: false,
@@ -85,4 +86,6 @@ classes.push(`btn-${props.size}`)
   </button>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import url('../assets/css/components/button.css');
+</style>

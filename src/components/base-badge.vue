@@ -39,4 +39,6 @@ classes.push(`${buttonColor}`)
   </span>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import url('../assets/css/components/badge.css');
+</style>

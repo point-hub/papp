@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseInput } from '@point-hub/papp'
+import { BaseButton, BaseInput } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -24,9 +24,9 @@ const form = ref({
       </component>
       <component :is="BaseInput" required v-model="form.password" label="Password" type="password">
         <template #suffix>
-          <button type="button" class="btn">
+          <component :is="BaseButton" variant="text">
             <base-icon icon="i-far-eye mx-2" />
-          </button>
+          </component>
         </template>
       </component>
     </form>

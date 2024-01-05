@@ -19,3 +19,7 @@ withDefaults(defineProps<Props>(), {
     </slot>
   </MenuItem>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/dropdown.css');
+</style>

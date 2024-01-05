@@ -12,16 +12,17 @@ Use of more advanced tables by using search, filter, table settings, pagination,
 
 ```vue
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import {
   BaseAutocomplete,
+  BaseButton,
   BaseCheckbox,
-  BaseModal,
+  BaseDivider,
   BaseInput,
+  BaseModal,
   BasePagination,
-  BaseTable,
-  BaseDivider
+  BaseTable
 } from '@point-hub/papp'
+import { computed, ref } from 'vue'
 
 // Table Header
 const options = [
@@ -122,125 +123,127 @@ const isCheckedAll = () => {
 </script>
 
 <template>
-  <div class="w-full flex items-center gap-4">
-    <div class="w-full flex gap-2">
-      <button class="btn btn-md btn-primary rounded-none gap-1">
-        <base-icon icon="i-far-pen-to-square" />
-        <span>New</span>
-      </button>
-      <component
-        :is="BaseInput"
-        v-model="searchAll"
-        placeholder="Search"
-        border="full"
-        class="flex-1"
-      >
-        <template #prefix>
-          <base-icon icon="i-far-magnifying-glass" class="mx-3" />
-        </template>
-      </component>
-      <button class="btn btn-md btn-info rounded-none" @click="openTableSetting()">
-        <base-icon class="i-far-gear" />
-      </button>
-    </div>
-  </div>
-  <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" size="xl">
-    <div class="max-h-90vh overflow-auto p-8 space-y-6">
-      <h2 class="text-2xl font-bold">Table Setting</h2>
-      <div class="space-y-2">
-        <h3 class="font-extrabold text-lg">Column Chooser</h3>
-        <div class="space-y-2">
-          <component
-            v-for="(column, index) in columns"
-            :key="index"
-            :id="column.name"
-            :is="BaseCheckbox"
-            :disabled="!column.isEditable"
-            v-model="column.isShow"
-            :text="column.name"
-          />
-        </div>
-      </div>
-      <component :is="BaseDivider" orientation="vertical" />
-      <div class="space-y-2">
-        <h3 class="font-extrabold text-lg">Pagination</h3>
+  <Demo>
+    <div class="w-full flex items-center gap-4">
+      <div class="w-full flex gap-2">
+        <component :is="BaseButton" color="primary" border="none" class="gap-1">
+          <base-icon icon="i-far-pen-to-square" />
+          <span>New</span>
+        </component>
         <component
-          :is="BaseAutocomplete"
-          v-model="selected"
-          :options="optionsPageSize"
+          :is="BaseInput"
+          v-model="searchAll"
           placeholder="Search"
-          label="Page Size"
-          layout="horizontal"
-          description="data per page"
-        ></component>
+          border="full"
+          class="flex-1"
+        >
+          <template #prefix>
+            <base-icon icon="i-far-magnifying-glass" class="mx-3" />
+          </template>
+        </component>
+        <component :is="BaseButton" color="info" class="gap-1">
+          <base-icon class="i-far-gear" />
+        </component>
       </div>
-      <button class="btn btn-primary btn-md btn-block rounded-xl" @click="showModal = false">
-        Close
-      </button>
     </div>
-  </component>
-  <component :is="BaseTable">
-    <thead>
-      <tr>
-        <th v-if="columns[0].isShow"></th>
-        <th v-if="columns[1].isShow" class="basic-table-head">
+    <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" size="xl">
+      <div class="max-h-90vh overflow-auto p-8 space-y-6">
+        <h2 class="text-2xl font-bold">Table Setting</h2>
+        <div class="space-y-2">
+          <h3 class="font-extrabold text-lg">Column Chooser</h3>
+          <div class="space-y-2">
+            <component
+              v-for="(column, index) in columns"
+              :key="index"
+              :id="column.name"
+              :is="BaseCheckbox"
+              :disabled="!column.isEditable"
+              v-model="column.isShow"
+              :text="column.name"
+            />
+          </div>
+        </div>
+        <component :is="BaseDivider" orientation="vertical" />
+        <div class="space-y-2">
+          <h3 class="font-extrabold text-lg">Pagination</h3>
           <component
-            :is="BaseInput"
-            required
-            v-model="search[0]"
-            placeholder="Search"
-            border="none"
-            class="font-normal text-slate-800 dark:text-slate-400"
-          ></component>
-        </th>
-        <th v-if="columns[2].isShow" class="basic-table-head">
-          <component
-            class="font-normal"
             :is="BaseAutocomplete"
             v-model="selected"
-            :options="options"
+            :options="optionsPageSize"
             placeholder="Search"
-            border="none"
+            label="Page Size"
+            layout="horizontal"
+            description="data per page"
           ></component>
-        </th>
-        <th v-if="columns[3].isShow" class="basic-table-head">
-          <component
-            :is="BaseInput"
-            required
-            v-model="search[0]"
-            placeholder="Search"
-            border="none"
-            class="font-light text-slate-800 dark:text-slate-400"
-          ></component>
-        </th>
-      </tr>
-      <tr>
-        <th v-if="columns[0].isShow">
-          <component :is="BaseCheckbox" v-model="selectAll" />
-        </th>
-        <th v-if="columns[1].isShow">Name</th>
-        <th v-if="columns[2].isShow">Job</th>
-        <th v-if="columns[3].isShow">Favorite Color</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(user, index) in users" :key="index">
-        <td v-if="columns[0].isShow">
-          <component :is="BaseCheckbox" v-model="user.checked" />
-        </td>
-        <td v-if="columns[1].isShow">{{ user.name }}</td>
-        <td v-if="columns[2].isShow">{{ user.job }}</td>
-        <td v-if="columns[3].isShow">{{ user.favoriteColor }}</td>
-      </tr>
-    </tbody>
-  </component>
-  <component
-    :is="BasePagination"
-    v-model="page"
-    :page-size="pageSize"
-    :totalDocument="totalDocument"
-    @update:model-value="updateData()"
-  />
+        </div>
+        <component :is="BaseButton" color="primary" size="md" is-block @click="showModal = false">
+          Close
+        </component>
+      </div>
+    </component>
+    <component :is="BaseTable">
+      <thead>
+        <tr>
+          <th v-if="columns[0].isShow"></th>
+          <th v-if="columns[1].isShow" class="basic-table-head">
+            <component
+              :is="BaseInput"
+              required
+              v-model="search[0]"
+              placeholder="Search"
+              border="none"
+              class="font-normal text-slate-800 dark:text-slate-400"
+            ></component>
+          </th>
+          <th v-if="columns[2].isShow" class="basic-table-head">
+            <component
+              class="font-normal"
+              :is="BaseAutocomplete"
+              v-model="selected"
+              :options="options"
+              placeholder="Search"
+              border="none"
+            ></component>
+          </th>
+          <th v-if="columns[3].isShow" class="basic-table-head">
+            <component
+              :is="BaseInput"
+              required
+              v-model="search[0]"
+              placeholder="Search"
+              border="none"
+              class="font-light text-slate-800 dark:text-slate-400"
+            ></component>
+          </th>
+        </tr>
+        <tr>
+          <th v-if="columns[0].isShow">
+            <component :is="BaseCheckbox" v-model="selectAll" />
+          </th>
+          <th v-if="columns[1].isShow">Name</th>
+          <th v-if="columns[2].isShow">Job</th>
+          <th v-if="columns[3].isShow">Favorite Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user, index) in users" :key="index">
+          <td v-if="columns[0].isShow">
+            <component :is="BaseCheckbox" v-model="user.checked" />
+          </td>
+          <td v-if="columns[1].isShow">{{ user.name }}</td>
+          <td v-if="columns[2].isShow">{{ user.job }}</td>
+          <td v-if="columns[3].isShow">{{ user.favoriteColor }}</td>
+        </tr>
+      </tbody>
+    </component>
+    <component
+      :is="BasePagination"
+      v-model="page"
+      :page-size="pageSize"
+      :totalDocument="totalDocument"
+      @update:model-value="updateData()"
+    />
+  </Demo>
 </template>
 ```
 

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import BaseButton from './base-button.vue'
+
 export interface Props {
   modelValue: number
   pageSize: number
@@ -88,32 +90,34 @@ const isShowPageButton = (i: number) => {
         {{ totalDocument }} entries
       </p>
     </div>
-    <div class="flex gap-2">
-      <button type="button" class="btn btn-xs" @click="onClickFirst()">
+    <div class="flex">
+      <component :is="BaseButton" variant="text" size="xs" @click="onClickFirst()">
         <base-icon icon="i-fas-angles-left" />
-      </button>
-      <button type="button" class="btn btn-xs" @click="onClickPrev()">
+      </component>
+      <component :is="BaseButton" variant="text" size="xs" @click="onClickPrev()">
         <base-icon icon="i-fas-angle-left" />
-      </button>
+      </component>
       <template v-for="i in totalPage" :key="i">
-        <button
+        <component
+          :is="BaseButton"
           v-if="isShowPageButton(i)"
           type="button"
+          size="xs"
+          variant="text"
           @click="onClickPage(i)"
-          class="btn btn-xs rounded"
           :class="{
-            'btn-primary': i === value
+            'bg-primary text-white!': i === value
           }"
         >
           {{ i }}
-        </button>
+        </component>
       </template>
-      <button type="button" class="btn btn-xs" @click="onClickNext()">
+      <component :is="BaseButton" variant="text" size="xs" @click="onClickNext()">
         <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
-      </button>
-      <button type="button" class="btn btn-xs" @click="onClickLast()">
+      </component>
+      <component :is="BaseButton" variant="text" size="xs" @click="onClickLast()">
         <base-icon icon="i-fas-angles-right" />
-      </button>
+      </component>
     </div>
   </div>
 </template>

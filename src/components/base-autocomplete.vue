@@ -9,6 +9,7 @@ import {
 } from '@headlessui/vue'
 import { computed, ref } from 'vue'
 
+import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
@@ -104,14 +105,16 @@ const onClear = () => {
           >
             <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
-          <button
+          <component
+            :is="BaseButton"
+            variant="text"
             type="button"
             v-if="Object.keys(selected ?? {}).length > 0"
             class="absolute inset-y-0 right-0 flex items-center pr-2"
             @click="onClear()"
           >
             <base-icon icon="i-far-xmark" />
-          </button>
+          </component>
         </div>
         <TransitionRoot
           leave="transition ease-in duration-100"
@@ -154,6 +157,7 @@ const onClear = () => {
 </template>
 
 <style scoped>
+@import url('../assets/css/components/input.css');
 .options {
   @apply absolute dark:bg-slate-800 dark:border-slate-600 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm focus:outline-none z-1;
 }

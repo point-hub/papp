@@ -32,3 +32,7 @@ const props = withDefaults(
     </li>
   </ul>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/breadcrumb.css');
+</style>

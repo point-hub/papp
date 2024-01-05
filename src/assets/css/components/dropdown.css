@@ -15,5 +15,5 @@
 }
 
 .dropdown-item-active {
-  @apply bg-blue-200;
+  @apply bg-blue-200 dark:bg-blue-800;
 }

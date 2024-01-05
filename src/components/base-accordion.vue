@@ -20,3 +20,7 @@ provide('activeItemId', activeItemId)
     <slot></slot>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/accordion.css');
+</style>

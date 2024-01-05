@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 import websocketConfig from '@/config/websocket'
 
-import { emitter, useWebsocketStore } from '../index'
+import { BaseButton, emitter, useWebsocketStore } from '../index'
 
 interface IEventUserOnline {
   event: string
@@ -46,9 +46,15 @@ const onClose = () => {
     <h1>Socket Example</h1>
     <div class="card">
       <div class="gap-2 flex">
-        <button class="btn btn-outline-primary btn-sm" @click="onOpen()">Open Connection</button>
-        <button class="btn btn-outline-danger btn-sm" @click="onClose()">Close Connection</button>
-        <button class="btn btn-outline-danger btn-sm" @click="onSubmit()">Message</button>
+        <component :is="BaseButton" variant="outline" color="primary" size="sm" @click="onOpen">
+          Open Connection
+        </component>
+        <component :is="BaseButton" variant="outline" color="danger" size="sm" @click="onClose">
+          Close Connection
+        </component>
+        <component :is="BaseButton" variant="outline" color="danger" size="sm" @click="onSubmit">
+          Message
+        </component>
       </div>
       <div>
         <p>Connection Status : {{ websocket.status }}</p>

@@ -10,3 +10,7 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/timeline.css');
+</style>

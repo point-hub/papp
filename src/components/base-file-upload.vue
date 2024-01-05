@@ -75,3 +75,7 @@ const fileRef = ref()
     />
   </component>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/input.css');
+</style>

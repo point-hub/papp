@@ -88,3 +88,7 @@ const uuid = props.id ?? uuidv4()
     </div>
   </component>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/checkbox.css');
+</style>

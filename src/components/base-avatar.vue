@@ -102,3 +102,8 @@ const initial = (name: string) => {
     <span v-if="indicator" class="avatar-indicator" :class="indicatorClasses"></span>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/avatar.css');
+@import url('../assets/css/components/mask.css');
+</style>

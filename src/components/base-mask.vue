@@ -35,3 +35,7 @@ defineProps<Props>()
     :src="src"
   />
 </template>
+
+<style scoped>
+@import url('../assets/css/components/mask.css');
+</style>

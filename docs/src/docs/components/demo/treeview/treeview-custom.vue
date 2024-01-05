@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseTreeview } from '@point-hub/papp'
+import { BaseButton, BaseTreeview } from '@point-hub/papp'
 </script>
 
 <template>
@@ -16,18 +16,18 @@ import { BaseTreeview } from '@point-hub/papp'
           <base-icon v-if="slotProps.isOpen" icon="i-far-folder-open" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1</p>
         </template>
-        <button class="btn btn-block space-x-4">
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.1</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.2</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.3</p>
-        </button>
+        </component>
       </component>
       <component :is="BaseTreeview">
         <template #header="slotProps">
@@ -39,18 +39,18 @@ import { BaseTreeview } from '@point-hub/papp'
           ></i>
           <p class="flex-1 text-left">Child 2</p>
         </template>
-        <button class="btn btn-block space-x-4">
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.1</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.2</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.3</p>
-        </button>
+        </component>
       </component>
     </component>
     <component :is="BaseTreeview">
@@ -69,18 +69,18 @@ import { BaseTreeview } from '@point-hub/papp'
           ></i>
           <p class="flex-1 text-left">Child 1</p>
         </template>
-        <button class="btn btn-block space-x-4">
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.1</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.2</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 1.3</p>
-        </button>
+        </component>
       </component>
       <component :is="BaseTreeview">
         <template #header="slotProps">
@@ -92,18 +92,18 @@ import { BaseTreeview } from '@point-hub/papp'
           ></i>
           <p class="flex-1 text-left">Child 2</p>
         </template>
-        <button class="btn btn-block space-x-4">
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.1</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.2</p>
-        </button>
-        <button class="btn btn-block space-x-4">
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
           <base-icon icon="i-far-file-lines" class="w-4 h-4" />
           <p class="flex-1 text-left">Child 2.3</p>
-        </button>
+        </component>
       </component>
     </component>
   </Demo>

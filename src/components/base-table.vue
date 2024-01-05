@@ -7,3 +7,7 @@
     </table>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/table.css');
+</style>

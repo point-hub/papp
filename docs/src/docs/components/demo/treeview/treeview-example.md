@@ -12,70 +12,72 @@ Breadcrumb can have a various separator icon.
 
 ```vue
 <script setup lang="ts">
-import { BaseTreeview } from '@point-hub/papp'
+import { BaseButton, BaseTreeview } from '@point-hub/papp'
 </script>
 
 <template>
-  <component :is="BaseTreeview" title="Parent 1" :is-open="true">
-    <component :is="BaseTreeview" title="Child 1" :is-open="true">
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.1</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.2</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.3</p>
-      </button>
+  <Demo>
+    <component :is="BaseTreeview" title="Parent 1" :is-open="true">
+      <component :is="BaseTreeview" title="Child 1" :is-open="true">
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.1</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.2</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.3</p>
+        </component>
+      </component>
+      <component :is="BaseTreeview" title="Child 2">
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.1</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.2</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.3</p>
+        </component>
+      </component>
     </component>
-    <component :is="BaseTreeview" title="Child 2">
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.1</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.2</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.3</p>
-      </button>
+    <component :is="BaseTreeview" title="Parent 2">
+      <component :is="BaseTreeview" title="Child 1">
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.1</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.2</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 1.3</p>
+        </component>
+      </component>
+      <component :is="BaseTreeview" title="Child 2">
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.1</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.2</p>
+        </component>
+        <component :is="BaseButton" is-block class="space-x-4">
+          <base-icon icon="i-fas-circle" class="w-2 h-2" />
+          <p class="flex-1 text-left">Child 2.3</p>
+        </component>
+      </component>
     </component>
-  </component>
-  <component :is="BaseTreeview" title="Parent 2">
-    <component :is="BaseTreeview" title="Child 1">
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.1</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.2</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 1.3</p>
-      </button>
-    </component>
-    <component :is="BaseTreeview" title="Child 2">
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.1</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.2</p>
-      </button>
-      <button class="btn btn-block space-x-4">
-        <base-icon icon="i-fas-circle" class="w-2 h-2" />
-        <p class="flex-1 text-left">Child 2.3</p>
-      </button>
-    </component>
-  </component>
+  </Demo>
 </template>
 ```
 

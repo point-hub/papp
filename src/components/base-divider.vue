@@ -30,3 +30,7 @@ const props = defineProps<{
     />
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/divider.css');
+</style>

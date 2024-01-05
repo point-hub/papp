@@ -109,6 +109,7 @@ const clearSelect = () => {
 </template>
 
 <style scoped>
+@import url('../assets/css/components/input.css');
 .list-box {
   @apply relative w-full cursor-pointer;
 }

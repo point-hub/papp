@@ -37,3 +37,7 @@ const props = withDefaults(defineProps<Props>(), {
     </transition>
   </Menu>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/dropdown.css');
+</style>

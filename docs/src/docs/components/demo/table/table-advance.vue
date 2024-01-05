@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   BaseAutocomplete,
+  BaseButton,
   BaseCheckbox,
   BaseDivider,
   BaseInput,
@@ -112,10 +113,10 @@ const isCheckedAll = () => {
   <Demo>
     <div class="w-full flex items-center gap-4">
       <div class="w-full flex gap-2">
-        <button class="btn btn-md btn-primary rounded-none gap-1">
+        <component :is="BaseButton" color="primary" border="none" class="gap-1">
           <base-icon icon="i-far-pen-to-square" />
           <span>New</span>
-        </button>
+        </component>
         <component
           :is="BaseInput"
           v-model="searchAll"
@@ -127,9 +128,9 @@ const isCheckedAll = () => {
             <base-icon icon="i-far-magnifying-glass" class="mx-3" />
           </template>
         </component>
-        <button class="btn btn-md btn-info rounded-none" @click="openTableSetting()">
+        <component :is="BaseButton" color="info" class="gap-1">
           <base-icon class="i-far-gear" />
-        </button>
+        </component>
       </div>
     </div>
     <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" size="xl">
@@ -162,9 +163,9 @@ const isCheckedAll = () => {
             description="data per page"
           ></component>
         </div>
-        <button class="btn btn-primary btn-md btn-block rounded-xl" @click="showModal = false">
+        <component :is="BaseButton" color="primary" size="md" is-block @click="showModal = false">
           Close
-        </button>
+        </component>
       </div>
     </component>
     <component :is="BaseTable">

@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { computed, ref, watch } from 'vue'
 
+import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseDatepickerBorderType = 'simple' | 'full' | 'none'
@@ -80,9 +81,15 @@ watch(nativeDate, (newValue) => {
       type="date"
       class="form-input absolute -z-50 text-transparent bg-transparent"
     />
-    <button type="button" class="absolute right-0 top-1 px-4 py-2" @click="onClickDateRef()">
+    <component
+      :is="BaseButton"
+      variant="text"
+      type="button"
+      class="absolute right-0 top-1 px-4 py-2"
+      @click="onClickDateRef()"
+    >
       <base-icon icon="i-far-calendar" />
-    </button>
+    </component>
     <input
       v-model.lazy="value"
       v-input-mask="{ date: true, delimiter: '-', datePattern: ['d', 'm', 'Y'] }"
@@ -102,6 +109,7 @@ watch(nativeDate, (newValue) => {
 </template>
 
 <style scoped>
+@import url('../assets/css/components/input.css');
 input[type='date']::-webkit-inner-spin-button,
 input[type='date']::-webkit-calendar-picker-indicator {
   display: none;

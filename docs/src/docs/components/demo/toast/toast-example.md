@@ -10,24 +10,26 @@
 
 ```vue
 <script setup lang="ts">
-import { BaseToast } from '@point-hub/papp'
+import { BaseButton, BaseToast } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const toastRef = ref()
 </script>
 
 <template>
-  <div>
-    <button
-      class="btn btn-primary btn-md"
+  <Demo is-row>
+    <component
+      :is="BaseButton"
+      color="primary"
       @click="
         toastRef.toast('Primary toast message', { color: 'primary', autoClose: false, timer: 0 })
       "
     >
-      Toast Primary Message
-    </button>
-    <button
-      class="btn btn-secondary btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="secondary"
       @click="
         toastRef.toast('Secondary toast message', {
           color: 'secondary',
@@ -36,48 +38,53 @@ const toastRef = ref()
         })
       "
     >
-      Toast Secondary Message
-    </button>
-    <button
-      class="btn btn-info btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="info"
       @click="toastRef.toast('Info toast message', { color: 'info', autoClose: false, timer: 0 })"
     >
-      Toast Info Message
-    </button>
-    <button
-      class="btn btn-success btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="success"
       @click="
         toastRef.toast('Success toast message', { color: 'success', autoClose: false, timer: 0 })
       "
     >
-      Toast Success Message
-    </button>
-    <button
-      class="btn btn-warning btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="warning"
       @click="
         toastRef.toast('Warning toast message', { color: 'warning', autoClose: false, timer: 0 })
       "
     >
-      Toast Warning Message
-    </button>
-    <button
-      class="btn btn-danger btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="danger"
       @click="
         toastRef.toast('Danger toast message', { color: 'danger', autoClose: false, timer: 0 })
       "
     >
-      Toast Danger Message
-    </button>
-    <button
-      class="btn btn-primary btn-md"
+      Toast Message
+    </component>
+    <component
+      :is="BaseButton"
+      color="primary"
       @click="
         toastRef.toast('Close after 3 second', { color: 'primary', autoClose: true, timer: 3000 })
       "
     >
       Close after 3 second
-    </button>
+    </component>
     <component :is="BaseToast" ref="toastRef" />
-  </div>
+  </Demo>
 </template>
 ```
 

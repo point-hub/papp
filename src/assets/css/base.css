@@ -13,42 +13,19 @@ body {
 
 /* headings */
 h1 {
-  @apply text-2xl font-monserrat;
+  @apply text-2xl font-inter;
 }
 
 h2 {
-  @apply text-xl font-monserrat;
+  @apply text-xl font-inter;
 }
 
 h3 {
-  @apply text-lg font-monserrat;
+  @apply text-lg font-inter;
 }
 
 table input.border-none {
   @apply p-0!;
-}
-
-/* scrollbar */
-.scrollbar-hidden {
-  @apply [scrollbar-width:none]; /* Firefox */
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  @apply hidden;
-}
-
-/* scrollbar */
-::-webkit-scrollbar {
-  @apply w-1 h-1 rounded-lg;
-}
-
-/* handle */
-::-webkit-scrollbar-thumb {
-  @apply bg-blue-500 rounded-lg;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-blue-600;
 }
 
 .scrollbar-hidden {

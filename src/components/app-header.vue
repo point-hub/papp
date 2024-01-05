@@ -27,20 +27,20 @@ const sidebarStore = useSidebarStore()
         </a>
       </div>
       <!-- Right Header -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center">
         <!-- Notification -->
         <component :is="BasePopover" placement="bottom">
           <div>
-            <button type="button" class="flex items-center gap-1 relative">
-              <BaseIcon icon="i-ph-bell-ringing-duotone" class="text-3xl" />
+            <component :is="BaseButton" type="button" class="flex items-center gap-1 relative">
+              <BaseIcon icon="i-ph-bell-ringing-duotone" class="text-4xl" />
               <!-- ping -->
-              <span class="absolute -right-px -top-4px h-2 w-2 flex items-center justify-center">
+              <span class="absolute -mt-8 -mr-8 h-2 w-2 flex items-center justify-center">
                 <span
                   class="absolute h-full w-full inline-flex animate-ping rounded-full bg-red-400 opacity-80"
                 />
                 <span class="h-2 w-2 inline-flex rounded-full bg-red-400" />
               </span>
-            </button>
+            </component>
           </div>
           <template #content>
             <div class="popper-root">
@@ -136,8 +136,8 @@ const sidebarStore = useSidebarStore()
           <div>
             <button type="button" class="flex items-center gap-1">
               <component
-                class="h-10 w-10"
                 :is="BaseAvatar"
+                size="xs"
                 src="https://via.placeholder.com/150"
                 shape="squircle"
                 name="John Doe"
@@ -153,6 +153,7 @@ const sidebarStore = useSidebarStore()
               <component
                 :is="BaseButton"
                 variant="text"
+                color="primary"
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
@@ -162,6 +163,7 @@ const sidebarStore = useSidebarStore()
               <component
                 :is="BaseButton"
                 variant="text"
+                color="primary"
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
@@ -171,6 +173,7 @@ const sidebarStore = useSidebarStore()
               <component
                 :is="BaseButton"
                 variant="text"
+                color="primary"
                 size="sm"
                 @click="toggleDarkMode()"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
@@ -198,6 +201,7 @@ const sidebarStore = useSidebarStore()
 </template>
 
 <style scoped lang="postcss">
+@import url('../assets/css/components/popper.css');
 nav.header {
   @apply fixed top-0 flex w-full h-60px max-h-60px z-10 px-4 bg-white dark:bg-slate-900 shadow transition-all;
 }

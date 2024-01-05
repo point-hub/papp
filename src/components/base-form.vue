@@ -65,3 +65,7 @@ const props = withDefaults(defineProps<Props>(), {
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/input.css');
+</style>

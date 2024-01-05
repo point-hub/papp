@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BasePopover } from '@point-hub/papp'
+import { BaseButton, BasePopover } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const activeTab = ref('all')
@@ -8,7 +8,7 @@ const activeTab = ref('all')
 <template>
   <Demo>
     <component :is="BasePopover" placement="bottom-start">
-      <button class="btn btn-primary btn-md">Trigger element</button>
+      <component :is="BaseButton" size="md" color="primary">Trigger element</component>
       <template #content>
         <div class="popper-root">
           <div
@@ -18,42 +18,48 @@ const activeTab = ref('all')
               <div class="flex items-center space-x-2">
                 <h3 class="font-medium text-slate-700 dark:text-slate-100">Notifications</h3>
                 <div
-                  class="badge bg-primary/10 text-primary dark:bg-slate/15 dark:text-slate h-5 rounded-full px-1.5"
+                  class="badge bg-primary/10 text-primary dark:bg-slate/15 dark:text-slate h-5 rounded-full px-1.5 text-sm"
                 >
                   26
                 </div>
               </div>
 
-              <button
-                class="btn h-7 w-7 rounded-full p-0 -mr-1.5 active:bg-slate-300/25 focus:bg-slate-300/20 hover:bg-slate-300/20 dark:active:bg-slate-300/25 dark:focus:bg-slate-300/20 dark:hover:bg-slate-300/20"
+              <component
+                :is="BaseButton"
+                variant="text"
+                class="h-7 w-7 rounded-full p-0 -mr-1.5 active:bg-slate-300/25 focus:bg-slate-300/20 hover:bg-slate-300/20 dark:active:bg-slate-300/25 dark:focus:bg-slate-300/20 dark:hover:bg-slate-300/20"
               >
                 <base-icon icon="i-far-maximize" />
-              </button>
+              </component>
             </div>
 
             <div class="scrollbar-hidden flex shrink-0 overflow-x-auto px-3 text-sm">
-              <button
+              <component
+                :is="BaseButton"
+                variant="text"
                 :class="
                   activeTab === 'all'
                     ? 'border-primary dark:border-accent dark:text-white font-bold'
                     : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
                 "
-                class="btn shrink-0 border-b-2 rounded-none px-3.5 py-1"
+                class="shrink-0 border-b-2 rounded-none px-3.5 py-1"
                 @click="activeTab = 'all'"
               >
                 <span>All</span>
-              </button>
-              <button
+              </component>
+              <component
+                :is="BaseButton"
+                variant="text"
                 :class="
                   activeTab === 'logs'
                     ? 'border-primary dark:border-accent dark:text-white font-bold'
                     : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
                 "
-                class="btn shrink-0 border-b-2 rounded-none px-3.5 py-1"
+                class="shrink-0 border-b-2 rounded-none px-3.5 py-1"
                 @click="activeTab = 'logs'"
               >
                 <span>Logs</span>
-              </button>
+              </component>
             </div>
           </div>
 
@@ -104,3 +110,9 @@ const activeTab = ref('all')
     </component>
   </Demo>
 </template>
+
+<style scoped>
+.popper-root {
+  @apply border-slate-100 shadow dark:shadow-dark mx-4 mt-1 max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] flex flex-col border rounded-lg bg-white sm:m-0 sm:w-80 dark:border-slate-800 dark:bg-slate-700;
+}
+</style>

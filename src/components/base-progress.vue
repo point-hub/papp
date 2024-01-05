@@ -67,3 +67,7 @@ const value = computed({
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/progress.css');
+</style>

@@ -19,3 +19,7 @@ withDefaults(
     </div>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/card.css');
+</style>

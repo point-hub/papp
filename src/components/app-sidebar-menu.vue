@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useSidebarStore } from '../index'
+import { BaseButton, useSidebarStore } from '../index'
 
 const props = defineProps<{
   isMobile: boolean
@@ -57,11 +57,16 @@ const pathHandler = (path: string) => {
       <!-- Sidebar Panel Header -->
       <div class="sidebar-menu-header">
         <p class="text-base font-extrabold tracking-wider text-slate-100">{{ title }}</p>
-        <button @click="sidebarStore.closeSidebar()" v-if="isMobile" class="mr-2">
+        <component
+          :is="BaseButton"
+          @click="sidebarStore.closeSidebar()"
+          v-if="isMobile"
+          class="mr-2"
+        >
           <div v-if="sidebarStore.isSidebarOpen">
             <base-icon icon="i-fas-angle-left" class="text-white" />
           </div>
-        </button>
+        </component>
       </div>
       <!-- Sidebar Panel Body -->
       <div class="sidebar-menu-body">

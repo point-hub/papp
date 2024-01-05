@@ -32,3 +32,7 @@ classes.push(`spinner-${props.size}`)
 <template>
   <span :class="classes" />
 </template>
+
+<style scoped>
+@import url('../assets/css/components/spinner.css');
+</style>

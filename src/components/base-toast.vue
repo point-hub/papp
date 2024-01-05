@@ -2,6 +2,8 @@
 import { v4 as uuidv4 } from 'uuid'
 import { ref } from 'vue'
 
+import BaseButton from './base-button.vue'
+
 export type BaseToastColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
 
 export interface Options {
@@ -65,11 +67,21 @@ defineExpose({ toast, remove })
           <div class="ms-3 text-sm">
             {{ data.message }}
           </div>
-          <button type="button" @click="remove(data.id)" class="toast-close-button">
+          <component
+            :is="BaseButton"
+            type="button"
+            @click="remove(data.id)"
+            variant="text"
+            class="toast-close-button"
+          >
             <base-icon icon="i-fas-xmark" class="w-4 h-4" />
-          </button>
+          </component>
         </div>
       </slot>
     </template>
   </div>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/toast.css');
+</style>
