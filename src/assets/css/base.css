@@ -13,15 +13,15 @@ body {
 
 /* headings */
 h1 {
-  @apply text-2xl font-inter;
+  @apply text-2xl;
 }
 
 h2 {
-  @apply text-xl font-inter;
+  @apply text-xl;
 }
 
 h3 {
-  @apply text-lg font-inter;
+  @apply text-lg;
 }
 
 table input.border-none {
