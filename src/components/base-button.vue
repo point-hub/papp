@@ -10,9 +10,11 @@ export type BaseButtonColorType =
 export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
 export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonType = 'submit' | 'button' | 'reset'
 
 const props = withDefaults(
   defineProps<{
+    type?: BaseButtonType
     size?: BaseButtonSizeType
     color?: BaseButtonColorType
     variant?: BaseButtonVariantType
@@ -21,6 +23,7 @@ const props = withDefaults(
     isLoading?: boolean
   }>(),
   {
+    type: 'button',
     size: 'md',
     color: 'none',
     shape: 'round',
@@ -71,7 +74,7 @@ classes.push(`btn-${props.size}`)
 </script>
 
 <template>
-  <button class="btn" :class="classes">
+  <button class="btn" :type="type" :class="classes">
     <!-- Render Button Content -->
     <slot></slot>
     <!-- :Loading Spinner -->

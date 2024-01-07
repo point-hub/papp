@@ -69,12 +69,14 @@ export type BaseButtonColorType =
 export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
 export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonType = 'submit' | 'button' | 'reset'
 ```
 
 ### Props
 
 | Name      | Type                  | Default   | Description                                  |
 | --------- | --------------------- | --------- | -------------------------------------------- |
+| type      | BaseButtonType        | `button`  | Button type.                                 |
 | variant   | BaseButtonVariantType | `fill`    | Button variant.                              |
 | color     | BaseButtonColorType   | `primary` | Button color.                                |
 | shape     | BaseButtonShapeType   | `round`   | Button shape.                                |
