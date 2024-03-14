@@ -25,7 +25,12 @@ const value = computed({
   get: () => props.modelValue
 })
 
-const totalPage = Math.ceil(props.totalDocument / props.pageSize)
+const totalPage = computed({
+  set: () => {},
+  get: () => {
+    return Math.ceil(props.totalDocument / props.pageSize)
+  }
+})
 
 const onClickPage = (page: number) => {
   value.value = page
@@ -40,11 +45,11 @@ const onClickPrev = () => {
 }
 
 const onClickNext = () => {
-  if (value.value < totalPage) value.value += 1
+  if (value.value < totalPage.value) value.value += 1
 }
 
 const onClickLast = () => {
-  value.value = totalPage
+  value.value = totalPage.value
 }
 
 const isShowPageButton = (i: number) => {
@@ -73,8 +78,8 @@ const isShowPageButton = (i: number) => {
 
   // x x x o x
   if (
-    i > totalPage - props.maxButton &&
-    value.value > totalPage - Math.floor(props.maxButton / 2)
+    i > totalPage.value - props.maxButton &&
+    value.value > totalPage.value - Math.floor(props.maxButton / 2)
   ) {
     return true
   }
