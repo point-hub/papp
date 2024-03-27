@@ -2,6 +2,7 @@
 import {
   BaseAvatar,
   BaseButton,
+  BaseDivider,
   BasePopover,
   BaseTab,
   BaseTabGroup,
@@ -25,23 +26,27 @@ const sidebarStore = useSidebarStore()
           <i v-if="!sidebarStore.isSidebarOpen" class="block w-6 h-6 i-far-bars"></i>
           <i v-else class="block w-6 h-6 i-far-xmark"></i>
         </a>
+        <div>
+          <p class="line-clamp-2">App Name</p>
+        </div>
       </div>
       <!-- Right Header -->
       <div class="flex items-center">
+        <component :is="BaseButton" type="button" size="xs">
+          <BaseIcon icon="i-ph-info" class="w-6 h-6" />
+        </component>
         <!-- Notification -->
         <component :is="BasePopover" placement="bottom">
-          <div>
-            <component :is="BaseButton" type="button" class="flex items-center gap-1 relative">
-              <BaseIcon icon="i-ph-bell-ringing-duotone" class="text-4xl" />
-              <!-- ping -->
-              <span class="absolute -mt-8 -mr-8 h-2 w-2 flex items-center justify-center">
-                <span
-                  class="absolute h-full w-full inline-flex animate-ping rounded-full bg-red-400 opacity-80"
-                />
-                <span class="h-2 w-2 inline-flex rounded-full bg-red-400" />
-              </span>
-            </component>
-          </div>
+          <component :is="BaseButton" type="button" size="xs">
+            <BaseIcon icon="i-ph-bell-ringing" class="w-6 h-6" />
+            <!-- ping -->
+            <span class="absolute -mt-6 -mr-6 h-2 w-2 flex items-center justify-center">
+              <span
+                class="absolute h-full w-full inline-flex animate-ping rounded-full bg-red-400 opacity-80"
+              />
+              <span class="h-2 w-2 inline-flex rounded-full bg-red-400" />
+            </span>
+          </component>
           <template #content>
             <div class="popper-root">
               <BaseTabGroup as="div" class="bg-slate-100 dark:bg-slate-800">
@@ -131,23 +136,22 @@ const sidebarStore = useSidebarStore()
             </div>
           </template>
         </component>
+        <component :is="BaseDivider" class="h-10" orientation="horizontal" />
         <!-- User -->
-        <component :is="BasePopover" placement="bottom-start">
-          <div>
-            <button type="button" class="flex items-center gap-1">
-              <component
-                :is="BaseAvatar"
-                size="xs"
-                src="https://via.placeholder.com/150"
-                shape="squircle"
-                name="John Doe"
-              />
-              <div class="flex flex-col justify-center items-start">
-                <p class="text-sm font-semibold">Organization Name</p>
-                <p class="text-sm">User Name</p>
-              </div>
-            </button>
-          </div>
+        <component :is="BasePopover" placement="bottom-end">
+          <button type="button" class="flex gap-2">
+            <div class="hidden lg:flex flex-col justify-center items-end">
+              <p class="text-sm truncate font-semibold">Organization Name</p>
+              <p class="text-sm truncate">Username</p>
+            </div>
+            <component
+              :is="BaseAvatar"
+              size="xs"
+              src="https://via.placeholder.com/150"
+              shape="squircle"
+              name="John Doe"
+            />
+          </button>
           <template #content>
             <div class="popper-root p-2">
               <component
@@ -157,9 +161,19 @@ const sidebarStore = useSidebarStore()
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
-                <BaseIcon icon="i-ph-user-circle-gear-duotone" class="text-2xl" />
-                <p>My Account</p>
+                <component
+                  :is="BaseAvatar"
+                  size="xs"
+                  src="https://via.placeholder.com/150"
+                  shape="squircle"
+                  name="John Doe"
+                />
+                <div class="flex flex-col justify-center items-start text-left text-sm">
+                  <p class="font-semibold line-clamp-2">Organization Name</p>
+                  <p class="line-clamp-2">Username</p>
+                </div>
               </component>
+              <component :is="BaseDivider" orientation="vertical" />
               <component
                 :is="BaseButton"
                 variant="text"
