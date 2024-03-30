@@ -1,16 +1,20 @@
 <script setup lang="ts">
+export type BaseCardShapeType = 'sharp' | 'round'
+
 withDefaults(
   defineProps<{
     shadow?: boolean
+    shape?: BaseCardShapeType
   }>(),
   {
-    shadow: true
+    shadow: true,
+    shape: 'round'
   }
 )
 </script>
 
 <template>
-  <div class="card" :class="{ 'card-shadow ': shadow }">
+  <div class="card" :class="{ 'card-shadow ': shadow, 'card-sharp': shape === 'sharp' }">
     <div class="card-header">
       <h1>
         <slot name="header"></slot>

@@ -3,7 +3,8 @@ outline: deep
 ---
 
 <script setup lang="ts">
-import CardDemo from './demo/card/card-demo.vue'
+import CardShadow from './demo/card/card-shadow.vue'
+import CardShape from './demo/card/card-shape.vue'
 </script>
 
 # Card
@@ -12,15 +13,22 @@ Use these responsive card components to show data entries and information to you
 
 ## Examples
 
-<!--@include: ./demo/card/card-demo.md-->
+### Shadow
+
+<!--@include: ./demo/card/card-shadow.md-->
+
+### Shape
+
+<!--@include: ./demo/card/card-shape.md-->
 
 ## Card API
 
 ### Props
 
-| Name   | Type    | Default | Description  |
-| ------ | ------- | ------- | ------------ |
-| shadow | boolean | true    | Card Shadow. |
+| Name   | Type              | Default   | Description  |
+| ------ | ----------------- | --------- | ------------ |
+| shadow | boolean           | true      | Card Shadow. |
+| shape  | `rounded` `sharp` | `rounded` | Card Shape.  |
 
 ### Slot
 
