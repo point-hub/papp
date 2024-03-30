@@ -40,6 +40,7 @@ export { default as BaseDivider, type BaseDividerOrientation } from './component
 export { default as BaseDropdown, type BaseDropdownPosition } from './components/base-dropdown.vue'
 export { default as BaseDropdownItem } from './components/base-dropdown-item.vue'
 export { default as BaseIcon } from './components/base-icon.vue'
+export { default as BaseLink } from './components/base-link.vue'
 export { default as BaseMask, type BaseMaskShapeType } from './components/base-mask.vue'
 export { default as BaseModal, type BaseModalSizeType } from './components/base-modal.vue'
 export { default as BasePagination } from './components/base-pagination.vue'
