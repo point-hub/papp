@@ -4,14 +4,14 @@ import { BaseButton } from '@point-hub/papp'
 
 <template>
   <Demo is-row>
-    <component :is="BaseButton">
+    <component :is="BaseButton" color="primary">
       <base-icon icon="i-fad-books" />
     </component>
-    <component :is="BaseButton" variant="outline" shape="pill">
+    <component :is="BaseButton" color="primary" variant="outlined" shape="pill">
       <base-icon icon="i-fad-books" />
     </component>
-    <component :is="BaseButton"><base-icon icon="i-fad-books" /> Button</component>
-    <component :is="BaseButton" variant="outline">
+    <component :is="BaseButton" color="primary"><base-icon icon="i-fad-books" /> Button</component>
+    <component :is="BaseButton" color="primary" variant="outlined">
       Button <base-icon icon="i-fad-books" />
     </component>
   </Demo>

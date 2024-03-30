@@ -4,8 +4,8 @@ import { BaseButton } from '@point-hub/papp'
 
 <template>
   <Demo is-row>
-    <component :is="BaseButton" shape="sharp">Sharp</component>
-    <component :is="BaseButton" shape="round">Round</component>
-    <component :is="BaseButton" shape="pill">Pill Button</component>
+    <component :is="BaseButton" color="primary" shape="sharp">Sharp</component>
+    <component :is="BaseButton" color="primary" shape="rounded">Rounded</component>
+    <component :is="BaseButton" color="primary" shape="pill">Pill Button</component>
   </Demo>
 </template>

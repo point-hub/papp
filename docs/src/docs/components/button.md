@@ -66,8 +66,8 @@ export type BaseButtonColorType =
   | 'success'
   | 'warning'
   | 'danger'
-export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
-export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
+export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
+export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
 export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type BaseButtonType = 'submit' | 'button' | 'reset'
 ```
@@ -77,9 +77,9 @@ export type BaseButtonType = 'submit' | 'button' | 'reset'
 | Name      | Type                  | Default   | Description                                  |
 | --------- | --------------------- | --------- | -------------------------------------------- |
 | type      | BaseButtonType        | `button`  | Button type.                                 |
-| variant   | BaseButtonVariantType | `fill`    | Button variant.                              |
+| variant   | BaseButtonVariantType | `filled`  | Button variant.                              |
 | color     | BaseButtonColorType   | `primary` | Button color.                                |
-| shape     | BaseButtonShapeType   | `round`   | Button shape.                                |
+| shape     | BaseButtonShapeType   | `rounded` | Button shape.                                |
 | size      | BaseButtonSizeType    | `md`      | Button size.                                 |
 | isBlock   | boolean               | false     | Block button with full width.                |
 | isLoading | boolean               | false     | Add spinner loading indicator inside button. |

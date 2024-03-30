@@ -24,16 +24,40 @@ const toggleLoading = () => {
 
 <template>
   <div>
-    <component :is="BaseButton" @click="toggleLoading()" :isLoading="isLoading" variant="fill">
-      Fill Button
+    <component
+      :is="BaseButton"
+      @click="toggleLoading()"
+      :isLoading="isLoading"
+      color="primary"
+      variant="filled"
+    >
+      Filled Button
     </component>
-    <component :is="BaseButton" @click="toggleLoading()" :isLoading="isLoading" variant="light">
+    <component
+      :is="BaseButton"
+      @click="toggleLoading()"
+      :isLoading="isLoading"
+      color="primary"
+      variant="light"
+    >
       Light Button
     </component>
-    <component :is="BaseButton" @click="toggleLoading()" :isLoading="isLoading" variant="outline">
-      Outline Button
+    <component
+      :is="BaseButton"
+      @click="toggleLoading()"
+      :isLoading="isLoading"
+      color="primary"
+      variant="outlined"
+    >
+      Outlined Button
     </component>
-    <component :is="BaseButton" @click="toggleLoading()" :isLoading="isLoading" variant="text">
+    <component
+      :is="BaseButton"
+      @click="toggleLoading()"
+      :isLoading="isLoading"
+      color="primary"
+      variant="text"
+    >
       Text Button
     </component>
   </div>

@@ -7,8 +7,8 @@ export type BaseButtonColorType =
   | 'success'
   | 'warning'
   | 'danger'
-export type BaseButtonVariantType = 'fill' | 'light' | 'outline' | 'text'
-export type BaseButtonShapeType = 'sharp' | 'round' | 'pill'
+export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
+export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
 export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type BaseButtonType = 'submit' | 'button' | 'reset'
 
@@ -26,8 +26,8 @@ const props = withDefaults(
     type: 'button',
     size: 'md',
     color: 'none',
-    shape: 'round',
-    variant: 'fill',
+    shape: 'rounded',
+    variant: 'filled',
     isBlock: false,
     isLoading: false
   }
@@ -37,13 +37,13 @@ const classes: string[] = []
 
 // Button Variant
 let buttonColor = ''
-if (props.variant === 'fill') {
+if (props.variant === 'filled') {
   buttonColor = `btn-${props.color}`
 }
 if (props.variant === 'light') {
   buttonColor = `btn-light-${props.color}`
 }
-if (props.variant === 'outline') {
+if (props.variant === 'outlined') {
   buttonColor = `btn-outline-${props.color}`
 }
 if (props.variant === 'text') {
@@ -56,7 +56,7 @@ let buttonShape = ''
 if (props.shape === 'sharp') {
   buttonShape = 'rounded-none'
 }
-if (props.shape === 'round') {
+if (props.shape === 'rounded') {
   buttonShape = 'rounded-lg'
 }
 if (props.shape === 'pill') {
@@ -79,16 +79,17 @@ classes.push(`btn-${props.size}`)
     <slot></slot>
     <!-- :Loading Spinner -->
     <span
-      v-if="isLoading && (variant === 'text' || variant === 'outline')"
+      v-if="isLoading && (variant === 'text' || variant === 'outlined')"
       class="spinner spinner-black spinner-xs"
     />
     <span
-      v-if="isLoading && (variant === 'fill' || variant === 'light')"
+      v-if="isLoading && (variant === 'filled' || variant === 'light')"
       class="spinner spinner-white spinner-xs"
     />
   </button>
 </template>
 
 <style scoped>
+@import url('../assets/css/components/spinner.css');
 @import url('../assets/css/components/button.css');
 </style>

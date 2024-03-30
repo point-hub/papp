@@ -1,4 +1,4 @@
-Buttons can have `fill`, `outline`, `light` and `text` variant.
+Buttons can have `filled`, `outlined`, `light` and `text` variant.
 
 ::: raw
 
@@ -17,10 +17,10 @@ import { BaseButton } from '@point-hub/papp'
 
 <template>
   <div>
-    <component :is="BaseButton" variant="fill">Fill</component>
-    <component :is="BaseButton" variant="outline">Outline</component>
-    <component :is="BaseButton" variant="light">Light</component>
-    <component :is="BaseButton" variant="text">Text</component>
+    <component :is="BaseButton" color="primary" variant="filled">Filled</component>
+    <component :is="BaseButton" color="primary" variant="outlined">Outlined</component>
+    <component :is="BaseButton" color="primary" variant="light">Light</component>
+    <component :is="BaseButton" color="primary" variant="text">Text</component>
   </div>
 </template>
 ```

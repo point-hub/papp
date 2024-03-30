@@ -4,11 +4,11 @@ import { BaseButton } from '@point-hub/papp'
 
 <template>
   <Demo is-row>
-    <component :is="BaseButton" variant="outline" color="primary">Primary</component>
-    <component :is="BaseButton" variant="outline" color="secondary">Secondary</component>
-    <component :is="BaseButton" variant="outline" color="info">Info</component>
-    <component :is="BaseButton" variant="outline" color="success">Success</component>
-    <component :is="BaseButton" variant="outline" color="warning">Warning</component>
-    <component :is="BaseButton" variant="outline" color="danger">Danger</component>
+    <component :is="BaseButton" variant="outlined" color="primary">Primary</component>
+    <component :is="BaseButton" variant="outlined" color="secondary">Secondary</component>
+    <component :is="BaseButton" variant="outlined" color="info">Info</component>
+    <component :is="BaseButton" variant="outlined" color="success">Success</component>
+    <component :is="BaseButton" variant="outlined" color="warning">Warning</component>
+    <component :is="BaseButton" variant="outlined" color="danger">Danger</component>
   </Demo>
 </template>
