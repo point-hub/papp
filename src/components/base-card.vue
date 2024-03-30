@@ -12,7 +12,9 @@ withDefaults(
 <template>
   <div class="card" :class="{ 'card-shadow ': shadow }">
     <div class="card-header">
-      <slot name="header"></slot>
+      <h1>
+        <slot name="header"></slot>
+      </h1>
     </div>
     <div class="card-body">
       <slot></slot>
