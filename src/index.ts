@@ -118,6 +118,7 @@ export {
 } from './components/base-textarea.vue'
 
 // Global Plugin
+export { default as PluginBaseComponents } from './plugins/base'
 export { default as PluginIcon } from './plugins/icon'
 export { default as PluginInputMask } from './plugins/input-mask'
 export { default as PluginTooltip } from './plugins/tooltip'
