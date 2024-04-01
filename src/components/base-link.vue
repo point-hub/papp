@@ -10,12 +10,10 @@ export type BaseButtonColorType =
 export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
 export type BaseButtonSizeType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-export type BaseButtonType = 'submit' | 'button' | 'reset'
 
 const props = withDefaults(
   defineProps<{
     href: string
-    type?: BaseButtonType
     size?: BaseButtonSizeType
     color?: BaseButtonColorType
     variant?: BaseButtonVariantType
@@ -23,7 +21,6 @@ const props = withDefaults(
     isBlock?: boolean
   }>(),
   {
-    type: 'button',
     size: 'md',
     color: 'none',
     shape: 'rounded',
@@ -75,7 +72,7 @@ if (props.size !== 'none') {
 </script>
 
 <template>
-  <a :href="props.href" class="btn" :type="type" :class="classes">
+  <a :href="props.href" class="btn" :class="classes">
     <!-- Render Link Content -->
     <slot></slot>
   </a>
