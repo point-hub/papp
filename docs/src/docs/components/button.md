@@ -68,7 +68,7 @@ export type BaseButtonColorType =
   | 'danger'
 export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
-export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonSizeType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type BaseButtonType = 'submit' | 'button' | 'reset'
 ```
 

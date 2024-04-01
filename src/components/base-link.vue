@@ -9,7 +9,7 @@ export type BaseButtonColorType =
   | 'danger'
 export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
-export type BaseButtonSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonSizeType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type BaseButtonType = 'submit' | 'button' | 'reset'
 
 const props = withDefaults(
@@ -69,7 +69,9 @@ if (props.isBlock) {
 }
 
 // Button Size
-classes.push(`btn-${props.size}`)
+if (props.size !== 'none') {
+  classes.push(`btn-${props.size}`)
+}
 </script>
 
 <template>
