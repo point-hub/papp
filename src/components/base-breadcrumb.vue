@@ -19,7 +19,7 @@ const props = withDefaults(
 <template>
   <ul class="breadcrumb-ul">
     <li v-for="(item, index) in props.items" :key="index" class="breadcrumb-li">
-      <span :class="{ 'breadcrumb-link': item.path }">
+      <span class="whitespace-nowrap" :class="{ 'breadcrumb-link': item.path }">
         <slot :index="index" :item="item"></slot>
       </span>
       <i

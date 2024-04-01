@@ -1,5 +1,5 @@
 .breadcrumb-ul {
-  @apply scrollbar-hidden flex items-center gap-2 overflow-x-auto text-sm text-slate-600;
+  @apply scrollbar-hidden flex items-center gap-2 overflow-x-auto text-sm text-slate-600 pb-2;
 }
 
 .breadcrumb-li {
@@ -15,5 +15,5 @@
 }
 
 .breadcrumb-link {
-  @apply text-blue-600 cursor-pointer;
+  @apply text-blue-600 cursor-pointer whitespace-nowrap;
 }
