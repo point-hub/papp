@@ -19,7 +19,9 @@ const props = withDefaults(
 <template>
   <ul class="breadcrumb-ul">
     <li v-for="(item, index) in props.items" :key="index" class="breadcrumb-li">
-      <slot :index="index" :item="item"></slot>
+      <span :class="{ 'breadcrumb-link': item.path }">
+        <slot :index="index" :item="item"></slot>
+      </span>
       <i
         v-if="index + 1 < props.items.length"
         class="block breadcrumb-separator"
