@@ -16,17 +16,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <Menu as="div" class="dropdown-menu">
-    <div>
-      <MenuButton>
-        <slot name="trigger">
-          <div class="dropdown-trigger-button">
-            <span>{{ text }}</span>
-            <base-icon icon="i-far-angle-down" />
-          </div>
-        </slot>
-      </MenuButton>
-    </div>
-
+    <MenuButton>
+      <slot name="trigger">
+        <div class="dropdown-trigger-button">
+          <span>{{ text }}</span>
+          <base-icon icon="i-far-angle-down" />
+        </div>
+      </slot>
+    </MenuButton>
     <transition>
       <MenuItems
         class="dropdown-items"

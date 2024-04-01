@@ -1,5 +1,5 @@
 .dropdown-menu {
-  @apply relative inline-block text-left;
+  @apply inline-block text-left;
 }
 
 .dropdown-trigger-button {
