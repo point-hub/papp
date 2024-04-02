@@ -67,7 +67,9 @@ let filtered = computed(() =>
 )
 
 const onClear = () => {
-  if (!props.disabled) selected.value = null
+  if (!props.disabled) {
+    selected.value = { label: '' }
+  }
 }
 </script>
 
@@ -100,17 +102,18 @@ const onClear = () => {
             @change="query = $event.target.value"
           />
           <ComboboxButton
-            v-if="Object.keys(selected ?? {}).length === 0"
-            class="absolute inset-y-0 right-0 flex items-center pr-2"
+            v-if="selected?.label === ''"
+            class="absolute inset-y-0 right-0 flex items-center"
           >
             <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
           <component
             :is="BaseButton"
+            size="none"
             variant="text"
             type="button"
-            v-if="Object.keys(selected ?? {}).length > 0"
-            class="absolute inset-y-0 right-0 flex items-center pr-2"
+            v-if="selected?.label !== ''"
+            class="absolute inset-y-0 right-0 flex items-center"
             @click="onClear()"
           >
             <base-icon icon="i-far-xmark" />
