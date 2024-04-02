@@ -53,8 +53,10 @@ const value = computed({
  * https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/showPicker
  */
 const dateRef = ref()
+
 const onClickDateRef = () => {
   if (!props.disabled) {
+    dateRef.value.focus()
     dateRef.value.showPicker()
   }
 }
@@ -62,6 +64,7 @@ const nativeDate = ref()
 
 watch(nativeDate, (newValue) => {
   value.value = dayjs(new Date(newValue)).format('DD-MM-YYYY')
+  dateRef.value.blur()
 })
 </script>
 
