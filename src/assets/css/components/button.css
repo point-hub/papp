@@ -62,7 +62,7 @@
   @apply hover:bg-secondary/80 hover:text-white;
 }
 .btn-outline-secondary {
-  @apply border border-secondary text-secondary;
+  @apply border border-secondary/100 text-secondary;
   @apply hover:bg-secondary/80 hover:text-white;
 }
 .btn-text-secondary {
