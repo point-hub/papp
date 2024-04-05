@@ -86,3 +86,7 @@ const resize = () => {
     ></textarea>
   </component>
 </template>
+
+<style scoped>
+@import url('../assets/css/components/input.css');
+</style>
