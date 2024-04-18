@@ -22,12 +22,9 @@ const toast = (message: string, options?: Options) => {
     color: options?.color ?? 'primary'
   })
   if (options?.autoClose ?? true) {
-    setTimeout(
-      () => {
-        remove(id)
-      },
-      options?.timer ?? 3000
-    )
+    setTimeout(() => {
+      remove(id)
+    }, options?.timer ?? 3000)
   }
 }
 
