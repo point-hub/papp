@@ -128,7 +128,7 @@ const isCheckedAll = () => {
             <base-icon icon="i-far-magnifying-glass" class="mx-3" />
           </template>
         </component>
-        <component :is="BaseButton" color="info" class="gap-1">
+        <component :is="BaseButton" color="info" class="gap-1" @click="openTableSetting">
           <base-icon class="i-far-gear" />
         </component>
       </div>
@@ -180,7 +180,11 @@ const isCheckedAll = () => {
               placeholder="Search"
               border="none"
               class="font-normal text-slate-800 dark:text-slate-400"
-            ></component>
+            >
+              <template #prefix>
+                <base-icon icon="i-far-magnifying-glass mr-1"></base-icon>
+              </template>
+            </component>
           </th>
           <th v-if="columns[2].isShow" class="basic-table-head">
             <component
