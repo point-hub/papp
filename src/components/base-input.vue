@@ -45,12 +45,19 @@ const suffixRef = ref()
 const paddingLeft = ref(0)
 const paddingRight = ref(0)
 onMounted(() => {
-  paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
-  paddingRight.value = suffixRef.value.clientWidth === 0 ? 10 : suffixRef.value.clientWidth
-
-  setTimeout(() => {
+  if (props.border === 'full' || prefixRef.value.clientWidth) {
     paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
+  }
+  if (props.border === 'full' || suffixRef.value.clientWidth) {
     paddingRight.value = suffixRef.value.clientWidth === 0 ? 10 : suffixRef.value.clientWidth
+  }
+  setTimeout(() => {
+    if (props.border === 'full' || prefixRef.value.clientWidth) {
+      paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
+    }
+    if (props.border === 'full' || suffixRef.value.clientWidth) {
+      paddingRight.value = suffixRef.value.clientWidth === 0 ? 10 : suffixRef.value.clientWidth
+    }
   }, 1000)
 })
 </script>

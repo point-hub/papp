@@ -66,9 +66,9 @@ const value = computed({
       ref="inputRef"
       class="form-input"
       :class="{
-        'border-simple': border === 'simple',
+        'border-simple px-0!': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none',
+        'border-none px-0!': border === 'none',
         'input-disabled': disabled
       }"
       v-model="value"

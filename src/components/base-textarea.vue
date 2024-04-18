@@ -72,9 +72,9 @@ const resize = () => {
       :disabled="disabled"
       class="form-input resize-none px-2"
       :class="{
-        'border-simple': border === 'simple',
+        'border-simple px-0!': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none',
+        'border-none px-0!': border === 'none',
         'input-disabled': disabled
       }"
       :style="{

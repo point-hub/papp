@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { numberFormat } from '@point-hub/express-utils'
 import {
   BaseAutocomplete,
   BaseButton,
   BaseCheckbox,
   BaseDivider,
   BaseInput,
+  BaseInputNumber,
   BaseModal,
   BasePagination,
   BaseTable
@@ -20,6 +22,7 @@ const options = [
 
 const selected = ref()
 const searchAll = ref('')
+const searchNumber = ref()
 const search = ref<string[]>([])
 
 // Table Data
@@ -27,14 +30,14 @@ interface UserInterface {
   id: number
   name: string
   job: string
-  favoriteColor: string
+  salary: number
   checked?: boolean
 }
 
 const users = ref<UserInterface[]>([
-  { id: 1, name: 'Cy Ganderton', job: 'Quality Control Specialist', favoriteColor: 'Blue' },
-  { id: 2, name: 'Hart Hagerty', job: 'Desktop Support Technician', favoriteColor: 'Purple' },
-  { id: 3, name: 'Brice Swyre', job: 'Tax Accountant', favoriteColor: 'Red' }
+  { id: 1, name: 'Cy Ganderton', job: 'Quality Control Specialist', salary: 100000 },
+  { id: 2, name: 'Hart Hagerty', job: 'Desktop Support Technician', salary: 125000 },
+  { id: 3, name: 'Brice Swyre', job: 'Tax Accountant', salary: 220000 }
 ])
 
 // Section Pagination
@@ -67,7 +70,7 @@ const columns = ref([
     isEditable: true
   },
   {
-    name: 'Favorite Color',
+    name: 'Salary',
     isShow: true,
     isEditable: true
   }
@@ -180,11 +183,7 @@ const isCheckedAll = () => {
               placeholder="Search"
               border="none"
               class="font-normal text-slate-800 dark:text-slate-400"
-            >
-              <template #prefix>
-                <base-icon icon="i-far-magnifying-glass mr-1"></base-icon>
-              </template>
-            </component>
+            />
           </th>
           <th v-if="columns[2].isShow" class="basic-table-head">
             <component
@@ -194,17 +193,17 @@ const isCheckedAll = () => {
               :options="options"
               placeholder="Search"
               border="none"
-            ></component>
+            />
           </th>
           <th v-if="columns[3].isShow" class="basic-table-head">
             <component
-              :is="BaseInput"
+              :is="BaseInputNumber"
               required
-              v-model="search[0]"
+              v-model="searchNumber"
               placeholder="Search"
               border="none"
               class="font-light text-slate-800 dark:text-slate-400"
-            ></component>
+            />
           </th>
         </tr>
         <tr>
@@ -213,7 +212,7 @@ const isCheckedAll = () => {
           </th>
           <th v-if="columns[1].isShow">Name</th>
           <th v-if="columns[2].isShow">Job</th>
-          <th v-if="columns[3].isShow">Favorite Color</th>
+          <th v-if="columns[3].isShow">Salary</th>
         </tr>
       </thead>
       <tbody>
@@ -223,7 +222,7 @@ const isCheckedAll = () => {
           </td>
           <td v-if="columns[1].isShow">{{ user.name }}</td>
           <td v-if="columns[2].isShow">{{ user.job }}</td>
-          <td v-if="columns[3].isShow">{{ user.favoriteColor }}</td>
+          <td v-if="columns[3].isShow">{{ numberFormat(user.salary) }}</td>
         </tr>
       </tbody>
     </component>

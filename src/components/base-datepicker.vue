@@ -99,9 +99,9 @@ watch(nativeDate, (newValue) => {
       type="text"
       class="form-input bg-inherit"
       :class="{
-        'border-simple': border === 'simple',
+        'border-simple pl-0!': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none',
+        'border-none pl-0!': border === 'none',
         'input-disabled': disabled
       }"
       placeholder="DD-MM-YYYY"

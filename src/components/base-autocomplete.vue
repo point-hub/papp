@@ -93,9 +93,9 @@ const onClear = () => {
             :disabled="props.disabled"
             :placeholder="placeholder"
             :class="{
-              'border-simple': border === 'simple',
+              'border-simple pl-0!': border === 'simple',
               'border-full': border === 'full',
-              'border-none': border === 'none',
+              'border-none pl-0!': border === 'none',
               'input-disabled': disabled
             }"
             :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label"
