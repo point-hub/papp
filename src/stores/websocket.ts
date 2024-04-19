@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { jsonParse } from '@point-hub/express-utils/lib/json/parse'
-import { jsonStringify } from '@point-hub/express-utils/lib/json/stringify'
+import { jsonParse } from '@point-hub/js-utils/lib/json/parse'
+import { jsonStringify } from '@point-hub/js-utils/lib/json/stringify'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 

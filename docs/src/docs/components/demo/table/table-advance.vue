@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { numberFormat } from '@point-hub/express-utils'
+import { numberFormat } from '@point-hub/js-utils'
 import {
   BaseAutocomplete,
   BaseButton,
