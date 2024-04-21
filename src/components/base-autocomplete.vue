@@ -71,6 +71,11 @@ const onClear = () => {
     selected.value = { label: '' }
   }
 }
+
+const inputRef = ref()
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
@@ -87,6 +92,7 @@ const onClear = () => {
       <div class="relative w-full mt-1">
         <div class="relative">
           <ComboboxInput
+            ref="inputRef"
             class="form-input"
             autocomplete="off"
             :required="props.required"

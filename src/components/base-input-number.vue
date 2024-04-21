@@ -50,6 +50,10 @@ const value = computed({
   },
   get: () => props.modelValue
 })
+
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>

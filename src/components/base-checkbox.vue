@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
@@ -49,6 +49,10 @@ const value = computed({
 })
 
 const uuid = props.id ?? uuidv4()
+const inputRef = ref()
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
@@ -63,6 +67,7 @@ const uuid = props.id ?? uuidv4()
   >
     <div class="flex gap-2 items-center">
       <input
+        ref="inputRef"
         :id="uuid"
         v-model="value"
         :required="required"

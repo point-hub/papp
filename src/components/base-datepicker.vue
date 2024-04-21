@@ -66,6 +66,12 @@ watch(nativeDate, (newValue) => {
   value.value = dayjs(new Date(newValue)).format('DD-MM-YYYY')
   dateRef.value.blur()
 })
+
+const inputRef = ref()
+defineExpose({
+  inputRef,
+  dateRef
+})
 </script>
 
 <template>
@@ -94,6 +100,7 @@ watch(nativeDate, (newValue) => {
       <base-icon icon="i-far-calendar" />
     </component>
     <input
+      ref="inputRef"
       v-model.lazy="value"
       v-input-mask="{ date: true, delimiter: '-', datePattern: ['d', 'm', 'Y'] }"
       type="text"

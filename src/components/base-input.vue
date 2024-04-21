@@ -60,6 +60,11 @@ onMounted(() => {
     }
   }, 1000)
 })
+
+const inputRef = ref()
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
@@ -73,6 +78,7 @@ onMounted(() => {
     :errors="props.errors"
   >
     <input
+      ref="inputRef"
       class="form-input"
       :class="{
         'border-simple': border === 'simple',

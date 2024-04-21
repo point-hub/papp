@@ -36,6 +36,11 @@ const onUpload = (e: any) => {
 }
 
 const fileRef = ref()
+const inputRef = ref()
+defineExpose({
+  fileRef,
+  inputRef
+})
 </script>
 
 <template>
@@ -50,6 +55,7 @@ const fileRef = ref()
   >
     <slot :file-ref="fileRef">
       <input
+        ref="inputRef"
         class="form-input"
         :class="{
           'border-simple': border === 'simple',

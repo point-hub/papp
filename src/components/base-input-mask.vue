@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
@@ -37,6 +37,11 @@ const value = computed({
   },
   get: () => props.modelValue
 })
+
+const inputRef = ref()
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
@@ -50,6 +55,7 @@ const value = computed({
     :errors="props.errors"
   >
     <input
+      ref="inputRef"
       class="form-input"
       :class="{
         'border-simple px-0!': border === 'simple',

@@ -53,6 +53,10 @@ const resize = () => {
     height.value = textareaRef.value?.scrollHeight
   })
 }
+
+defineExpose({
+  textareaRef
+})
 </script>
 
 <template>
