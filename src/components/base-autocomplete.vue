@@ -28,6 +28,7 @@ export interface Props {
   placeholder?: string
   border?: BaseAutocompleteBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -38,6 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
   modelValue: () => ({ label: '' }),
   border: 'simple',
   layout: 'vertical',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -95,6 +97,7 @@ defineExpose({
             ref="inputRef"
             class="form-input"
             autocomplete="off"
+            :autofocus="props.autofocus"
             :required="props.required"
             :disabled="props.disabled"
             :placeholder="placeholder"

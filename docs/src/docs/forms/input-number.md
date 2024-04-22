@@ -52,6 +52,7 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | border        | BaseInputNumberBorderType | `simple`   | Input border.                |
 | layout        | BaseFormLayoutType        | `vertical` | Input layout.                |
 | decimalLength | number                    | 0          | Input decimal length.        |
+| autofocus     | boolean                   | false      | Focus input on page load.    |
 | required      | boolean                   | false      | if true input is `required`. |
 | disabled      | boolean                   | false      | if true input is `disabled`. |
 | helpers       | string[]                  |            | Input helper message.        |

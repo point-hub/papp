@@ -13,6 +13,7 @@ export interface Props {
   border?: BaseFileUploadBorderType
   layout?: BaseFormLayoutType
   multiple?: boolean
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -23,6 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
   border: 'full',
   layout: 'vertical',
   multiple: false,
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -66,6 +68,7 @@ defineExpose({
         @change="onUpload($event)"
         type="file"
         :multiple="multiple"
+        :autofocus="props.autofocus"
         :required="props.required"
         :disabled="props.disabled"
       />

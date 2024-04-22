@@ -15,6 +15,7 @@ export interface Props {
   border?: BaseInputNumberBorderType
   layout?: BaseFormLayoutType
   decimalLength: number
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   decimalLength: 0,
   border: 'simple',
   layout: 'vertical',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -77,6 +79,7 @@ defineExpose({
       }"
       v-model="value"
       :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
     />

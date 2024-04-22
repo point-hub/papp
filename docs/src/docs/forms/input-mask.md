@@ -41,6 +41,7 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | placeholder | string                  |            | Input placeholder.                |
 | border      | BaseInputMaskBorderType | `simple`   | Input border.                     |
 | layout      | BaseFormLayoutType      | `vertical` | Input layout.                     |
+| autofocus   | boolean                 | false      | Focus input on page load.         |
 | required    | boolean                 | false      | if true input mask is `required`. |
 | disabled    | boolean                 | false      | if true input mask is `disabled`. |
 | helpers     | string[]                |            | Input helper message.             |

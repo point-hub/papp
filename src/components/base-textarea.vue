@@ -13,6 +13,7 @@ export interface Props {
   placeholder?: string
   border?: BaseTextareaBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -24,6 +25,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -72,6 +74,7 @@ defineExpose({
     <textarea
       ref="textareaRef"
       :placeholder="placeholder"
+      :autofocus="autofocus"
       :required="required"
       :disabled="disabled"
       class="form-input resize-none px-2"

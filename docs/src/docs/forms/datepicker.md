@@ -50,6 +50,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | description | string                   |            | Input description.                |
 | border      | BaseDatepickerBorderType | `simple`   | Input border.                     |
 | layout      | BaseFormLayoutType       | `vertical` | Input layout.                     |
+| autofocus   | boolean                  | false      | Focus input on page load.         |
 | required    | boolean                  | false      | if true datepicker is `required`. |
 | disabled    | boolean                  | false      | if true datepicker is `disabled`. |
 | helpers     | string[]                 |            | Input helper message.             |

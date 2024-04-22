@@ -13,6 +13,7 @@ export interface Props {
   placeholder?: string
   border?: BaseInputMaskBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -23,6 +24,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -66,6 +68,7 @@ defineExpose({
       v-model.lazy="value"
       v-input-mask="options"
       :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
     />

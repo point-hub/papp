@@ -50,6 +50,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | border      | BaseFileUploadBorderType | `full`     | Input border.                |
 | layout      | BaseFormLayoutType       | `vertical` | Input layout.                |
 | multiple    | boolean                  | false      | Upload multiple files.       |
+| autofocus   | boolean                  | false      | Focus input on page load.    |
 | required    | boolean                  | false      | if true input is `required`. |
 | disabled    | boolean                  | false      | if true input is `disabled`. |
 | helpers     | string[]                 |            | Input helper message.        |

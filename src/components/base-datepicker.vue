@@ -15,6 +15,7 @@ export interface Props {
   description?: string
   border?: BaseDatepickerBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -26,6 +27,7 @@ dayjs.extend(customParseFormat)
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -112,6 +114,7 @@ defineExpose({
         'input-disabled': disabled
       }"
       placeholder="DD-MM-YYYY"
+      :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
     />

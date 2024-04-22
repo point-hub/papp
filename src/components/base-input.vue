@@ -15,6 +15,7 @@ export interface Props {
   type?: BaseInputType
   border?: BaseInputBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
   disabled?: boolean
   helpers?: string[]
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
   type: 'text',
+  autofocus: false,
   required: false,
   disabled: false
 })
@@ -89,6 +91,7 @@ defineExpose({
       v-model.trim="value"
       :type="props.type"
       :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
       :style="{
