@@ -2,9 +2,11 @@
 import { BasePagination } from '@point-hub/papp'
 import { ref } from 'vue'
 
-const page = ref(1)
-const pageSize = ref(10)
-const totalDocument = ref(100)
+const pagination = ref({
+  page: 1,
+  page_size: 5,
+  total_document: 100
+})
 
 const updateData = () => {}
 </script>
@@ -13,9 +15,9 @@ const updateData = () => {}
   <Demo>
     <component
       :is="BasePagination"
-      v-model="page"
-      :page-size="pageSize"
-      :totalDocument="totalDocument"
+      v-model="pagination.page"
+      :page-size="pagination.page_size"
+      :totalDocument="pagination.total_document"
       @update:model-value="updateData()"
     />
   </Demo>

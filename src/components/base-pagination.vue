@@ -96,10 +96,10 @@ const isShowPageButton = (i: number) => {
       </p>
     </div>
     <div class="flex">
-      <component :is="BaseButton" variant="text" size="xs" @click="onClickFirst()">
+      <component :is="BaseButton" v-if="value > 1" variant="text" size="xs" @click="onClickFirst()">
         <base-icon icon="i-fas-angles-left" />
       </component>
-      <component :is="BaseButton" variant="text" size="xs" @click="onClickPrev()">
+      <component :is="BaseButton" v-if="value > 1" variant="text" size="xs" @click="onClickPrev()">
         <base-icon icon="i-fas-angle-left" />
       </component>
       <template v-for="i in totalPage" :key="i">
@@ -117,10 +117,22 @@ const isShowPageButton = (i: number) => {
           {{ i }}
         </component>
       </template>
-      <component :is="BaseButton" variant="text" size="xs" @click="onClickNext()">
+      <component
+        :is="BaseButton"
+        v-if="value < totalPage"
+        variant="text"
+        size="xs"
+        @click="onClickNext()"
+      >
         <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
       </component>
-      <component :is="BaseButton" variant="text" size="xs" @click="onClickLast()">
+      <component
+        :is="BaseButton"
+        v-if="value < totalPage"
+        variant="text"
+        size="xs"
+        @click="onClickLast()"
+      >
         <base-icon icon="i-fas-angles-right" />
       </component>
     </div>
