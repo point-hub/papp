@@ -96,7 +96,7 @@ defineExpose({
       :is="BaseButton"
       variant="text"
       type="button"
-      class="absolute right-0 top-1 px-4 py-2"
+      class="absolute right-0 px-4 py-2"
       @click="onClickDateRef()"
     >
       <base-icon icon="i-far-calendar" />
