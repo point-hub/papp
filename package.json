@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -41,7 +41,7 @@
     "@point-hub/js-utils": "^0.0.1",
     "@point-hub/preset-papp-icon": "^0.0.2",
     "cleave.js": "^1.6.0",
-    "dayjs": "^1.11.10",
+    "date-fns": "^3.6.0",
     "pinia": "^2.1.7",
     "uuid": "^9.0.1",
     "vue": "^3.4.23",

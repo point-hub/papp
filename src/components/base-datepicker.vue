@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
-import customParseFormat from 'dayjs/plugin/customParseFormat'
+import { formatDate, formatISO } from 'date-fns'
 import { computed, ref, watch } from 'vue'
 
 import BaseButton from './base-button.vue'
@@ -22,8 +21,6 @@ export interface Props {
   errors?: string[]
 }
 
-dayjs.extend(customParseFormat)
-
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
@@ -40,7 +37,8 @@ const emit = defineEmits<{
 const value = computed({
   set: (text: string) => {
     if (!props.disabled) {
-      emit('isoValue', dayjs(text, 'DD/MM/YYYY').toISOString())
+      const date = text.split('-')
+      emit('isoValue', formatISO(new Date(`${date[2]}-${date[1]}-${date[0]}`)))
       emit('update:modelValue', text)
     }
   },
@@ -65,7 +63,7 @@ const onClickDateRef = () => {
 const nativeDate = ref()
 
 watch(nativeDate, (newValue) => {
-  value.value = dayjs(new Date(newValue)).format('DD-MM-YYYY')
+  value.value = formatDate(new Date(newValue), 'dd-MM-yyyy')
   dateRef.value.blur()
 })
 
