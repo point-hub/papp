@@ -14,12 +14,15 @@ import { BaseButton, BasePopover } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const activeTab = ref('all')
+const popoverRef = ref()
 </script>
 
 <template>
   <Demo>
-    <component :is="BasePopover" placement="bottom-start">
-      <component :is="BaseButton" size="md" color="primary">Trigger element</component>
+    <component ref="popoverRef" :is="BasePopover" placement="bottom-start">
+      <component :is="BaseButton" size="md" color="primary" @click="popoverRef.toggle()">
+        Trigger element
+      </component>
       <template #content>
         <div class="popper-root">
           <div
