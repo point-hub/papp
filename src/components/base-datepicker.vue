@@ -34,15 +34,39 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
+const errors = ref(props.errors)
+
 const value = computed({
   set: (text: string) => {
     if (!props.disabled) {
+      errors.value = []
+      // split string into array of [date][month][year]
       const date = text.split('-')
-      emit('isoValue', formatISO(new Date(`${date[2]}-${date[1]}-${date[0]}`)))
+
+      if (!text) {
+        errors.value = ['Invalid date format']
+        return
+      }
+
+      if (date.length !== 3 || Number(date[2]) < 1000) {
+        errors.value = ['Invalid date format']
+        nativeDate.value = ''
+        emit('update:modelValue', '')
+        return
+      }
+
+      const formattedDate = new Date()
+      formattedDate.setDate(Number(date[0]))
+      formattedDate.setMonth(Number(date[1]))
+      formattedDate.setFullYear(Number(date[2]))
+      nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
+      emit('isoValue', formatISO(formattedDate))
       emit('update:modelValue', text)
     }
   },
-  get: () => props.modelValue
+  get: () => {
+    return props.modelValue
+  }
 })
 
 /**
@@ -63,7 +87,11 @@ const onClickDateRef = () => {
 const nativeDate = ref()
 
 watch(nativeDate, (newValue) => {
-  value.value = formatDate(new Date(newValue), 'dd-MM-yyyy')
+  if (newValue) {
+    value.value = formatDate(new Date(newValue), 'dd-MM-yyyy')
+  } else {
+    emit('update:modelValue', '')
+  }
   dateRef.value.blur()
 })
 
@@ -82,13 +110,16 @@ defineExpose({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <input
       ref="dateRef"
       v-model="nativeDate"
       type="date"
-      class="form-input absolute -z-50 text-transparent bg-transparent"
+      class="form-input absolute! -z-50 text-transparent bg-transparent"
+      :class="{
+        'pl-0!': border === 'simple' || border === 'none'
+      }"
     />
     <component
       :is="BaseButton"
@@ -125,5 +156,17 @@ input[type='date']::-webkit-inner-spin-button,
 input[type='date']::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
+}
+input[type='date']::-webkit-datetime-edit-day-field {
+  color: transparent;
+}
+input[type='date']::-webkit-datetime-edit-day-field:focus {
+  background: transparent;
+}
+input[type='date']::-webkit-datetime-edit-month-field {
+  color: transparent;
+}
+input[type='date']::-webkit-datetime-edit-year-field {
+  color: transparent;
 }
 </style>
