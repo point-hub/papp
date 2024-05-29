@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import {
   BaseAvatar,
   BaseButton,
@@ -15,6 +17,9 @@ import {
 
 const { isDarkMode, toggleDarkMode } = useDarkMode()
 const sidebarStore = useSidebarStore()
+
+const notificationPopoverRef = ref()
+const accountPopoverRef = ref()
 </script>
 
 <template>
@@ -36,8 +41,13 @@ const sidebarStore = useSidebarStore()
           <BaseIcon icon="i-ph-info" class="w-6 h-6" />
         </component>
         <!-- Notification -->
-        <component :is="BasePopover" placement="bottom">
-          <component :is="BaseButton" type="button" size="xs">
+        <component ref="notificationPopoverRef" :is="BasePopover" placement="bottom">
+          <component
+            :is="BaseButton"
+            type="button"
+            size="xs"
+            @click="notificationPopoverRef.toggle()"
+          >
             <BaseIcon icon="i-ph-bell-ringing" class="w-6 h-6" />
             <!-- ping -->
             <span class="absolute -mt-6 -mr-6 h-2 w-2 flex items-center justify-center">
@@ -138,8 +148,8 @@ const sidebarStore = useSidebarStore()
         </component>
         <component :is="BaseDivider" class="h-10" orientation="horizontal" />
         <!-- User -->
-        <component :is="BasePopover" placement="bottom-end">
-          <button type="button" class="flex gap-2">
+        <component ref="accountPopoverRef" :is="BasePopover" placement="bottom-end">
+          <button type="button" class="flex gap-2" @click="accountPopoverRef.toggle()">
             <div class="hidden lg:flex flex-col justify-center items-end">
               <p class="text-sm truncate font-semibold">Organization Name</p>
               <p class="text-sm truncate">Username</p>
