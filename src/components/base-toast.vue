@@ -7,15 +7,20 @@ import BaseButton from './base-button.vue'
 export type BaseToastColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
 
 export interface Options {
+  lists: string[]
   color?: BaseToastColorType
   autoClose?: boolean
   timer?: number
 }
 
 const listData = ref<any[]>([])
+const lists = ref<string[]>([])
 
 const toast = (message: string, options?: Options) => {
   const id = uuidv4()
+  if (options?.lists) {
+    lists.value = options.lists
+  }
   listData.value.push({
     id: id,
     message: message,
@@ -63,6 +68,9 @@ defineExpose({ toast, remove })
           </div>
           <div class="ms-3 text-sm">
             {{ data.message }}
+            <ul>
+              <li v-for="list in lists" :key="list">- {{ list }}</li>
+            </ul>
           </div>
           <component
             :is="BaseButton"
