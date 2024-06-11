@@ -17,8 +17,8 @@ import { BaseBadge } from '@point-hub/papp'
 
 <template>
   <div>
-    <component :is="BaseBadge" variant="fill">Fill</component>
-    <component :is="BaseBadge" variant="outline">Outline</component>
+    <component :is="BaseBadge" variant="filled">Filled</component>
+    <component :is="BaseBadge" variant="outlined">Outlined</component>
     <component :is="BaseBadge" variant="light">Light</component>
   </div>
 </template>
