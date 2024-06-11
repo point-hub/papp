@@ -10,7 +10,8 @@ export default {
       component: 'base-tooltip', // => <base-tooltip/>
       componentSingleton: 'base-tooltip-singleton', // => <base-tooltip-singleton/>,
       defaultProps: {
-        interactive: true
+        interactive: true,
+        hideOnClick: false
       }
     })
   }
