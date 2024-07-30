@@ -5,6 +5,7 @@ outline: deep
 <script setup lang="ts">
 import CardShadow from './demo/card/card-shadow.vue'
 import CardShape from './demo/card/card-shape.vue'
+import CardColor from './demo/card/card-color.vue'
 </script>
 
 # Card
@@ -21,14 +22,21 @@ Use these responsive card components to show data entries and information to you
 
 <!--@include: ./demo/card/card-shape.md-->
 
+### Color
+
+<!--@include: ./demo/card/card-color.md-->
+
 ## Card API
 
 ### Props
 
-| Name   | Type              | Default   | Description  |
-| ------ | ----------------- | --------- | ------------ |
-| shadow | boolean           | true      | Card Shadow. |
-| shape  | `rounded` `sharp` | `rounded` | Card Shape.  |
+| Name       | Type              | Default   | Description            |
+| ---------- | ----------------- | --------- | ---------------------- |
+| shadow     | boolean           | true      | Card Shadow.           |
+| shape      | `rounded` `sharp` | `rounded` | Card Shape.            |
+| bgColor    | string            |           | Card Background Color. |
+| titleColor | string            |           | Card Title Text Color. |
+| bodyColor  | string            |           | Card Body Text Color.  |
 
 ### Slot
 
