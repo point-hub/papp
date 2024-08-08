@@ -32,10 +32,10 @@ const toast = (
     lists: options.lists
   })
   // auto close toast message
-  if (options.autoClose) {
+  if (options.autoClose ?? true) {
     setTimeout(() => {
       remove(id)
-    }, options.timer)
+    }, options.timer ?? 3000)
   }
 }
 
