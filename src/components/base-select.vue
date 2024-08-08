@@ -67,8 +67,7 @@ const clearSelect = () => {
           :class="{
             'border-simple': border === 'simple',
             'border-full': border === 'full',
-            'border-none': border === 'none',
-            'input-disabled': disabled
+            'border-none': border === 'none'
           }"
         >
           <span v-if="!selected?.label" class="block text-slate-400">

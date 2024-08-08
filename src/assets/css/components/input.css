@@ -16,6 +16,6 @@
 .border-full {
   @apply border border-solid;
 }
-.input-disabled {
-  @apply bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-400;
+.form-input:disabled {
+  @apply hover:cursor-pointer;
 }

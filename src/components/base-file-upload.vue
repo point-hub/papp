@@ -62,8 +62,7 @@ defineExpose({
         :class="{
           'border-simple': border === 'simple',
           'border-full': border === 'full',
-          'border-none': border === 'none',
-          'input-disabled': disabled
+          'border-none': border === 'none'
         }"
         @change="onUpload($event)"
         type="file"

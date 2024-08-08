@@ -85,8 +85,7 @@ defineExpose({
       :class="{
         'border-simple': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none',
-        'input-disabled': disabled
+        'border-none': border === 'none'
       }"
       v-model.trim="value"
       :type="props.type"

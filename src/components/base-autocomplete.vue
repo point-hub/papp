@@ -104,8 +104,7 @@ defineExpose({
             :class="{
               'border-simple pl-0!': border === 'simple',
               'border-full': border === 'full',
-              'border-none pl-0!': border === 'none',
-              'input-disabled': disabled
+              'border-none pl-0!': border === 'none'
             }"
             :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label"
             @change="query = $event.target.value"

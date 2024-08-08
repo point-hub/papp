@@ -81,8 +81,7 @@ defineExpose({
       :class="{
         'border-simple px-0!': border === 'simple',
         'border-full': border === 'full',
-        'border-none px-0!': border === 'none',
-        'input-disabled': disabled
+        'border-none px-0!': border === 'none'
       }"
       :style="{
         height: height + 'px',
