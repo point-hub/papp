@@ -55,7 +55,7 @@ const selected = computed<BaseAutocompleteOptionInterface | null>({
   get: () => props.modelValue
 })
 
-let query = ref('')
+let query = defineModel<string>('query', { default: '' })
 
 let filtered = computed(() =>
   query.value === ''
@@ -78,8 +78,6 @@ const buttonRef = ref<any>(null)
 const onInputClicked = () => {
   if (buttonRef.value) {
     buttonRef.value.el.click()
-    inputRef.value = ''
-    query.value = ''
   }
 }
 watch(query, (newVal) => {
