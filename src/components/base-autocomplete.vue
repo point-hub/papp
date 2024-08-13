@@ -7,7 +7,7 @@ import {
   ComboboxOptions,
   TransitionRoot
 } from '@headlessui/vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
@@ -74,6 +74,19 @@ const onClear = () => {
   }
 }
 
+const buttonRef = ref<any>(null)
+const onInputClicked = () => {
+  if (buttonRef.value) {
+    buttonRef.value.el.click()
+    inputRef.value = ''
+    query.value = ''
+  }
+}
+watch(query, (newVal) => {
+  if (newVal.length === 0) {
+    selected.value = { label: '' }
+  }
+})
 const inputRef = ref()
 defineExpose({
   inputRef
@@ -96,6 +109,7 @@ defineExpose({
           <ComboboxInput
             ref="inputRef"
             class="form-input"
+            @click="onInputClicked"
             autocomplete="off"
             :autofocus="props.autofocus"
             :required="props.required"
@@ -110,6 +124,7 @@ defineExpose({
             @change="query = $event.target.value"
           />
           <ComboboxButton
+            ref="buttonRef"
             v-if="selected?.label === ''"
             class="absolute inset-y-0 right-0 flex items-center"
           >
@@ -140,7 +155,6 @@ defineExpose({
             >
               Nothing found.
             </div>
-
             <ComboboxOption
               v-for="data in filtered"
               as="template"
