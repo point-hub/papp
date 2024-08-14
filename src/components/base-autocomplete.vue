@@ -7,7 +7,7 @@ import {
   ComboboxOptions,
   TransitionRoot
 } from '@headlessui/vue'
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
@@ -80,11 +80,7 @@ const onInputClicked = () => {
     buttonRef.value.el.click()
   }
 }
-watch(query, (newVal) => {
-  if (newVal.length === 0) {
-    selected.value = { label: '' }
-  }
-})
+
 const inputRef = ref()
 defineExpose({
   inputRef
