@@ -15,6 +15,7 @@ export interface Props {
   type?: BaseInputType
   border?: BaseInputBorderType
   layout?: BaseFormLayoutType
+  maxlength?: number
   autofocus?: boolean
   required?: boolean
   disabled?: boolean
@@ -89,6 +90,7 @@ defineExpose({
       }"
       v-model.trim="value"
       :type="props.type"
+      :maxlength="props.maxlength"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
       :required="props.required"
