@@ -20,7 +20,6 @@ export interface BaseAutocompleteOptionInterface {
 }
 
 export interface Props {
-  modelValue: BaseAutocompleteOptionInterface | null
   id?: string
   options: BaseAutocompleteOptionInterface[]
   label?: string
@@ -36,7 +35,6 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => ({ label: '' }),
   border: 'simple',
   layout: 'vertical',
   autofocus: false,
@@ -44,17 +42,10 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: BaseAutocompleteOptionInterface | null): void
-}>()
-
-const selected = computed<BaseAutocompleteOptionInterface | null>({
-  set: (obj: BaseAutocompleteOptionInterface | null) => {
-    emit('update:modelValue', obj)
-  },
-  get: () => props.modelValue
+const selected = defineModel({
+  default: { label: '' }
 })
-
+const isLoading = defineModel<boolean>('isLoading', { default: false })
 let query = defineModel<string>('query', { default: '' })
 
 let filtered = computed(() =>
@@ -144,30 +135,41 @@ defineExpose({
         >
           <ComboboxOptions class="options">
             <div
-              v-if="filtered.length === 0 && query !== ''"
+              v-if="isLoading"
+              class="relative cursor-default select-none px-4 py-2 text-gray-700"
+            >
+              Loading data...
+            </div>
+            <div
+              v-if="!isLoading && filtered.length === 0 && query !== ''"
               class="relative cursor-default select-none px-4 py-2 text-gray-700"
             >
               Nothing found.
             </div>
-            <ComboboxOption
-              v-for="data in filtered"
-              as="template"
-              :key="data.id"
-              :value="data"
-              v-slot="{ selected, active }"
-            >
-              <li
-                class="option"
-                :class="{
-                  'option-active': active,
-                  'option-inactive': !active
-                }"
+            <template v-if="!isLoading">
+              <ComboboxOption
+                v-for="data in filtered"
+                as="template"
+                :key="data.id"
+                :value="data"
+                v-slot="{ selected, active }"
               >
-                <span class="block" :class="{ 'font-medium': selected, 'font-normal': !selected }">
-                  {{ data.label }}
-                </span>
-              </li>
-            </ComboboxOption>
+                <li
+                  class="option"
+                  :class="{
+                    'option-active': active,
+                    'option-inactive': !active
+                  }"
+                >
+                  <span
+                    class="block"
+                    :class="{ 'font-medium': selected, 'font-normal': !selected }"
+                  >
+                    {{ data.label }}
+                  </span>
+                </li>
+              </ComboboxOption>
+            </template>
           </ComboboxOptions>
         </TransitionRoot>
       </div>
