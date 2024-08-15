@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
@@ -44,6 +44,10 @@ const value = computed({
 
 const height = ref(0)
 const textareaRef = ref()
+
+watch(value, () => {
+  resize()
+})
 
 onMounted(() => {
   resize()
