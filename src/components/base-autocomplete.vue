@@ -89,7 +89,7 @@ defineExpose({
     :errors="props.errors"
   >
     <Combobox v-model="selected">
-      <div class="relative w-full mt-1">
+      <div class="relative w-full">
         <div class="relative">
           <ComboboxInput
             ref="inputRef"
@@ -111,7 +111,7 @@ defineExpose({
           <ComboboxButton
             ref="buttonRef"
             v-if="selected?.label === ''"
-            class="absolute inset-y-0 right-0 flex items-center"
+            class="absolute inset-y-0 right-1 flex items-center"
           >
             <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
@@ -121,7 +121,7 @@ defineExpose({
             variant="text"
             type="button"
             v-if="selected?.label !== ''"
-            class="absolute inset-y-0 right-0 flex items-center"
+            class="absolute inset-y-0 right-1 flex items-center"
             @click="onClear()"
           >
             <base-icon icon="i-far-xmark" />
