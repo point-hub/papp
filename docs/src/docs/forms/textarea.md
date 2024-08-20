@@ -56,6 +56,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | placeholder | string                 |         | Textarea placeholder.           |
 | border      | BaseTextareaBorderType |         | Textarea border.                |
 | layout      | BaseFormLayoutType     |         | Textarea layout.                |
+| maxlength   | number                 |         | Textarea Max Length.            |
 | autofocus   | boolean                | false   | Focus textarea on page load.    |
 | required    | boolean                | false   | if true textarea is `required`. |
 | disabled    | boolean                | false   | if true textarea is `disabled`. |

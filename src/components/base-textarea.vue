@@ -13,6 +13,7 @@ export interface Props {
   placeholder?: string
   border?: BaseTextareaBorderType
   layout?: BaseFormLayoutType
+  maxlength?: number
   autofocus?: boolean
   required?: boolean
   disabled?: boolean
@@ -81,6 +82,7 @@ defineExpose({
       :autofocus="autofocus"
       :required="required"
       :disabled="disabled"
+      :maxlength="props.maxlength"
       class="form-input resize-none px-2"
       :class="{
         'border-simple px-0!': border === 'simple',
