@@ -15,7 +15,7 @@ import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 
 export interface BaseAutocompleteOptionInterface {
-  label: string
+  label?: string
   [key: string]: any
 }
 
@@ -42,9 +42,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
-const selected = defineModel({
-  default: { label: '' }
-})
+const selected = defineModel<BaseAutocompleteOptionInterface>()
 const isLoading = defineModel<boolean>('isLoading', { default: false })
 let query = defineModel<string>('query', { default: '' })
 
@@ -105,12 +103,12 @@ defineExpose({
               'border-full': border === 'full',
               'border-none pl-0!': border === 'none'
             }"
-            :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label"
+            :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label ?? ''"
             @change="query = $event.target.value"
           />
           <ComboboxButton
             ref="buttonRef"
-            v-if="selected?.label === ''"
+            v-if="!selected || selected?.label === ''"
             class="absolute inset-y-0 right-1 flex items-center"
           >
             <base-icon icon="i-far-angle-down" />
@@ -120,7 +118,7 @@ defineExpose({
             size="none"
             variant="text"
             type="button"
-            v-if="selected?.label !== ''"
+            v-if="selected && selected?.label !== ''"
             class="absolute inset-y-0 right-1 flex items-center"
             @click="onClear()"
           >
