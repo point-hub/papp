@@ -49,6 +49,7 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | label         | string                    |            | Input label.                 |
 | description   | string                    |            | Input description.           |
 | placeholder   | string                    |            | Input placeholder.           |
+| align         | `left` `right`            | `right`    | Input align.                 |
 | border        | BaseInputNumberBorderType | `simple`   | Input border.                |
 | layout        | BaseFormLayoutType        | `vertical` | Input layout.                |
 | decimalLength | number                    | 0          | Input decimal length.        |

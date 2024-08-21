@@ -10,6 +10,7 @@ export interface Props {
   modelValue: number | null
   id?: string
   label?: string
+  align?: 'left' | 'right'
   description?: string
   placeholder?: string
   border?: BaseInputNumberBorderType
@@ -24,6 +25,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   decimalLength: 0,
+  align: 'right',
   border: 'simple',
   layout: 'vertical',
   autofocus: false,
@@ -72,6 +74,7 @@ defineExpose({
       ref="inputRef"
       class="form-input"
       :class="{
+        'text-right': align === 'right',
         'border-simple px-0!': border === 'simple',
         'border-full': border === 'full',
         'border-none px-0!': border === 'none'
