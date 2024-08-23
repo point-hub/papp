@@ -18,6 +18,7 @@ export interface Props {
   maxlength?: number
   autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   errors?: string[]
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   type: 'text',
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -94,6 +96,7 @@ defineExpose({
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
       :required="props.required"
+      :readonly="props.readonly"
       :disabled="props.disabled"
       :style="{
         paddingLeft: `${paddingLeft}px`,
