@@ -96,7 +96,14 @@ const onClose = () => {
     class="w-full"
   >
     <!-- mode: input -->
-    <base-input v-if="mode === 'input'" readonly v-model="input" @click="onOpen" class="w-full" />
+    <base-input
+      v-if="mode === 'input'"
+      readonly
+      v-model="input"
+      @click="onOpen"
+      :border="border"
+      class="w-full"
+    />
     <!-- mode: text -->
     <div
       v-if="mode === 'text'"
@@ -112,7 +119,9 @@ const onClose = () => {
       <!-- Title -->
       <h2 class="py-4 px-8 text-2xl font-bold">{{ props.title }}</h2>
       <!-- Search Text -->
-      <base-input placeholder="Search" class="px-8 py-2" ref="inputRef" v-model="search" />
+      <div class="px-8 py-2">
+        <base-input placeholder="Search" ref="inputRef" v-model="search" />
+      </div>
       <!-- Options -->
       <div class="space-y-8 flex flex-col h-full overflow-y-auto">
         <div class="flex flex-col w-full">

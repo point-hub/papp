@@ -17,6 +17,6 @@ const selected = ref()
 
 <template>
   <Demo is-row>
-    <base-choosen title="Example" :options="options" v-model:selected="selected" mode="text" />
+    <base-choosen title="Example" :options="options" v-model:selected="selected" />
   </Demo>
 </template>
