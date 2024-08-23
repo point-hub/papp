@@ -82,10 +82,9 @@ defineExpose({ isOpen })
                 :is="BaseButton"
                 type="button"
                 @click="close()"
-                size="sm"
                 variant="text"
                 color="danger"
-                class="absolute right-0 top-2"
+                class="absolute right-2 top-2"
               >
                 <base-icon icon="i-fas-xmark" />
               </component>
