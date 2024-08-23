@@ -33,6 +33,8 @@ watch(isOpen, (newData) => {
 watch(props, () => {
   isOpen.value = props.isOpen
 })
+
+defineExpose({ isOpen })
 </script>
 
 <template>
