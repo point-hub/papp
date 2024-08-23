@@ -78,6 +78,7 @@ export {
   type BaseAutocompleteOptionInterface
 } from './components/base-autocomplete.vue'
 export { default as BaseCheckbox, type BaseCheckboxThemeType } from './components/base-checkbox.vue'
+export { default as BaseChoosen } from './components/base-choosen.vue'
 export {
   default as BaseDatepicker,
   type BaseDatepickerBorderType
