@@ -38,12 +38,12 @@ const props = withDefaults(defineProps<Props>(), {
 const input = defineModel()
 const isLoading = defineModel<boolean>('isLoading')
 const selected = defineModel<IOption>('selected')
+const search = defineModel<string>('search', { default: '' })
 const options = defineModel<IOption[]>('options')
 
 const showModal = ref(false)
 const inputRef = ref()
 const modalRef = ref()
-const search = ref()
 
 // focus on search text when modal opened
 watch(
@@ -66,7 +66,7 @@ let filtered = computed<any>(() => {
     data.label
       .toLowerCase()
       .replace(/\s+/g, '')
-      .includes(search.value?.toLowerCase().replace(/\s+/g, ''))
+      .includes(search.value.toLowerCase().replace(/\s+/g, ''))
   )
 })
 
