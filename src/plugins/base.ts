@@ -11,6 +11,7 @@ import BaseBreadcrumb from '@/components/base-breadcrumb.vue'
 import BaseButton from '@/components/base-button.vue'
 import BaseCard from '@/components/base-card.vue'
 import BaseCheckbox from '@/components/base-checkbox.vue'
+import BaseChoosen from '@/components/base-choosen.vue'
 import BaseDatepicker from '@/components/base-datepicker.vue'
 import BaseDivider from '@/components/base-divider.vue'
 import BaseDropdown from '@/components/base-dropdown.vue'
@@ -59,6 +60,7 @@ export default {
     Vue.component('BaseButton', BaseButton)
     Vue.component('BaseCard', BaseCard)
     Vue.component('BaseCheckbox', BaseCheckbox)
+    Vue.component('BaseChoosen', BaseChoosen)
     Vue.component('BaseDatepicker', BaseDatepicker)
     Vue.component('BaseDivider', BaseDivider)
     Vue.component('BaseDropdown', BaseDropdown)
