@@ -108,27 +108,27 @@ const onClose = () => {
   </base-form>
 
   <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose">
-    <div class="max-h-90vh h-full flex flex-col">
+    <div class="max-h-90vh h-full flex flex-col py-4">
       <!-- Title -->
-      <h2 class="p-4 text-2xl font-bold">{{ props.title }}</h2>
+      <h2 class="py-4 px-8 text-2xl font-bold">{{ props.title }}</h2>
       <!-- Search Text -->
-      <base-input placeholder="Search" class="px-4 py-2" ref="inputRef" v-model="search" />
+      <base-input placeholder="Search" class="px-8 py-2" ref="inputRef" v-model="search" />
       <!-- Options -->
       <div class="space-y-8 flex flex-col h-full overflow-y-auto">
         <div class="flex flex-col w-full">
-          <div v-if="isLoading" class="relative cursor-default select-none px-4 py-2 text-gray-700">
+          <div v-if="isLoading" class="relative cursor-default select-none px-8 py-2 text-gray-700">
             Loading data...
           </div>
           <div
             v-if="!isLoading && filtered.length === 0"
-            class="relative cursor-default select-none px-4 py-2 text-gray-700"
+            class="relative cursor-default select-none px-8 py-2 text-gray-700"
           >
             Nothing found.
           </div>
           <div
             v-for="(option, index) in filtered"
             :key="index"
-            class="py-4 px-4 border-b hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            class="py-4 px-8 border-b hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
             @click="onSelect(option)"
           >
             <slot :option="option">{{ option?.label }}</slot>
