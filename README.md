@@ -12,4 +12,4 @@ bun add @point-hub/papp
 
 ## Usage
 
-Please see [Full Documentation](https://papp.pointhub.net)
+Please see [Full Documentation](https://dev.pointhub.net/library/papp)
