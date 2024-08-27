@@ -28,7 +28,7 @@
     "build": "run-s clean-dist build:lib docs:build",
     "build:lib": "vite build",
     "test": "vitest",
-    "check-types": "vue-tsc --build",
+    "types": "vue-tsc --build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "lint:fix": "bun run lint -- --fix",
     "clean-dist": "./node_modules/rimraf/dist/esm/bin.mjs dist",
