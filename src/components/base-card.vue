@@ -1,9 +1,9 @@
 <script setup lang="ts">
 export type BaseCardShapeType = 'sharp' | 'round'
 
-const bgColor = defineModel<'string'>('bgColor')
-const titleColor = defineModel<'string'>('titleColor')
-const bodyColor = defineModel<'string'>('bodyColor')
+const bgColor = defineModel<string>('bgColor')
+const titleColor = defineModel<string>('titleColor')
+const bodyColor = defineModel<string>('bodyColor')
 
 withDefaults(
   defineProps<{

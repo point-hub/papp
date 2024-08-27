@@ -46,13 +46,13 @@ const onClose = () => {
     <h1>Socket Example</h1>
     <div class="card">
       <div class="gap-2 flex">
-        <component :is="BaseButton" variant="outline" color="primary" size="sm" @click="onOpen">
+        <component :is="BaseButton" variant="outlined" color="primary" size="sm" @click="onOpen">
           Open Connection
         </component>
-        <component :is="BaseButton" variant="outline" color="danger" size="sm" @click="onClose">
+        <component :is="BaseButton" variant="outlined" color="danger" size="sm" @click="onClose">
           Close Connection
         </component>
-        <component :is="BaseButton" variant="outline" color="danger" size="sm" @click="onSubmit">
+        <component :is="BaseButton" variant="outlined" color="danger" size="sm" @click="onSubmit">
           Message
         </component>
       </div>

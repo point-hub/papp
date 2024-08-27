@@ -51,7 +51,7 @@ let filtered = computed(() =>
     ? props.options
     : props.options.filter((data) =>
         data.label
-          .toLowerCase()
+          ?.toLowerCase()
           .replace(/\s+/g, '')
           .includes(query.value.toLowerCase().replace(/\s+/g, ''))
       )
