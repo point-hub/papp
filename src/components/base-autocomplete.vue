@@ -7,6 +7,7 @@ import {
   ComboboxOptions,
   TransitionRoot
 } from '@headlessui/vue'
+import { isEmpty } from '@point-hub/js-utils'
 import { computed, ref } from 'vue'
 
 import BaseButton from './base-button.vue'
@@ -50,7 +51,7 @@ let filtered = computed(() =>
   query.value === ''
     ? props.options
     : props.options.filter((data) =>
-        data.label
+        data?.label
           ?.toLowerCase()
           .replace(/\s+/g, '')
           .includes(query.value.toLowerCase().replace(/\s+/g, ''))
@@ -59,7 +60,7 @@ let filtered = computed(() =>
 
 const onClear = () => {
   if (!props.disabled) {
-    selected.value = { label: '' }
+    selected.value = {}
   }
 }
 
@@ -107,18 +108,18 @@ defineExpose({
             @change="query = $event.target.value"
           />
           <ComboboxButton
+            v-if="isEmpty(selected)"
             ref="buttonRef"
-            v-if="!selected || selected?.label === ''"
             class="absolute inset-y-0 right-1 flex items-center"
           >
             <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
           <component
+            v-else
             :is="BaseButton"
             size="none"
             variant="text"
             type="button"
-            v-if="selected && selected?.label !== ''"
             class="absolute inset-y-0 right-1 flex items-center"
             @click="onClear()"
           >
