@@ -6,6 +6,8 @@ interface IOption {
   label: string
 }
 
+import { isEmpty } from '@point-hub/js-utils'
+
 import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseChoosenBorderType = 'none' | 'simple' | 'full'
@@ -76,6 +78,14 @@ const onSelect = (option: IOption) => {
   onClose()
 }
 
+watch(selected, () => {
+  if (isEmpty(selected.value?.label)) {
+    input.value = ''
+  } else {
+    input.value = selected.value?.label ?? ''
+  }
+})
+
 const onOpen = () => {
   showModal.value = true
 }
@@ -110,7 +120,7 @@ const onClose = () => {
       class="border-b border-dashed cursor-pointer border-black dark:border-white"
       @click="onOpen"
     >
-      {{ selected ? selected.label : 'SELECT' }}
+      {{ selected && !isEmpty(selected.label) ? selected.label : 'SELECT' }}
     </div>
   </base-form>
 
