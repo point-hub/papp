@@ -43,6 +43,10 @@ const value = computed({
       // split string into array of [date][month][year]
       const date = text.split('-')
 
+      if (!props.required && !text) {
+        return
+      }
+
       if (!text) {
         errors.value = ['Invalid date format']
         return
@@ -85,6 +89,37 @@ const onClickDateRef = () => {
   }
 }
 const nativeDate = ref()
+
+watch(
+  value,
+  (newValue) => {
+    // split string into array of [date][month][year]
+    const date = newValue.split('-')
+
+    if (!props.required && !newValue) {
+      return
+    }
+
+    if (!newValue) {
+      errors.value = ['Invalid date format']
+      return
+    }
+
+    if (date.length !== 3 || Number(date[2]) < 1000) {
+      errors.value = ['Invalid date format']
+      nativeDate.value = ''
+      emit('update:modelValue', '')
+      return
+    }
+
+    const formattedDate = new Date()
+    formattedDate.setDate(Number(date[0]))
+    formattedDate.setMonth(Number(date[1]))
+    formattedDate.setFullYear(Number(date[2]))
+    nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
+  },
+  { immediate: true, deep: true }
+)
 
 watch(nativeDate, (newValue) => {
   if (newValue) {
