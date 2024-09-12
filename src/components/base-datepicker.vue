@@ -48,12 +48,12 @@ const value = computed({
       }
 
       if (!text) {
-        errors.value = ['Invalid date format']
+        errors.value = [`The field is required.`]
         return
       }
 
       if (date.length !== 3 || Number(date[2]) < 1000) {
-        errors.value = ['Invalid date format']
+        errors.value = ['Invalid date format.']
         nativeDate.value = ''
         emit('update:modelValue', '')
         return
@@ -101,12 +101,12 @@ watch(
     }
 
     if (!newValue) {
-      errors.value = ['Invalid date format']
+      errors.value = [`The field is required.`]
       return
     }
 
     if (date.length !== 3 || Number(date[2]) < 1000) {
-      errors.value = ['Invalid date format']
+      errors.value = ['Invalid date format.']
       nativeDate.value = ''
       emit('update:modelValue', '')
       return
