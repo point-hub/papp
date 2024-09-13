@@ -18,7 +18,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -34,7 +33,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
-const errors = ref(props.errors)
+const errors = defineModel<string[]>('errors')
 
 const value = computed({
   set: (text: string) => {
@@ -42,15 +41,6 @@ const value = computed({
       errors.value = []
       // split string into array of [date][month][year]
       const date = text.split('-')
-
-      if (!props.required && !text) {
-        return
-      }
-
-      if (!text) {
-        errors.value = [`The field is required.`]
-        return
-      }
 
       if (date.length !== 3 || Number(date[2]) < 1000) {
         errors.value = ['Invalid date format.']
@@ -90,36 +80,23 @@ const onClickDateRef = () => {
 }
 const nativeDate = ref()
 
-watch(
-  value,
-  (newValue) => {
-    // split string into array of [date][month][year]
-    const date = newValue.split('-')
+watch(value, (newValue) => {
+  // split string into array of [date][month][year]
+  const date = newValue.split('-')
 
-    if (!props.required && !newValue) {
-      return
-    }
+  if (date.length !== 3 || Number(date[2]) < 1000) {
+    errors.value = ['Invalid date format.']
+    nativeDate.value = ''
+    emit('update:modelValue', '')
+    return
+  }
 
-    if (!newValue) {
-      errors.value = [`The field is required.`]
-      return
-    }
-
-    if (date.length !== 3 || Number(date[2]) < 1000) {
-      errors.value = ['Invalid date format.']
-      nativeDate.value = ''
-      emit('update:modelValue', '')
-      return
-    }
-
-    const formattedDate = new Date()
-    formattedDate.setDate(Number(date[0]))
-    formattedDate.setMonth(Number(date[1]))
-    formattedDate.setFullYear(Number(date[2]))
-    nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
-  },
-  { immediate: true, deep: true }
-)
+  const formattedDate = new Date()
+  formattedDate.setDate(Number(date[0]))
+  formattedDate.setMonth(Number(date[1]))
+  formattedDate.setFullYear(Number(date[2]))
+  nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
+})
 
 watch(nativeDate, (newValue) => {
   if (newValue) {
