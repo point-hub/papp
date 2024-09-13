@@ -78,13 +78,17 @@ const onSelect = (option: IOption) => {
   onClose()
 }
 
-watch(selected, () => {
-  if (isEmpty(selected.value?.label)) {
-    input.value = ''
-  } else {
-    input.value = selected.value?.label ?? ''
-  }
-})
+watch(
+  selected,
+  () => {
+    if (isEmpty(selected.value?.label)) {
+      input.value = ''
+    } else {
+      input.value = selected.value?.label ?? ''
+    }
+  },
+  { immediate: true }
+)
 
 const onOpen = () => {
   showModal.value = true
