@@ -87,6 +87,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Divider', link: 'components/divider' },
         { text: 'Dropdown', link: 'components/dropdown' },
         { text: 'Icon', link: 'components/icon' },
+        { text: 'Loader', link: 'components/loader' },
         { text: 'Mask', link: 'components/mask' },
         { text: 'Modal', link: 'components/modal' },
         { text: 'Pagination', link: 'components/pagination' }, // TODO: fix export function

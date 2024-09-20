@@ -23,6 +23,7 @@ import BaseInput from '@/components/base-input.vue'
 import BaseInputMask from '@/components/base-input-mask.vue'
 import BaseInputNumber from '@/components/base-input-number.vue'
 import BaseLink from '@/components/base-link.vue'
+import BaseLoader from '@/components/base-loader.vue'
 import BaseMask from '@/components/base-mask.vue'
 import BaseModal from '@/components/base-modal.vue'
 import BasePagination from '@/components/base-pagination.vue'
@@ -72,6 +73,7 @@ export default {
     Vue.component('BaseInputMask', BaseInputMask)
     Vue.component('BaseInputNumber', BaseInputNumber)
     Vue.component('BaseLink', BaseLink)
+    Vue.component('BaseLoader', BaseLoader)
     Vue.component('BaseMask', BaseMask)
     Vue.component('BaseModal', BaseModal)
     Vue.component('BasePagination', BasePagination)

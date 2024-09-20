@@ -1,0 +1,9 @@
+.loader-3 {
+  animation: loader-3 1s linear infinite alternate;
+}
+
+@keyframes loader-3 {
+  to {
+    opacity: 0;
+  }
+}
