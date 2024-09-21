@@ -12,7 +12,7 @@ withDefaults(
 </script>
 
 <template>
-  <div :class="`loader-${sample}`"><slot>Loading...</slot></div>
+  <div :class="`loader-${sample}`">&nbsp;<slot>Loading...</slot></div>
 </template>
 
 <style scoped>
