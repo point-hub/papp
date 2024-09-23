@@ -42,7 +42,7 @@ const value = computed({
       // split string into array of [date][month][year]
       const date = text.split('-')
 
-      if (date.length !== 3 || Number(date[2]) < 1000) {
+      if (date.length !== 3 || Number(date[0]) < 1000) {
         errors.value = ['Invalid date format.']
         nativeDate.value = ''
         emit('update:modelValue', '')
@@ -50,10 +50,10 @@ const value = computed({
       }
 
       const formattedDate = new Date()
-      formattedDate.setDate(Number(date[0]))
+      formattedDate.setDate(Number(date[2]))
       formattedDate.setMonth(Number(date[1]))
-      formattedDate.setFullYear(Number(date[2]))
-      nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
+      formattedDate.setFullYear(Number(date[0]))
+      nativeDate.value = `${date[0]}-${date[1]}-${date[2]}`
       emit('isoValue', formatISO(formattedDate))
       emit('update:modelValue', text)
     }
@@ -84,7 +84,7 @@ watch(value, (newValue) => {
   // split string into array of [date][month][year]
   const date = newValue.split('-')
 
-  if (date.length !== 3 || Number(date[2]) < 1000) {
+  if (date.length !== 3 || Number(date[0]) < 1000) {
     errors.value = ['Invalid date format.']
     nativeDate.value = ''
     emit('update:modelValue', '')
@@ -92,15 +92,15 @@ watch(value, (newValue) => {
   }
 
   const formattedDate = new Date()
-  formattedDate.setDate(Number(date[0]))
+  formattedDate.setDate(Number(date[2]))
   formattedDate.setMonth(Number(date[1]))
-  formattedDate.setFullYear(Number(date[2]))
-  nativeDate.value = `${date[2]}-${date[1]}-${date[0]}`
+  formattedDate.setFullYear(Number(date[0]))
+  nativeDate.value = `${date[0]}-${date[1]}-${date[2]}`
 })
 
 watch(nativeDate, (newValue) => {
   if (newValue) {
-    value.value = formatDate(new Date(newValue), 'dd-MM-yyyy')
+    value.value = formatDate(new Date(newValue), 'yyyy-MM-dd')
   } else {
     emit('update:modelValue', '')
   }
@@ -145,7 +145,7 @@ defineExpose({
     <input
       ref="inputRef"
       v-model.lazy="value"
-      v-input-mask="{ date: true, delimiter: '-', datePattern: ['d', 'm', 'Y'] }"
+      v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }"
       type="text"
       class="form-input bg-inherit"
       :class="{
@@ -153,7 +153,7 @@ defineExpose({
         'border-full': border === 'full',
         'border-none pl-0!': border === 'none'
       }"
-      placeholder="DD-MM-YYYY"
+      placeholder="YYYY-MM-DD"
       :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
