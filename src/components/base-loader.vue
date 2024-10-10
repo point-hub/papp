@@ -2,11 +2,11 @@
 withDefaults(
   defineProps<{
     type?: 'classic'
-    sample?: number
+    sample?: string
   }>(),
   {
     type: 'classic',
-    sample: 1
+    sample: '1'
   }
 )
 </script>
