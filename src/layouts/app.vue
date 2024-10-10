@@ -18,35 +18,31 @@ const sidebarStore = useSidebarStore()
 
 const apps: IApps[] = [
   {
-    name: 'App 1A',
-    path: '/app1a',
+    name: 'EXAMPLE',
+    path: '/example',
     icon: 'https://assets.pointhub.net/assets/images/logo/primary/icon-rounded.png',
     menu: [
       {
-        name: 'Home',
-        path: '/app1a/home'
+        name: 'HOME',
+        path: '/example/home'
       },
       {
-        name: 'Websocket',
-        path: '/app1a/websocket'
+        name: 'PAGE 1',
+        path: '/example/page-1'
       },
       {
-        name: 'Nested Menu',
+        name: 'PAGE 2',
+        path: '/example/page-2'
+      },
+      {
+        name: 'NESTED',
         submenu: [
-          { name: 'Page 1', path: '/app1a/nested/page-1' },
-          { name: 'Page 2', path: '/app1a/nested/page-2' }
-        ]
-      }
-    ]
-  },
-  {
-    name: 'App 1B',
-    path: '/app1b',
-    icon: 'https://assets.pointhub.net/assets/images/logo/primary/icon-rounded.png',
-    menu: [
-      {
-        name: 'Home',
-        path: '/app1b/home',
+          { name: 'PAGE 1', path: '/example/nested/page-1' },
+          { name: 'PAGE 2', path: '/example/nested/page-2' },
+          { name: 'PAGE 3', path: '/example/nested/page-3' },
+          { name: 'PAGE 4', path: '/example/nested/page-4' },
+          { name: 'PAGE 5', path: '/example/nested/page-5' }
+        ],
         separator: true
       },
       {
@@ -80,15 +76,15 @@ const apps: IApps[] = [
     ]
   },
   {
-    name: 'App 2',
+    name: 'APP 2',
     path: 'https://www.example.com'
   },
   {
-    name: 'App 3',
+    name: 'APP 3',
     path: 'https://www.example.com'
   },
   {
-    name: 'App 4',
+    name: 'APP 4',
     path: 'https://www.example.com'
   }
 ]

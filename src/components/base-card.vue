@@ -1,5 +1,5 @@
 <script setup lang="ts">
-export type BaseCardShapeType = 'sharp' | 'round'
+export type BaseCardShapeType = 'sharp' | 'rounded'
 
 const bgColor = defineModel<string>('bgColor')
 const titleColor = defineModel<string>('titleColor')
@@ -11,8 +11,8 @@ withDefaults(
     shape?: BaseCardShapeType
   }>(),
   {
-    shadow: true,
-    shape: 'round'
+    shadow: false,
+    shape: 'sharp'
   }
 )
 </script>
@@ -20,7 +20,7 @@ withDefaults(
 <template>
   <div
     class="card"
-    :class="{ 'card-shadow ': shadow, 'card-sharp': shape === 'sharp' }"
+    :class="{ 'card-shadow ': shadow, 'card-rounded': shape === 'rounded' }"
     :style="{ backgroundColor: bgColor, color: titleColor }"
   >
     <div class="card-header">

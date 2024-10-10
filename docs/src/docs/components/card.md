@@ -30,13 +30,13 @@ Use these responsive card components to show data entries and information to you
 
 ### Props
 
-| Name       | Type              | Default   | Description            |
-| ---------- | ----------------- | --------- | ---------------------- |
-| shadow     | boolean           | true      | Card Shadow.           |
-| shape      | `rounded` `sharp` | `rounded` | Card Shape.            |
-| bgColor    | string            |           | Card Background Color. |
-| titleColor | string            |           | Card Title Text Color. |
-| bodyColor  | string            |           | Card Body Text Color.  |
+| Name       | Type              | Default | Description            |
+| ---------- | ----------------- | ------- | ---------------------- |
+| shadow     | boolean           | false   | Card Shadow.           |
+| shape      | `rounded` `sharp` | `sharp` | Card Shape.            |
+| bgColor    | string            |         | Card Background Color. |
+| titleColor | string            |         | Card Title Text Color. |
+| bodyColor  | string            |         | Card Body Text Color.  |
 
 ### Slot
 

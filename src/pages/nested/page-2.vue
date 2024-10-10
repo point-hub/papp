@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>Page 2</div>
+  <base-card>Nested Page 2</base-card>
 </template>
 
 <style scoped lang="postcss"></style>

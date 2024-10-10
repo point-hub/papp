@@ -16,12 +16,12 @@ import { BaseCard } from '@point-hub/papp'
 </script>
 
 <template>
-  <component :is="BaseCard">
+  <component :is="BaseCard" shape="rounded">
     <template #header>Rounded</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   </component>
 
-  <component :is="BaseCard" shape="sharp">
+  <component :is="BaseCard">
     <template #header>Sharp</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   </component>

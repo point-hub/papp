@@ -9,21 +9,29 @@ const router = createRouter({
       children: [
         {
           path: '',
-          redirect: '/app1a/home'
+          redirect: '/example/home'
         }
       ]
     },
     {
-      path: '/app1a',
+      path: '/example',
       component: () => import('../layouts/app.vue'),
       children: [
         {
           path: '',
-          redirect: '/app1a/home'
+          redirect: '/example/home'
         },
         {
           path: 'home',
           component: () => import('@/pages/home.vue')
+        },
+        {
+          path: 'page-1',
+          component: () => import('@/pages/page-1.vue')
+        },
+        {
+          path: 'page-2',
+          component: () => import('@/pages/page-2.vue')
         },
         {
           path: 'websocket',
@@ -36,20 +44,18 @@ const router = createRouter({
         {
           path: 'nested/page-2',
           component: () => import('@/pages/nested/page-2.vue')
-        }
-      ]
-    },
-    {
-      path: '/app1b',
-      component: () => import('../layouts/app.vue'),
-      children: [
-        {
-          path: '',
-          redirect: '/app1b/home'
         },
         {
-          path: 'home',
-          component: () => import('@/pages/home.vue')
+          path: 'nested/page-3',
+          component: () => import('@/pages/nested/page-3.vue')
+        },
+        {
+          path: 'nested/page-4',
+          component: () => import('@/pages/nested/page-4.vue')
+        },
+        {
+          path: 'nested/page-5',
+          component: () => import('@/pages/nested/page-5.vue')
         }
       ]
     }
