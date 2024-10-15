@@ -18,6 +18,7 @@ export interface Props {
   disabled?: boolean
   helpers?: string[]
   errors?: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any
 }
 

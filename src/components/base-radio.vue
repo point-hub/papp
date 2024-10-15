@@ -7,6 +7,7 @@ import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 export type BaseRadioOptionsLayout = 'vertical' | 'horizontal'
 
 export interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   modelValue: Record<string, any> | null | undefined | string | number | boolean
   id?: string
   label?: string
@@ -17,6 +18,7 @@ export interface Props {
   disabled?: boolean
   helpers?: string[]
   errors?: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any>[]
 }
 
@@ -30,11 +32,13 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
   (
     e: 'update:modelValue',
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: Record<string, any> | null | undefined | string | number | boolean
   ): void
 }>()
 
 const value = computed({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set: (text: Record<string, any> | null | undefined | string | number | boolean) => {
     emit('update:modelValue', text)
   },

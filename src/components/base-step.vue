@@ -5,6 +5,7 @@ export interface BaseStepItemInterface {
   label: string
   active: boolean
   icon?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 

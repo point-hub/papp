@@ -30,9 +30,10 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (e: 'change', event: any): void
 }>()
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onUpload = (e: any) => {
   emit('change', e)
 }

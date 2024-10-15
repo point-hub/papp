@@ -1,26 +1,29 @@
 export interface IEvent {
   name: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callback: (payload?: any) => void
 }
 
 export class EventEmitter {
   private events: IEvent[] = []
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public emit(name: string, payload: any) {
     const ev = this.events.filter((item) => item.name == name)
     for (const item of ev) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       item.callback && item.callback(payload)
     }
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public on(name: string, callback: (payload?: any) => void) {
     this.events.push({ name, callback })
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public remove(name: string, callback: (payload?: any) => void) {
     let index = -1
     const isValidEvent = this.events.some((item, idx) => {
       index = idx
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       item.name === name && callback == item.callback
     })
 

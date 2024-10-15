@@ -17,6 +17,7 @@ export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 
 export interface BaseAutocompleteOptionInterface {
   label?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 
@@ -45,9 +46,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 const selected = defineModel<BaseAutocompleteOptionInterface>()
 const isLoading = defineModel<boolean>('isLoading', { default: false })
-let query = defineModel<string>('query', { default: '' })
+const query = defineModel<string>('query', { default: '' })
 
-let filtered = computed(() =>
+const filtered = computed(() =>
   query.value === ''
     ? props.options
     : props.options.filter((data) =>
@@ -64,6 +65,7 @@ const onClear = () => {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const buttonRef = ref<any>(null)
 const onInputClicked = () => {
   if (buttonRef.value) {

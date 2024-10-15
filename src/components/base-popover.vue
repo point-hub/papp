@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const ignoreOutsideRef: Ref<HTMLElement | null> = ref(null)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onClickOutsideHandler: [(evt: any) => void, OnClickOutsideOptions] = [
   () => {
     toggle(false)

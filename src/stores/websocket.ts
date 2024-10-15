@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { jsonParse } from '@point-hub/js-utils/lib/json/parse'
 import { jsonStringify } from '@point-hub/js-utils/lib/json/stringify'
 import { defineStore } from 'pinia'
@@ -57,10 +56,12 @@ export const useWebsocketStore = defineStore('websocket', () => {
       emitter.emit(data.event, data)
     }
     // socket opened
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     socket.value.onopen = (event) => {
       status.value = 1
     }
     // socket closed
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     socket.value.onclose = (event) => {
       status.value = 0
       if (reconnectingStatus.value === false) {
@@ -68,6 +69,7 @@ export const useWebsocketStore = defineStore('websocket', () => {
       }
     }
     // error handler
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     socket.value.onerror = (event) => {}
   }
 
@@ -75,7 +77,7 @@ export const useWebsocketStore = defineStore('websocket', () => {
     socket.value?.close()
   }
 
-  function send(data: Record<string, any>) {
+  function send(data: Record<string, unknown>) {
     socket.value?.send(jsonStringify(data))
   }
 

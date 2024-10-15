@@ -6,6 +6,7 @@ import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export interface BaseSelectOptionInterface {
   label: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 

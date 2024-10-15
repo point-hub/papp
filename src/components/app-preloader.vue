@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue'
 const loaded = ref(0)
 const loadingText = ref(`is loading ${loaded.value} %`)
 const preloaderRef = ref()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let loadingState: any
 
 onMounted(() => {

@@ -12,7 +12,7 @@ export interface IOptions {
   autoClose?: boolean
   timer?: number
 }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const listData = ref<any[]>([])
 
 const toast = (
