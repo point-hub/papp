@@ -177,11 +177,11 @@ const pathHandler = (path: string) => {
 }
 
 .sidebar-menu-body .menu-link-button {
-  @apply flex w-full items-center justify-between py-2 text-sm outline-none duration-300 ease-in-out hover:text-slate-50 cursor-pointer;
+  @apply flex w-full items-center justify-between py-2 text-xs outline-none duration-300 ease-in-out hover:text-slate-50 cursor-pointer uppercase;
 }
 
 .sidebar-menu-body .submenu-link {
-  @apply flex items-center justify-between p-2 text-sm outline-none duration-400 ease-in-out uppercase hover:font-slate-50;
+  @apply flex items-center justify-between p-2 text-xs outline-none duration-400 ease-in-out uppercase hover:text-slate-200;
 }
 
 .menu-link-button.router-link-active {

@@ -50,7 +50,7 @@ const chooseApp = (path: string) => {
                 class="pt-2 px-1 max-w-12 max-h-12"
               />
               <div
-                class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere"
+                class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere"
               >
                 {{ app.name }}
               </div>
@@ -75,7 +75,7 @@ const chooseApp = (path: string) => {
                 class="pt-2 px-1 max-w-12 max-h-12"
               />
               <div
-                class="text-center px-1 py-2 text-10px font-semibold line-height-tight break-anywhere"
+                class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere"
               >
                 {{ app.name }}
               </div>

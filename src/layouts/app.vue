@@ -23,25 +23,25 @@ const apps: IApps[] = [
     icon: 'https://assets.pointhub.net/assets/images/logo/primary/icon-rounded.png',
     menu: [
       {
-        name: 'HOME',
+        name: 'Home',
         path: '/example/home'
       },
       {
-        name: 'PAGE 1',
+        name: 'Page 1',
         path: '/example/page-1'
       },
       {
-        name: 'PAGE 2',
+        name: 'Page 2',
         path: '/example/page-2'
       },
       {
-        name: 'NESTED',
+        name: 'Nested',
         submenu: [
-          { name: 'PAGE 1', path: '/example/nested/page-1' },
-          { name: 'PAGE 2', path: '/example/nested/page-2' },
-          { name: 'PAGE 3', path: '/example/nested/page-3' },
-          { name: 'PAGE 4', path: '/example/nested/page-4' },
-          { name: 'PAGE 5', path: '/example/nested/page-5' }
+          { name: 'Page 1', path: '/example/nested/page-1' },
+          { name: 'Page 2', path: '/example/nested/page-2' },
+          { name: 'Page 3', path: '/example/nested/page-3' },
+          { name: 'Page 4', path: '/example/nested/page-4' },
+          { name: 'Page 5', path: '/example/nested/page-5' }
         ],
         separator: true
       },
