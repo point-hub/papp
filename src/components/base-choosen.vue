@@ -151,7 +151,7 @@ const onClose = () => {
           <div
             v-for="(option, index) in filtered"
             :key="index"
-            class="py-4 px-8 border-b hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            class="py-4 px-8 border-b dark:border-b-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
             @click="onSelect(option)"
           >
             <slot :option="option">{{ option?.label }}</slot>
