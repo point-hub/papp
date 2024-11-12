@@ -79,7 +79,7 @@ export type BaseButtonType = 'submit' | 'button' | 'reset'
 | type      | BaseButtonType        | `button`  | Button type.                                 |
 | variant   | BaseButtonVariantType | `filled`  | Button variant.                              |
 | color     | BaseButtonColorType   | `primary` | Button color.                                |
-| shape     | BaseButtonShapeType   | `rounded` | Button shape.                                |
+| shape     | BaseButtonShapeType   | `sharp`   | Button shape.                                |
 | size      | BaseButtonSizeType    | `md`      | Button size.                                 |
 | isBlock   | boolean               | false     | Block button with full width.                |
 | isLoading | boolean               | false     | Add spinner loading indicator inside button. |

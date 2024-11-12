@@ -26,7 +26,7 @@ const props = withDefaults(
     type: 'button',
     size: 'md',
     color: 'none',
-    shape: 'rounded',
+    shape: 'sharp',
     variant: 'filled',
     isBlock: false,
     isLoading: false
