@@ -29,9 +29,22 @@ export function useDarkMode() {
     isDarkMode.value = htmlTag.classList.contains('dark')
   }
 
+  function setDarkMode(mode: 'dark' | 'light') {
+    if (mode === 'light') {
+      htmlTag.classList.remove('dark')
+      localStorage.setItem('dark-mode', 'light')
+    } else if (mode === 'dark') {
+      htmlTag.classList.add('dark')
+      localStorage.setItem('dark-mode', 'dark')
+    }
+
+    isDarkMode.value = htmlTag.classList.contains('dark')
+  }
+
   return {
     isDarkMode,
     toggleDarkMode,
+    setDarkMode,
     loadDarkMode
   }
 }
