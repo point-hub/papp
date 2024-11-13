@@ -16,9 +16,10 @@ import { PluginBaseComponents, PluginInputMask, PluginTooltip } from '@point-hub
 
 const app = createApp(App)
 
-app.use(PluginBaseComponents)
 app.use(PluginInputMask)
 app.use(PluginTooltip)
+// import all base component globally
+app.use(PluginBaseComponents)
 ```
 
 ## Usage
@@ -33,6 +34,12 @@ import { BaseButton } from '@point-hub/papp'
 <template>
   <component :is="BaseButton">Button</component>
 </template>
+```
+
+Or if you using global components, you can skip import each component locally
+
+```vue
+<base-button>Button</base-button>
 ```
 
 ## Starter Template
