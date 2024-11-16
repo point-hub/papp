@@ -54,6 +54,7 @@ export {
   type BaseProgressColorType,
   type BaseProgressSizeType
 } from './components/base-progress.vue'
+export { default as BaseSitemap } from './components/base-sitemap.vue'
 export {
   default as BaseSpinner,
   type BaseSpinnerColorType,

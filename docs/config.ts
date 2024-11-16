@@ -75,7 +75,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
     },
     {
       text: 'Components',
-      collapsed: true,
+      collapsed: false,
       items: [
         { text: 'Accordion', link: 'components/accordion' },
         { text: 'Alert', link: 'components/alert' },
@@ -90,12 +90,13 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Loader', link: 'components/loader' },
         { text: 'Mask', link: 'components/mask' },
         { text: 'Modal', link: 'components/modal' },
-        { text: 'Pagination', link: 'components/pagination' }, // TODO: fix export function
-        { text: 'Popover', link: 'components/popover' }, // TODO: fix export function
+        { text: 'Pagination', link: 'components/pagination' },
+        { text: 'Popover', link: 'components/popover' },
         { text: 'Progress', link: 'components/progress' },
+        { text: 'Sitemap', link: 'components/sitemap' },
         { text: 'Spinner', link: 'components/spinner' },
         { text: 'Steps', link: 'components/steps' },
-        { text: 'Table', link: 'components/table' }, // TODO: fix export function
+        { text: 'Table', link: 'components/table' },
         { text: 'Tabs', link: 'components/tabs' },
         { text: 'Timeline', link: 'components/timeline' },
         { text: 'Toast', link: 'components/toast' },
@@ -105,7 +106,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
     },
     {
       text: 'Forms',
-      collapsed: true,
+      collapsed: false,
       items: [
         { text: 'Autocomplete', link: 'forms/autocomplete' },
         { text: 'Checkbox', link: 'forms/checkbox' },
