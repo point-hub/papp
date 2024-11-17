@@ -333,6 +333,7 @@ li {
 /* Fix prevent vp-doc add margin on list */
 .sitemap li > ul {
   margin-top: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* Fix prevent vp-doc add margin on list */
