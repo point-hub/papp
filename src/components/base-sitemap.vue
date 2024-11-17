@@ -329,4 +329,14 @@ li {
 .primary > ul > li > ul > li {
   width: 250px;
 }
+
+/* Fix prevent vp-doc add margin on list */
+.sitemap li > ul {
+  margin: 0 0 0 0 !important;
+}
+
+/* Fix prevent vp-doc add margin on list */
+.sitemap li + li {
+  margin: 0 0 0 0 !important;
+}
 </style>
