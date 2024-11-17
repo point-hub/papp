@@ -32,6 +32,7 @@ import BaseProgress from '@/components/base-progress.vue'
 import BaseRadio from '@/components/base-radio.vue'
 import BaseRange from '@/components/base-range.vue'
 import BaseSelect from '@/components/base-select.vue'
+import BaseSitemap from '@/components/base-sitemap.vue'
 import BaseSpinner from '@/components/base-spinner.vue'
 import BaseStep from '@/components/base-step.vue'
 import BaseSwitch from '@/components/base-switch.vue'
@@ -82,6 +83,7 @@ export default {
     Vue.component('BaseRadio', BaseRadio)
     Vue.component('BaseRange', BaseRange)
     Vue.component('BaseSelect', BaseSelect)
+    Vue.component('BaseSitemap', BaseSitemap)
     Vue.component('BaseSpinner', BaseSpinner)
     Vue.component('BaseStep', BaseStep)
     Vue.component('BaseSwitch', BaseSwitch)
