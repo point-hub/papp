@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.79",
+  "version": "0.0.80",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -78,7 +78,7 @@
     "typescript": "^5.6.3",
     "unocss": "^0.60.4",
     "vite": "^5.4.11",
-    "vite-plugin-dts": "4.3.0",
+    "vite-plugin-dts": "3.7.3",
     "vitepress": "1.5.0",
     "vitest": "^2.1.5",
     "vue-tsc": "^2.1.10"
