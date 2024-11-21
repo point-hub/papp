@@ -137,7 +137,10 @@ defineExpose({
       :is="BaseButton"
       variant="text"
       type="button"
-      class="absolute right-0 px-4 py-2"
+      class="absolute left-0 px-0! py-2"
+      :class="{
+        'px-2!': border === 'full'
+      }"
       @click="onClickDateRef()"
     >
       <base-icon icon="i-far-calendar" />
@@ -149,9 +152,9 @@ defineExpose({
       type="text"
       class="form-input bg-inherit"
       :class="{
-        'border-simple pl-0!': border === 'simple',
-        'border-full': border === 'full',
-        'border-none pl-0!': border === 'none'
+        'border-simple pl-6!': border === 'simple',
+        'border-full pl-8!': border === 'full',
+        'border-none pl-6!': border === 'none'
       }"
       placeholder="YYYY-MM-DD"
       :autofocus="props.autofocus"
