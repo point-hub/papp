@@ -61,7 +61,7 @@ const filtered = computed(() =>
 
 const onClear = () => {
   if (!props.disabled) {
-    selected.value = {}
+    selected.value = undefined
   }
 }
 
@@ -106,7 +106,7 @@ defineExpose({
               'border-full': border === 'full',
               'border-none pl-0!': border === 'none'
             }"
-            :displayValue="(data) => (data as BaseAutocompleteOptionInterface).label ?? ''"
+            :displayValue="() => selected?.label ?? ''"
             @change="query = $event.target.value"
           />
           <ComboboxButton
