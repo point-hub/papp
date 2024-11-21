@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.80",
+  "version": "0.0.81",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -37,6 +37,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@coders-tm/vue-number-format": "^3.34.1",
     "@headlessui/vue": "^1.7.23",
     "@point-hub/js-utils": "^0.0.5",
     "@point-hub/preset-papp-icon": "^0.0.2",
@@ -55,7 +56,7 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/cleave.js": "^1.4.12",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.1",
     "@types/uuid": "^10.0.0",
     "@unocss/preset-web-fonts": "^0.60.4",
     "@unocss/reset": "^0.60.4",

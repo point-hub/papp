@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Cleave from 'cleave.js'
+import { directive as vNumber } from '@coders-tm/vue-number-format'
 import { computed, onMounted, ref } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
@@ -34,7 +34,15 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const inputRef = ref()
-const cleave = ref()
+const options = {
+  decimal: '.',
+  separator: ',',
+  precision: props.decimalLength
+}
+
+const selectAllText = () => {
+  inputRef.value.select()
+}
 
 const prefixRef = ref()
 const suffixRef = ref()
@@ -42,12 +50,6 @@ const paddingLeft = ref(0)
 const paddingRight = ref(0)
 
 onMounted(() => {
-  cleave.value = new Cleave(inputRef.value, {
-    numeral: true,
-    numeralThousandsGroupStyle: 'thousand',
-    numeralDecimalScale: props.decimalLength
-  })
-
   if (props.border === 'full' || prefixRef.value.clientWidth) {
     paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
   }
@@ -65,14 +67,19 @@ onMounted(() => {
 })
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: number | null): void
+  (e: 'update:modelValue', value: number): void
 }>()
 
-const value = computed({
-  set: () => {
-    emit('update:modelValue', Number(cleave.value.getRawValue()))
+const inputValue = computed({
+  set: (value) => {
+    if (!value) {
+      value = 0
+    }
+    emit('update:modelValue', value)
   },
-  get: () => props.modelValue
+  get: () => {
+    return props.modelValue
+  }
 })
 
 defineExpose({
@@ -99,11 +106,13 @@ defineExpose({
         'border-full': border === 'full',
         'border-none': border === 'none'
       }"
-      v-model="value"
+      v-number="options"
+      v-model="inputValue"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
+      @click="selectAllText"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
