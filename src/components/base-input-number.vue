@@ -36,10 +36,6 @@ const props = withDefaults(defineProps<Props>(), {
 const cleave = ref()
 const inputRef = ref()
 
-const onValueChanged = (e: { target: { rawValue: number } }) => {
-  emit('update:modelValue', Number(e.target.rawValue))
-}
-
 const selectAllText = () => {
   inputRef.value.select()
 }
@@ -75,7 +71,13 @@ onMounted(() => {
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
+  (e: 'update'): void
 }>()
+
+const onValueChanged = (e: { target: { rawValue: number } }) => {
+  emit('update:modelValue', Number(e.target.rawValue))
+  emit('update')
+}
 
 const inputValue = computed({
   set: () => {},
