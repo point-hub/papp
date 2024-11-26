@@ -46,7 +46,29 @@ export default defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     { text: 'Docs', link: '/docs/introduction' },
-    { text: 'Contribution Guide', link: '/contribution-guide/getting-started/introduction' },
+    {
+      text: 'Ecosystem',
+      items: [
+        { text: 'Dev Documentation', link: 'https://dev.pointhub.net/' },
+        // TODO: publish this documentation before show the link
+        // {
+        //   text: 'Services',
+        //   items: [
+        //     { text: 'Auth', link: 'https://dev.pointhub.net/services/auth/' },
+        //     { text: 'Storage', link: 'https://dev.pointhub.net/services/storage/' },
+        //     { text: 'Mail', link: 'https://dev.pointhub.net/services/mail/' }
+        //   ]
+        // },
+        // {
+        //   text: 'Apps',
+        //   items: [{ text: 'ERP', link: 'https://dev.pointhub.net/apps/erp/' }]
+        // },
+        {
+          text: 'Libraries',
+          items: [{ text: 'UI Library', link: 'https://dev.pointhub.net/library/papp' }]
+        }
+      ]
+    },
     {
       text: 'v' + version,
       items: [
@@ -56,7 +78,7 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {
           text: 'Contributing',
-          link: 'https://dev.pointhub.net'
+          link: '/contribution-guide/getting-started/introduction'
         }
       ]
     }
