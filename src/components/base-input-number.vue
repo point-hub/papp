@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import Cleave from 'cleave.js'
@@ -48,6 +48,21 @@ const prefixRef = ref()
 const suffixRef = ref()
 const paddingLeft = ref(0)
 const paddingRight = ref(0)
+
+watch(
+  () => props.decimalLength,
+  () => {
+    if (cleave.value) {
+      cleave.value.destroy()
+      cleave.value = new Cleave(inputRef.value, {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralDecimalScale: props.decimalLength,
+        onValueChanged: onValueChanged
+      })
+    }
+  }
+)
 
 onMounted(() => {
   cleave.value = new Cleave(inputRef.value, {
