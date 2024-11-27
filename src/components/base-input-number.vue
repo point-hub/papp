@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType, BaseForm } from '@point-hub/papp'
 import Cleave from 'cleave.js'
+import { computed, onMounted, ref } from 'vue'
 
 export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
-  modelValue: number | null
   id?: string
   label?: string
   align?: 'left' | 'right'
@@ -20,7 +18,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -69,14 +66,16 @@ onMounted(() => {
   }, 1000)
 })
 
+const modelValue = defineModel<string | number>()
+const errors = defineModel<string[]>('errors')
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
-  (e: 'update'): void
 }>()
 
 const onValueChanged = (e: { target: { rawValue: number } }) => {
   emit('update:modelValue', Number(e.target.rawValue))
-  emit('update')
+  if (errors.value?.length) errors.value = []
 }
 
 const inputValue = computed({
@@ -84,7 +83,7 @@ const inputValue = computed({
   get: () =>
     new Intl.NumberFormat('en-US', {
       maximumFractionDigits: props.decimalLength
-    }).format(Number(props.modelValue))
+    }).format(modelValue.value as number)
 })
 
 defineExpose({
@@ -100,7 +99,7 @@ defineExpose({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <input
       ref="inputRef"
