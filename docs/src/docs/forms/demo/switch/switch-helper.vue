@@ -9,6 +9,8 @@ const form = ref({
   checked4: false,
   checked5: false
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -40,7 +42,7 @@ const form = ref({
         v-model="form.checked4"
         label="Label"
         layout="horizontal"
-        :errors="['Error example']"
+        v-model:errors="errors"
       />
       <component
         :is="BaseSwitch"

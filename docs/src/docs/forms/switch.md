@@ -52,11 +52,12 @@ export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
 
 ### Props
 
-| Name          | Type                   | Default | Description                   |
-| ------------- | ---------------------- | ------- | ----------------------------- |
-| v-model       | boolean                |         | v-model is `required`.        |
-| label         | string                 |         | Switch label.                 |
-| text          | string                 |         | Switch text.                  |
-| text-position | BaseSwitchTextPosition | `left`  | Switch text position.         |
-| size          | BaseSwitchSize         | `md`    | Switch size.                  |
-| disabled      | boolean                | false   | if true switch is `disabled`. |
+| Name           | Type                   | Default | Description                   |
+|----------------|------------------------|---------|-------------------------------|
+| v-model        | boolean                |         | v-model is `required`.        |
+| v-model:errors | string[]               |         | Input error message.          |
+| label          | string                 |         | Switch label.                 |
+| text           | string                 |         | Switch text.                  |
+| text-position  | BaseSwitchTextPosition | `left`  | Switch text position.         |
+| size           | BaseSwitchSize         | `md`    | Switch size.                  |
+| disabled       | boolean                | false   | if true switch is `disabled`. |

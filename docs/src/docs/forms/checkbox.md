@@ -35,15 +35,15 @@ The input element with a type attribute whose value is "text" represents a one-l
 
 ### Props
 
-| Name        | Type                    | Default    | Description                     |
-| ----------- | ----------------------- | ---------- | ------------------------------- |
-| v-model     | string                  |            | v-model is `required`.          |
-| label       | string                  |            | Checkbox label.                 |
-| text        | string                  |            | Checkbox text.                  |
-| description | string                  |            | Input description.              |
-| placeholder | string                  |            | Input placeholder.              |
-| layout      | `horizontal` `vertical` | `vertical` | Input layout.                   |
-| required    | boolean                 | false      | if true checkbox is `required`. |
-| disabled    | boolean                 | false      | if true checkbox is `disabled`. |
-| helpers     | string[]                |            | Input helper message.           |
-| errors      | string[]                |            | Input error message.            |
+| Name           | Type                    | Default    | Description                     |
+|----------------|-------------------------|------------|---------------------------------|
+| v-model        | string                  |            | v-model is `required`.          |
+| v-model:errors | string[]                |            | Input error message.            |
+| label          | string                  |            | Checkbox label.                 |
+| text           | string                  |            | Checkbox text.                  |
+| description    | string                  |            | Input description.              |
+| placeholder    | string                  |            | Input placeholder.              |
+| layout         | `horizontal` `vertical` | `vertical` | Input layout.                   |
+| required       | boolean                 | false      | if true checkbox is `required`. |
+| disabled       | boolean                 | false      | if true checkbox is `disabled`. |
+| helpers        | string[]                |            | Input helper message.           |

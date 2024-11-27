@@ -18,7 +18,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
   minHeight?: number
   maxHeight?: number
 }
@@ -31,6 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
+const errors = defineModel<string[]>('errors')
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
@@ -38,6 +39,7 @@ const emit = defineEmits<{
 const value = computed({
   set: (text: string) => {
     emit('update:modelValue', text)
+    if (errors.value?.length) errors.value = []
     resize()
   },
   get: () => props.modelValue
@@ -74,7 +76,7 @@ defineExpose({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <textarea
       ref="textareaRef"

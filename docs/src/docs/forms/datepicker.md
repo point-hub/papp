@@ -42,16 +42,16 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name        | Type                     | Default    | Description                       |
-| ----------- | ------------------------ | ---------- | --------------------------------- |
-| v-model     | string                   |            | v-model is `required`.            |
-| id          | string                   |            | Input id.                         |
-| label       | string                   |            | Input label.                      |
-| description | string                   |            | Input description.                |
-| border      | BaseDatepickerBorderType | `simple`   | Input border.                     |
-| layout      | BaseFormLayoutType       | `vertical` | Input layout.                     |
-| autofocus   | boolean                  | false      | Focus input on page load.         |
-| required    | boolean                  | false      | if true datepicker is `required`. |
-| disabled    | boolean                  | false      | if true datepicker is `disabled`. |
-| helpers     | string[]                 |            | Input helper message.             |
-| errors      | string[]                 |            | Input error message.              |
+| Name           | Type                     | Default    | Description                       |
+|----------------|--------------------------|------------|-----------------------------------|
+| v-model        | string                   |            | v-model is `required`.            |
+| v-model:errors | string[]                 |            | Input error message.              |
+| id             | string                   |            | Input id.                         |
+| label          | string                   |            | Input label.                      |
+| description    | string                   |            | Input description.                |
+| border         | BaseDatepickerBorderType | `simple`   | Input border.                     |
+| layout         | BaseFormLayoutType       | `vertical` | Input layout.                     |
+| autofocus      | boolean                  | false      | Focus input on page load.         |
+| required       | boolean                  | false      | if true datepicker is `required`. |
+| disabled       | boolean                  | false      | if true datepicker is `disabled`. |
+| helpers        | string[]                 |            | Input helper message.             |

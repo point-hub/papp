@@ -17,7 +17,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -36,10 +35,13 @@ const emit = defineEmits<{
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const onUpload = (e: any) => {
   emit('change', e)
+  if (errors.value?.length) errors.value = []
 }
 
 const fileRef = ref()
 const inputRef = ref()
+const errors = defineModel<string[]>('errors')
+
 defineExpose({
   fileRef,
   inputRef
@@ -54,7 +56,7 @@ defineExpose({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <slot :file-ref="fileRef">
       <input

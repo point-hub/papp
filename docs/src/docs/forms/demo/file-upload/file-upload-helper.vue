@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { BaseFileUpload } from '@point-hub/papp'
+import { ref } from 'vue'
 
 interface HTMLInputEvent extends Event {
   target: HTMLInputElement
@@ -8,6 +9,8 @@ interface HTMLInputEvent extends Event {
 const onUpload = (e: HTMLInputEvent) => {
   console.log(e.target.files)
 }
+
+const errors = ref<string[]>(['Errors'])
 </script>
 
 <template>
@@ -19,7 +22,12 @@ const onUpload = (e: HTMLInputEvent) => {
       label="Label"
       description="Description Example"
     />
-    <component :is="BaseFileUpload" @change="onUpload" label="Label" helper="Helper Example" />
-    <component :is="BaseFileUpload" @change="onUpload" label="Label" error="Error Example" />
+    <component
+      :is="BaseFileUpload"
+      @change="onUpload"
+      label="Label"
+      :helpers="['Helper Example']"
+    />
+    <component :is="BaseFileUpload" @change="onUpload" label="Label" v-model:errors="errors" />
   </Demo>
 </template>

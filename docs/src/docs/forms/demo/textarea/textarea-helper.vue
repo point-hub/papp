@@ -10,6 +10,8 @@ const form = ref({
   text5: '',
   text6: 'Disabled'
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -34,12 +36,7 @@ const form = ref({
         label="Label"
         v-model="form.text4"
       />
-      <component
-        :is="BaseTextarea"
-        :errors="['Error Example']"
-        label="Label"
-        v-model="form.text5"
-      />
+      <component :is="BaseTextarea" v-model:errors="errors" label="Label" v-model="form.text5" />
       <component
         :is="BaseTextarea"
         label="Label"

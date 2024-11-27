@@ -5,6 +5,8 @@ import { ref } from 'vue'
 const form = ref({
   date: ''
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -23,12 +25,7 @@ const form = ref({
         label="Date"
         :helpers="['Helper Example']"
       />
-      <component
-        :is="BaseDatepicker"
-        v-model="form.date"
-        label="Date"
-        :errors="['Error Example']"
-      />
+      <component :is="BaseDatepicker" v-model="form.date" label="Date" v-model:errors="errors" />
       <component
         :is="BaseDatepicker"
         v-model="form.date"

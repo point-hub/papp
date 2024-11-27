@@ -5,6 +5,8 @@ import { ref } from 'vue'
 const form = ref({
   volume: 50
 })
+
+const errors = ref(['Example Error'])
 </script>
 
 <template>
@@ -22,7 +24,7 @@ const form = ref({
         v-model="form.volume"
         label="Volume"
       />
-      <component :is="BaseRange" :errors="['Example Error']" v-model="form.volume" label="Volume" />
+      <component :is="BaseRange" v-model:errors="errors" v-model="form.volume" label="Volume" />
     </form>
   </Demo>
 </template>

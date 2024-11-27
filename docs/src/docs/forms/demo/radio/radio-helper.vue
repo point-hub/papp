@@ -24,6 +24,8 @@ const form = ref({
   selected4: null,
   selected5: options[0]
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -55,7 +57,7 @@ const form = ref({
         :options="options"
         v-model="form.selected4"
         label="Label"
-        :errors="['Error example']"
+        v-model:errors="errors"
       />
       <component
         :is="BaseRadio"

@@ -25,7 +25,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -42,6 +41,7 @@ const isLoading = defineModel<boolean>('isLoading')
 const selected = defineModel<IOption>('selected')
 const search = defineModel<string>('search', { default: '' })
 const options = defineModel<IOption[]>('options')
+const errors = defineModel<string[]>('errors')
 
 const showModal = ref(false)
 const inputRef = ref()
@@ -86,6 +86,7 @@ watch(
     } else {
       input.value = selected.value?.label ?? ''
     }
+    if (errors.value?.length) errors.value = []
   },
   { immediate: true }
 )
@@ -106,7 +107,7 @@ const onClose = () => {
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
     class="w-full"
   >
     <!-- mode: input -->

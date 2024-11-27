@@ -47,20 +47,20 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name        | Type                   | Default | Description                     |
-| ----------- | ---------------------- | ------- | ------------------------------- |
-| v-model     | string                 |         | v-model is `required`.          |
-| id          | string                 |         | Textarea id.                    |
-| label       | string                 |         | Textarea label.                 |
-| description | string                 |         | Textarea description.           |
-| placeholder | string                 |         | Textarea placeholder.           |
-| border      | BaseTextareaBorderType |         | Textarea border.                |
-| layout      | BaseFormLayoutType     |         | Textarea layout.                |
-| maxlength   | number                 |         | Textarea Max Length.            |
-| autofocus   | boolean                | false   | Focus textarea on page load.    |
-| required    | boolean                | false   | if true textarea is `required`. |
-| disabled    | boolean                | false   | if true textarea is `disabled`. |
-| helpers     | string[]               |         | Textarea helper message.        |
-| errors      | string[]               |         | Textarea error message.         |
-| minHeight   | number                 |         | Textarea min height.            |
-| maxHeight   | number                 |         | Textarea max height.            |
+| Name           | Type                   | Default | Description                     |
+|----------------|------------------------|---------|---------------------------------|
+| v-model        | string                 |         | v-model is `required`.          |
+| v-model:errors | string[]               |         | Textarea error message.         |
+| id             | string                 |         | Textarea id.                    |
+| label          | string                 |         | Textarea label.                 |
+| description    | string                 |         | Textarea description.           |
+| placeholder    | string                 |         | Textarea placeholder.           |
+| border         | BaseTextareaBorderType |         | Textarea border.                |
+| layout         | BaseFormLayoutType     |         | Textarea layout.                |
+| maxlength      | number                 |         | Textarea Max Length.            |
+| autofocus      | boolean                | false   | Focus textarea on page load.    |
+| required       | boolean                | false   | if true textarea is `required`. |
+| disabled       | boolean                | false   | if true textarea is `disabled`. |
+| helpers        | string[]               |         | Textarea helper message.        |
+| minHeight      | number                 |         | Textarea min height.            |
+| maxHeight      | number                 |         | Textarea max height.            |

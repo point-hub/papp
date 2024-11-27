@@ -18,6 +18,8 @@ const checkbox2 = ref(false)
 const checkbox3 = ref(false)
 const checkbox4 = ref(false)
 const checkbox5 = ref(false)
+
+const errors = ref(['Error example'])
 </script>
 
 <template>
@@ -51,7 +53,7 @@ const checkbox5 = ref(false)
     text="Checkbox"
     label="Label"
     layout="horizontal"
-    :errors="['Error example']"
+    v-model:errors="errors"
   />
   <component
     :is="BaseCheckbox"

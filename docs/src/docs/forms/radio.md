@@ -42,19 +42,19 @@ export type BaseRadioOptionsLayout = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name          | Type                                                                 | Default    | Description                  |
-| ------------- | -------------------------------------------------------------------- | ---------- | ---------------------------- |
-| v-model       | `Record<string, any>` `string` `number` `boolean` `null` `undefined` |            | v-model is `required`.       |
-| id            | string                                                               |            | Input id.                    |
-| label         | string                                                               |            | Input label.                 |
-| description   | string                                                               |            | Input description.           |
-| layout        | BaseFormLayoutType                                                   | `vertical` | Input layout.                |
-| optionsLayout | BaseRadioOptionsLayout                                               | `vertical` | Input layout.                |
-| required      | boolean                                                              | false      | if true input is `required`. |
-| disabled      | boolean                                                              | false      | if true input is `disabled`. |
-| helpers       | string[]                                                             |            | Input helper message.        |
-| errors        | string[]                                                             |            | Input error message.         |
-| options       | Record<string, any>[]                                                |            | Options to choose.           |
+| Name           | Type                                                                 | Default    | Description                  |
+|----------------|----------------------------------------------------------------------|------------|------------------------------|
+| v-model        | `Record<string, any>` `string` `number` `boolean` `null` `undefined` |            | v-model is `required`.       |
+| v-model:errors | string[]                                                             |            | Input error message.         |
+| id             | string                                                               |            | Input id.                    |
+| label          | string                                                               |            | Input label.                 |
+| description    | string                                                               |            | Input description.           |
+| layout         | BaseFormLayoutType                                                   | `vertical` | Input layout.                |
+| optionsLayout  | BaseRadioOptionsLayout                                               | `vertical` | Input layout.                |
+| required       | boolean                                                              | false      | if true input is `required`. |
+| disabled       | boolean                                                              | false      | if true input is `disabled`. |
+| helpers        | string[]                                                             |            | Input helper message.        |
+| options        | Record<string, any>[]                                                |            | Options to choose.           |
 
 ### Slot
 

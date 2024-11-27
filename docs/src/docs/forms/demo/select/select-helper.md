@@ -19,6 +19,7 @@ const options = [
   { id: 3, label: 'Therese Wunsch' },
   { id: 4, label: 'Benedict Kessler' }
 ]
+
 const form = ref({
   selected1: null,
   selected2: null,
@@ -26,6 +27,8 @@ const form = ref({
   selected4: null,
   selected5: options[1]
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -56,7 +59,7 @@ const form = ref({
       v-model="form.selected4"
       :options="options"
       label="Label"
-      :errors="['Description example']"
+      v-model:errors="errors"
     />
     <component
       :is="BaseSelect"

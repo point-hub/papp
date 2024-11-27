@@ -12,7 +12,6 @@ export interface Props {
   disabled?: boolean
   showText?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,6 +20,8 @@ const props = withDefaults(defineProps<Props>(), {
   showText: false
 })
 
+const errors = defineModel<string[]>('errors')
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number): void
 }>()
@@ -28,6 +29,7 @@ const emit = defineEmits<{
 const value = computed({
   set: (text: number) => {
     emit('update:modelValue', text)
+    if (errors.value?.length) errors.value = []
   },
   get: () => props.modelValue
 })
@@ -40,7 +42,7 @@ const value = computed({
     :layout="props.layout"
     :description="props.description"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <div class="flex w-full gap-2">
       <input type="range" class="w-full" min="0" max="100" v-model="value" :disabled="disabled" />

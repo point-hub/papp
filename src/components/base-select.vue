@@ -24,7 +24,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -35,6 +34,8 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
+const errors = defineModel<string[]>('errors')
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: BaseSelectOptionInterface | null): void
 }>()
@@ -42,6 +43,7 @@ const emit = defineEmits<{
 const selected = computed({
   set: (option: BaseSelectOptionInterface | null) => {
     emit('update:modelValue', option)
+    if (errors.value?.length) errors.value = []
   },
   get: () => props.modelValue
 })
@@ -59,7 +61,7 @@ const clearSelect = () => {
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <Listbox v-model="selected" :disabled="props.disabled">
       <div class="list-box">

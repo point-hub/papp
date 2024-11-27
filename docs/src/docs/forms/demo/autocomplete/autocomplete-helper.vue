@@ -41,6 +41,8 @@ const onSubmit = () => {
   form.value.name4 = selected4.value?.label ?? null
   form.value.name5 = selected5.value?.label ?? null
 }
+
+const errors = ref(['Error 1 Example', 'Error 2 Example', 'Error 3 Example'])
 </script>
 
 <template>
@@ -72,7 +74,7 @@ const onSubmit = () => {
         v-model="selected4"
         :options="options"
         label="Label"
-        :errors="['Error 1 Example', 'Error 2 Example', 'Error 3 Example']"
+        v-model:errors="errors"
       />
       <component
         :is="BaseAutocomplete"

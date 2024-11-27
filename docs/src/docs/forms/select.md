@@ -46,16 +46,16 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name        | Type                      | Default    | Description                  |
-| ----------- | ------------------------- | ---------- | ---------------------------- |
-| v-model     | BaseSelectOptionInterface |            | v-model is `required`.       |
-| id          | string                    |            | Input id.                    |
-| label       | string                    |            | Input label.                 |
-| description | string                    |            | Input description.           |
-| placeholder | string                    |            | Input placeholder.           |
-| border      | BaseSelectBorderType      | `simple`   | Input border.                |
-| layout      | BaseFormLayoutType        | `vertical` | Input layout.                |
-| required    | boolean                   | false      | if true input is `required`. |
-| disabled    | boolean                   | false      | if true input is `disabled`. |
-| helpers     | string[]                  |            | Input helper message.        |
-| errors      | string[]                  |            | Input error message.         |
+| Name           | Type                      | Default    | Description                  |
+|----------------|---------------------------|------------|------------------------------|
+| v-model        | BaseSelectOptionInterface |            | v-model is `required`.       |
+| v-model:errors | string[]                  |            | Input error message.         |
+| id             | string                    |            | Input id.                    |
+| label          | string                    |            | Input label.                 |
+| description    | string                    |            | Input description.           |
+| placeholder    | string                    |            | Input placeholder.           |
+| border         | BaseSelectBorderType      | `simple`   | Input border.                |
+| layout         | BaseFormLayoutType        | `vertical` | Input layout.                |
+| required       | boolean                   | false      | if true input is `required`. |
+| disabled       | boolean                   | false      | if true input is `disabled`. |
+| helpers        | string[]                  |            | Input helper message.        |

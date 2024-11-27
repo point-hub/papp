@@ -19,7 +19,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -34,9 +33,12 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
 }>()
 
+const errors = defineModel<string[]>('errors')
+
 const value = computed({
   set: (text: boolean) => {
     emit('update:modelValue', text)
+    if (errors.value?.length) errors.value = []
   },
   get: () => props.modelValue
 })
@@ -50,7 +52,7 @@ const value = computed({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <label>
       <span

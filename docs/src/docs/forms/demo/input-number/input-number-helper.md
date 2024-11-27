@@ -21,6 +21,8 @@ const form = ref({
   number5: 0,
   number6: 10000
 })
+
+const errors = ref(['Error example'])
 </script>
 
 <template>
@@ -48,7 +50,7 @@ const form = ref({
       :is="BaseInputNumber"
       v-model="form.number5"
       label="Label"
-      :errors="['Error example']"
+      v-model:errors="errors"
     />
     <component :is="BaseInputNumber" v-model="form.number6" label="Label" disabled />
   </form>

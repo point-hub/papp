@@ -20,17 +20,17 @@ Choosen is select with modal dialog gives you a customizable select box with sup
 
 ### Props
 
-| Name        | Type                    | Default    | Description                    |
-| ----------- | ----------------------- | ---------- | ------------------------------ |
-| v-model     | string                  |            | v-model is `required`.         |
-| mode        | `input` `text`          | `input`    | Choosen mode.                  |
-| label       | string                  |            | Choosen label.                 |
-| label       | string                  |            | Choosen label.                 |
-| text        | string                  |            | Choosen text.                  |
-| description | string                  |            | Input description.             |
-| placeholder | string                  |            | Input placeholder.             |
-| layout      | `horizontal` `vertical` | `vertical` | Input layout.                  |
-| required    | boolean                 | false      | if true choosen is `required`. |
-| disabled    | boolean                 | false      | if true choosen is `disabled`. |
-| helpers     | string[]                |            | Input helper message.          |
-| errors      | string[]                |            | Input error message.           |
+| Name           | Type                    | Default    | Description                    |
+|----------------|-------------------------|------------|--------------------------------|
+| v-model        | string                  |            | v-model is `required`.         |
+| v-model:errors | string[]                |            | Input error message.           |
+| mode           | `input` `text`          | `input`    | Choosen mode.                  |
+| label          | string                  |            | Choosen label.                 |
+| label          | string                  |            | Choosen label.                 |
+| text           | string                  |            | Choosen text.                  |
+| description    | string                  |            | Input description.             |
+| placeholder    | string                  |            | Input placeholder.             |
+| layout         | `horizontal` `vertical` | `vertical` | Input layout.                  |
+| required       | boolean                 | false      | if true choosen is `required`. |
+| disabled       | boolean                 | false      | if true choosen is `disabled`. |
+| helpers        | string[]                |            | Input helper message.          |

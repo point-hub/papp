@@ -42,14 +42,14 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name        | Type               | Default    | Description                  |
-| ----------- | ------------------ | ---------- | ---------------------------- |
-| v-model     | string             |            | v-model is `required`.       |
-| id          | string             |            | Input id.                    |
-| label       | string             |            | Input label.                 |
-| description | string             |            | Input description.           |
-| layout      | BaseFormLayoutType | `vertical` | Input layout.                |
-| show-text   | boolean            | false      | Show range value.            |
-| disabled    | boolean            | false      | if true range is `disabled`. |
-| helpers     | string[]           |            | Input helper message.        |
-| errors      | string[]           |            | Input error message.         |
+| Name           | Type               | Default    | Description                  |
+|----------------|--------------------|------------|------------------------------|
+| v-model        | string             |            | v-model is `required`.       |
+| v-model:errors | string[]           |            | Input error message.         |
+| id             | string             |            | Input id.                    |
+| label          | string             |            | Input label.                 |
+| description    | string             |            | Input description.           |
+| layout         | BaseFormLayoutType | `vertical` | Input layout.                |
+| show-text      | boolean            | false      | Show range value.            |
+| disabled       | boolean            | false      | if true range is `disabled`. |
+| helpers        | string[]           |            | Input helper message.        |

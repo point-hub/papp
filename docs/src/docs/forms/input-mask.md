@@ -32,18 +32,18 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 
 ### Props
 
-| Name        | Type                    | Default    | Description                       |
-| ----------- | ----------------------- | ---------- | --------------------------------- |
-| v-model     | string                  |            | v-model is `required`.            |
-| id          | string                  |            | Input id.                         |
-| label       | string                  |            | Input label.                      |
-| description | string                  |            | Input description.                |
-| placeholder | string                  |            | Input placeholder.                |
-| border      | BaseInputMaskBorderType | `simple`   | Input border.                     |
-| layout      | BaseFormLayoutType      | `vertical` | Input layout.                     |
-| autofocus   | boolean                 | false      | Focus input on page load.         |
-| required    | boolean                 | false      | if true input mask is `required`. |
-| disabled    | boolean                 | false      | if true input mask is `disabled`. |
-| helpers     | string[]                |            | Input helper message.             |
-| errors      | string[]                |            | Input error message.              |
-| options     | object                  |            | Cleave options                    |
+| Name           | Type                    | Default    | Description                       |
+|----------------|-------------------------|------------|-----------------------------------|
+| v-model        | string                  |            | v-model is `required`.            |
+| v-model:errors | string[]                |            | Input error message.              |
+| id             | string                  |            | Input id.                         |
+| label          | string                  |            | Input label.                      |
+| description    | string                  |            | Input description.                |
+| placeholder    | string                  |            | Input placeholder.                |
+| border         | BaseInputMaskBorderType | `simple`   | Input border.                     |
+| layout         | BaseFormLayoutType      | `vertical` | Input layout.                     |
+| autofocus      | boolean                 | false      | Focus input on page load.         |
+| required       | boolean                 | false      | if true input mask is `required`. |
+| disabled       | boolean                 | false      | if true input mask is `disabled`. |
+| helpers        | string[]                |            | Input helper message.             |
+| options        | object                  |            | Cleave options                    |

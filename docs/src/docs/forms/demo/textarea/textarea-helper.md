@@ -20,6 +20,8 @@ const form = ref({
   text4: '',
   text5: ''
 })
+
+const errors = ref(['Error Example'])
 </script>
 
 <template>
@@ -43,6 +45,7 @@ const form = ref({
       label="Label"
       v-model="form.text4"
     />
+    <component :is="BaseTextarea" v-model:errors="errors" label="Label" v-model="form.text5" />
     <component
       :is="BaseTextarea"
       label="Label"

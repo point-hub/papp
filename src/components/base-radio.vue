@@ -29,6 +29,8 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false
 })
 
+const errors = defineModel<string[]>('errors')
+
 const emit = defineEmits<{
   (
     e: 'update:modelValue',
@@ -41,6 +43,7 @@ const value = computed({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set: (text: Record<string, any> | null | undefined | string | number | boolean) => {
     emit('update:modelValue', text)
+    if (errors.value?.length) errors.value = []
   },
   get: () => props.modelValue ?? undefined
 })
@@ -54,7 +57,7 @@ const value = computed({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <RadioGroup v-model="value">
       <div class="flex gap-2" :class="{ 'flex-col': props.optionsLayout === 'vertical' }">
