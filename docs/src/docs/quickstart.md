@@ -11,7 +11,7 @@ bun add @point-hub/papp
 Update your main.ts
 
 ```ts
-import '@point-hub/papp/style.css'
+import '@point-hub/papp/index.css'
 import { PluginBaseComponents, PluginInputMask, PluginTooltip } from '@point-hub/papp'
 
 const app = createApp(App)

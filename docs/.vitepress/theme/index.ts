@@ -1,7 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 import './style.css'
 import './custom.css'
-import '../../../dist/style.css'
+import '../../../dist/index.css'
 import 'virtual:uno.css'
 
 import { PluginBaseComponents, PluginInputMask, PluginTooltip } from '@point-hub/papp'
