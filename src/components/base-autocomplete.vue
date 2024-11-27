@@ -12,6 +12,7 @@ import { computed, ref } from 'vue'
 
 import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { watch } from 'vue'
 
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 
@@ -33,7 +34,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -47,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
 const selected = defineModel<BaseAutocompleteOptionInterface>()
 const isLoading = defineModel<boolean>('isLoading', { default: false })
 const query = defineModel<string>('query', { default: '' })
+const errors = defineModel<string[]>('errors')
 
 const filtered = computed(() =>
   query.value === ''
@@ -74,6 +75,14 @@ const onInputClicked = () => {
 }
 
 const inputRef = ref()
+
+watch(
+  () => selected.value,
+  () => {
+    if (errors.value?.length) errors.value = []
+  }
+)
+
 defineExpose({
   inputRef
 })
@@ -87,7 +96,7 @@ defineExpose({
     :description="props.description"
     :required="props.required"
     :helpers="props.helpers"
-    :errors="props.errors"
+    :errors="errors"
   >
     <Combobox v-model="selected">
       <div class="relative w-full">
