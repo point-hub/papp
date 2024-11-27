@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type BaseFormLayoutType, BaseForm } from '@point-hub/papp'
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import Cleave from 'cleave.js'
 import { computed, onMounted, ref } from 'vue'
 
