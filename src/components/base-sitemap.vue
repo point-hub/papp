@@ -40,17 +40,17 @@ const sitemap = defineModel<ISitemap>('sitemap', { required: true })
             <small v-if="sitemap.homepage.desc">{{ sitemap.homepage.desc }}</small>
           </a>
           <ul>
-            <li v-for="level1 in sitemap.menu">
+            <li v-for="level1 in sitemap.menu" :key="level1.name">
               <a :href="level1.link ?? ''">
                 {{ level1.name }} <small>{{ level1.desc }}</small>
               </a>
               <ul v-if="level1.child">
-                <li v-for="level2 in level1.child">
+                <li v-for="level2 in level1.child" :key="level2.name">
                   <a :href="level2.link ?? ''">
                     {{ level2.name }} <small>{{ level2.desc }}</small>
                   </a>
                   <ul v-if="level2.child">
-                    <li v-for="level3 in level2.child">
+                    <li v-for="level3 in level2.child" :key="level3.name">
                       <a :href="level3.link ?? ''" class="multi">
                         {{ level3.name }} <small>{{ level3.desc }}</small>
                       </a>
