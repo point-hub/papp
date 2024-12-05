@@ -23,7 +23,7 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://dev.pointhub.net'
   },
-  head: [['link', { rel: 'icon', type: 'image/png', href: '/favicon-32x32.png' }]],
+  head: [['link', { rel: 'icon', type: 'image/png', href: '/library/papp/favicon-32x32.png' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/icon.png',
