@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 import Cleave from 'cleave.js'
 import { computed, onMounted, ref } from 'vue'
+
+import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
 
@@ -50,18 +51,18 @@ onMounted(() => {
     onValueChanged: onValueChanged
   })
 
-  if (props.border === 'full' || prefixRef.value.clientWidth) {
-    paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
+  if (props.border === 'full' || prefixRef.value?.clientWidth) {
+    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
   }
-  if (props.border === 'full' || suffixRef.value.clientWidth) {
-    paddingRight.value = suffixRef.value.clientWidth === 0 ? 10 : suffixRef.value.clientWidth
+  if (props.border === 'full' || suffixRef.value?.clientWidth) {
+    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }
   setTimeout(() => {
-    if (props.border === 'full' || prefixRef.value.clientWidth) {
-      paddingLeft.value = prefixRef.value.clientWidth === 0 ? 10 : prefixRef.value.clientWidth
+    if (props.border === 'full' || prefixRef.value?.clientWidth) {
+      paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
     }
-    if (props.border === 'full' || suffixRef.value.clientWidth) {
-      paddingRight.value = suffixRef.value.clientWidth === 0 ? 10 : suffixRef.value.clientWidth
+    if (props.border === 'full' || suffixRef.value?.clientWidth) {
+      paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
     }
   }, 1000)
 })
