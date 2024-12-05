@@ -12,7 +12,8 @@ export default defineConfig({
     vue(),
     UnoCSS(),
     dts({
-      entryRoot: './src/'
+      entryRoot: './src/',
+      tsconfigPath: './tsconfig.app.json'
     })
   ],
   resolve: {
@@ -28,7 +29,6 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'Papp',
-      // the proper extensions will be added
       fileName: 'index'
     },
     rollupOptions: {
