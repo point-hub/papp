@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { type DefaultTheme, defineConfig } from 'vitepress'
-
+import UnoCSS from 'unocss/vite'
 import { version } from '../package.json'
 
 // https://vitepress.dev/reference/site-config
@@ -12,6 +12,7 @@ export default defineConfig({
   srcDir: './src',
   base: '/library/papp/',
   vite: {
+    plugins: [UnoCSS() as any],
     resolve: {
       alias: {
         '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs

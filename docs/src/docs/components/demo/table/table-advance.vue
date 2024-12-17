@@ -22,7 +22,7 @@ const options = [
 
 const selected = ref()
 const searchAll = ref('')
-const searchNumber = ref()
+const searchNumber = ref<number>()
 const search = ref<string[]>([])
 
 // Table Data
@@ -212,7 +212,7 @@ const isCheckedAll = () => {
           </th>
           <th v-if="columns[1].isShow">Name</th>
           <th v-if="columns[2].isShow">Job</th>
-          <th v-if="columns[3].isShow">Salary</th>
+          <th class="text-right" v-if="columns[3].isShow">Salary</th>
         </tr>
       </thead>
       <tbody>
@@ -222,7 +222,7 @@ const isCheckedAll = () => {
           </td>
           <td v-if="columns[1].isShow">{{ user.name }}</td>
           <td v-if="columns[2].isShow">{{ user.job }}</td>
-          <td v-if="columns[3].isShow">{{ numberFormat(user.salary) }}</td>
+          <td class="text-right" v-if="columns[3].isShow">{{ numberFormat(user.salary) }}</td>
         </tr>
       </tbody>
     </component>

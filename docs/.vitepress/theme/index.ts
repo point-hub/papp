@@ -2,6 +2,7 @@
 import './style.css'
 import './custom.css'
 import '../../../dist/index.css'
+import 'virtual:uno.css'
 
 import { PluginBaseComponents, PluginInputMask, PluginTooltip } from '@point-hub/papp'
 import type { Theme } from 'vitepress'
@@ -19,9 +20,9 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   enhanceApp({ app, router, siteData }) {
-    app.component('Demo', Demo)
-    app.use(PluginInputMask)
-    app.use(PluginTooltip)
-    app.use(PluginBaseComponents)
+    app.component('Demo', Demo as any)
+    app.use(PluginInputMask as any)
+    app.use(PluginTooltip as any)
+    app.use(PluginBaseComponents as any)
   }
 } satisfies Theme

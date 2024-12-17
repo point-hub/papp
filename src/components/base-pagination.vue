@@ -7,7 +7,7 @@ export interface Props {
   modelValue: number
   pageSize: number
   totalDocument: number
-  maxButton: number
+  maxButton?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {

@@ -14,7 +14,7 @@ export interface Props {
   placeholder?: string
   border?: BaseInputNumberBorderType
   layout?: BaseFormLayoutType
-  decimalLength: number
+  decimalLength?: number
   autofocus?: boolean
   required?: boolean
   disabled?: boolean
