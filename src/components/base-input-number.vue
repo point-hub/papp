@@ -18,6 +18,12 @@ export interface Props {
   autofocus?: boolean
   required?: boolean
   disabled?: boolean
+  /**
+   * Clearing or resetting errors when an update or change occurs.
+   *
+   * @default true
+   */
+  resetErrorsOnUpdate?: boolean
   helpers?: string[]
 }
 
@@ -28,7 +34,8 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   autofocus: false,
   required: false,
-  disabled: false
+  disabled: false,
+  resetErrorsOnUpdate: true
 })
 
 const cleave = ref()
@@ -76,7 +83,12 @@ const emit = defineEmits<{
 
 const onValueChanged = (e: { target: { rawValue: number } }) => {
   emit('update:modelValue', Number(e.target.rawValue))
-  if (errors.value?.length) errors.value = []
+  /**
+   * Reset errors value when props resetErrorsOnUpdate value is true and errors value is not empty
+   */
+  if (props.resetErrorsOnUpdate === true && errors.value?.length) {
+    errors.value = []
+  }
 }
 
 const inputValue = computed({

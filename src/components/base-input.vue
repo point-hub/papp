@@ -20,8 +20,16 @@ export interface Props {
   required?: boolean
   readonly?: boolean
   disabled?: boolean
+  /**
+   * Clearing or resetting errors when an update or change occurs.
+   *
+   * @default true
+   */
+  resetErrorsOnUpdate?: boolean
+  /**
+   * The helper text appears below the text input.
+   */
   helpers?: string[]
-  errors?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,7 +39,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  resetErrorsOnUpdate: true
 })
 
 const emit = defineEmits<{
@@ -41,22 +50,72 @@ const emit = defineEmits<{
 const value = computed({
   set: (text: string) => {
     emit('update:modelValue', text)
-    if (errors.value?.length) errors.value = []
+    /**
+     * Reset errors value when props resetErrorsOnUpdate value is true and errors value is not empty
+     */
+    if (props.resetErrorsOnUpdate === true && errors.value?.length) {
+      errors.value = []
+    }
   },
   get: () => props.modelValue
 })
 
+/**
+ * Bind reference to access and modify the DOM input element
+ */
+const inputRef = ref()
+
+/**
+ * Bind reference to access and modify the DOM prefix element
+ */
 const prefixRef = ref()
+
+/**
+ * Bind reference to access and modify the DOM suffix element
+ */
 const suffixRef = ref()
+
+/**
+ * Create space between the input text and a prefix element
+ */
 const paddingLeft = ref(0)
+
+/**
+ * Create space between the input text and a suffix element
+ */
 const paddingRight = ref(0)
+
+/**
+ * To show an error message below an input field
+ */
+const errors = defineModel<string[]>('errors')
+
+/**
+ * Execute code after the component has been mounted to the DOM
+ */
 onMounted(() => {
+  fixPaddingValue()
+})
+
+/**
+ * Fix padding value from loaded prefix and suffix element
+ */
+const fixPaddingValue = () => {
   if (props.border === 'full' || prefixRef.value?.clientWidth) {
     paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
   }
   if (props.border === 'full' || suffixRef.value?.clientWidth) {
     paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }
+
+  /**
+   * The consant value of setTimeout delay in milisecond
+   */
+  const DELAY = 1000
+  /**
+   * Sometime prefix and suffix element load icon from internet so we update the value again
+   * After certain of time
+   */
   setTimeout(() => {
     if (props.border === 'full' || prefixRef.value?.clientWidth) {
       paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
@@ -64,12 +123,12 @@ onMounted(() => {
     if (props.border === 'full' || suffixRef.value?.clientWidth) {
       paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
     }
-  }, 1000)
-})
+  }, DELAY)
+}
 
-const inputRef = ref()
-const errors = defineModel<string[]>('errors')
-
+/**
+ * Expose from this component to its parent component
+ */
 defineExpose({
   inputRef
 })
