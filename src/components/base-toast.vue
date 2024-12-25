@@ -51,7 +51,7 @@ defineExpose({ toast, remove })
 </script>
 
 <template>
-  <div class="toast-container">
+  <div class="toast-container" v-if="listData.length > 0">
     <template v-for="data in listData" :key="data">
       <slot :data="data">
         <div
