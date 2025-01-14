@@ -61,6 +61,13 @@ const value = computed({
 })
 
 /**
+ * Input type text or password for visibility
+ */
+const passwordType = computed(() => {
+  return props.type === 'password' ? 'password' : 'text'
+})
+
+/**
  * Bind reference to access and modify the DOM input element
  */
 const inputRef = ref()
@@ -153,7 +160,7 @@ defineExpose({
         'border-none': border === 'none'
       }"
       v-model.trim="value"
-      :type="props.type"
+      :type="passwordType"
       :maxlength="props.maxlength"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
