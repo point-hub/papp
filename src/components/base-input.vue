@@ -12,7 +12,6 @@ export interface Props {
   label?: string
   description?: string
   placeholder?: string
-  type?: BaseInputType
   border?: BaseInputBorderType
   layout?: BaseFormLayoutType
   maxlength?: number
@@ -35,7 +34,6 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
-  type: 'text',
   autofocus: false,
   required: false,
   readonly: false,
@@ -63,8 +61,9 @@ const value = computed({
 /**
  * Input type text or password for visibility
  */
-const passwordType = computed(() => {
-  return props.type === 'password' ? 'password' : 'text'
+const type = defineModel('type', {
+  type: String,
+  default: 'text'
 })
 
 /**
@@ -160,7 +159,7 @@ defineExpose({
         'border-none': border === 'none'
       }"
       v-model.trim="value"
-      :type="passwordType"
+      :type="type"
       :maxlength="props.maxlength"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"

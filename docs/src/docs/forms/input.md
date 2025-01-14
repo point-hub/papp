@@ -49,14 +49,14 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 ### Props
 
 | Name           | Type                | Default    | Description                  |
-|----------------|---------------------|------------|------------------------------|
+| -------------- | ------------------- | ---------- | ---------------------------- |
 | v-model        | string              |            | v-model is `required`.       |
+| v-model:type   | BaseInputType       | `text`     | Input type.                  |
 | v-model:errors | string[]            |            | Input error message.         |
 | id             | string              |            | Input id.                    |
 | label          | string              |            | Input label.                 |
 | description    | string              |            | Input description.           |
 | placeholder    | string              |            | Input placeholder.           |
-| type           | BaseInputType       | `text`     | Input border.                |
 | border         | BaseInputBorderType | `simple`   | Input border.                |
 | layout         | BaseFormLayoutType  | `vertical` | Input layout.                |
 | maxlength      | number              |            | Max text length              |
