@@ -9,6 +9,7 @@ export type BaseInputBorderType = 'none' | 'simple' | 'full'
 export interface Props {
   modelValue: string
   id?: string
+  type?: BaseInputType
   label?: string
   description?: string
   placeholder?: string
@@ -33,6 +34,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
+  type: 'text',
   layout: 'vertical',
   autofocus: false,
   required: false,
@@ -56,14 +58,6 @@ const value = computed({
     }
   },
   get: () => props.modelValue
-})
-
-/**
- * Input type text or password for visibility
- */
-const type = defineModel('type', {
-  type: String,
-  default: 'text'
 })
 
 /**
@@ -107,10 +101,10 @@ onMounted(() => {
  * Fix padding value from loaded prefix and suffix element
  */
 const fixPaddingValue = () => {
-  if (props.border === 'full' || prefixRef.value?.clientWidth) {
+  if (props.border === 'full' && prefixRef.value?.clientWidth) {
     paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
   }
-  if (props.border === 'full' || suffixRef.value?.clientWidth) {
+  if (props.border === 'full' && suffixRef.value?.clientWidth) {
     paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }
 
@@ -123,10 +117,10 @@ const fixPaddingValue = () => {
    * After certain of time
    */
   setTimeout(() => {
-    if (props.border === 'full' || prefixRef.value?.clientWidth) {
+    if (props.border === 'full' && prefixRef.value?.clientWidth) {
       paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
     }
-    if (props.border === 'full' || suffixRef.value?.clientWidth) {
+    if (props.border === 'full' && suffixRef.value?.clientWidth) {
       paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
     }
   }, DELAY)
