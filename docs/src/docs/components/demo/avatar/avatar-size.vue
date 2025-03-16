@@ -7,7 +7,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="2xl"
@@ -15,7 +15,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="xl"
@@ -23,7 +23,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="lg"
@@ -31,7 +31,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="md"
@@ -39,7 +39,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="sm"
@@ -47,7 +47,7 @@ import { BaseAvatar } from '@point-hub/papp'
     <component
       :is="BaseAvatar"
       indicator
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       shape="circle"
       name="John Doe"
       size="xs"

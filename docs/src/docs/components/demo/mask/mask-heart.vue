@@ -4,6 +4,6 @@ import { BaseMask } from '@point-hub/papp'
 
 <template>
   <Demo is-row>
-    <component :is="BaseMask" shape="heart" src="https://via.placeholder.com/150" />
+    <component :is="BaseMask" shape="heart" src="https://placehold.co/150" />
   </Demo>
 </template>

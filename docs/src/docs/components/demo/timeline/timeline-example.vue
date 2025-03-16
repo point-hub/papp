@@ -7,11 +7,7 @@ import { BaseTimeline, BaseTimelineContent } from '@point-hub/papp'
     <component :is="BaseTimeline">
       <component :is="BaseTimelineContent">
         <template #point>
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            class="mx-auto h-12 w-12 rounded-full"
-          />
+          <img src="https://placehold.co/150" alt="" class="mx-auto h-12 w-12 rounded-full" />
         </template>
         <template #content>
           <div>
@@ -27,11 +23,7 @@ import { BaseTimeline, BaseTimelineContent } from '@point-hub/papp'
       </component>
       <component :is="BaseTimelineContent">
         <template #point>
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            class="mx-auto h-12 w-12 rounded-full"
-          />
+          <img src="https://placehold.co/150" alt="" class="mx-auto h-12 w-12 rounded-full" />
         </template>
         <template #content>
           <div>

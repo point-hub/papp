@@ -157,7 +157,7 @@ const accountPopoverRef = ref()
             <component
               :is="BaseAvatar"
               size="xs"
-              src="https://via.placeholder.com/150"
+              src="https://placehold.co/150"
               shape="squircle"
               name="John Doe"
             />
@@ -174,7 +174,7 @@ const accountPopoverRef = ref()
                 <component
                   :is="BaseAvatar"
                   size="xs"
-                  src="https://via.placeholder.com/150"
+                  src="https://placehold.co/150"
                   shape="squircle"
                   name="John Doe"
                 />

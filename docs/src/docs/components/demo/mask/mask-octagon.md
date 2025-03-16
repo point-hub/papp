@@ -16,7 +16,7 @@ import { BaseMask } from '@point-hub/papp'
 </script>
 
 <template>
-  <component :is="BaseMask" shape="octagon" src="https://via.placeholder.com/150" />
+  <component :is="BaseMask" shape="octagon" src="https://placehold.co/150" />
 </template>
 ```
 

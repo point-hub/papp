@@ -6,42 +6,42 @@ import { BaseAvatar } from '@point-hub/papp'
   <Demo is-row>
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="primary"
     />
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="secondary"
     />
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="info"
     />
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="success"
     />
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="warning"
     />
     <component
       :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
+      src="https://placehold.co/150"
       name="John Doe"
       indicator
       colorIndicator="danger"

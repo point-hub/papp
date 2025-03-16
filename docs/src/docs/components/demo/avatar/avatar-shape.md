@@ -17,24 +17,9 @@ import { BaseAvatar } from '@point-hub/papp'
 
 <template>
   <div>
-    <component
-      :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
-      shape="circle"
-      name="John Doe"
-    />
-    <component
-      :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
-      shape="square"
-      name="John Doe"
-    />
-    <component
-      :is="BaseAvatar"
-      src="https://via.placeholder.com/150"
-      shape="squircle"
-      name="John Doe"
-    />
+    <component :is="BaseAvatar" src="https://placehold.co/150" shape="circle" name="John Doe" />
+    <component :is="BaseAvatar" src="https://placehold.co/150" shape="square" name="John Doe" />
+    <component :is="BaseAvatar" src="https://placehold.co/150" shape="squircle" name="John Doe" />
   </div>
 </template>
 ```

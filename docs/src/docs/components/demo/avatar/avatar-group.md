@@ -18,12 +18,12 @@ import { BaseAvatar, BaseAvatarGroup } from '@point-hub/papp'
 <template>
   <div>
     <component :is="BaseAvatarGroup" />
-      <component :is="BaseAvatar" src="https://via.placeholder.com/150" name="John Doe" />
-      <component :is="BaseAvatar" src="https://via.placeholder.com/150" name="John Doe" />
-      <component :is="BaseAvatar" src="https://via.placeholder.com/150" name="John Doe" />
+      <component :is="BaseAvatar" src="https://placehold.co/150" name="John Doe" />
+      <component :is="BaseAvatar" src="https://placehold.co/150" name="John Doe" />
+      <component :is="BaseAvatar" src="https://placehold.co/150" name="John Doe" />
       <component
         :is="BaseAvatar"
-        src="https://via.placeholder.com/150"
+        src="https://placehold.co/150"
         name="John Doe"
         colorIndicator="danger"
       />
