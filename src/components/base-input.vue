@@ -101,10 +101,10 @@ onMounted(() => {
  * Fix padding value from loaded prefix and suffix element
  */
 const fixPaddingValue = () => {
-  if (props.border === 'full' && prefixRef.value?.clientWidth) {
+  if (props.border === 'full' || prefixRef.value?.clientWidth) {
     paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
   }
-  if (props.border === 'full' && suffixRef.value?.clientWidth) {
+  if (props.border === 'full' || suffixRef.value?.clientWidth) {
     paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }
 
@@ -117,10 +117,10 @@ const fixPaddingValue = () => {
    * After certain of time
    */
   setTimeout(() => {
-    if (props.border === 'full' && prefixRef.value?.clientWidth) {
+    if (props.border === 'full' || prefixRef.value?.clientWidth) {
       paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
     }
-    if (props.border === 'full' && suffixRef.value?.clientWidth) {
+    if (props.border === 'full' || suffixRef.value?.clientWidth) {
       paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
     }
   }, DELAY)
