@@ -7,6 +7,7 @@ export type BaseFileUploadBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   id?: string
+  accept?: string
   label?: string
   description?: string
   placeholder?: string
@@ -70,6 +71,7 @@ defineExpose({
         @change="onUpload($event)"
         type="file"
         :multiple="multiple"
+        :accept="props.accept"
         :autofocus="props.autofocus"
         :required="props.required"
         :disabled="props.disabled"
@@ -81,6 +83,7 @@ defineExpose({
       @change="onUpload($event)"
       type="file"
       :multiple="multiple"
+      :accept="props.accept"
       :required="props.required"
       :disabled="props.disabled"
     />

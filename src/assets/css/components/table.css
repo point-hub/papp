@@ -1,5 +1,5 @@
 .table-container {
-  @apply min-w-full overflow-x-auto;
+  @apply min-w-full overflow-x-auto py-1;
 }
 
 .table {

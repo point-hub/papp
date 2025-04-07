@@ -32,7 +32,7 @@ const accountPopoverRef = ref()
           <i v-else class="block w-6 h-6 i-far-xmark"></i>
         </a>
         <div>
-          <p class="line-clamp-2">App Name</p>
+          <p class="line-clamp-2"></p>
         </div>
       </div>
       <!-- Right Header -->
