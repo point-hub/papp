@@ -40,7 +40,7 @@ const value = computed({
     if (!props.disabled) {
       errors.value = []
       // split string into array of [date][month][year]
-      const date = text.split('-')
+      const date = text?.split('-')
 
       if (date.length !== 3 || Number(date[0]) < 1000) {
         errors.value = ['Invalid date format.']
@@ -82,7 +82,7 @@ const nativeDate = ref()
 
 watch(value, (newValue) => {
   // split string into array of [date][month][year]
-  const date = newValue.split('-')
+  const date = newValue?.split('-')
 
   if (date.length !== 3 || Number(date[0]) < 1000) {
     errors.value = ['Invalid date format.']
