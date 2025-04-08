@@ -42,14 +42,10 @@ const value = computed({
       // split string into array of [date][month][year]
       const date = text?.split('-')
 
-      if (!date) {
-        nativeDate.value = ''
-        emit('update:modelValue', '')
-        return
-      }
-
-      if (date.length !== 3 || Number(date[0]) < 1000) {
-        errors.value = ['Invalid date format.']
+      if (!date || date.length !== 3 || Number(date[0]) < 1000) {
+        if (props.required) {
+          errors.value = ['Invalid date format.']
+        }
         nativeDate.value = ''
         emit('update:modelValue', '')
         return
@@ -90,14 +86,10 @@ watch(value, (newValue) => {
   // split string into array of [date][month][year]
   const date = newValue?.split('-')
 
-  if (!date) {
-    nativeDate.value = ''
-    emit('update:modelValue', '')
-    return
-  }
-
-  if (date.length !== 3 || Number(date[0]) < 1000) {
-    errors.value = ['Invalid date format.']
+  if (!date || date.length !== 3 || Number(date[0]) < 1000) {
+    if (props.required) {
+      errors.value = ['Invalid date format.']
+    }
     nativeDate.value = ''
     emit('update:modelValue', '')
     return
