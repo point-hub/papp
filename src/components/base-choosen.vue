@@ -117,6 +117,7 @@ const onClose = () => {
       v-model="input"
       @click="onOpen"
       :border="border"
+      :placeholder="placeholder"
       class="w-full"
     />
     <!-- mode: text -->

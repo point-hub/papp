@@ -9,10 +9,10 @@ import {
 } from '@headlessui/vue'
 import { isEmpty } from '@point-hub/js-utils'
 import { computed, ref } from 'vue'
+import { watch } from 'vue'
 
 import BaseButton from './base-button.vue'
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
-import { watch } from 'vue'
 
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 
