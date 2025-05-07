@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { v4 as uuidv4 } from 'uuid'
-import { computed, ref } from 'vue'
+import { ref, watch } from 'vue'
 
 import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
 
@@ -13,7 +13,6 @@ export type BaseCheckboxThemeType =
   | 'danger'
 
 export interface Props {
-  modelValue: boolean
   id?: string
   label?: string
   text?: string
@@ -27,26 +26,23 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: false,
   theme: 'primary',
   layout: 'vertical',
   required: false,
   disabled: false
 })
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void
-}>()
+const modelValue = defineModel()
+const trueValue = defineModel('true-value', { default: true })
+const falseValue = defineModel('false-value', { default: false })
 
-const value = computed({
-  set: (text: boolean) => {
-    emit('update:modelValue', text)
+watch(
+  () => modelValue.value,
+  () => {
     if (errors.value?.length) errors.value = []
   },
-  get: () => {
-    return props.modelValue
-  }
-})
+  { deep: true }
+)
 
 const uuid = props.id ?? uuidv4()
 const inputRef = ref()
@@ -71,11 +67,12 @@ defineExpose({
       <input
         ref="inputRef"
         :id="uuid"
-        v-model="value"
+        v-model="modelValue"
+        :value="trueValue"
         :required="required"
         :disabled="disabled"
-        :true-value="true"
-        :false-value="false"
+        :true-value="trueValue"
+        :false-value="falseValue"
         class="form-checkbox"
         :class="{
           'checked:border-primary checked:bg-primary border-primary': props.theme === 'primary',
