@@ -17,5 +17,5 @@
   @apply border border-solid;
 }
 .form-input:disabled {
-  @apply hover:cursor-pointer;
+  @apply hover:cursor-not-allowed text-slate-400;
 }

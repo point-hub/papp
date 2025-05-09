@@ -87,7 +87,7 @@ defineExpose({
       :maxlength="props.maxlength"
       class="form-input resize-none px-2"
       :class="{
-        'border-simple px-0!': border === 'simple',
+        'border-simple': border === 'simple',
         'border-full': border === 'full',
         'border-none px-0!': border === 'none',
         'overflow-hidden': !maxHeight

@@ -4,6 +4,7 @@ import {
   BaseAutocomplete,
   BaseButton,
   BaseCheckbox,
+  BaseChoosen,
   BaseDivider,
   BaseInput,
   BaseInputNumber,
@@ -175,7 +176,7 @@ const isCheckedAll = () => {
       <thead>
         <tr>
           <th v-if="columns[0].isShow"></th>
-          <th v-if="columns[1].isShow" class="basic-table-head">
+          <th v-if="columns[1].isShow" class="basic-table-head font-normal!">
             <component
               :is="BaseInput"
               required
@@ -185,17 +186,17 @@ const isCheckedAll = () => {
               class="font-normal text-slate-800 dark:text-slate-400"
             />
           </th>
-          <th v-if="columns[2].isShow" class="basic-table-head">
+          <th v-if="columns[2].isShow" class="basic-table-head font-normal!">
             <component
-              class="font-normal"
-              :is="BaseAutocomplete"
-              v-model="selected"
+              :is="BaseChoosen"
+              title="Example"
               :options="options"
-              placeholder="Search"
+              v-model:selected="selected"
               border="none"
+              placeholder="Search"
             />
           </th>
-          <th v-if="columns[3].isShow" class="basic-table-head">
+          <th v-if="columns[3].isShow" class="basic-table-head font-normal!">
             <component
               :is="BaseInputNumber"
               required

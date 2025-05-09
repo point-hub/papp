@@ -63,7 +63,7 @@ defineExpose({
       ref="inputRef"
       class="form-input"
       :class="{
-        'border-simple px-0!': border === 'simple',
+        'border-simple': border === 'simple',
         'border-full': border === 'full',
         'border-none px-0!': border === 'none'
       }"

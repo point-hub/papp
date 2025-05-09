@@ -111,9 +111,9 @@ defineExpose({
             :disabled="props.disabled"
             :placeholder="placeholder"
             :class="{
-              'border-simple pl-0!': border === 'simple',
+              'border-simple': border === 'simple',
               'border-full': border === 'full',
-              'border-none pl-0!': border === 'none'
+              'border-none px-0!': border === 'none'
             }"
             :displayValue="() => selected?.label ?? ''"
             @change="query = $event.target.value"

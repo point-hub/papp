@@ -58,19 +58,12 @@ onMounted(() => {
     onValueChanged: onValueChanged
   })
 
-  if (props.border === 'full' || prefixRef.value?.clientWidth) {
-    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-  }
-  if (props.border === 'full' || suffixRef.value?.clientWidth) {
-    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
-  }
+  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+
   setTimeout(() => {
-    if (props.border === 'full' || prefixRef.value?.clientWidth) {
-      paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-    }
-    if (props.border === 'full' || suffixRef.value?.clientWidth) {
-      paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
-    }
+    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }, 1000)
 })
 
@@ -94,9 +87,11 @@ const onValueChanged = (e: { target: { rawValue: number } }) => {
 const inputValue = computed({
   set: () => {},
   get: () =>
-    new Intl.NumberFormat('en-US', {
-      maximumFractionDigits: props.decimalLength
-    }).format(modelValue.value as number)
+    modelValue.value
+      ? new Intl.NumberFormat('en-US', {
+          maximumFractionDigits: props.decimalLength
+        }).format(modelValue.value as number)
+      : ''
 })
 
 defineExpose({
@@ -121,7 +116,7 @@ defineExpose({
         'text-right': align === 'right',
         'border-simple': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none'
+        'border-none px-0!': border === 'none'
       }"
       v-model="inputValue"
       :placeholder="props.placeholder"

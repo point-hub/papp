@@ -101,12 +101,8 @@ onMounted(() => {
  * Fix padding value from loaded prefix and suffix element
  */
 const fixPaddingValue = () => {
-  if (props.border === 'full' || prefixRef.value?.clientWidth) {
-    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-  }
-  if (props.border === 'full' || suffixRef.value?.clientWidth) {
-    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
-  }
+  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
 
   /**
    * The consant value of setTimeout delay in milisecond
@@ -117,12 +113,8 @@ const fixPaddingValue = () => {
    * After certain of time
    */
   setTimeout(() => {
-    if (props.border === 'full' || prefixRef.value?.clientWidth) {
-      paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-    }
-    if (props.border === 'full' || suffixRef.value?.clientWidth) {
-      paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
-    }
+    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
   }, DELAY)
 }
 
@@ -150,7 +142,7 @@ defineExpose({
       :class="{
         'border-simple': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none'
+        'border-none px-0!': border === 'none'
       }"
       v-model.trim="value"
       :type="type"

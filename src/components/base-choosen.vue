@@ -78,13 +78,21 @@ const onSelect = (option: IOption) => {
   onClose()
 }
 
+const onClear = () => {
+  input.value = ''
+  search.value = ''
+  onClose()
+}
+
 watch(
   selected,
   () => {
     if (isEmpty(selected.value?.label)) {
       input.value = ''
+      search.value = ''
     } else {
       input.value = selected.value?.label ?? ''
+      search.value = selected.value?.label ?? ''
     }
     if (errors.value?.length) errors.value = []
   },
@@ -135,8 +143,11 @@ const onClose = () => {
       <!-- Title -->
       <h2 class="py-4 px-8 text-2xl font-bold">{{ props.title }}</h2>
       <!-- Search Text -->
-      <div class="px-8 py-2">
-        <base-input placeholder="Search" ref="inputRef" v-model="search" />
+      <div class="px-8 py-2 relative">
+        <base-input placeholder="Search" ref="inputRef" border="full" v-model="search" />
+        <base-button class="absolute right-9.2 top-3.2 px-1!" variant="filled" color="danger">
+          <base-icon icon="i-fas-xmark" @click="onClear" />
+        </base-button>
       </div>
       <!-- Options -->
       <div class="space-y-8 flex flex-col h-full overflow-y-auto">
