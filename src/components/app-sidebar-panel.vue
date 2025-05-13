@@ -36,6 +36,7 @@ const chooseApp = (path: string) => {
             :key="`internal-${index}`"
             :to="app.path"
             @click="chooseApp(app.path)"
+            :exact="false"
             class="sidebar-panel-link"
           >
             <div class="flex flex-col items-center">
