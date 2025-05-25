@@ -21,6 +21,7 @@ const props = withDefaults(
     shape?: BaseButtonShapeType
     isBlock?: boolean
     isLoading?: boolean
+    disabled?: boolean
   }>(),
   {
     type: 'button',
@@ -29,7 +30,8 @@ const props = withDefaults(
     shape: 'sharp',
     variant: 'filled',
     isBlock: false,
-    isLoading: false
+    isLoading: false,
+    disabled: false
   }
 )
 
@@ -76,7 +78,7 @@ if (props.size !== 'none') {
 </script>
 
 <template>
-  <button class="btn" :type="type" :class="classes">
+  <button class="btn" :type="type" :class="classes" :disabled="disabled || isLoading">
     <!-- Render Button Content -->
     <slot></slot>
     <!-- :Loading Spinner -->
