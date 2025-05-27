@@ -2,8 +2,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { ref } from 'vue'
 
-import BaseButton from './base-button.vue'
-
 export type BaseToastColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
 
 export interface IOptions {
@@ -47,11 +45,17 @@ const remove = (id: string) => {
   }
 }
 
+export interface Props {
+  dataTestid?: string
+}
+
+const props = defineProps<Props>()
+
 defineExpose({ toast, remove })
 </script>
 
 <template>
-  <div class="toast-container" v-if="listData.length > 0">
+  <div class="toast-container" v-if="listData.length > 0" :data-testid="props.dataTestid">
     <template v-for="data in listData" :key="data">
       <slot :data="data">
         <div
@@ -78,15 +82,14 @@ defineExpose({ toast, remove })
               <li v-for="list in data.lists" :key="list">- {{ list }}</li>
             </ul>
           </div>
-          <component
-            :is="BaseButton"
+          <base-button
             type="button"
             @click="remove(data.id)"
             variant="text"
             class="toast-close-button"
           >
             <base-icon icon="i-fas-xmark" class="w-4 h-4" />
-          </component>
+          </base-button>
         </div>
       </slot>
     </template>

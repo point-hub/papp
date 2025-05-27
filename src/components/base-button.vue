@@ -22,6 +22,7 @@ const props = withDefaults(
     isBlock?: boolean
     isLoading?: boolean
     disabled?: boolean
+    dataTestid?: string
   }>(),
   {
     type: 'button',
@@ -83,7 +84,7 @@ if (props.size !== 'none') {
     :type="type"
     :class="classes"
     :disabled="disabled || isLoading"
-    v-bind="$attrs"
+    :data-testid="props.dataTestid"
   >
     <!-- Render Button Content -->
     <slot></slot>

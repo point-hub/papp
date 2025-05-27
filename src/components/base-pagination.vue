@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import BaseButton from './base-button.vue'
-
 export interface Props {
   modelValue: number
   pageSize: number
@@ -96,15 +94,14 @@ const isShowPageButton = (i: number) => {
       </p>
     </div>
     <div class="flex">
-      <component :is="BaseButton" v-if="value > 1" variant="text" size="xs" @click="onClickFirst()">
+      <base-button v-if="value > 1" variant="text" size="xs" @click="onClickFirst()">
         <base-icon icon="i-fas-angles-left" />
-      </component>
-      <component :is="BaseButton" v-if="value > 1" variant="text" size="xs" @click="onClickPrev()">
+      </base-button>
+      <base-button v-if="value > 1" variant="text" size="xs" @click="onClickPrev()">
         <base-icon icon="i-fas-angle-left" />
-      </component>
+      </base-button>
       <template v-for="i in totalPage" :key="i">
-        <component
-          :is="BaseButton"
+        <base-button
           v-if="isShowPageButton(i)"
           type="button"
           size="xs"
@@ -115,26 +112,14 @@ const isShowPageButton = (i: number) => {
           }"
         >
           {{ i }}
-        </component>
+        </base-button>
       </template>
-      <component
-        :is="BaseButton"
-        v-if="value < totalPage"
-        variant="text"
-        size="xs"
-        @click="onClickNext()"
-      >
+      <base-button v-if="value < totalPage" variant="text" size="xs" @click="onClickNext()">
         <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
-      </component>
-      <component
-        :is="BaseButton"
-        v-if="value < totalPage"
-        variant="text"
-        size="xs"
-        @click="onClickLast()"
-      >
+      </base-button>
+      <base-button v-if="value < totalPage" variant="text" size="xs" @click="onClickLast()">
         <base-icon icon="i-fas-angles-right" />
-      </component>
+      </base-button>
     </div>
   </div>
 </template>

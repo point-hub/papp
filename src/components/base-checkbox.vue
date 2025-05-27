@@ -22,6 +22,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -66,7 +67,8 @@ defineExpose({
         ref="inputRef"
         :id="uuid"
         v-model="modelValue"
-        v-bind="$attrs"
+        :data-testid="props.dataTestid"
+        :disabled="props.disabled"
         :value="trueValue"
         :required="required"
         :true-value="trueValue"

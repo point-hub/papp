@@ -27,15 +27,11 @@ const apps: IApps[] = [
         path: '/example/home'
       },
       {
-        name: 'Page 1',
-        path: '/example/page-1'
+        name: 'Cypress Selector',
+        path: '/example/cypress-selector'
       },
       {
-        name: 'Page 2',
-        path: '/example/page-2'
-      },
-      {
-        name: 'Nested',
+        name: 'Nested Page',
         submenu: [
           { name: 'Page 1', path: '/example/nested/page-1' },
           { name: 'Page 2', path: '/example/nested/page-2' },
@@ -111,7 +107,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <component :is="AppPreloader" />
+  <!-- <component :is="AppPreloader" /> -->
 
   <div class="app-layout">
     <!-- Header -->

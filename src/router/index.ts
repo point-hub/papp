@@ -26,8 +26,8 @@ const router = createRouter({
           component: () => import('@/pages/home.vue')
         },
         {
-          path: 'page-1',
-          component: () => import('@/pages/page-1.vue')
+          path: 'cypress-selector',
+          component: () => import('@/pages/cypress-selector.vue')
         },
         {
           path: 'page-2',

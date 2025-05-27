@@ -7,11 +7,16 @@ export type BaseInputMaskBorderType = 'simple' | 'full' | 'none'
 
 export interface Props {
   modelValue: string | number | boolean | null
+  id?: string
+  name?: string
   label?: string
   description?: string
+  placeholder?: string
+  autofocus?: boolean
   border?: BaseInputMaskBorderType
   layout?: BaseFormLayoutType
   required?: boolean
+  disabled?: boolean
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any
@@ -20,7 +25,9 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
-  required: false
+  autofocus: false,
+  required: false,
+  disabled: false
 })
 
 const emit = defineEmits<{
@@ -61,9 +68,11 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model.lazy="value"
-      v-bind="$attrs"
       v-input-mask="options"
       :required="props.required"
+      :disabled="props.disabled"
+      :autofocus="props.autofocus"
+      :placeholder="props.placeholder"
     />
   </base-form>
 </template>
