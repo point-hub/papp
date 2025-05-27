@@ -13,7 +13,6 @@ The height of the Textarea Autosize component automatically adjusts as a respons
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseTextarea } from '@point-hub/papp'
 
 const form = ref({
   text: ''
@@ -22,7 +21,7 @@ const form = ref({
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseTextarea" v-model="form.text" />
+    <base-textarea v-model="form.text" />
   </form>
 </template>
 ```

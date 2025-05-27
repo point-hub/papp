@@ -11,20 +11,16 @@ Modify default background or text color
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseCard } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseCard" bg-color="#0000FF" title-color="white" body-color="white">
+  <base-card bg-color="#0000FF" title-color="white" body-color="white">
     <template #header>Blue</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 
-  <component :is="BaseCard" bg-color="red" title-color="white" body-color="white">
+  <base-card bg-color="red" title-color="white" body-color="white">
     <template #header>Red</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 </template>
 ```
 

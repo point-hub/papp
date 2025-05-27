@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseInput } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -11,15 +10,13 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component
-        :is="BaseInput"
+      <base-input
         v-model="form.name1"
         label="Label"
         layout="horizontal"
         description="Horizontal Layout"
       />
-      <component
-        :is="BaseInput"
+      <base-input
         v-model="form.name2"
         label="Label"
         layout="vertical"

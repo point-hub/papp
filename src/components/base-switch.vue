@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseSwitchTextPosition = 'left' | 'right'
 export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
@@ -45,8 +45,7 @@ const value = computed({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -77,7 +76,7 @@ const value = computed({
         />
       </span>
     </label>
-  </component>
+  </base-form>
 </template>
 
 <style lang="postcss">

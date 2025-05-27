@@ -10,8 +10,6 @@
 
 ```vue
 <script setup lang="ts">
-import { BaseSitemap } from '@point-hub/papp'
-
 const sitemap = {
   title: 'My Sitemap',
   subtitle: 'Version 1.0',
@@ -79,7 +77,7 @@ const sitemap = {
 </script>
 
 <template>
-  <component :is="BaseSitemap" :sitemap="sitemap" />
+  <base-sitemap :sitemap="sitemap" />
 </template>
 ```
 

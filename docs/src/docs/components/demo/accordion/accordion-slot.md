@@ -11,25 +11,21 @@ Using slot for rendering accordion item title & content
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseAccordion, BaseAccordionItem } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseAccordion">
-    <component :is="BaseAccordionItem" :item-id="1">
+  <base-accordion>
+    <base-accordion-item :item-id="1">
       <template #title>Accordion #1</template>
       <template #default>Hello World</template>
-    </component>
-    <component :is="BaseAccordionItem" :item-id="2">
+    </base-accordion-item>
+    <base-accordion-item :item-id="2">
       <template #title>Accordion #2</template>
       <template #default>Hello World</template>
-    </component>
-    <component :is="BaseAccordionItem" :item-id="3">
+    </base-accordion-item>
+    <base-accordion-item :item-id="3">
       <template #title>Accordion #3</template>
       <template #default>Hello World</template>
-    </component>
-  </component>
+    </base-accordion-item>
+  </base-accordion>
 </template>
 ```
 

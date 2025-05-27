@@ -2,22 +2,18 @@
 import Cleave from 'cleave.js'
 import { computed, onMounted, ref } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
-  id?: string
   label?: string
   align?: 'left' | 'right'
   description?: string
-  placeholder?: string
   border?: BaseInputNumberBorderType
   layout?: BaseFormLayoutType
   decimalLength?: number
-  autofocus?: boolean
   required?: boolean
-  disabled?: boolean
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -32,9 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   align: 'right',
   border: 'simple',
   layout: 'vertical',
-  autofocus: false,
   required: false,
-  disabled: false,
   resetErrorsOnUpdate: true
 })
 
@@ -58,14 +52,17 @@ onMounted(() => {
     onValueChanged: onValueChanged
   })
 
-  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+  fixPadding()
 
   setTimeout(() => {
-    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+    fixPadding()
   }, 1000)
 })
+
+const fixPadding = () => {
+  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+}
 
 const modelValue = defineModel<string | number>()
 const errors = defineModel<string[]>('errors')
@@ -100,8 +97,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -119,10 +115,8 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model="inputValue"
-      :placeholder="props.placeholder"
-      :autofocus="props.autofocus"
+      v-bind="$attrs"
       :required="props.required"
-      :disabled="props.disabled"
       @click="selectAllText"
       :style="{
         paddingLeft: `${paddingLeft}px`,
@@ -141,7 +135,7 @@ defineExpose({
     >
       <slot name="prefix"></slot>
     </div>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

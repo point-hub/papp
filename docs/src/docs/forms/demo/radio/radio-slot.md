@@ -11,7 +11,7 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseRadio } from '@point-hub/papp'
+
 const options = [
   {
     name: 'Startup',
@@ -38,13 +38,7 @@ const selected = ref()
 
 <template>
   <form @submit.prevent="">
-    <component
-      :is="BaseRadio"
-      v-model="selected"
-      :options="options"
-      label="Label"
-      layout="horizontal"
-    >
+    <base-radio v-model="selected" :options="options" label="Label" layout="horizontal">
       <template v-slot="{ checked, option }">
         <div class="w-full cursor-pointer">
           <div
@@ -69,7 +63,7 @@ const selected = ref()
           </div>
         </div>
       </template>
-    </component>
+    </base-radio>
   </form>
 </template>
 ```

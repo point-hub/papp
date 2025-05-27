@@ -44,8 +44,6 @@ The input element with a type attribute whose value is "text" represents a one-l
 | label          | string                  |            | Checkbox label.                 |
 | text           | string                  |            | Checkbox text.                  |
 | description    | string                  |            | Input description.              |
-| placeholder    | string                  |            | Input placeholder.              |
 | layout         | `horizontal` `vertical` | `vertical` | Input layout.                   |
 | required       | boolean                 | false      | if true checkbox is `required`. |
-| disabled       | boolean                 | false      | if true checkbox is `disabled`. |
 | helpers        | string[]                |            | Input helper message.           |

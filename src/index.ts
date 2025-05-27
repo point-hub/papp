@@ -90,11 +90,7 @@ export {
   type BaseFileUploadBorderType
 } from './components/base-file-upload.vue'
 export { default as BaseForm, type BaseFormLayoutType } from './components/base-form.vue'
-export {
-  default as BaseInput,
-  type BaseInputBorderType,
-  type BaseInputType
-} from './components/base-input.vue'
+export { default as BaseInput, type BaseInputBorderType } from './components/base-input.vue'
 export {
   default as BaseInputMask,
   type BaseInputMaskBorderType

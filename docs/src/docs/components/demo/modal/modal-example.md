@@ -10,7 +10,6 @@
 
 ```vue
 <script setup lang="ts">
-import { BaseButton, BaseModal } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const showModal = ref(false)
@@ -18,10 +17,8 @@ const showModal = ref(false)
 
 <template>
   <Demo is-row>
-    <component :is="BaseButton" color="primary" size="md" @click="showModal = true">
-      Open Modal
-    </component>
-    <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false">
+    <base-button color="primary" size="md" @click="showModal = true"> Open Modal </base-button>
+    <base-modal :is-open="showModal" @on-close="showModal = false">
       <div class="max-h-90vh overflow-auto p-4">
         <h2 class="py-4 text-2xl font-bold">Lorem Ipsum</h2>
         <div class="space-y-8">
@@ -30,12 +27,12 @@ const showModal = ref(false)
             blanditiis quam pariatur repellat? Animi ducimus fugit, similique libero et rem, quod
             repellat sunt itaque voluptas nihil saepe laboriosam?
           </p>
-          <component :is="BaseButton" color="primary" size="sm" @click="showModal = false" is-block>
+          <base-button color="primary" size="sm" @click="showModal = false" is-block>
             Close
-          </component>
+          </base-button>
         </div>
       </div>
-    </component>
+    </base-modal>
   </Demo>
 </template>
 ```

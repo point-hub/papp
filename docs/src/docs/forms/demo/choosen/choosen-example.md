@@ -10,7 +10,6 @@
 
 ```vue
 <script setup lang="ts">
-import { BaseChoosen } from '@point-hub/papp'
 import { ref } from 'vue'
 const options = ref([
   {

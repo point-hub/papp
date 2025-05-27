@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseSwitch } from '@point-hub/papp'
 
 const form = ref({
   checked: false
@@ -20,8 +19,8 @@ const form = ref({
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseSwitch" v-model="form.checked" text="Label" />
-    <component :is="BaseSwitch" v-model="form.checked" text="Label" text-position="right" />
+    <base-switch v-model="form.checked" text="Label" />
+    <base-switch v-model="form.checked" text="Label" text-position="right" />
   </form>
 </template>
 ```

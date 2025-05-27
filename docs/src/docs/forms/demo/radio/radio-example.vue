@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseRadio } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const options = [
@@ -23,7 +22,7 @@ const selected = ref()
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component :is="BaseRadio" name="radio-option" :options="options" v-model="selected" />
+      <base-radio name="radio-option" :options="options" v-model="selected" />
     </form>
   </Demo>
 </template>

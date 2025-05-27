@@ -43,19 +43,14 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 ### Props
 
 | Name           | Type                      | Default    | Description                  |
-|----------------|---------------------------|------------|------------------------------|
+| -------------- | ------------------------- | ---------- | ---------------------------- |
 | v-model        | string                    |            | v-model is `required`.       |
 | v-model:errors | string[]                  |            | Input error message.         |
-| id             | string                    |            | Input id.                    |
 | label          | string                    |            | Input label.                 |
 | description    | string                    |            | Input description.           |
-| placeholder    | string                    |            | Input placeholder.           |
 | align          | `left` `right`            | `right`    | Input align.                 |
 | border         | BaseInputNumberBorderType | `simple`   | Input border.                |
 | layout         | BaseFormLayoutType        | `vertical` | Input layout.                |
 | decimalLength  | number                    | 0          | Input decimal length.        |
-| autofocus      | boolean                   | false      | Focus input on page load.    |
 | required       | boolean                   | false      | if true input is `required`. |
-| disabled       | boolean                   | false      | if true input is `disabled`. |
 | helpers        | string[]                  |            | Input helper message.        |
-

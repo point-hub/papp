@@ -1,12 +1,8 @@
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
-    <component :is="BaseButton" color="primary" variant="filled">Filled</component>
-    <component :is="BaseButton" color="primary" variant="outlined">Outlined</component>
-    <component :is="BaseButton" color="primary" variant="light">Light</component>
-    <component :is="BaseButton" color="primary" variant="text">Text</component>
+    <base-button color="primary" variant="filled">Filled</base-button>
+    <base-button color="primary" variant="outlined">Outlined</base-button>
+    <base-button color="primary" variant="light">Light</base-button>
+    <base-button color="primary" variant="text">Text</base-button>
   </Demo>
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseTextarea } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -11,15 +10,13 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component
-        :is="BaseTextarea"
+      <base-textarea
         label="Label"
         v-model="form.text1"
         layout="vertical"
         description="Vertical Layout"
       />
-      <component
-        :is="BaseTextarea"
+      <base-textarea
         label="Label"
         v-model="form.text2"
         layout="horizontal"

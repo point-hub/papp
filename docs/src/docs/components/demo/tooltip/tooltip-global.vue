@@ -1,14 +1,10 @@
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
     <base-tooltip content="Hello World">
-      <component :is="BaseButton">Tootlip!</component>
+      <base-button>Tootlip!</base-button>
     </base-tooltip>
     <base-tooltip>
-      <component :is="BaseButton">Tootlip!</component>
+      <base-button>Tootlip!</base-button>
       <template #content>
         <h2>Hello World</h2>
         <p>

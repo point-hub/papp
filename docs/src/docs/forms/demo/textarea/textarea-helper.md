@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseTextarea } from '@point-hub/papp'
 
 const form = ref({
   text1: '',
@@ -26,33 +25,12 @@ const errors = ref(['Error Example'])
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseTextarea" required label="Label" v-model="form.text1" />
-    <component
-      :is="BaseTextarea"
-      placeholder="Placeholder Example"
-      label="Label"
-      v-model="form.text2"
-    />
-    <component
-      :is="BaseTextarea"
-      description="Description Example"
-      label="Label"
-      v-model="form.text3"
-    />
-    <component
-      :is="BaseTextarea"
-      :helpers="['Helper Example']"
-      label="Label"
-      v-model="form.text4"
-    />
-    <component :is="BaseTextarea" v-model:errors="errors" label="Label" v-model="form.text5" />
-    <component
-      :is="BaseTextarea"
-      label="Label"
-      v-model="form.text6"
-      description="Disabled"
-      disabled
-    />
+    <base-textarea required label="Label" v-model="form.text1" />
+    <base-textarea placeholder="Placeholder Example" label="Label" v-model="form.text2" />
+    <base-textarea description="Description Example" label="Label" v-model="form.text3" />
+    <base-textarea :helpers="['Helper Example']" label="Label" v-model="form.text4" />
+    <base-textarea v-model:errors="errors" label="Label" v-model="form.text5" />
+    <base-textarea label="Label" v-model="form.text6" description="Disabled" disabled />
   </form>
 </template>
 ```

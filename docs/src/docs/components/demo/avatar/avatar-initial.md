@@ -11,15 +11,11 @@ In the absence of a image, you can use the initial. Initials can be used in vari
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseAvatar } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseAvatar" name="John" />
-    <component :is="BaseAvatar" name="John Doe" />
-    <component :is="BaseAvatar" name="John Doe Rock" />
+    <base-avatar name="John" />
+    <base-avatar name="John Doe" />
+    <base-avatar name="John Doe Rock" />
   </div>
 </template>
 ```

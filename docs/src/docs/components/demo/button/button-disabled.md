@@ -11,18 +11,14 @@ Buttons have their own style when disabled.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseButton" disabled color="primary">Disabled</component>
-    <component :is="BaseButton" disabled color="secondary">Disabled</component>
-    <component :is="BaseButton" disabled color="info">Disabled</component>
-    <component :is="BaseButton" disabled color="success">Disabled</component>
-    <component :is="BaseButton" disabled color="warning">Disabled</component>
-    <component :is="BaseButton" disabled color="danger">Disabled</component>
+    <base-button disabled color="primary">Disabled</base-button>
+    <base-button disabled color="secondary">Disabled</base-button>
+    <base-button disabled color="info">Disabled</base-button>
+    <base-button disabled color="success">Disabled</base-button>
+    <base-button disabled color="warning">Disabled</base-button>
+    <base-button disabled color="danger">Disabled</base-button>
   </div>
 </template>
 ```

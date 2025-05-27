@@ -11,7 +11,7 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseAutocomplete, type BaseAutocompleteOptionInterface } from '@point-hub/papp'
+import { type BaseAutocompleteOptionInterface } from '@point-hub/papp'
 
 interface OptionInterface extends BaseAutocompleteOptionInterface {
   id: number
@@ -44,16 +44,14 @@ const onSubmit = () => {
 
 <template>
   <form @submit.prevent="onSubmit()">
-    <component
-      :is="BaseAutocomplete"
+    <base-autocomplete
       v-model="selected1"
       :options="options"
       label="Label"
       description="Vertical Layout"
       layout="vertical"
     />
-    <component
-      :is="BaseAutocomplete"
+    <base-autocomplete
       v-model="selected2"
       :options="options"
       label="Label"

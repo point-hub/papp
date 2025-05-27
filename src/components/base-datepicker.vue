@@ -2,8 +2,7 @@
 import { formatDate, formatISO } from 'date-fns'
 import { computed, ref, watch } from 'vue'
 
-import BaseButton from './base-button.vue'
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseDatepickerBorderType = 'simple' | 'full' | 'none'
 
@@ -119,8 +118,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -137,8 +135,7 @@ defineExpose({
         'pl-0!': border === 'simple' || border === 'none'
       }"
     />
-    <component
-      :is="BaseButton"
+    <base-button
       variant="text"
       type="button"
       class="absolute left-0 px-0! py-2"
@@ -148,7 +145,7 @@ defineExpose({
       @click="onClickDateRef()"
     >
       <base-icon icon="i-far-calendar" />
-    </component>
+    </base-button>
     <input
       ref="inputRef"
       v-model.lazy="value"
@@ -165,7 +162,7 @@ defineExpose({
       :required="props.required"
       :disabled="props.disabled"
     />
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

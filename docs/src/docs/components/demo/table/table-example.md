@@ -9,13 +9,9 @@
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseTable } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo>
-    <component :is="BaseTable">
+    <base-table>
       <thead>
         <tr>
           <th>#</th>
@@ -44,7 +40,7 @@ import { BaseTable } from '@point-hub/papp'
           <td>Red</td>
         </tr>
       </tbody>
-    </component>
+    </base-table>
   </Demo>
 </template>
 ```

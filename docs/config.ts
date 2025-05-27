@@ -1,6 +1,7 @@
 import { resolve } from 'path'
-import { type DefaultTheme, defineConfig } from 'vitepress'
 import UnoCSS from 'unocss/vite'
+import { type DefaultTheme, defineConfig } from 'vitepress'
+
 import { version } from '../package.json'
 
 // https://vitepress.dev/reference/site-config
@@ -12,7 +13,7 @@ export default defineConfig({
   srcDir: './src',
   base: '/library/papp/',
   vite: {
-    plugins: [UnoCSS() as any],
+    plugins: [UnoCSS() as never],
     resolve: {
       alias: {
         '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
@@ -37,7 +38,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023 Pointhub'
+      copyright: 'Copyright ©2023-2025 Pointhub'
     }
   }
 })

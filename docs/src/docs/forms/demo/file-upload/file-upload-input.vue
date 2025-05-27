@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { BaseFileUpload } from '@point-hub/papp'
-
 interface HTMLInputEvent extends Event {
   target: HTMLInputElement
 }
@@ -12,6 +10,6 @@ const onUpload = (e: HTMLInputEvent) => {
 
 <template>
   <Demo>
-    <component :is="BaseFileUpload" @change="onUpload" />
+    <base-file-upload @change="onUpload" />
   </Demo>
 </template>

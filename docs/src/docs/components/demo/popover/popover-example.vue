@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseButton, BasePopover } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const activeTab = ref('all')
@@ -8,10 +7,10 @@ const popoverRef = ref()
 
 <template>
   <Demo>
-    <component ref="popoverRef" :is="BasePopover" placement="bottom-start">
-      <component :is="BaseButton" size="md" color="primary" @click="popoverRef.toggle()">
+    <base-popover ref="popoverRef" placement="bottom-start">
+      <base-button size="md" color="primary" @click="popoverRef.toggle()">
         Trigger element
-      </component>
+      </base-button>
       <template #content>
         <div class="popper-root">
           <div
@@ -27,18 +26,16 @@ const popoverRef = ref()
                 </div>
               </div>
 
-              <component
-                :is="BaseButton"
+              <base-button
                 variant="text"
                 class="h-7 w-7 rounded-full p-0 -mr-1.5 active:bg-slate-300/25 focus:bg-slate-300/20 hover:bg-slate-300/20 dark:active:bg-slate-300/25 dark:focus:bg-slate-300/20 dark:hover:bg-slate-300/20"
               >
                 <base-icon icon="i-far-maximize" />
-              </component>
+              </base-button>
             </div>
 
             <div class="scrollbar-hidden flex shrink-0 overflow-x-auto px-3 text-sm">
-              <component
-                :is="BaseButton"
+              <base-button
                 variant="text"
                 :class="
                   activeTab === 'all'
@@ -49,9 +46,8 @@ const popoverRef = ref()
                 @click="activeTab = 'all'"
               >
                 <span>All</span>
-              </component>
-              <component
-                :is="BaseButton"
+              </base-button>
+              <base-button
                 variant="text"
                 :class="
                   activeTab === 'logs'
@@ -62,7 +58,7 @@ const popoverRef = ref()
                 @click="activeTab = 'logs'"
               >
                 <span>Logs</span>
-              </component>
+              </base-button>
             </div>
           </div>
 
@@ -110,7 +106,7 @@ const popoverRef = ref()
           </div>
         </div>
       </template>
-    </component>
+    </base-popover>
   </Demo>
 </template>
 

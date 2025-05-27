@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const isLoading = ref(true)
@@ -11,41 +10,22 @@ const toggleLoading = () => {
 
 <template>
   <Demo is-row>
-    <component
-      :is="BaseButton"
-      @click="toggleLoading()"
-      :isLoading="isLoading"
-      color="primary"
-      variant="filled"
-    >
+    <base-button @click="toggleLoading()" :is-loading="isLoading" color="primary" variant="filled">
       Filled Button
-    </component>
-    <component
-      :is="BaseButton"
-      @click="toggleLoading()"
-      :isLoading="isLoading"
-      color="primary"
-      variant="light"
-    >
+    </base-button>
+    <base-button @click="toggleLoading()" :is-loading="isLoading" color="primary" variant="light">
       Light Button
-    </component>
-    <component
-      :is="BaseButton"
+    </base-button>
+    <base-button
       @click="toggleLoading()"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       color="primary"
       variant="outlined"
     >
       Outlined Button
-    </component>
-    <component
-      :is="BaseButton"
-      @click="toggleLoading()"
-      :isLoading="isLoading"
-      color="primary"
-      variant="text"
-    >
+    </base-button>
+    <base-button @click="toggleLoading()" :is-loading="isLoading" color="primary" variant="text">
       Text Button
-    </component>
+    </base-button>
   </Demo>
 </template>

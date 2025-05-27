@@ -2,7 +2,7 @@
 import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 import { computed } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseRadioOptionsLayout = 'vertical' | 'horizontal'
 
@@ -17,7 +17,6 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
-  errors?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any>[]
 }
@@ -50,8 +49,7 @@ const value = computed({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -92,5 +90,5 @@ const value = computed({
         </RadioGroupOption>
       </div>
     </RadioGroup>
-  </component>
+  </base-form>
 </template>

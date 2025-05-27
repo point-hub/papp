@@ -9,13 +9,9 @@
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseTimeline, BaseTimelineContent } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseTimeline">
-    <component :is="BaseTimelineContent">
+  <base-timeline>
+    <base-timeline-content>
       <template #point>
         <img src="https://placehold.co/150" alt="" class="mx-auto h-12 w-12 rounded-full" />
       </template>
@@ -30,8 +26,8 @@ import { BaseTimeline, BaseTimelineContent } from '@point-hub/papp'
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </template>
-    </component>
-    <component :is="BaseTimelineContent">
+    </base-timeline-content>
+    <base-timeline-content>
       <template #point>
         <img src="https://placehold.co/150" alt="" class="mx-auto h-12 w-12 rounded-full" />
       </template>
@@ -46,8 +42,8 @@ import { BaseTimeline, BaseTimelineContent } from '@point-hub/papp'
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </template>
-    </component>
-  </component>
+    </base-timeline-content>
+  </base-timeline>
 </template>
 ```
 

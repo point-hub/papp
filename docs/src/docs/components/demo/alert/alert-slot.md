@@ -11,12 +11,8 @@ Using slot to render custom style
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseAlert } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseAlert" color="danger">
+  <base-alert color="danger">
     <template #title>
       <div class="flex items-center gap-2">
         <base-icon icon="i-far-triangle-exclamation" class="text-2xl" />
@@ -24,7 +20,7 @@ import { BaseAlert } from '@point-hub/papp'
       </div>
     </template>
     <template #default>This is alert message</template>
-  </component>
+  </base-alert>
 </template>
 ```
 

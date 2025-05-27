@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseDatepicker } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -11,15 +10,13 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component
-        :is="BaseDatepicker"
+      <base-datepicker
         v-model="form.date1"
         label="Date"
         layout="vertical"
         description="Vertical Layout"
       />
-      <component
-        :is="BaseDatepicker"
+      <base-datepicker
         v-model="form.date2"
         label="Date"
         layout="horizontal"

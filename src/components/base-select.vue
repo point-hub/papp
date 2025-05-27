@@ -2,7 +2,7 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { computed } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export interface BaseSelectOptionInterface {
   label: string
@@ -54,8 +54,7 @@ const clearSelect = () => {
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -107,7 +106,7 @@ const clearSelect = () => {
         </transition>
       </div>
     </Listbox>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

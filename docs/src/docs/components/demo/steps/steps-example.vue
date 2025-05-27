@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseStep, type BaseStepItemInterface } from '@point-hub/papp'
+import { type BaseStepItemInterface } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const items = ref([
@@ -24,6 +24,6 @@ const onChoosen = (item: BaseStepItemInterface) => {
 
 <template>
   <Demo>
-    <component :is="BaseStep" v-model="items" @choosen="onChoosen"></component>
+    <base-step v-model="items" @choosen="onChoosen" />
   </Demo>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export interface Props {
   modelValue: number
@@ -36,8 +36,7 @@ const value = computed({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -48,5 +47,5 @@ const value = computed({
       <input type="range" class="w-full" min="0" max="100" v-model="value" :disabled="disabled" />
       <p v-if="showText">{{ value }}</p>
     </div>
-  </component>
+  </base-form>
 </template>

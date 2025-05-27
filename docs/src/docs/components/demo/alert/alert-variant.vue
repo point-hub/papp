@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import { BaseAlert } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo>
-    <component :is="BaseAlert" variant="fill">Filled</component>
-    <component :is="BaseAlert" variant="outline">Outlined</component>
-    <component :is="BaseAlert" variant="light">Light</component>
+    <base-alert variant="fill">Filled</base-alert>
+    <base-alert variant="outline">Outlined</base-alert>
+    <base-alert variant="light">Light</base-alert>
   </Demo>
 </template>

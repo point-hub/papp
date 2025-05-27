@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseSwitch } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -10,7 +9,7 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component :is="BaseSwitch" v-model="form.checked" />
+      <base-switch v-model="form.checked" />
     </form>
   </Demo>
 </template>

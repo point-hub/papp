@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { inject, type Ref, ref, watch } from 'vue'
 
-import BaseButton from './base-button.vue'
-
 const alwaysOpen = inject('alwaysOpen') as Ref
 const activeItemId = inject('activeItemId') as Ref
 
@@ -53,7 +51,7 @@ const props = withDefaults(
 
 <template>
   <div class="accordion-item">
-    <component :is="BaseButton" @click="toggleCollapse()" class="accordion-title">
+    <base-button @click="toggleCollapse()" class="accordion-title" v-bind="$attrs">
       <slot name="title">
         <span>{{ props.title }}</span>
       </slot>
@@ -63,7 +61,7 @@ const props = withDefaults(
           'accordiont-collapse-item-icon-active': activeState
         }"
       ></i>
-    </component>
+    </base-button>
     <div
       ref="contentRef"
       class="accordion-content"

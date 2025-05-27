@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseInputMaskBorderType = 'simple' | 'full' | 'none'
 
 export interface Props {
   modelValue: string | number | boolean | null
-  id?: string
   label?: string
   description?: string
-  placeholder?: string
   border?: BaseInputMaskBorderType
   layout?: BaseFormLayoutType
-  autofocus?: boolean
   required?: boolean
-  disabled?: boolean
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any
@@ -24,9 +20,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
-  autofocus: false,
-  required: false,
-  disabled: false
+  required: false
 })
 
 const emit = defineEmits<{
@@ -50,8 +44,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -68,13 +61,11 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model.lazy="value"
+      v-bind="$attrs"
       v-input-mask="options"
-      :placeholder="props.placeholder"
-      :autofocus="props.autofocus"
       :required="props.required"
-      :disabled="props.disabled"
     />
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

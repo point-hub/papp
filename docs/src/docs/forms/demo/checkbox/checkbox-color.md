@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseCheckbox } from '@point-hub/papp'
 
 const primaryCheckbox = ref(false)
 const secondaryCheckbox = ref(false)
@@ -22,12 +21,12 @@ const dangerCheckbox = ref(false)
 </script>
 
 <template>
-  <component :is="BaseCheckbox" v-model="primaryCheckbox" theme="primary" />
-  <component :is="BaseCheckbox" v-model="secondaryCheckbox" theme="secondary" />
-  <component :is="BaseCheckbox" v-model="infoCheckbox" theme="info" />
-  <component :is="BaseCheckbox" v-model="successCheckbox" theme="success" />
-  <component :is="BaseCheckbox" v-model="warningCheckbox" theme="warning" />
-  <component :is="BaseCheckbox" v-model="dangerCheckbox" theme="danger" />
+  <base-checkbox v-model="primaryCheckbox" theme="primary" />
+  <base-checkbox v-model="secondaryCheckbox" theme="secondary" />
+  <base-checkbox v-model="infoCheckbox" theme="info" />
+  <base-checkbox v-model="successCheckbox" theme="success" />
+  <base-checkbox v-model="warningCheckbox" theme="warning" />
+  <base-checkbox v-model="dangerCheckbox" theme="danger" />
 </template>
 ```
 

@@ -11,15 +11,11 @@ The Avatar component creates an image within its shape.
 ::: details Code
 
 ```vue {10,16,22}
-<script setup lang="ts">
-import { BaseAvatar } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseAvatar" src="https://placehold.co/150" shape="circle" name="John Doe" />
-    <component :is="BaseAvatar" src="https://placehold.co/150" shape="square" name="John Doe" />
-    <component :is="BaseAvatar" src="https://placehold.co/150" shape="squircle" name="John Doe" />
+    <base-avatar src="https://placehold.co/150" shape="circle" name="John Doe" />
+    <base-avatar src="https://placehold.co/150" shape="square" name="John Doe" />
+    <base-avatar src="https://placehold.co/150" shape="squircle" name="John Doe" />
   </div>
 </template>
 ```

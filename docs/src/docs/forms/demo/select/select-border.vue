@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseSelect } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const options = [
@@ -18,24 +17,21 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component
-        :is="BaseSelect"
+      <base-select
         v-model="form.selected1"
         :options="options"
         label="Label"
         description="Without Border"
         border="none"
       />
-      <component
-        :is="BaseSelect"
+      <base-select
         v-model="form.selected2"
         :options="options"
         label="Label"
         description="Simple Border"
         border="simple"
       />
-      <component
-        :is="BaseSelect"
+      <base-select
         v-model="form.selected3"
         :options="options"
         label="Label"

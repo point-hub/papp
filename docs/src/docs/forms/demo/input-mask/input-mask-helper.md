@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseInputMask } from '@point-hub/papp'
 
 const form = ref({
   number1: null,
@@ -26,50 +25,44 @@ const errors = ref(['Error example'])
 
 <template>
   <form @submit.prevent="">
-    <component
-      :is="BaseInputMask"
+    <base-input-mask
       v-model="form.number1"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       required
-    ></component>
-    <component
-      :is="BaseInputMask"
+    />
+    <base-input-mask
       v-model="form.number2"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       description="Description example"
-    ></component>
-    <component
-      :is="BaseInputMask"
+    />
+    <base-input-mask
       v-model="form.number2"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       placeholder="1,234,567"
       description="Placeholder"
-    ></component>
-    <component
-      :is="BaseInputMask"
+    />
+    <base-input-mask
       v-model="form.number3"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       :helpers="['Helper example']"
-    ></component>
-    <component
-      :is="BaseInputMask"
+    />
+    <base-input-mask
       v-model="form.number4"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       v-model:errors="errors"
-    ></component>
-    <component
-      :is="BaseInputMask"
+    />
+    <base-input-mask
       v-model="form.number5"
       :options="{ numeral: true, numeralThousandsGroupStyle: 'thousand' }"
       label="Label"
       description="Disabled"
       disabled
-    ></component>
+    />
   </form>
 </template>
 ```

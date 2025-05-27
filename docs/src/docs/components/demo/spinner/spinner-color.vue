@@ -1,14 +1,10 @@
-<script setup lang="ts">
-import { BaseSpinner } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
-    <component :is="BaseSpinner" color="primary">Primary</component>
-    <component :is="BaseSpinner" color="secondary">Secondary</component>
-    <component :is="BaseSpinner" color="info">Info</component>
-    <component :is="BaseSpinner" color="success">Success</component>
-    <component :is="BaseSpinner" color="warning">Warning</component>
-    <component :is="BaseSpinner" color="danger">Danger</component>
+    <base-spinner color="primary">Primary</base-spinner>
+    <base-spinner color="secondary">Secondary</base-spinner>
+    <base-spinner color="info">Info</base-spinner>
+    <base-spinner color="success">Success</base-spinner>
+    <base-spinner color="warning">Warning</base-spinner>
+    <base-spinner color="danger">Danger</base-spinner>
   </Demo>
 </template>

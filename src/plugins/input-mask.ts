@@ -1,12 +1,15 @@
 import Cleave from 'cleave.js'
-import { type App } from 'vue'
+import type { App } from 'vue'
 
-export default {
-  install(Vue: App) {
-    Vue.directive('input-mask', {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const PluginInputMask: any = {
+  install(app: App) {
+    app.directive('input-mask', {
       mounted: (el, binding) => {
         el.cleave = new Cleave(el, binding.value || {})
       }
     })
   }
 }
+
+export default PluginInputMask

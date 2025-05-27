@@ -11,18 +11,14 @@ Button can be blocked with `w-full`.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseButton" isBlock color="primary">Disabled</component>
-    <component :is="BaseButton" isBlock color="secondary">Disabled</component>
-    <component :is="BaseButton" isBlock color="info">Disabled</component>
-    <component :is="BaseButton" isBlock color="success">Disabled</component>
-    <component :is="BaseButton" isBlock color="warning">Disabled</component>
-    <component :is="BaseButton" isBlock color="danger">Disabled</component>
+    <base-button is-block color="primary">Disabled</base-button>
+    <base-button is-block color="secondary">Disabled</base-button>
+    <base-button is-block color="info">Disabled</base-button>
+    <base-button is-block color="success">Disabled</base-button>
+    <base-button is-block color="warning">Disabled</base-button>
+    <base-button is-block color="danger">Disabled</base-button>
   </div>
 </template>
 ```

@@ -20,9 +20,9 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   enhanceApp({ app, router, siteData }) {
-    app.component('Demo', Demo as any)
-    app.use(PluginInputMask as any)
-    app.use(PluginTooltip as any)
-    app.use(PluginBaseComponents as any)
+    app.component('Demo', Demo as never)
+    app.use(PluginInputMask)
+    app.use(PluginTooltip)
+    app.use(PluginBaseComponents)
   }
 } satisfies Theme

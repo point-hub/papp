@@ -11,17 +11,13 @@ Button components can have various sizes.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseButton" color="primary" size="xs">Button xs</component>
-    <component :is="BaseButton" color="primary" size="sm">Button sm</component>
-    <component :is="BaseButton" color="primary" size="md">Button md</component>
-    <component :is="BaseButton" color="primary" size="lg">Button lg</component>
-    <component :is="BaseButton" color="primary" size="xl">Button xl</component>
+    <base-button color="primary" size="xs">Button xs</base-button>
+    <base-button color="primary" size="sm">Button sm</base-button>
+    <base-button color="primary" size="md">Button md</base-button>
+    <base-button color="primary" size="lg">Button lg</base-button>
+    <base-button color="primary" size="xl">Button xl</base-button>
   </div>
 </template>
 ```

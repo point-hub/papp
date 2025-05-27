@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseInput } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -17,28 +16,12 @@ const errors = ref(['Error Example'])
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component :is="BaseInput" v-model="form.name1" label="Label" required />
-      <component
-        :is="BaseInput"
-        v-model="form.name2"
-        label="Label"
-        placeholder="Placeholder example"
-      />
-      <component
-        :is="BaseInput"
-        v-model="form.name3"
-        label="Label"
-        description="Description example"
-      />
-      <component :is="BaseInput" v-model="form.name4" label="Label" :helpers="['Helper example']" />
-      <component :is="BaseInput" v-model="form.name5" label="Label" v-model:errors="errors" />
-      <component
-        :is="BaseInput"
-        v-model="form.name6"
-        label="Label"
-        description="Disabled"
-        disabled
-      />
+      <base-input v-model="form.name1" label="Label" required />
+      <base-input v-model="form.name2" label="Label" placeholder="Placeholder example" />
+      <base-input v-model="form.name3" label="Label" description="Description example" />
+      <base-input v-model="form.name4" label="Label" :helpers="['Helper example']" />
+      <base-input v-model="form.name5" label="Label" v-model:errors="errors" />
+      <base-input v-model="form.name6" label="Label" description="Disabled" disabled />
     </form>
   </Demo>
 </template>

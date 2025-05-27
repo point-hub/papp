@@ -11,20 +11,16 @@ Add or remove shadow using `shadow` property
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseCard } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseCard" :shadow="true">
+  <base-card :shadow="true">
     <template #header>With Shadow</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 
-  <component :is="BaseCard">
+  <base-card>
     <template #header>Without Shadow</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 </template>
 ```
 

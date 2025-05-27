@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import { BaseAlert } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo>
-    <component :is="BaseAlert" color="danger" title="Alert">This is alert message</component>
+    <base-alert color="danger" title="Alert">This is alert message</base-alert>
   </Demo>
 </template>

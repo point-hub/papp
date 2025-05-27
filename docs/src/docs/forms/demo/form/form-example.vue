@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseForm, type BaseFormLayoutType } from '@point-hub/papp'
+import { type BaseFormLayoutType } from '@point-hub/papp'
 import { computed } from 'vue'
 
 export interface Props {
@@ -31,8 +31,7 @@ const inputValue = computed({
 
 <template>
   <Demo>
-    <component
-      :is="BaseForm"
+    <base-form
       :label="props.label"
       :layout="props.layout"
       :description="props.description"
@@ -41,6 +40,6 @@ const inputValue = computed({
       :errors="props.errors"
     >
       <input class="form-input border-simple" v-model="inputValue" />
-    </component>
+    </base-form>
   </Demo>
 </template>

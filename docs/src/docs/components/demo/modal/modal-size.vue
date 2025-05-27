@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BaseButton, BaseModal, type BaseModalSizeType } from '@point-hub/papp'
+import { type BaseModalSizeType } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const showModal = ref(false)
@@ -12,17 +12,13 @@ const openModal = (size: BaseModalSizeType) => {
 
 <template>
   <Demo is-row>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('sm')">SM</component>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('md')">MD</component>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('lg')">LG</component>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('xl')">XL</component>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('full')">
-      Full
-    </component>
-    <component :is="BaseButton" size="md" color="primary" @click="openModal('maximize')">
-      Maximize
-    </component>
-    <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" :size="sizeModal">
+    <base-button size="md" color="primary" @click="openModal('sm')">SM</base-button>
+    <base-button size="md" color="primary" @click="openModal('md')">MD</base-button>
+    <base-button size="md" color="primary" @click="openModal('lg')">LG</base-button>
+    <base-button size="md" color="primary" @click="openModal('xl')">XL</base-button>
+    <base-button size="md" color="primary" @click="openModal('full')"> Full </base-button>
+    <base-button size="md" color="primary" @click="openModal('maximize')"> Maximize </base-button>
+    <base-modal :is-open="showModal" @on-close="showModal = false" :size="sizeModal">
       <div class="max-h-90vh overflow-auto p-4">
         <h2 class="py-4 text-2xl font-bold">Lorem Ipsum</h2>
         <div class="space-y-8">
@@ -31,11 +27,11 @@ const openModal = (size: BaseModalSizeType) => {
             blanditiis quam pariatur repellat? Animi ducimus fugit, similique libero et rem, quod
             repellat sunt itaque voluptas nihil saepe laboriosam?
           </p>
-          <component :is="BaseButton" size="md" color="primary" @click="showModal = false" is-block>
+          <base-button size="md" color="primary" @click="showModal = false" is-block>
             Close
-          </component>
+          </base-button>
         </div>
       </div>
-    </component>
+    </base-modal>
   </Demo>
 </template>

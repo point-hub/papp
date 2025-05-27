@@ -1,25 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
-export type BaseInputType = 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
 export type BaseInputBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   modelValue: string
-  id?: string
-  type?: BaseInputType
   label?: string
+  required?: boolean
   description?: string
-  placeholder?: string
   border?: BaseInputBorderType
   layout?: BaseFormLayoutType
-  maxlength?: number
-  autofocus?: boolean
-  required?: boolean
-  readonly?: boolean
-  disabled?: boolean
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -34,13 +26,9 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
-  type: 'text',
   layout: 'vertical',
-  autofocus: false,
-  required: false,
-  readonly: false,
-  disabled: false,
-  resetErrorsOnUpdate: true
+  resetErrorsOnUpdate: true,
+  required: false
 })
 
 const emit = defineEmits<{
@@ -94,15 +82,7 @@ const errors = defineModel<string[]>('errors')
  * Execute code after the component has been mounted to the DOM
  */
 onMounted(() => {
-  fixPaddingValue()
-})
-
-/**
- * Fix padding value from loaded prefix and suffix element
- */
-const fixPaddingValue = () => {
-  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+  fixPadding()
 
   /**
    * The consant value of setTimeout delay in milisecond
@@ -113,9 +93,16 @@ const fixPaddingValue = () => {
    * After certain of time
    */
   setTimeout(() => {
-    paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
-    paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
+    fixPadding()
   }, DELAY)
+})
+
+/**
+ * Fix padding value from loaded prefix and suffix element
+ */
+const fixPadding = () => {
+  paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 10 : prefixRef.value?.clientWidth
+  paddingRight.value = suffixRef.value?.clientWidth === 0 ? 10 : suffixRef.value?.clientWidth
 }
 
 /**
@@ -127,8 +114,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -145,13 +131,8 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model.trim="value"
-      :type="type"
-      :maxlength="props.maxlength"
-      :placeholder="props.placeholder"
-      :autofocus="props.autofocus"
+      v-bind="$attrs"
       :required="props.required"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
@@ -169,7 +150,7 @@ defineExpose({
     >
       <slot name="prefix"></slot>
     </div>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

@@ -11,7 +11,7 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseAutocomplete, type BaseAutocompleteOptionInterface } from '@point-hub/papp'
+import { type BaseAutocompleteOptionInterface } from '@point-hub/papp'
 
 interface OptionInterface extends BaseAutocompleteOptionInterface {
   id: number
@@ -58,41 +58,26 @@ const errors = ref(['Error 1 Example', 'Error 2 Example', 'Error 3 Example'])
 
 <template>
   <form @submit.prevent="onSubmit()">
-    <component
-      :is="BaseAutocomplete"
-      v-model="selected1"
-      :options="options"
-      label="Label"
-      required
-    />
-    <component
-      :is="BaseAutocomplete"
+    <base-autocomplete v-model="selected1" :options="options" label="Label" required />
+    <base-autocomplete
       v-model="selected2"
       :options="options"
       label="Label"
       description="Description Example"
     />
-    <component
-      :is="BaseAutocomplete"
+    <base-autocomplete
       v-model="selected3"
       :options="options"
       label="Label"
       :helpers="['Helper Example']"
     />
-    <component
-      :is="BaseAutocomplete"
+    <base-autocomplete
       v-model="selected4"
       :options="options"
       label="Label"
       v-model:errors="errors"
     />
-    <component
-      :is="BaseAutocomplete"
-      v-model="selected5"
-      :options="options"
-      label="Label"
-      disabled
-    />
+    <base-autocomplete v-model="selected5" :options="options" label="Label" disabled />
   </form>
 </template>
 ```

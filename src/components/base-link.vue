@@ -72,7 +72,7 @@ if (props.size !== 'none') {
 </script>
 
 <template>
-  <a :href="props.href" class="btn" :class="classes">
+  <a :href="props.href" class="btn" :class="classes" v-bind="$attrs">
     <!-- Render Link Content -->
     <slot></slot>
   </a>

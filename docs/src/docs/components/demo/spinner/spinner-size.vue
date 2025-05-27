@@ -1,13 +1,9 @@
-<script setup lang="ts">
-import { BaseSpinner } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
-    <component :is="BaseSpinner" size="xs">Button xs</component>
-    <component :is="BaseSpinner" size="sm">Button sm</component>
-    <component :is="BaseSpinner" size="md">Button md</component>
-    <component :is="BaseSpinner" size="lg">Button lg</component>
-    <component :is="BaseSpinner" size="xl">Button xl</component>
+    <base-spinner size="xs">Button xs</base-spinner>
+    <base-spinner size="sm">Button sm</base-spinner>
+    <base-spinner size="md">Button md</base-spinner>
+    <base-spinner size="lg">Button lg</base-spinner>
+    <base-spinner size="xl">Button xl</base-spinner>
   </Demo>
 </template>

@@ -11,15 +11,11 @@ Badge can have `fill`, `outline` and `light` variant.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseBadge } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseBadge" variant="filled">Filled</component>
-    <component :is="BaseBadge" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" variant="light">Light</component>
+    <base-badge variant="filled">Filled</base-badge>
+    <base-badge variant="outlined">Outlined</base-badge>
+    <base-badge variant="light">Light</base-badge>
   </div>
 </template>
 ```

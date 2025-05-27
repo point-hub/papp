@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import BaseButton from './base-button.vue'
-
 export type BaseAlertColorType = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'
 export type BaseAlertIconType = 'info' | 'success' | 'warning' | 'danger'
 export type BaseAlertVariantType = 'fill' | 'light' | 'outline'
@@ -70,18 +68,17 @@ const onClose = () => {
         </div>
       </div>
     </div>
-    <component
+    <base-button
       v-if="isDismissable"
       type="button"
       @click="onClose()"
-      :is="BaseButton"
       variant="text"
       size="xs"
       color="danger"
       class="close-button"
     >
       <base-icon icon="i-fas-xmark" />
-    </component>
+    </base-button>
   </div>
 </template>
 

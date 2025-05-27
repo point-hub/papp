@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseProgress } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const value1 = ref(50)
@@ -12,11 +11,11 @@ const value6 = ref(100)
 
 <template>
   <Demo>
-    <component :is="BaseProgress" v-model="value1" size="xs" />
-    <component :is="BaseProgress" v-model="value2" size="sm" />
-    <component :is="BaseProgress" v-model="value3" size="md" />
-    <component :is="BaseProgress" v-model="value4" size="lg" />
-    <component :is="BaseProgress" v-model="value5" size="xl" />
-    <component :is="BaseProgress" v-model="value6" size="2xl" />
+    <base-progress v-model="value1" size="xs" />
+    <base-progress v-model="value2" size="sm" />
+    <base-progress v-model="value3" size="md" />
+    <base-progress v-model="value4" size="lg" />
+    <base-progress v-model="value5" size="xl" />
+    <base-progress v-model="value6" size="2xl" />
   </Demo>
 </template>

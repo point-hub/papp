@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { BaseRange } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const form = ref({
@@ -10,7 +9,7 @@ const form = ref({
 <template>
   <Demo>
     <form @submit.prevent="">
-      <component :is="BaseRange" v-model="form.volume" />
+      <base-range v-model="form.volume" />
     </form>
   </Demo>
 </template>

@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseSelect } from '@point-hub/papp'
 
 const options = [
   { id: 1, label: 'Durward Reynolds' },
@@ -33,41 +32,26 @@ const errors = ref(['Error Example'])
 
 <template>
   <form @submit.prevent="">
-    <component
-      :is="BaseSelect"
-      v-model="form.selected1"
-      :options="options"
-      label="Label"
-      required
-    />
-    <component
-      :is="BaseSelect"
+    <base-select v-model="form.selected1" :options="options" label="Label" required />
+    <base-select
       v-model="form.selected2"
       :options="options"
       label="Label"
       description="Description example"
     />
-    <component
-      :is="BaseSelect"
+    <base-select
       v-model="form.selected3"
       :options="options"
       label="Label"
       :helpers="['Helper example']"
     />
-    <component
-      :is="BaseSelect"
+    <base-select
       v-model="form.selected4"
       :options="options"
       label="Label"
       v-model:errors="errors"
     />
-    <component
-      :is="BaseSelect"
-      v-model="form.selected5"
-      :options="options"
-      label="Label"
-      disabled
-    />
+    <base-select v-model="form.selected5" :options="options" label="Label" disabled />
   </form>
 </template>
 ```

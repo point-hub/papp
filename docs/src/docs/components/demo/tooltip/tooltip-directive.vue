@@ -1,10 +1,6 @@
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
-    <component :is="BaseButton" v-tooltip="{ content: 'Hi!' }">Tootlip!</component>
-    <component :is="BaseButton" v-tooltip="'Hello!'">Tootlip!</component>
+    <base-button v-tooltip="{ content: 'Hi!' }">Tootlip!</base-button>
+    <base-button v-tooltip="'Hello!'">Tootlip!</base-button>
   </Demo>
 </template>

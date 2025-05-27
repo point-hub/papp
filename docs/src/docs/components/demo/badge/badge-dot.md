@@ -11,34 +11,30 @@ Badges can have a dot attached to it.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseBadge } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseBadge" withDot variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot variant="light">Light</component>
-    <component :is="BaseBadge" withDot color="secondary" variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot color="secondary" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot color="secondary" variant="light">Light</component>
+    <base-badge with-dot variant="filled">Filled</base-badge>
+    <base-badge with-dot variant="outlined">Outlined</base-badge>
+    <base-badge with-dot variant="light">Light</base-badge>
+    <base-badge with-dot color="secondary" variant="filled">Filled</base-badge>
+    <base-badge with-dot color="secondary" variant="outlined">Outlined</base-badge>
+    <base-badge with-dot color="secondary" variant="light">Light</base-badge>
   </div>
   <div>
-    <component :is="BaseBadge" withDot color="info" variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot color="info" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot color="info" variant="light">Light</component>
-    <component :is="BaseBadge" withDot color="success" variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot color="success" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot color="success" variant="light">Light</component>
+    <base-badge with-dot color="info" variant="filled">Filled</base-badge>
+    <base-badge with-dot color="info" variant="outlined">Outlined</base-badge>
+    <base-badge with-dot color="info" variant="light">Light</base-badge>
+    <base-badge with-dot color="success" variant="filled">Filled</base-badge>
+    <base-badge with-dot color="success" variant="outlined">Outlined</base-badge>
+    <base-badge with-dot color="success" variant="light">Light</base-badge>
   </div>
   <div>
-    <component :is="BaseBadge" withDot color="warning" variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot color="warning" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot color="warning" variant="light">Light</component>
-    <component :is="BaseBadge" withDot color="danger" variant="filled">Filled</component>
-    <component :is="BaseBadge" withDot color="danger" variant="outlined">Outlined</component>
-    <component :is="BaseBadge" withDot color="danger" variant="light">Light</component>
+    <base-badge with-dot color="warning" variant="filled">Filled</base-badge>
+    <base-badge with-dot color="warning" variant="outlined">Outlined</base-badge>
+    <base-badge with-dot color="warning" variant="light">Light</base-badge>
+    <base-badge with-dot color="danger" variant="filled">Filled</base-badge>
+    <base-badge with-dot color="danger" variant="outlined">Outlined</base-badge>
+    <base-badge with-dot color="danger" variant="light">Light</base-badge>
   </div>
 </template>
 ```

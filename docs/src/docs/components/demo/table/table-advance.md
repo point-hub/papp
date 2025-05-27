@@ -13,17 +13,6 @@ Use of more advanced tables by using search, filter, table settings, pagination,
 ```vue
 <script setup lang="ts">
 import { numberFormat } from '@point-hub/js-utils'
-import {
-  BaseAutocomplete,
-  BaseButton,
-  BaseCheckbox,
-  BaseDivider,
-  BaseInput,
-  BaseInputNumber,
-  BaseModal,
-  BasePagination,
-  BaseTable
-} from '@point-hub/papp'
 import { computed, ref } from 'vue'
 
 // Table Header
@@ -129,68 +118,59 @@ const isCheckedAll = () => {
   <div>
     <div class="w-full flex items-center gap-4">
       <div class="w-full flex gap-2">
-        <component :is="BaseButton" color="primary" border="none" class="gap-1">
+        <base-button color="primary" border="none" class="gap-1">
           <base-icon icon="i-far-pen-to-square" />
           <span>New</span>
-        </component>
-        <component
-          :is="BaseInput"
-          v-model="searchAll"
-          placeholder="Search"
-          border="full"
-          class="flex-1"
-        >
+        </base-button>
+        <base-input v-model="searchAll" placeholder="Search" border="full" class="flex-1">
           <template #prefix>
             <base-icon icon="i-far-magnifying-glass" class="mx-3" />
           </template>
-        </component>
-        <component :is="BaseButton" color="info" class="gap-1" @click="openTableSetting">
+        </base-input>
+        <base-button color="info" class="gap-1" @click="openTableSetting">
           <base-icon class="i-far-gear" />
-        </component>
+        </base-button>
       </div>
     </div>
-    <component :is="BaseModal" :is-open="showModal" @on-close="showModal = false" size="xl">
+    <base-modal :is-open="showModal" @on-close="showModal = false" size="xl">
       <div class="max-h-90vh overflow-auto p-8 space-y-6">
         <h2 class="text-2xl font-bold">Table Setting</h2>
         <div class="space-y-2">
           <h3 class="font-extrabold text-lg">Column Chooser</h3>
           <div class="space-y-2">
-            <component
+            <base-checkbox
               v-for="(column, index) in columns"
               :key="index"
               :id="column.name"
-              :is="BaseCheckbox"
               :disabled="!column.isEditable"
               v-model="column.isShow"
               :text="column.name"
             />
           </div>
         </div>
-        <component :is="BaseDivider" orientation="vertical" />
+        <base-divider orientation="vertical" />
         <div class="space-y-2">
           <h3 class="font-extrabold text-lg">Pagination</h3>
-          <component
-            :is="BaseAutocomplete"
+          <base-autocomplete
             v-model="selected"
             :options="optionsPageSize"
             placeholder="Search"
             label="Page Size"
             layout="horizontal"
             description="data per page"
-          ></component>
+          />
         </div>
-        <component :is="BaseButton" color="primary" size="md" is-block @click="showModal = false">
+        <base-button color="primary" size="md" is-block @click="showModal = false">
           Close
-        </component>
+        </base-button>
       </div>
-    </component>
-    <component :is="BaseTable">
+    </base-modal>
+    <base-table>
       <thead>
         <tr>
           <th v-if="columns[0].isShow"></th>
           <th v-if="columns[1].isShow" class="basic-table-head">
-            <component
-              :is="BaseInput"
+            <base-input
               required
               v-model="search[0]"
               placeholder="Search"
@@ -199,9 +179,8 @@ const isCheckedAll = () => {
             />
           </th>
           <th v-if="columns[2].isShow" class="basic-table-head">
-            <component
+            <base-choosen
               class="font-normal"
-              :is="BaseAutocomplete"
               v-model="selected"
               :options="options"
               placeholder="Search"
@@ -209,8 +188,7 @@ const isCheckedAll = () => {
             />
           </th>
           <th v-if="columns[3].isShow" class="basic-table-head">
-            <component
-              :is="BaseInputNumber"
+            <base-input-number
               required
               v-model="searchNumber"
               placeholder="Search"
@@ -221,7 +199,7 @@ const isCheckedAll = () => {
         </tr>
         <tr>
           <th v-if="columns[0].isShow">
-            <component :is="BaseCheckbox" v-model="selectAll" />
+            <base-checkbox v-model="selectAll" />
           </th>
           <th v-if="columns[1].isShow">Name</th>
           <th v-if="columns[2].isShow">Job</th>
@@ -231,16 +209,15 @@ const isCheckedAll = () => {
       <tbody>
         <tr v-for="(user, index) in users" :key="index">
           <td v-if="columns[0].isShow">
-            <component :is="BaseCheckbox" v-model="user.checked" />
+            <base-checkbox v-model="user.checked" />
           </td>
           <td v-if="columns[1].isShow">{{ user.name }}</td>
           <td v-if="columns[2].isShow">{{ user.job }}</td>
           <td class="text-right" v-if="columns[3].isShow">{{ numberFormat(user.salary) }}</td>
         </tr>
       </tbody>
-    </component>
-    <component
-      :is="BasePagination"
+    </base-table>
+    <base-pagination
       v-model="page"
       :page-size="pageSize"
       :totalDocument="totalDocument"

@@ -11,12 +11,8 @@ The mask can crop the shape of diamond.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseMask } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseMask" shape="diamond" src="https://placehold.co/150" />
+  <base-mask shape="diamond" src="https://placehold.co/150" />
 </template>
 ```
 

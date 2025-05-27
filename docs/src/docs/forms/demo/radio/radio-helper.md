@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseRadio } from '@point-hub/papp'
 
 const options = [
   {
@@ -41,30 +40,21 @@ const errors = ref(['Error Example'])
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseRadio" :options="options" v-model="form.selected1" label="Label" required />
-    <component
-      :is="BaseRadio"
+    <base-radio :options="options" v-model="form.selected1" label="Label" required />
+    <base-radio
       :options="options"
       v-model="form.selected2"
       label="Label"
       description="Description example"
     />
-    <component
-      :is="BaseRadio"
+    <base-radio
       :options="options"
       v-model="form.selected3"
       label="Label"
       :helpers="['Helper example']"
     />
-    <component
-      :is="BaseRadio"
-      :options="options"
-      v-model="form.selected4"
-      label="Label"
-      v-model:errors="errors"
-    />
-    <component
-      :is="BaseRadio"
+    <base-radio :options="options" v-model="form.selected4" label="Label" v-model:errors="errors" />
+    <base-radio
       :options="options"
       v-model="form.selected5"
       label="Label"

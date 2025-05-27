@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseStep } from '@point-hub/papp'
 
 const items = ref([
   {
@@ -30,7 +29,7 @@ const items = ref([
 </script>
 
 <template>
-  <component :is="BaseStep" v-model="items" show-label></component>
+  <base-step v-model="items" show-label />
 </template>
 ```
 

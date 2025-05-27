@@ -11,15 +11,11 @@ Alert can have `fill`, `outline` and `light` variant.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseAlert } from '@point-hub/papp'
-</script>
-
 <template>
   <div>
-    <component :is="BaseAlert" variant="fill">Fill</component>
-    <component :is="BaseAlert" variant="outline">Outline</component>
-    <component :is="BaseAlert" variant="light">Light</component>
+    <base-alert variant="fill">Fill</base-alert>
+    <base-alert variant="outline">Outline</base-alert>
+    <base-alert variant="light">Light</base-alert>
   </div>
 </template>
 ```

@@ -11,7 +11,6 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseInputNumber } from '@point-hub/papp'
 
 const form = ref({
   number1: 0,
@@ -27,32 +26,12 @@ const errors = ref(['Error example'])
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseInputNumber" v-model="form.number1" label="Label" required />
-    <component
-      :is="BaseInputNumber"
-      v-model="form.number2"
-      label="Label"
-      placeholder="Placeholder example"
-    />
-    <component
-      :is="BaseInputNumber"
-      v-model="form.number3"
-      label="Label"
-      description="Description example"
-    />
-    <component
-      :is="BaseInputNumber"
-      v-model="form.number4"
-      label="Label"
-      :helpers="['Helper example']"
-    />
-    <component
-      :is="BaseInputNumber"
-      v-model="form.number5"
-      label="Label"
-      v-model:errors="errors"
-    />
-    <component :is="BaseInputNumber" v-model="form.number6" label="Label" disabled />
+    <base-input-number v-model="form.number1" label="Label" required />
+    <base-input-number v-model="form.number2" label="Label" placeholder="Placeholder example" />
+    <base-input-number v-model="form.number3" label="Label" description="Description example" />
+    <base-input-number v-model="form.number4" label="Label" :helpers="['Helper example']" />
+    <base-input-number v-model="form.number5" label="Label" v-model:errors="errors" />
+    <base-input-number v-model="form.number6" label="Label" disabled />
   </form>
 </template>
 ```

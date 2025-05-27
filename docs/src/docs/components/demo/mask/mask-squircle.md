@@ -11,12 +11,8 @@ The mask can crop the shape of squircle.
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseMask } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseMask" shape="squircle" src="https://placehold.co/150" />
+  <base-mask shape="squircle" src="https://placehold.co/150" />
 </template>
 ```
 

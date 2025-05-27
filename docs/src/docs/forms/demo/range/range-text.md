@@ -13,7 +13,6 @@ Show value text
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { BaseRange } from '@point-hub/papp'
 
 const form = ref({
   volume: 50
@@ -22,7 +21,7 @@ const form = ref({
 
 <template>
   <form @submit.prevent="">
-    <component :is="BaseRange" v-model="form.volume" label="Volume" showText />
+    <base-range v-model="form.volume" label="Volume" showText />
   </form>
 </template>
 ```

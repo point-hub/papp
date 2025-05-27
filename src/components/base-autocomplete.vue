@@ -11,8 +11,7 @@ import { isEmpty } from '@point-hub/js-utils'
 import { computed, ref } from 'vue'
 import { watch } from 'vue'
 
-import BaseButton from './base-button.vue'
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseAutocompleteBorderType = 'none' | 'simple' | 'full'
 
@@ -89,8 +88,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -125,9 +123,8 @@ defineExpose({
           >
             <base-icon icon="i-far-angle-down" />
           </ComboboxButton>
-          <component
+          <base-button
             v-else
-            :is="BaseButton"
             size="none"
             variant="text"
             type="button"
@@ -135,7 +132,7 @@ defineExpose({
             @click="onClear()"
           >
             <base-icon icon="i-far-xmark" />
-          </component>
+          </base-button>
         </div>
         <TransitionRoot
           leave="transition ease-in duration-100"
@@ -184,7 +181,7 @@ defineExpose({
         </TransitionRoot>
       </div>
     </Combobox>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

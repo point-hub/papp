@@ -41,29 +41,22 @@ The input element with a type attribute whose value is "text" represents a one-l
 ### Types
 
 ```ts
-export type BaseInputType = 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
 export type BaseInputBorderType = 'none' | 'simple' | 'full'
 export type BaseFormLayoutType = `horizontal` `vertical`
 ```
 
 ### Props
 
-| Name           | Type                | Default    | Description                  |
-| -------------- | ------------------- | ---------- | ---------------------------- |
-| v-model        | string              |            | v-model is `required`.       |
-| v-model:type   | BaseInputType       | `text`     | Input type.                  |
-| v-model:errors | string[]            |            | Input error message.         |
-| id             | string              |            | Input id.                    |
-| label          | string              |            | Input label.                 |
-| description    | string              |            | Input description.           |
-| placeholder    | string              |            | Input placeholder.           |
-| border         | BaseInputBorderType | `simple`   | Input border.                |
-| layout         | BaseFormLayoutType  | `vertical` | Input layout.                |
-| maxlength      | number              |            | Max text length              |
-| autofocus      | boolean             | false      | Focus input on page load.    |
-| required       | boolean             | false      | if true input is `required`. |
-| disabled       | boolean             | false      | if true input is `disabled`. |
-| helpers        | string[]            |            | Input helper message.        |
+| Name           | Type                | Default    | Description            |
+| -------------- | ------------------- | ---------- | ---------------------- |
+| v-model        | string              |            | v-model is `required`. |
+| v-model:errors | string[]            |            | Input error message.   |
+| label          | string              |            | Form label.            |
+| description    | string              |            | Input description.     |
+| required       | boolean             | `false`    | Input required.        |
+| border         | BaseInputBorderType | `simple`   | Input border.          |
+| layout         | BaseFormLayoutType  | `vertical` | Input layout.          |
+| helpers        | string[]            |            | Input helper message.  |
 
 ### Slot
 

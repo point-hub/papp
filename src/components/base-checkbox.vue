@@ -2,7 +2,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import { ref, watch } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseCheckboxThemeType =
   | 'primary'
@@ -17,7 +17,6 @@ export interface Props {
   label?: string
   text?: string
   description?: string
-  placeholder?: string
   layout?: BaseFormLayoutType
   theme?: BaseCheckboxThemeType
   required?: boolean
@@ -54,8 +53,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -68,9 +66,9 @@ defineExpose({
         ref="inputRef"
         :id="uuid"
         v-model="modelValue"
+        v-bind="$attrs"
         :value="trueValue"
         :required="required"
-        :disabled="disabled"
         :true-value="trueValue"
         :false-value="falseValue"
         class="form-checkbox"
@@ -90,7 +88,7 @@ defineExpose({
         <p v-if="text">{{ text }}</p>
       </label>
     </div>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

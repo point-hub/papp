@@ -11,20 +11,16 @@ The Card Component can have 2 kind of shape `rounded` or `sharp`
 ::: details Code
 
 ```vue
-<script setup lang="ts">
-import { BaseCard } from '@point-hub/papp'
-</script>
-
 <template>
-  <component :is="BaseCard" shape="rounded">
+  <base-card shape="rounded">
     <template #header>Rounded</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 
-  <component :is="BaseCard">
+  <base-card>
     <template #header>Sharp</template>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-  </component>
+  </base-card>
 </template>
 ```
 

@@ -78,7 +78,13 @@ if (props.size !== 'none') {
 </script>
 
 <template>
-  <button class="btn" :type="type" :class="classes" :disabled="disabled || isLoading">
+  <button
+    class="btn"
+    :type="type"
+    :class="classes"
+    :disabled="disabled || isLoading"
+    v-bind="$attrs"
+  >
     <!-- Render Button Content -->
     <slot></slot>
     <!-- :Loading Spinner -->

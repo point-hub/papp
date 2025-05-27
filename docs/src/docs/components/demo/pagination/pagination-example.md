@@ -10,7 +10,6 @@
 
 ```vue
 <script setup lang="ts">
-import { BasePagination } from '@point-hub/papp'
 import { ref } from 'vue'
 
 const pagination = ref({
@@ -24,8 +23,7 @@ const updateData = () => {}
 
 <template>
   <Demo>
-    <component
-      :is="BasePagination"
+    <base-pagination
       v-model="pagination.page"
       :page-size="pagination.page_size"
       :totalDocument="pagination.total_document"

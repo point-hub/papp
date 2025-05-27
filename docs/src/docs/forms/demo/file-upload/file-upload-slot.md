@@ -10,7 +10,6 @@
 
 ```vue
 <script setup lang="ts">
-import { BaseFileUpload, BaseButton } from '@point-hub/papp'
 import { ref } from 'vue'
 
 interface HTMLInputEvent extends Event {
@@ -24,23 +23,22 @@ const onUpload = (e: HTMLInputEvent) => {
 </script>
 
 <template>
-  <component
-    :is="BaseFileUpload"
+  <base-file-upload
     @change="onUpload"
     label="Label"
     description="Horizontal Layout"
     layout="horizontal"
   >
     <template v-slot="{ fileRef }">
-      <component :is="BaseButton" size="sm" @click="fileRef.click()">
+      <base-button size="sm" @click="fileRef.click()">
         <base-icon icon="i-far-arrow-up-from-bracket" /> Choose File
-      </component>
+      </base-button>
       <p class="ml-2" v-if="files">
         {{ files.length === 1 ? files[0].name : files.length + ' files' }}
       </p>
       <base-icon v-if="files" icon="i-far-xmark" class="ml-2 btn" @click="() => (files = null)" />
     </template>
-  </component>
+  </base-file-upload>
 </template>
 ```
 

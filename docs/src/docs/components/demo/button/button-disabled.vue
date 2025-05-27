@@ -1,14 +1,10 @@
-<script setup lang="ts">
-import { BaseButton } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo is-row>
-    <component :is="BaseButton" color="primary" disabled>Disabled</component>
-    <component :is="BaseButton" color="secondary" disabled>Disabled</component>
-    <component :is="BaseButton" color="info" disabled>Disabled</component>
-    <component :is="BaseButton" color="success" disabled>Disabled</component>
-    <component :is="BaseButton" color="warning" disabled>Disabled</component>
-    <component :is="BaseButton" color="danger" disabled>Disabled</component>
+    <base-button color="primary" disabled>Disabled</base-button>
+    <base-button color="secondary" disabled>Disabled</base-button>
+    <base-button color="info" disabled>Disabled</base-button>
+    <base-button color="success" disabled>Disabled</base-button>
+    <base-button color="warning" disabled>Disabled</base-button>
+    <base-button color="danger" disabled>Disabled</base-button>
   </Demo>
 </template>

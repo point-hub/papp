@@ -12,8 +12,6 @@ Breadcrumb can have a various separator icon.
 
 ```vue
 <script setup lang="ts">
-import { BaseBreadcrumb } from '@point-hub/papp'
-
 const items = [
   {
     name: 'Template',
@@ -31,24 +29,24 @@ const items = [
 
 <template>
   <div>
-    <component :is="BaseBreadcrumb" :items="items" separator="angle" v-slot="{ item }">
+    <base-breadcrumb :items="items" separator="angle" v-slot="{ item }">
       <router-link v-if="item.path" :class="{ 'breadcrumb-link': item.path }" :to="item.path">
         {{ item.name }}
       </router-link>
       <span v-else>{{ item.name }}</span>
-    </component>
-    <component :is="BaseBreadcrumb" :items="items" separator="arrow" v-slot="{ item }">
+    </base-breadcrumb>
+    <base-breadcrumb :items="items" separator="arrow" v-slot="{ item }">
       <router-link v-if="item.path" :class="{ 'breadcrumb-link': item.path }" :to="item.path">
         {{ item.name }}
       </router-link>
       <span v-else>{{ item.name }}</span>
-    </component>
-    <component :is="BaseBreadcrumb" :items="items" separator="slash" v-slot="{ item }">
+    </base-breadcrumb>
+    <base-breadcrumb :items="items" separator="slash" v-slot="{ item }">
       <router-link v-if="item.path" :class="{ 'breadcrumb-link': item.path }" :to="item.path">
         {{ item.name }}
       </router-link>
       <span v-else>{{ item.name }}</span>
-    </component>
+    </base-breadcrumb>
   </div>
 </template>
 ```

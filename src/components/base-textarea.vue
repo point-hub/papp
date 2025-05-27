@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
-import BaseForm, { type BaseFormLayoutType } from './base-form.vue'
+import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseTextareaBorderType = 'simple' | 'full' | 'none'
 
@@ -69,8 +69,7 @@ defineExpose({
 </script>
 
 <template>
-  <component
-    :is="BaseForm"
+  <base-form
     :label="props.label"
     :layout="props.layout"
     :description="props.description"
@@ -99,7 +98,7 @@ defineExpose({
       }"
       v-model="value"
     ></textarea>
-  </component>
+  </base-form>
 </template>
 
 <style scoped>

@@ -1,17 +1,13 @@
-<script setup lang="ts">
-import { BaseCard } from '@point-hub/papp'
-</script>
-
 <template>
   <Demo class="flex-row">
-    <component :is="BaseCard" shape="rounded">
+    <base-card shape="rounded">
       <template #header>Rounded</template>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </component>
+    </base-card>
 
-    <component :is="BaseCard">
+    <base-card>
       <template #header>Sharp</template>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    </component>
+    </base-card>
   </Demo>
 </template>
