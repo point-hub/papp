@@ -3,6 +3,7 @@ interface IApps {
   path: string
   icon?: string
   menu?: IMenu[]
+  dataTestid?: string
 }
 
 interface IMenu {
@@ -10,10 +11,12 @@ interface IMenu {
   path?: string
   separator?: boolean
   submenu?: ISubmenu[]
+  dataTestid?: string
 }
 
 interface ISubmenu {
   name: string
   path: string
   separator?: boolean
+  dataTestid?: string
 }

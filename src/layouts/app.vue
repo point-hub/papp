@@ -3,7 +3,6 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppHeader from '@/components/app-header.vue'
-import AppPreloader from '@/components/app-preloader.vue'
 import AppSidebar from '@/components/app-sidebar.vue'
 
 import { version } from '../../package.json'
@@ -24,20 +23,23 @@ const apps: IApps[] = [
     menu: [
       {
         name: 'Home',
-        path: '/example/home'
+        path: '/example/home',
+        dataTestid: 'menu-home'
       },
       {
         name: 'Cypress Selector',
-        path: '/example/cypress-selector'
+        path: '/example/cypress-selector',
+        dataTestid: 'menu-cypress-selector'
       },
       {
         name: 'Nested Page',
+        dataTestid: 'menu-nested-page',
         submenu: [
-          { name: 'Page 1', path: '/example/nested/page-1' },
-          { name: 'Page 2', path: '/example/nested/page-2' },
-          { name: 'Page 3', path: '/example/nested/page-3' },
-          { name: 'Page 4', path: '/example/nested/page-4' },
-          { name: 'Page 5', path: '/example/nested/page-5' }
+          { name: 'Page 1', path: '/example/nested/page-1', dataTestid: 'submenu-nested-page-1' },
+          { name: 'Page 2', path: '/example/nested/page-2', dataTestid: 'submenu-nested-page-2' },
+          { name: 'Page 3', path: '/example/nested/page-3', dataTestid: 'submenu-nested-page-3' },
+          { name: 'Page 4', path: '/example/nested/page-4', dataTestid: 'submenu-nested-page-4' },
+          { name: 'Page 5', path: '/example/nested/page-5', dataTestid: 'submenu-nested-page-5' }
         ],
         separator: true
       },
@@ -107,8 +109,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <component :is="AppPreloader" />
-
   <div class="app-layout">
     <!-- Header -->
     <component :is="AppHeader" />

@@ -24,12 +24,8 @@ When('I click link {string}', (selector: string) => {
   cy.get(`[data-testid=${selector}]`).click()
 })
 
-When('I click menu {string}', (value: string) => {
-  cy.contains('.menu-link-button', value).click()
-})
-
-When('I click submenu {string}', (value: string) => {
-  cy.contains('.submenu-link', value).click()
+When('I click menu {string}', (selector: string) => {
+  cy.get(`[data-testid=${selector}]`).click()
 })
 
 When('I click switch {string}', (selector: string) => {
