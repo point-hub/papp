@@ -12,6 +12,7 @@ export interface Props {
   disabled?: boolean
   showText?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -43,8 +44,16 @@ const value = computed({
     :helpers="props.helpers"
     :errors="errors"
   >
-    <div class="flex w-full gap-2">
-      <input type="range" class="w-full" min="0" max="100" v-model="value" :disabled="disabled" />
+    <div class="flex w-full gap-2 mt-0.2">
+      <input
+        type="range"
+        class="w-full"
+        min="0"
+        max="100"
+        v-model="value"
+        :disabled="disabled"
+        :data-testid="dataTestid"
+      />
       <p v-if="showText">{{ value }}</p>
     </div>
   </base-form>

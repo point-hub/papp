@@ -13,7 +13,7 @@ export interface BaseSelectOptionInterface {
 export type BaseSelectBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
-  modelValue: BaseSelectOptionInterface | null
+  modelValue: BaseSelectOptionInterface | undefined | null
   options: BaseSelectOptionInterface[]
   id?: string
   label?: string
@@ -24,6 +24,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -37,11 +38,11 @@ const props = withDefaults(defineProps<Props>(), {
 const errors = defineModel<string[]>('errors')
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: BaseSelectOptionInterface | null): void
+  (e: 'update:modelValue', value: BaseSelectOptionInterface | undefined | null): void
 }>()
 
-const selected = computed({
-  set: (option: BaseSelectOptionInterface | null) => {
+const selected = computed<BaseSelectOptionInterface | undefined | null>({
+  set: (option) => {
     emit('update:modelValue', option)
     if (errors.value?.length) errors.value = []
   },
@@ -71,6 +72,7 @@ const clearSelect = () => {
             'border-full': border === 'full',
             'border-none': border === 'none'
           }"
+          :data-testid="`${dataTestid}-button`"
         >
           <span v-if="!selected?.label" class="block text-slate-400">
             {{ props.placeholder }}
@@ -90,6 +92,7 @@ const clearSelect = () => {
               :key="index"
               :value="data"
               as="template"
+              :data-testid="`${dataTestid}-option-${index}`"
             >
               <li
                 :class="[

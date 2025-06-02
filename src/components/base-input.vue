@@ -30,6 +30,9 @@ export interface Props {
    * The helper text appears below the text input.
    */
   helpers?: string[]
+  /**
+   * Custom attribute to mark elements for testing
+   */
   dataTestid?: string
 }
 

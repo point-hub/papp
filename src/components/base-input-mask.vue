@@ -20,6 +20,7 @@ export interface Props {
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -73,6 +74,7 @@ defineExpose({
       :disabled="props.disabled"
       :autofocus="props.autofocus"
       :placeholder="props.placeholder"
+      :data-testid="props.dataTestid"
     />
   </base-form>
 </template>

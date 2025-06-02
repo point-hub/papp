@@ -19,6 +19,7 @@ export interface Props {
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any>[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -61,11 +62,12 @@ const value = computed({
       <div class="flex gap-2" :class="{ 'flex-col': props.optionsLayout === 'vertical' }">
         <RadioGroupOption
           as="div"
-          v-for="option in options"
+          v-for="(option, index) in options"
           :key="option.label"
           :disabled="disabled"
           :value="option"
           v-slot="{ active, checked }"
+          :data-testid="`${dataTestid}-${index}`"
         >
           <slot :active="active" :checked="checked" :option="option">
             <div class="cursor-pointer">

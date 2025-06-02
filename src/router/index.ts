@@ -30,10 +30,6 @@ const router = createRouter({
           component: () => import('@/pages/cypress-selector.vue')
         },
         {
-          path: 'page-2',
-          component: () => import('@/pages/page-2.vue')
-        },
-        {
           path: 'websocket',
           component: () => import('@/pages/websocket.vue')
         },

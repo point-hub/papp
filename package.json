@@ -73,6 +73,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "ajv": "^8.17.1",
+    "cypress-file-upload": "^5.0.8",
     "eslint": "9.27.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-vue": "^10.1.0",

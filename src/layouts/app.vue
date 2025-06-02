@@ -107,7 +107,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- <component :is="AppPreloader" /> -->
+  <component :is="AppPreloader" />
 
   <div class="app-layout">
     <!-- Header -->
