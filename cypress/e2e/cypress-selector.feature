@@ -1,18 +1,9 @@
 Feature: Submit data
 
-  Scenario: Navigate sidebar menu
-    Given I visit page "/"
-    When I click menu "menu-nested-page"
-    And I click menu "submenu-nested-page-1"
-    And I click menu "submenu-nested-page-2"
-    And I click menu "submenu-nested-page-3"
-    And I click menu "submenu-nested-page-4"
-    And I click menu "submenu-nested-page-5"
-
   Scenario: Successfully submit data
     Given I visit page "/"
     # Click Menu
-    When I click menu "menu-cypress-selector"
+    When I click sidebar menu "menu-cypress-selector"
     # Input Text
     When I type "Hello World" into "input-text"
     # Input Textarea

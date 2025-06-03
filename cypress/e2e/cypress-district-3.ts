@@ -56,3 +56,11 @@ When('I click upload {string} into {string}', (value: string, selector: string) 
 Then('I see {string} in {string}', (value: string, selector: string) => {
   cy.get(`[data-testid=${selector}]`).contains(value)
 })
+
+Then('I see checkbox {string} is {string}', (selector: string, value: string) => {
+  cy.get(`[data-testid=${selector}]`).contains(value)
+})
+
+Then('I could not see {string} in {string}', (selector: string, value: string) => {
+  cy.get(`[data-testid=${selector}]`).should('not.contain', value)
+})
