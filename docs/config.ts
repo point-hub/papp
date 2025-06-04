@@ -115,6 +115,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Pagination', link: 'components/pagination' },
         { text: 'Popover', link: 'components/popover' },
         { text: 'Progress', link: 'components/progress' },
+        { text: 'Sidebar', link: 'components/sidebar' },
         { text: 'Sitemap', link: 'components/sitemap' },
         { text: 'Spinner', link: 'components/spinner' },
         { text: 'Steps', link: 'components/steps' },
