@@ -62,12 +62,12 @@ const value = computed({
       <div class="flex gap-2" :class="{ 'flex-col': props.optionsLayout === 'vertical' }">
         <RadioGroupOption
           as="div"
-          v-for="(option, index) in options"
+          v-for="option in options"
           :key="option.label"
           :disabled="disabled"
           :value="option"
           v-slot="{ active, checked }"
-          :data-testid="`${dataTestid}-${index}`"
+          :data-testid="`${dataTestid}-${option.value}`"
         >
           <slot :active="active" :checked="checked" :option="option">
             <div class="cursor-pointer">

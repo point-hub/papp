@@ -25,15 +25,15 @@ Feature: Submit data
     And I click select "select-button"
     And I click select "select-option-0"
     # File Upload
-    And I click upload "image.png" into "file-upload"
+    And I upload "image.png" into "file-upload"
     # Radio
     And I click radio button "radio-1"
     # Switch
-    And I click switch "switch"
+    And I toggle switch "switch"
     # Input Checkbox
-    And I click checkbox "input-checkbox"
+    And I toggle checkbox "input-checkbox"
     # Range
-    And I change "25" into "input-range"
+    And I set range "input-range" to "25"
     # Button
     And I click button "submit-button"
     # Notification

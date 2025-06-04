@@ -8,11 +8,11 @@ When('I type {string} into {string}', (value: string, selector: string) => {
   cy.get(`[data-testid=${selector}]`).type(value)
 })
 
-When('I change {string} into {string}', (value: string, selector: string) => {
+When('I set range {string} to {string}', (selector: string, value: string) => {
   cy.get(`[data-testid=${selector}]`).invoke('val', value).trigger('change')
 })
 
-When('I click checkbox {string}', (selector: string) => {
+When('I toggle checkbox {string}', (selector: string) => {
   cy.get(`[data-testid=${selector}]`).click()
 })
 
@@ -28,7 +28,7 @@ When('I click sidebar menu {string}', (selector: string) => {
   cy.get(`[data-testid=${selector}]`).click()
 })
 
-When('I click switch {string}', (selector: string) => {
+When('I toggle switch {string}', (selector: string) => {
   cy.get(`[data-testid=${selector}]`).click()
 })
 
@@ -48,9 +48,9 @@ When('I click autocomplete {string}', (selector: string) => {
   cy.get(`[data-testid=${selector}]`).click()
 })
 
-When('I click upload {string} into {string}', (value: string, selector: string) => {
-  const fileName = value // file in cypress/fixtures
-  cy.get(`[data-testid=${selector}]`).attachFile(fileName)
+When('I upload {string} into {string}', (file: string, selector: string) => {
+  // file in cypress/fixtures
+  cy.get(`[data-testid=${selector}]`).attachFile(file)
 })
 
 Then('I see {string} in {string}', (value: string, selector: string) => {

@@ -72,15 +72,20 @@ const clearSelect = () => {
             'border-full': border === 'full',
             'border-none': border === 'none'
           }"
-          :data-testid="`${dataTestid}-button`"
+          :data-testid="`${dataTestid}-input`"
         >
           <span v-if="!selected?.label" class="block text-slate-400">
             {{ props.placeholder }}
           </span>
           <span v-else class="block">{{ selected?.label }}</span>
           <span class="list-box-button-icon">
-            <i v-if="!selected?.label" class="i-fas-angle-down block h-5 w-5 text-gray-400"></i>
-            <i v-else class="i-fas-xmark block h-5 w-5 text-gray-400" @click="clearSelect()"></i>
+            <i v-if="!selected?.label" class="i-fas-angle-down block h-5 w-5 text-gray-400" />
+            <i
+              v-else
+              class="i-fas-xmark block h-5 w-5 text-gray-400"
+              @click="clearSelect()"
+              :data-testid="`${dataTestid}-clear-button`"
+            />
           </span>
         </ListboxButton>
 
@@ -92,7 +97,7 @@ const clearSelect = () => {
               :key="index"
               :value="data"
               as="template"
-              :data-testid="`${dataTestid}-option-${index}`"
+              :data-testid="`${dataTestid}-option-${data._id}`"
             >
               <li
                 :class="[

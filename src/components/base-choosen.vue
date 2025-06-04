@@ -128,14 +128,14 @@ const onClose = () => {
       :border="border"
       :placeholder="placeholder"
       class="w-full"
-      :data-testid="`${dataTestid}-button`"
+      :data-testid="`${dataTestid}-input`"
     />
     <!-- mode: text -->
     <div
       v-if="mode === 'text'"
       class="border-b border-dashed cursor-pointer border-black dark:border-white"
       @click="onOpen"
-      :data-testid="`${dataTestid}-button`"
+      :data-testid="`${dataTestid}-input`"
     >
       {{ selected && !isEmpty(selected.label) ? selected.label : 'SELECT' }}
     </div>
@@ -181,7 +181,7 @@ const onClose = () => {
             :key="index"
             class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
             @click="onSelect(option)"
-            :data-testid="`${dataTestid}-option-${index}`"
+            :data-testid="`${dataTestid}-option-${option._id}`"
           >
             <slot :option="option">{{ option?.label }}</slot>
           </div>

@@ -132,6 +132,7 @@ defineExpose({
             type="button"
             class="absolute inset-y-0 right-1 flex items-center"
             @click="onClear()"
+            :data-testid="`${dataTestid}-clear-button`"
           >
             <base-icon icon="i-far-xmark" />
           </base-button>
@@ -157,12 +158,12 @@ defineExpose({
             </div>
             <template v-if="!isLoading">
               <ComboboxOption
-                v-for="(data, index) in filtered"
+                v-for="data in filtered"
                 as="template"
-                :key="data.id"
+                :key="data._id"
                 :value="data"
                 v-slot="{ selected, active }"
-                :data-testid="`${dataTestid}-option-${index}`"
+                :data-testid="`${dataTestid}-option-${data._id}`"
               >
                 <li
                   class="option"
