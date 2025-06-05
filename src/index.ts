@@ -131,6 +131,7 @@ export { useScreenSize } from './composable/screen-size'
 export { useSidebar } from './composable/sidebar'
 export { useScreenBreakpointStore } from './stores/screen-breakpoint'
 export { useSidebarStore } from './stores/sidebar'
+export type { IAppMenu, IMenu, IStateMenu, ISubmenu } from './stores/sidebar-menu'
 export { useSidebarMenuStore } from './stores/sidebar-menu'
 export { useWebsocketStore } from './stores/websocket'
 

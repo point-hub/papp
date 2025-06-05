@@ -23,14 +23,14 @@ export interface ISubmenu {
   dataTestid?: string
 }
 
-export interface StateInterface {
+export interface IStateMenu {
   choosenAppTitle: string
   choosenAppIndex: number
   appMenu: IAppMenu[]
 }
 
 export const useSidebarMenuStore = defineStore('sidebar-menu', {
-  state: (): StateInterface => ({
+  state: (): IStateMenu => ({
     choosenAppTitle: '',
     choosenAppIndex: 0,
     appMenu: []
