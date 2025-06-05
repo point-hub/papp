@@ -11,6 +11,7 @@ export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
 export type BaseButtonSizeType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 export type BaseButtonType = 'submit' | 'button' | 'reset'
+export type BaseAlign = 'left' | 'middle' | 'right'
 
 const props = withDefaults(
   defineProps<{
@@ -19,6 +20,7 @@ const props = withDefaults(
     color?: BaseButtonColorType
     variant?: BaseButtonVariantType
     shape?: BaseButtonShapeType
+    align?: BaseAlign
     isBlock?: boolean
     isLoading?: boolean
     disabled?: boolean
@@ -30,6 +32,7 @@ const props = withDefaults(
     color: 'none',
     shape: 'sharp',
     variant: 'filled',
+    align: 'middle',
     isBlock: false,
     isLoading: false,
     disabled: false
@@ -75,6 +78,11 @@ if (props.isBlock) {
 // Button Size
 if (props.size !== 'none') {
   classes.push(`btn-${props.size}`)
+}
+
+// Button Text Align
+if (props.align) {
+  classes.push(`text-${props.align}`)
 }
 </script>
 

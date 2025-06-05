@@ -1,15 +1,24 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import AppFooter from '@/components/app-footer.vue'
 import AppHeader from '@/components/app-header.vue'
 import AppSidebar from '@/components/app-sidebar.vue'
+import HeaderMenu from '@/components/header-menu.vue'
+import HeaderMenuAccount from '@/components/header-menu-account.vue'
+import HeaderMenuDarkMode from '@/components/header-menu-dark-mode.vue'
+import HeaderMenuSignout from '@/components/header-menu-signout.vue'
+import HeaderMenuSwitchOrganization from '@/components/header-menu-switch-organization.vue'
+import HeaderNotification from '@/components/header-notification.vue'
+import HeaderSidebarButton from '@/components/header-sidebar-button.vue'
 import { useSidebarMenuStore } from '@/stores/sidebar-menu'
 
 import { version } from '../../package.json'
 import { useMobileBreakpoint, useSidebar, useSidebarStore } from '../index'
+import { useDarkMode } from '../index'
 
+const { isDarkMode, toggleDarkMode } = useDarkMode()
 const route = useRoute()
 
 useSidebar()
@@ -18,6 +27,7 @@ const mobileBreakpoint = useMobileBreakpoint()
 const sidebarStore = useSidebarStore()
 const sidebarMenuStore = useSidebarMenuStore()
 
+// Sidebar
 const appMenu = [
   {
     name: 'App 3',
@@ -119,6 +129,24 @@ const appList = [
 
 sidebarMenuStore.setAppMenu(appMenu, appList)
 
+// Header
+const account = ref({
+  organization: 'Organization',
+  username: 'John Doe',
+  avatar: 'https://placehold.co/150'
+})
+
+const organizations = ref([
+  {
+    name: 'Organization ABC',
+    link: '?organization=abc'
+  }
+])
+
+const onSignout = () => {
+  // Handle signout
+}
+
 onMounted(() => {
   sidebarMenuStore.onChooseApp(route.path)
 })
@@ -127,7 +155,36 @@ onMounted(() => {
 <template>
   <div class="app-layout">
     <!-- Header -->
-    <app-header />
+    <app-header>
+      <template #left-header>
+        <header-sidebar-button
+          :on-toggle-sidebar="sidebarStore.toggleSidebar"
+          v-model:is-sidebar-open="sidebarStore.isSidebarOpen"
+        />
+      </template>
+      <template #right-header>
+        <header-notification></header-notification>
+        <base-divider class="h-10" orientation="horizontal" />
+        <header-menu
+          :organization="account.organization"
+          :username="account.username"
+          :avatar="account.avatar"
+        >
+          <header-menu-account
+            :organization="account.organization"
+            :username="account.username"
+            :avatar="account.avatar"
+          />
+          <base-divider orientation="vertical" />
+          <header-menu-switch-organization :organizations="organizations" />
+          <header-menu-dark-mode
+            :on-toggle-dark-mode="toggleDarkMode"
+            v-model:is-dark-mode="isDarkMode"
+          />
+          <header-menu-signout :on-signout="onSignout" />
+        </header-menu>
+      </template>
+    </app-header>
 
     <!-- Sidebar -->
     <app-sidebar

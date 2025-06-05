@@ -4,7 +4,7 @@ import { onMounted, provide, ref } from 'vue'
 import { useDarkMode } from '@/composable/dark-mode'
 import { useScreenSize } from '@/composable/screen-size'
 
-const { setDarkMode } = useDarkMode()
+const { loadDarkMode } = useDarkMode()
 
 export interface IToastRef {
   toast(
@@ -41,9 +41,9 @@ useScreenSize()
  */
 onMounted(() => {
   /**
-   * Set default darkmode to light
+   * load dark mode configuration
    */
-  setDarkMode('light')
+  loadDarkMode()
 })
 </script>
 

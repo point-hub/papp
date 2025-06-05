@@ -1,0 +1,139 @@
+.link {
+  @apply inline-flex cursor-pointer tracking-wide outline-none gap-2;
+  @apply transition-all duration-200;
+  @apply focus:outline-none;
+}
+
+/* button size */
+.link-xs {
+  @apply px-2 py-1 text-xs;
+}
+.link-sm {
+  @apply px-2.5 py-1.5 text-sm;
+}
+.link-md {
+  @apply px-4 py-2;
+}
+.link-lg {
+  @apply px-7.5 py-2.5 text-lg;
+}
+.link-xl {
+  @apply px-10 py-3 text-xl;
+}
+.link-2xl {
+  @apply px-15 py-4.5 text-2xl;
+}
+
+/* button disabled */
+.link[disabled] {
+  @apply cursor-not-allowed opacity-40;
+}
+
+/* button block */
+.link-block {
+  @apply w-full;
+}
+
+/* button color */
+/* button color - primary */
+.link-primary {
+  @apply border border-primary bg-primary text-white;
+  @apply hover:bg-primary/80;
+}
+.link-light-primary {
+  @apply border border-primary/0 bg-primary/20 text-primary;
+  @apply hover:bg-primary/80 hover:text-white;
+}
+.link-outline-primary {
+  @apply border border-primary text-primary;
+  @apply hover:bg-primary/80 hover:text-white;
+}
+.link-text-primary {
+  @apply border border-primary/0;
+  @apply hover:bg-primary/80 hover:text-white;
+}
+/* button color - secondary */
+.link-secondary {
+  @apply border border-secondary bg-secondary text-white;
+  @apply hover:bg-secondary/80;
+}
+.link-light-secondary {
+  @apply border border-secondary/0 bg-secondary/20 text-secondary;
+  @apply hover:bg-secondary/80 hover:text-white;
+}
+.link-outline-secondary {
+  @apply border border-secondary/100 text-secondary;
+  @apply hover:bg-secondary/80 hover:text-white;
+}
+.link-text-secondary {
+  @apply border border-secondary/0;
+  @apply hover:bg-secondary/80 hover:text-white;
+}
+/* button color - info */
+.link-info {
+  @apply border border-info bg-info text-white;
+  @apply hover:bg-info/80;
+}
+.link-light-info {
+  @apply border border-info/0 bg-info/20 text-info;
+  @apply hover:bg-info/80 hover:text-white;
+}
+.link-outline-info {
+  @apply border border-info text-info;
+  @apply hover:bg-info/80 hover:text-white;
+}
+.link-text-info {
+  @apply border border-info/0;
+  @apply hover:bg-info/80 hover:text-white;
+}
+/* button color - success */
+.link-success {
+  @apply border border-success bg-success text-white;
+  @apply hover:bg-success/80;
+}
+.link-light-success {
+  @apply border border-success/0 bg-success/20 text-success;
+  @apply hover:bg-success/80 hover:text-white;
+}
+.link-outline-success {
+  @apply border border-success text-success;
+  @apply hover:bg-success/80 hover:text-white;
+}
+.link-text-success {
+  @apply border border-success/0;
+  @apply hover:bg-success/80 hover:text-white;
+}
+/* button color - warning */
+.link-warning {
+  @apply border border-warning bg-warning text-white;
+  @apply hover:bg-warning/80;
+}
+.link-light-warning {
+  @apply border border-warning/0 bg-warning/20 text-warning;
+  @apply hover:bg-warning/80 hover:text-white;
+}
+.link-outline-warning {
+  @apply border border-warning text-warning;
+  @apply hover:bg-warning/80 hover:text-white;
+}
+.link-text-warning {
+  @apply border border-warning/0;
+  @apply hover:bg-warning/80 hover:text-white;
+}
+/* button color - danger */
+.link-danger {
+  @apply border border-danger bg-danger text-white;
+  @apply hover:bg-danger/80;
+}
+.link-light-danger {
+  @apply border border-danger/0 bg-danger/20 text-danger;
+  @apply hover:bg-danger/80 hover:text-white;
+}
+.link-outline-danger {
+  @apply border border-danger text-danger;
+  @apply hover:bg-danger/80 hover:text-white;
+}
+.link-text-danger {
+  @apply border border-danger/0;
+  @apply hover:bg-danger/80 hover:text-white;
+}
