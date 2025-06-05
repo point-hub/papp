@@ -63,7 +63,7 @@ When I toggle checkbox "check-agreement"
 
 ```ts
 When('I toggle checkbox {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 ```
 

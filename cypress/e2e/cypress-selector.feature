@@ -9,25 +9,25 @@ Feature: Submit data
     # Input Textarea
     When I type "Hello World" into "input-textarea"
     # Input Mask
-    And I type "4242424242424242" into "input-mask"
+    And I type "4242556611223399" into "input-mask"
     # Input Number
     And I type "25" into "input-number"
     # Input Date
     And I type "2025-01-01" into "input-date"
     # Choosen
-    And I click choosen "choosen-button"
+    And I click choosen "choosen-input"
     And I type "Charles" into "choosen-search"
-    And I click choosen "choosen-option-0"
+    And I click choosen "choosen-option-3"
     # Autocomplete
     And I type "kenton" into "autocomplete-input"
-    And I click autocomplete "autocomplete-option-0"
+    And I click autocomplete "autocomplete-option-2"
     # Select
-    And I click select "select-button"
-    And I click select "select-option-0"
+    And I click select "select-input"
+    And I click select "select-option-1"
     # File Upload
     And I upload "image.png" into "file-upload"
     # Radio
-    And I click radio button "radio-1"
+    And I click radio button "radio-Value 1"
     # Switch
     And I toggle switch "switch"
     # Input Checkbox

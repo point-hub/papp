@@ -83,15 +83,15 @@ And I click autocomplete clear button "user-autocomplete-clear-button"
 
 ```ts
 When('I click autocomplete input {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 
 When('I click autocomplete clear button {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

@@ -83,7 +83,7 @@ When I click radio "grade-rank-1"
 
 ```ts
 When('I click radio {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 ```
 

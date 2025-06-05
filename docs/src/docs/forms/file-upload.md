@@ -91,7 +91,7 @@ When I upload "image.png" into "file-upload"
 
 ```ts
 When('I upload {string} into {string}', (file: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).attachFile(file)
+  cy.get(`[data-testid="${selector}"]`).attachFile(file)
 })
 ```
 

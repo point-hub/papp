@@ -44,20 +44,26 @@ export const useSidebarMenuStore = defineStore('sidebar-menu', {
     }
   },
   actions: {
-    setAppMenu(appMenu: IAppMenu[], appLinks: IAppMenu[]) {
-      this.appMenu = appLinks.map((link, index) => {
-        this.choosenAppIndex = appLinks.findIndex(
-          (item) => item.name.toLowerCase() === appMenu[0].name.toLowerCase()
-        )
-        const match = appLinks[index].name.toLowerCase() === appMenu[0].name.toLowerCase()
-        return {
-          ...link, // base from appLinks
-          ...(match
-            ? { icon: appMenu[0].icon, path: appMenu[0].path, menu: appMenu[0].menu || [] }
-            : {}) // override with icon, path, menu
-        }
-      })
-      this.choosenAppTitle = this.appMenu[this.choosenAppIndex].name
+    setAppMenu(appMenu: IAppMenu[], appList?: IAppMenu[]) {
+      if (appList) {
+        this.appMenu = appList.map((link, index) => {
+          this.choosenAppIndex = appList.findIndex(
+            (item) => item.name.toLowerCase() === appMenu[0].name.toLowerCase()
+          )
+          const match = appList[index].name.toLowerCase() === appMenu[0].name.toLowerCase()
+          return {
+            ...link, // base from appList
+            ...(match
+              ? { icon: appMenu[0].icon, path: appMenu[0].path, menu: appMenu[0].menu || [] }
+              : {}) // override with icon, path, menu
+          }
+        })
+        this.choosenAppTitle = this.appMenu[this.choosenAppIndex].name
+      } else {
+        this.appMenu = appMenu
+        this.choosenAppTitle = appMenu[0].name
+        this.choosenAppIndex = 0
+      }
     },
     onChooseApp(path: string) {
       for (const [index, app] of this.appMenu.entries()) {

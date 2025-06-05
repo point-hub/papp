@@ -80,7 +80,7 @@ When I type "I need to upload a document file here." into "notes"
 
 ```ts
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

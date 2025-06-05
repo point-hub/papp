@@ -77,7 +77,7 @@ When I toggle switch "enable-notification"
 
 ```ts
 When('I toggle switch {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 ```
 

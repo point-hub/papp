@@ -69,7 +69,7 @@ When I change range "speed" into "25"
 
 ```ts
 When('I change range {string} to {string}', (selector: string, value: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

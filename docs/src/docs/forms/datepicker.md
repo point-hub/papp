@@ -71,7 +71,7 @@ When I type "2025-01-01" into "form-date"
 
 ```ts
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

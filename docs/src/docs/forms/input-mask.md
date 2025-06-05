@@ -63,7 +63,7 @@ When I type "4242556677889900" into "credit-card"
 
 ```ts
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

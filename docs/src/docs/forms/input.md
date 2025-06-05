@@ -79,7 +79,7 @@ When I type "John Doe" into "name"
 
 ```ts
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 ```
 

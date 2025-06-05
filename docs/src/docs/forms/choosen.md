@@ -63,19 +63,19 @@ And I click choosen clear button "user-choosen-clear-button"
 
 ```ts
 When('I click choosen input {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 
 When('I click choosen clear button {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 
 When('I type {string} into {string}', (value: string, selector: string) => {
-  cy.get(`[data-testid=${selector}]`).type(value)
+  cy.get(`[data-testid="${selector}"]`).type(value)
 })
 
 When('I click choosen option {string}', (selector: string) => {
-  cy.get(`[data-testid=${selector}]`).click()
+  cy.get(`[data-testid="${selector}"]`).click()
 })
 ```
 
