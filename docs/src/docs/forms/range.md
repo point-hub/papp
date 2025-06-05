@@ -61,7 +61,7 @@ If you pass a `data-testid` to the `<base-range>` component, it will automatical
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I change range "speed" into "25"
 ```
 

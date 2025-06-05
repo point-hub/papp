@@ -52,7 +52,7 @@ For example, if you set `data-testid="user-choosen"`, the component will generat
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I click choosen input "user-choosen-input"
 And I type "Durward" into "user-choosen-search"
 And I click choosen option "user-choosen-option-1"

@@ -69,7 +69,7 @@ If you pass a `data-testid` to the `<base-switch>` component, it will automatica
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I toggle switch "enable-notification"
 ```
 

@@ -71,7 +71,7 @@ If you pass a `data-testid` to the `<base-input>` component, it will automatical
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "John Doe" into "name"
 ```
 

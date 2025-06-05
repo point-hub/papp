@@ -62,7 +62,7 @@ If you pass a `data-testid` to the `<base-input-number>` component, it will auto
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "15000" into "price"
 ```
 

@@ -72,7 +72,7 @@ If you pass a `data-testid` to the `<base-textarea>` component, it will automati
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "I need to upload a document file here." into "notes"
 ```
 

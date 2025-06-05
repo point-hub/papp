@@ -75,7 +75,7 @@ For example, if you set `data-testid="grade"`, the component will generate the f
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I click radio "grade-rank-1"
 ```
 

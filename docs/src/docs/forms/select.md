@@ -76,7 +76,7 @@ For example, if you set `data-testid="user-select"`, the component will generate
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "Durward" into "user-select-input"
 And I click select option "user-select-option-1"
 And I click select clear button "user-select-clear-button"

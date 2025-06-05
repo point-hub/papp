@@ -73,7 +73,7 @@ For example, if you set `data-testid="user-autocomplete"`, the component will ge
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "Durward" into "user-autocomplete-input"
 And I click autocomplete option "user-autocomplete-option-1"
 And I click autocomplete clear button "user-autocomplete-clear-button"

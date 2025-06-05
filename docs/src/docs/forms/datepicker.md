@@ -63,7 +63,7 @@ If you pass a `data-testid` to the `<base-datepicker>` component, it will automa
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "2025-01-01" into "form-date"
 ```
 

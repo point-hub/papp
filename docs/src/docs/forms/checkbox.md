@@ -55,7 +55,7 @@ If you pass a `data-testid` to the `<base-checkbox>` component, it will automati
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I toggle checkbox "check-agreement"
 ```
 

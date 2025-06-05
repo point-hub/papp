@@ -159,7 +159,7 @@ If you pass a `data-testid` to the `appMenu`, it will automatically generate uni
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I click sidebar menu "menu-nested-page"
 When I click sidebar menu "submenu-nested-page-1"
 ```

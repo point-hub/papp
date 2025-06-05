@@ -83,7 +83,7 @@ To test file uploads, place the test file in the `cypress/fixtures` directory:
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I upload "image.png" into "file-upload"
 ```
 

@@ -55,7 +55,7 @@ If you pass a `data-testid` to the `<base-input-mask>` component, it will automa
 
 ### Gherkin Scenario
 
-```feature
+```txt
 When I type "4242556677889900" into "credit-card"
 ```
 
