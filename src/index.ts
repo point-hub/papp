@@ -131,6 +131,7 @@ export { useScreenSize } from './composable/screen-size'
 export { useSidebar } from './composable/sidebar'
 export { useScreenBreakpointStore } from './stores/screen-breakpoint'
 export { useSidebarStore } from './stores/sidebar'
+export { useSidebarMenuStore } from './stores/sidebar-menu'
 export { useWebsocketStore } from './stores/websocket'
 
 // Layouts Component
@@ -140,3 +141,12 @@ export { default as AppPreloader } from './components/app-preloader.vue'
 export { default as AppSidebar } from './components/app-sidebar.vue'
 export { default as AppSidebarMenu } from './components/app-sidebar-menu.vue'
 export { default as AppSidebarPanel } from './components/app-sidebar-panel.vue'
+
+// Header Component
+export { default as HeaderMenu } from './components/header-menu.vue'
+export { default as HeaderMenuAccount } from './components/header-menu-account.vue'
+export { default as HeaderMenuDarkMode } from './components/header-menu-dark-mode.vue'
+export { default as HeaderMenuSignout } from './components/header-menu-signout.vue'
+export { default as HeaderMenuSwitchOrganization } from './components/header-menu-switch-organization.vue'
+export { default as HeaderNotification } from './components/header-notification.vue'
+export { default as HeaderSidebarButton } from './components/header-sidebar-button.vue'

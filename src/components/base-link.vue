@@ -10,6 +10,7 @@ export type BaseButtonColorType =
 export type BaseButtonVariantType = 'filled' | 'light' | 'outlined' | 'text'
 export type BaseButtonShapeType = 'sharp' | 'rounded' | 'pill'
 export type BaseButtonSizeType = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+export type BaseButtonAlign = 'left' | 'middle' | 'right'
 
 const props = withDefaults(
   defineProps<{
@@ -18,12 +19,14 @@ const props = withDefaults(
     color?: BaseButtonColorType
     variant?: BaseButtonVariantType
     shape?: BaseButtonShapeType
+    align?: BaseButtonAlign
     isBlock?: boolean
   }>(),
   {
     size: 'md',
     color: 'none',
     shape: 'rounded',
+    align: 'left',
     variant: 'filled',
     isBlock: false
   }
@@ -32,52 +35,57 @@ const props = withDefaults(
 const classes: string[] = []
 
 // Button Variant
-let buttonColor = ''
+let linkColor = ''
 if (props.variant === 'filled') {
-  buttonColor = `btn-${props.color}`
+  linkColor = `link-${props.color}`
 }
 if (props.variant === 'light') {
-  buttonColor = `btn-light-${props.color}`
+  linkColor = `link-light-${props.color}`
 }
 if (props.variant === 'outlined') {
-  buttonColor = `btn-outline-${props.color}`
+  linkColor = `link-outline-${props.color}`
 }
 if (props.variant === 'text') {
-  buttonColor = `btn-text-${props.color}`
+  linkColor = `link-text-${props.color}`
 }
-classes.push(`${buttonColor}`)
+classes.push(`${linkColor}`)
 
 // Button Shape
-let buttonShape = ''
+let linkShape = ''
 if (props.shape === 'sharp') {
-  buttonShape = 'rounded-none'
+  linkShape = 'rounded-none'
 }
 if (props.shape === 'rounded') {
-  buttonShape = 'rounded-lg'
+  linkShape = 'rounded-lg'
 }
 if (props.shape === 'pill') {
-  buttonShape = 'rounded-full'
+  linkShape = 'rounded-full'
 }
-classes.push(`${buttonShape}`)
+classes.push(`${linkShape}`)
 
 // Button Block
 if (props.isBlock) {
-  classes.push(`btn-block`)
+  classes.push(`link-block`)
 }
 
 // Button Size
 if (props.size !== 'none') {
-  classes.push(`btn-${props.size}`)
+  classes.push(`link-${props.size}`)
+}
+
+// Button Align
+if (props.align) {
+  classes.push(`text-${props.align}!`)
 }
 </script>
 
 <template>
-  <a :href="props.href" class="btn" :class="classes" v-bind="$attrs">
+  <a :href="props.href" class="link" :class="classes">
     <!-- Render Link Content -->
     <slot></slot>
   </a>
 </template>
 
 <style scoped>
-@import url('../assets/css/components/button.css');
+@import url('../assets/css/components/link.css');
 </style>

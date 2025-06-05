@@ -56,6 +56,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | required       | boolean                  | false      | if true input is `required`. |
 | disabled       | boolean                  | false      | if true input is `disabled`. |
 | helpers        | string[]                 |            | Input helper message.        |
+| data-testid    | string                   |            | Testing ID.                  |
 
 ### Slot
 
@@ -64,3 +65,49 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 ### Event
 
 `@change` event for choosen file upload
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-file-upload>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+To test file uploads, place the test file in the `cypress/fixtures` directory:
+
+```bash
+[root]
+├── src
+└── cypress
+    ├── e2e
+    └── fixtures
+        └── image.png
+```
+
+### Gherkin Scenario
+
+```feature
+When I upload "image.png" into "file-upload"
+```
+
+### Step Definition
+
+```ts
+When('I upload {string} into {string}', (file: string, selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).attachFile(file)
+})
+```
+
+> [!NOTE]
+> This step uses the `cypress-file-upload` plugin. Make sure it is installed and properly configured in your Cypress setup.
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const file = ref()
+</script>
+
+<template>
+  <base-file-upload v-model="file" data-testid="avatar" />
+</template>
+```

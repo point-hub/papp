@@ -44,6 +44,7 @@ const props = withDefaults(
     itemId: number
     title?: string
     content?: string
+    dataTestid?: string
   }>(),
   { title: '', content: '' }
 )
@@ -51,7 +52,7 @@ const props = withDefaults(
 
 <template>
   <div class="accordion-item">
-    <base-button @click="toggleCollapse()" class="accordion-title" v-bind="$attrs">
+    <base-button @click="toggleCollapse()" class="accordion-title" :data-testid="props.dataTestid">
       <slot name="title">
         <span>{{ props.title }}</span>
       </slot>

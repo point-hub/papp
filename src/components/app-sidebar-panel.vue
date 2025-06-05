@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { IAppMenu } from '@/stores/sidebar-menu'
+
 const props = defineProps<{
-  apps: IApps[]
+  apps: IAppMenu[]
 }>()
 
 const emit = defineEmits<{

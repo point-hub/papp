@@ -62,6 +62,7 @@ const pathHandler = (path: string) => {
           @click="sidebarStore.closeSidebar()"
           v-if="isMobile"
           class="mr-2"
+          data-testid="sidebar-button"
         >
           <div v-if="sidebarStore.isSidebarOpen">
             <base-icon icon="i-fas-angle-left" class="text-white" />
@@ -79,6 +80,7 @@ const pathHandler = (path: string) => {
                 :to="menu.path"
                 class="menu-link-button"
                 @click="toggleMenu(menu.name)"
+                :data-testid="menu.dataTestid"
               >
                 <p>{{ menu.name }}</p>
                 <i
@@ -94,6 +96,7 @@ const pathHandler = (path: string) => {
                 class="menu-link-button"
                 @click="toggleMenu(menu.name)"
                 :class="{ 'text-slate-50': activeMenu === menu.name }"
+                :data-testid="menu.dataTestid"
               >
                 <p>{{ menu.name }}</p>
                 <i
@@ -112,7 +115,11 @@ const pathHandler = (path: string) => {
                 }"
               >
                 <li v-for="submenu in menu.submenu" :key="submenu.name" class="overflow-hidden">
-                  <router-link :to="submenu.path as string" class="submenu-link">
+                  <router-link
+                    :to="submenu.path as string"
+                    class="submenu-link"
+                    :data-testid="submenu.dataTestid"
+                  >
                     <div class="flex items-center space-x-2">
                       <p>{{ submenu.name }}</p>
                     </div>
@@ -128,6 +135,7 @@ const pathHandler = (path: string) => {
                 :to="menu.path"
                 class="menu-link-button"
                 @click="resetActiveMenu()"
+                :data-testid="menu.dataTestid"
               >
                 {{ menu.name }}
               </router-link>

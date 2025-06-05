@@ -57,9 +57,42 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | border         | BaseInputBorderType | `simple`   | Input border.          |
 | layout         | BaseFormLayoutType  | `vertical` | Input layout.          |
 | helpers        | string[]            |            | Input helper message.  |
+| data-testid    | string              |            | Testing ID.            |
 
 ### Slot
 
 `#prefix` slot for rendering input prefix like icon
 
 `#suffix` slot for rendering input suffix like icon
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-input>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I type "John Doe" into "name"
+```
+
+### Step Definition
+
+```ts
+When('I type {string} into {string}', (value: string, selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).type(value)
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const name = ref()
+</script>
+
+<template>
+  <base-input v-model="name" data-testid="name" />
+</template>
+```

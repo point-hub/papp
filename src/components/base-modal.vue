@@ -2,8 +2,6 @@
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { ref, watch } from 'vue'
 
-import BaseButton from './base-button.vue'
-
 export type BaseModalSizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'maximize'
 
 const props = withDefaults(
@@ -78,8 +76,7 @@ defineExpose({ isOpen })
                 'w-100vh h-100vh rounded-none': props.size === 'maximize'
               }"
             >
-              <component
-                :is="BaseButton"
+              <base-button
                 type="button"
                 @click="close()"
                 variant="text"
@@ -87,7 +84,7 @@ defineExpose({ isOpen })
                 class="absolute right-2 top-2"
               >
                 <base-icon icon="i-fas-xmark" />
-              </component>
+              </base-button>
               <slot></slot>
             </DialogPanel>
           </TransitionChild>

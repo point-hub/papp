@@ -19,6 +19,7 @@ export interface Props {
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: Record<string, any>[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -66,6 +67,7 @@ const value = computed({
           :disabled="disabled"
           :value="option"
           v-slot="{ active, checked }"
+          :data-testid="`${dataTestid}-${option.value}`"
         >
           <slot :active="active" :checked="checked" :option="option">
             <div class="cursor-pointer">

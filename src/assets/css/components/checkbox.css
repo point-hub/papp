@@ -3,7 +3,7 @@
   @apply inline-block ease-out before:absolute before:inset-0 before:h-full;
   @apply inline-block border ease-out before:absolute before:inset-0 before:h-full;
   @apply bg-origin-border before:bg-center before:bg-no-repeat before:[background-size:100%_100%];
-  @apply h-5 w-5 rounded border-solid;
+  @apply h-4 w-4 rounded border-solid;
 }
 
 .form-checkbox:checked {

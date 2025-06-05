@@ -20,6 +20,7 @@ export interface Props {
   helpers?: string[]
   minHeight?: number
   maxHeight?: number
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -97,6 +98,7 @@ defineExpose({
         maxHeight: maxHeight ? maxHeight + 'px' : 'inherit'
       }"
       v-model="value"
+      :data-testid="dataTestid"
     ></textarea>
   </base-form>
 </template>

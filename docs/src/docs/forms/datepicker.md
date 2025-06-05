@@ -43,7 +43,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 ### Props
 
 | Name           | Type                     | Default    | Description                       |
-|----------------|--------------------------|------------|-----------------------------------|
+| -------------- | ------------------------ | ---------- | --------------------------------- |
 | v-model        | string                   |            | v-model is `required`.            |
 | v-model:errors | string[]                 |            | Input error message.              |
 | id             | string                   |            | Input id.                         |
@@ -55,3 +55,36 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | required       | boolean                  | false      | if true datepicker is `required`. |
 | disabled       | boolean                  | false      | if true datepicker is `disabled`. |
 | helpers        | string[]                 |            | Input helper message.             |
+| data-testid    | string                   |            | Testing ID.                       |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-datepicker>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I type "2025-01-01" into "form-date"
+```
+
+### Step Definition
+
+```ts
+When('I type {string} into {string}', (value: string, selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).type(value)
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const agreement = ref()
+</script>
+
+<template>
+  <base-datepicker v-model="agreement" data-testid="form-date" />
+</template>
+```

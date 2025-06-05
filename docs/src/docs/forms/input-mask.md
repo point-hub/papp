@@ -33,7 +33,7 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 ### Props
 
 | Name           | Type                    | Default    | Description                       |
-|----------------|-------------------------|------------|-----------------------------------|
+| -------------- | ----------------------- | ---------- | --------------------------------- |
 | v-model        | string                  |            | v-model is `required`.            |
 | v-model:errors | string[]                |            | Input error message.              |
 | id             | string                  |            | Input id.                         |
@@ -47,3 +47,41 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | disabled       | boolean                 | false      | if true input mask is `disabled`. |
 | helpers        | string[]                |            | Input helper message.             |
 | options        | object                  |            | Cleave options                    |
+| data-testid    | string                  |            | Testing ID.                       |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-input-mask>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I type "4242556677889900" into "credit-card"
+```
+
+### Step Definition
+
+```ts
+When('I type {string} into {string}', (value: string, selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).type(value)
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const creditCard = ref()
+</script>
+
+<template>
+  <base-input-mask
+    v-model="creditCard"
+    :options="{ creditCard: true }"
+    placeholder="**** **** **** ****"
+    data-testid="credit-card"
+  />
+</template>
+```

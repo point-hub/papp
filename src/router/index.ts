@@ -9,29 +9,15 @@ const router = createRouter({
       children: [
         {
           path: '',
-          redirect: '/example/home'
-        }
-      ]
-    },
-    {
-      path: '/example',
-      component: () => import('../layouts/app.vue'),
-      children: [
-        {
-          path: '',
-          redirect: '/example/home'
+          redirect: '/home'
         },
         {
           path: 'home',
           component: () => import('@/pages/home.vue')
         },
         {
-          path: 'page-1',
-          component: () => import('@/pages/page-1.vue')
-        },
-        {
-          path: 'page-2',
-          component: () => import('@/pages/page-2.vue')
+          path: 'cypress-selector',
+          component: () => import('@/pages/cypress-selector.vue')
         },
         {
           path: 'websocket',

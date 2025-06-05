@@ -47,3 +47,36 @@ The input element with a type attribute whose value is "text" represents a one-l
 | layout         | `horizontal` `vertical` | `vertical` | Input layout.                   |
 | required       | boolean                 | false      | if true checkbox is `required`. |
 | helpers        | string[]                |            | Input helper message.           |
+| data-testid    | string                  |            | Testing ID.                     |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-checkbox>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I toggle checkbox "check-agreement"
+```
+
+### Step Definition
+
+```ts
+When('I toggle checkbox {string}', (selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).click()
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const agreement = ref(false)
+</script>
+
+<template>
+  <base-checkbox v-model="agreement" data-testid="check-agreement" />
+</template>
+```

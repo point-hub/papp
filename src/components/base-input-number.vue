@@ -4,16 +4,27 @@ import { computed, onMounted, ref } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
+defineOptions({
+  // This disables auto-inheriting attrs on the root element
+  inheritAttrs: false
+})
+
 export type BaseInputNumberBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
+  id?: string
+  name?: string
   label?: string
   align?: 'left' | 'right'
   description?: string
+  placeholder?: string
   border?: BaseInputNumberBorderType
   layout?: BaseFormLayoutType
   decimalLength?: number
   required?: boolean
+  disabled?: boolean
+  autofocus?: boolean
+
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -21,6 +32,7 @@ export interface Props {
    */
   resetErrorsOnUpdate?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,6 +41,8 @@ const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
   required: false,
+  autofocus: false,
+  disabled: false,
   resetErrorsOnUpdate: true
 })
 
@@ -115,8 +129,11 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model="inputValue"
-      v-bind="$attrs"
+      :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
       :required="props.required"
+      :disabled="props.disabled"
+      :data-testid="props.dataTestid"
       @click="selectAllText"
       :style="{
         paddingLeft: `${paddingLeft}px`,

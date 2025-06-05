@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.112",
+  "version": "0.0.113",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -28,6 +28,8 @@
     "build": "run-s clean-dist build:lib docs:build",
     "build:lib": "vite build",
     "test": "vitest",
+    "test:e2e": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress run --e2e'",
+    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "types": "vue-tsc --build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -54,6 +56,8 @@
     "vue": "^3.5.14"
   },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
     "@tsconfig/node20": "^20.1.5",
     "@types/cleave.js": "^1.4.12",
     "@types/jsdom": "^21.1.7",
@@ -69,6 +73,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "ajv": "^8.17.1",
+    "cypress-file-upload": "^5.0.8",
     "eslint": "9.27.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-vue": "^10.1.0",
@@ -77,6 +82,7 @@
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
+    "start-server-and-test": "^2.0.12",
     "typescript": "5.8.3",
     "unocss": "^0.60.4",
     "vite": "^6.3.5",

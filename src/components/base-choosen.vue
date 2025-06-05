@@ -25,6 +25,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -127,12 +128,14 @@ const onClose = () => {
       :border="border"
       :placeholder="placeholder"
       class="w-full"
+      :data-testid="`${dataTestid}-input`"
     />
     <!-- mode: text -->
     <div
       v-if="mode === 'text'"
       class="border-b border-dashed cursor-pointer border-black dark:border-white"
       @click="onOpen"
+      :data-testid="`${dataTestid}-input`"
     >
       {{ selected && !isEmpty(selected.label) ? selected.label : 'SELECT' }}
     </div>
@@ -141,31 +144,44 @@ const onClose = () => {
   <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose">
     <div class="max-h-90vh h-full flex flex-col py-4">
       <!-- Title -->
-      <h2 class="py-4 px-8 text-2xl font-bold">{{ props.title }}</h2>
+      <h2 class="px-6 py-4 text-2xl font-bold">{{ props.title }}</h2>
       <!-- Search Text -->
-      <div class="px-8 py-2 relative">
-        <base-input placeholder="Search" ref="inputRef" border="full" v-model="search" />
-        <base-button class="absolute right-9.2 top-3.2 px-1!" variant="filled" color="danger">
+      <div class="px-6 py-2 relative">
+        <base-input
+          placeholder="Search"
+          ref="inputRef"
+          border="full"
+          v-model="search"
+          :data-testid="`${dataTestid}-search`"
+        />
+        <base-button
+          class="absolute right-5 top-1/2 -translate-x-1/2 -translate-y-1/2 px-1!"
+          variant="filled"
+          color="danger"
+          size="xs"
+          :data-testid="`${dataTestid}-clear-button`"
+        >
           <base-icon icon="i-fas-xmark" @click="onClear" />
         </base-button>
       </div>
       <!-- Options -->
-      <div class="space-y-8 flex flex-col h-full overflow-y-auto">
+      <div class="space-y-8 mt-3 flex flex-col h-full overflow-y-auto">
         <div class="flex flex-col w-full">
-          <div v-if="isLoading" class="relative cursor-default select-none px-8 py-2 text-gray-700">
+          <div v-if="isLoading" class="relative cursor-default select-none px-6 py-2 text-gray-700">
             Loading data...
           </div>
           <div
             v-if="!isLoading && filtered.length === 0"
-            class="relative cursor-default select-none px-8 py-2 text-gray-700"
+            class="relative cursor-default select-none px-6 py-2 text-gray-700"
           >
             Nothing found.
           </div>
           <div
             v-for="(option, index) in filtered"
             :key="index"
-            class="py-4 px-8 border-b dark:border-b-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
             @click="onSelect(option)"
+            :data-testid="`${dataTestid}-option-${option._id}`"
           >
             <slot :option="option">{{ option?.label }}</slot>
           </div>

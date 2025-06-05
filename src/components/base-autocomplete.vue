@@ -33,6 +33,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -115,6 +116,7 @@ defineExpose({
             }"
             :displayValue="() => selected?.label ?? ''"
             @change="query = $event.target.value"
+            :data-testid="`${dataTestid}-input`"
           />
           <ComboboxButton
             v-if="isEmpty(selected)"
@@ -130,6 +132,7 @@ defineExpose({
             type="button"
             class="absolute inset-y-0 right-1 flex items-center"
             @click="onClear()"
+            :data-testid="`${dataTestid}-clear-button`"
           >
             <base-icon icon="i-far-xmark" />
           </base-button>
@@ -157,9 +160,10 @@ defineExpose({
               <ComboboxOption
                 v-for="data in filtered"
                 as="template"
-                :key="data.id"
+                :key="data._id"
                 :value="data"
                 v-slot="{ selected, active }"
+                :data-testid="`${dataTestid}-option-${data._id}`"
               >
                 <li
                   class="option"

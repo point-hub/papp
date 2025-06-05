@@ -48,7 +48,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 ### Props
 
 | Name           | Type                   | Default | Description                     |
-|----------------|------------------------|---------|---------------------------------|
+| -------------- | ---------------------- | ------- | ------------------------------- |
 | v-model        | string                 |         | v-model is `required`.          |
 | v-model:errors | string[]               |         | Textarea error message.         |
 | id             | string                 |         | Textarea id.                    |
@@ -64,3 +64,36 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | helpers        | string[]               |         | Textarea helper message.        |
 | minHeight      | number                 |         | Textarea min height.            |
 | maxHeight      | number                 |         | Textarea max height.            |
+| data-testid    | string                 |         | Testing ID.                     |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-textarea>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I type "I need to upload a document file here." into "notes"
+```
+
+### Step Definition
+
+```ts
+When('I type {string} into {string}', (value: string, selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).type(value)
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const notes = ref()
+</script>
+
+<template>
+  <base-textarea v-model="notes" data-testid="notes" />
+</template>
+```

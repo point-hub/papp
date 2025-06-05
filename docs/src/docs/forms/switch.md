@@ -53,7 +53,7 @@ export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
 ### Props
 
 | Name           | Type                   | Default | Description                   |
-|----------------|------------------------|---------|-------------------------------|
+| -------------- | ---------------------- | ------- | ----------------------------- |
 | v-model        | boolean                |         | v-model is `required`.        |
 | v-model:errors | string[]               |         | Input error message.          |
 | label          | string                 |         | Switch label.                 |
@@ -61,3 +61,36 @@ export type BaseSwitchSize = 'sm' | 'md' | 'lg' | 'xl'
 | text-position  | BaseSwitchTextPosition | `left`  | Switch text position.         |
 | size           | BaseSwitchSize         | `md`    | Switch size.                  |
 | disabled       | boolean                | false   | if true switch is `disabled`. |
+| data-testid    | string                 |         | Testing ID.                   |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-switch>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I toggle switch "enable-notification"
+```
+
+### Step Definition
+
+```ts
+When('I toggle switch {string}', (selector: string) => {
+  cy.get(`[data-testid="${selector}"]`).click()
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const enableNotification = ref(false)
+</script>
+
+<template>
+  <base-switch v-model="enableNotification" data-testid="enable-notification" />
+</template>
+```

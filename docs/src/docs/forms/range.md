@@ -43,7 +43,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 ### Props
 
 | Name           | Type               | Default    | Description                  |
-|----------------|--------------------|------------|------------------------------|
+| -------------- | ------------------ | ---------- | ---------------------------- |
 | v-model        | string             |            | v-model is `required`.       |
 | v-model:errors | string[]           |            | Input error message.         |
 | id             | string             |            | Input id.                    |
@@ -53,3 +53,36 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | show-text      | boolean            | false      | Show range value.            |
 | disabled       | boolean            | false      | if true range is `disabled`. |
 | helpers        | string[]           |            | Input helper message.        |
+| data-testid    | string             |            | Testing ID.                  |
+
+## Automated Test Guide
+
+If you pass a `data-testid` to the `<base-range>` component, it will automatically generate unique `data-testid` attributes for testing.
+
+### Gherkin Scenario
+
+```feature
+When I change range "speed" into "25"
+```
+
+### Step Definition
+
+```ts
+When('I change range {string} to {string}', (selector: string, value: string) => {
+  cy.get(`[data-testid="${selector}"]`).type(value)
+})
+```
+
+### Code Implementation
+
+```vue
+<script setup>
+import { ref } from 'vue'
+
+const speed = ref(0)
+</script>
+
+<template>
+  <base-range v-model="speed" data-testid="speed" />
+</template>
+```

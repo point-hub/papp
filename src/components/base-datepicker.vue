@@ -17,6 +17,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -161,6 +162,7 @@ defineExpose({
       :autofocus="props.autofocus"
       :required="props.required"
       :disabled="props.disabled"
+      :data-testid="props.dataTestid"
     />
   </base-form>
 </template>

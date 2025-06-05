@@ -4,14 +4,22 @@ import { computed, onMounted, ref } from 'vue'
 import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseInputBorderType = 'none' | 'simple' | 'full'
+export type BaseInputType = 'text' | 'tel' | 'email' | 'password' | 'date' | 'number'
 
 export interface Props {
   modelValue: string
+  id?: string
+  type?: BaseInputType
   label?: string
-  required?: boolean
   description?: string
+  placeholder?: string
   border?: BaseInputBorderType
   layout?: BaseFormLayoutType
+  maxlength?: number
+  autofocus?: boolean
+  required?: boolean
+  readonly?: boolean
+  disabled?: boolean
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -22,13 +30,21 @@ export interface Props {
    * The helper text appears below the text input.
    */
   helpers?: string[]
+  /**
+   * Custom attribute to mark elements for testing
+   */
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
+  type: 'text',
   layout: 'vertical',
-  resetErrorsOnUpdate: true,
-  required: false
+  autofocus: false,
+  required: false,
+  readonly: false,
+  disabled: false,
+  resetErrorsOnUpdate: true
 })
 
 const emit = defineEmits<{
@@ -131,8 +147,14 @@ defineExpose({
         'border-none px-0!': border === 'none'
       }"
       v-model.trim="value"
-      v-bind="$attrs"
+      :type="props.type"
+      :maxlength="props.maxlength"
+      :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
+      :readonly="props.readonly"
+      :disabled="props.disabled"
       :required="props.required"
+      :data-testid="props.dataTestid"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import type { IAppMenu, IMenu } from '@/stores/sidebar-menu'
+
 import { useSidebarStore } from '../index'
 import AppSidebarMenu from './app-sidebar-menu.vue'
 import AppSidebarPanel from './app-sidebar-panel.vue'
@@ -11,7 +13,7 @@ const props = defineProps<{
   title: string
   isMobile: boolean
   isSidebarOpen: boolean
-  apps: IApps[]
+  apps: IAppMenu[]
   menus: IMenu[]
 }>()
 

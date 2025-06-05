@@ -19,6 +19,7 @@ export interface Props {
   required?: boolean
   disabled?: boolean
   helpers?: string[]
+  dataTestid?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -73,6 +74,7 @@ const value = computed({
               'switch-disabled': disabled
             }
           ]"
+          :data-testid="dataTestid"
         />
       </span>
     </label>
