@@ -37,17 +37,12 @@ const accountPopoverRef = ref()
       </div>
       <!-- Right Header -->
       <div class="flex items-center">
-        <component :is="BaseButton" type="button" size="xs">
+        <base-button type="button" size="xs">
           <BaseIcon icon="i-ph-info" class="w-6 h-6" />
-        </component>
+        </base-button>
         <!-- Notification -->
-        <component ref="notificationPopoverRef" :is="BasePopover" placement="bottom">
-          <component
-            :is="BaseButton"
-            type="button"
-            size="xs"
-            @click="notificationPopoverRef.toggle()"
-          >
+        <base-popover ref="notificationPopoverRef" placement="bottom">
+          <base-button type="button" size="xs" @click="notificationPopoverRef.toggle()">
             <BaseIcon icon="i-ph-bell-ringing" class="w-6 h-6" />
             <!-- ping -->
             <span class="absolute -mt-6 -mr-6 h-2 w-2 flex items-center justify-center">
@@ -56,7 +51,7 @@ const accountPopoverRef = ref()
               />
               <span class="h-2 w-2 inline-flex rounded-full bg-red-400" />
             </span>
-          </component>
+          </base-button>
           <template #content>
             <div class="popper-root">
               <BaseTabGroup as="div" class="bg-slate-100 dark:bg-slate-800">
@@ -145,17 +140,16 @@ const accountPopoverRef = ref()
               </BaseTabGroup>
             </div>
           </template>
-        </component>
-        <component :is="BaseDivider" class="h-10" orientation="horizontal" />
+        </base-popover>
+        <base-divider class="h-10" orientation="horizontal" />
         <!-- User -->
-        <component ref="accountPopoverRef" :is="BasePopover" placement="bottom-end">
+        <base-popover ref="accountPopoverRef" placement="bottom-end">
           <button type="button" class="flex gap-2" @click="accountPopoverRef.toggle()">
             <div class="hidden lg:flex flex-col justify-center items-end">
               <p class="text-sm truncate font-semibold">Organization Name</p>
               <p class="text-sm truncate">Username</p>
             </div>
-            <component
-              :is="BaseAvatar"
+            <base-avatar
               size="xs"
               src="https://placehold.co/150"
               shape="squircle"
@@ -164,15 +158,13 @@ const accountPopoverRef = ref()
           </button>
           <template #content>
             <div class="popper-root p-2">
-              <component
-                :is="BaseButton"
+              <base-button
                 variant="text"
                 color="primary"
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
-                <component
-                  :is="BaseAvatar"
+                <base-avatar
                   size="xs"
                   src="https://placehold.co/150"
                   shape="squircle"
@@ -182,43 +174,40 @@ const accountPopoverRef = ref()
                   <p class="font-semibold line-clamp-2">Organization Name</p>
                   <p class="line-clamp-2">Username</p>
                 </div>
-              </component>
-              <component :is="BaseDivider" orientation="vertical" />
-              <component
-                :is="BaseButton"
+              </base-button>
+              <base-divider orientation="vertical" />
+              <base-button
                 variant="text"
                 color="primary"
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
-                <BaseIcon icon="i-ph-buildings-duotone" class="text-2xl" />
+                <base-icon icon="i-ph-buildings-duotone" class="text-2xl" />
                 <p>Switch Organization</p>
-              </component>
-              <component
-                :is="BaseButton"
+              </base-button>
+              <base-button
                 variant="text"
                 color="primary"
                 size="sm"
                 @click="toggleDarkMode()"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
-                <BaseIcon v-if="isDarkMode" icon="i-ph-sun-duotone" class="text-2xl" />
-                <BaseIcon v-else icon="i-ph-moon-duotone" class="text-2xl" />
+                <base-icon v-if="isDarkMode" icon="i-ph-sun-duotone" class="text-2xl" />
+                <base-icon v-else icon="i-ph-moon-duotone" class="text-2xl" />
                 <p>Dark Mode</p>
-              </component>
-              <component
-                :is="BaseButton"
+              </base-button>
+              <base-button
                 variant="text"
                 color="danger"
                 size="sm"
                 class="text-slate-900 dark:text-slate-50 flex justify-left!"
               >
-                <BaseIcon icon="i-ph-sign-out-duotone" class="text-2xl" />
+                <base-icon icon="i-ph-sign-out-duotone" class="text-2xl" />
                 <p>Sign Out</p>
-              </component>
+              </base-button>
             </div>
           </template>
-        </component>
+        </base-popover>
       </div>
     </div>
   </nav>
