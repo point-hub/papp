@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { BaseButton, useSidebarStore } from '../index'
@@ -28,7 +28,7 @@ const resetActiveMenu = () => {
   activeMenu.value = ''
 }
 
-onMounted(() => {
+const refreshMenu = () => {
   for (const menu of menus.value) {
     if (activeMenu.value === menu) {
       activeMenu.value = menu.name
@@ -41,6 +41,18 @@ onMounted(() => {
       }
     }
   }
+}
+
+watch(
+  () => route.path,
+  () => {
+    resetActiveMenu()
+    refreshMenu()
+  }
+)
+
+onMounted(() => {
+  refreshMenu()
 })
 
 const pathHandler = (path: string) => {
