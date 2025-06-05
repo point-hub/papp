@@ -1,5 +1,13 @@
 import { type App } from 'vue'
 
+// Layout Components
+import AppFooter from '@/components/app-footer.vue'
+import AppHeader from '@/components/app-header.vue'
+import AppPreloader from '@/components/app-preloader.vue'
+import AppSidebar from '@/components/app-sidebar.vue'
+import AppSidebarMenu from '@/components/app-sidebar-menu.vue'
+import AppSidebarPanel from '@/components/app-sidebar-panel.vue'
+// Base Components
 import BaseAccordion from '@/components/base-accordion.vue'
 import BaseAccordionItem from '@/components/base-accordion-item.vue'
 import BaseAlert from '@/components/base-alert.vue'
@@ -48,10 +56,24 @@ import BaseTimelineContent from '@/components/base-timeline-content.vue'
 import BaseToast from '@/components/base-toast.vue'
 import BaseTooltip from '@/components/base-tooltip.vue'
 import BaseTreeview from '@/components/base-treeview.vue'
+// Header Components
+import HeaderMenu from '@/components/header-menu.vue'
+import HeaderMenuAccount from '@/components/header-menu-account.vue'
+import HeaderMenuDarkMode from '@/components/header-menu-dark-mode.vue'
+import HeaderMenuSignout from '@/components/header-menu-signout.vue'
+import HeaderMenuSwitchOrganization from '@/components/header-menu-switch-organization.vue'
+import HeaderNotification from '@/components/header-notification.vue'
+import HeaderSidebarButton from '@/components/header-sidebar-button.vue'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PluginBaseComponents: any = {
   install(app: App) {
+    app.component('AppFooter', AppFooter)
+    app.component('AppHeader', AppHeader)
+    app.component('AppPreloader', AppPreloader)
+    app.component('AppSidebar', AppSidebar)
+    app.component('AppSidebarMenu', AppSidebarMenu)
+    app.component('AppSidebarPanel', AppSidebarPanel)
     app.component('BaseAccordion', BaseAccordion)
     app.component('BaseAccordionItem', BaseAccordionItem)
     app.component('BaseAlert', BaseAlert)
@@ -100,6 +122,13 @@ const PluginBaseComponents: any = {
     app.component('BaseToast', BaseToast)
     app.component('BaseTooltip', BaseTooltip)
     app.component('BaseTreeview', BaseTreeview)
+    app.component('HeaderMenu', HeaderMenu)
+    app.component('HeaderMenuAccount', HeaderMenuAccount)
+    app.component('HeaderMenuDarkMode', HeaderMenuDarkMode)
+    app.component('HeaderMenuSignout', HeaderMenuSignout)
+    app.component('HeaderMenuSwitchOrganization', HeaderMenuSwitchOrganization)
+    app.component('HeaderNotification', HeaderNotification)
+    app.component('HeaderSidebarButton', HeaderSidebarButton)
   }
 }
 
