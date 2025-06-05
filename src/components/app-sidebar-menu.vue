@@ -2,6 +2,8 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+import type { IMenu } from '@/stores/sidebar-menu'
+
 import { BaseButton, useSidebarStore } from '../index'
 
 const props = defineProps<{
