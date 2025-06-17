@@ -25,14 +25,13 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <label
       :for="id"
-      v-if="label"
       class="font-bold flex"
       :class="{
         'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15%': props.layout === 'horizontal',
         'text-sm items-center gap-1': props.layout === 'vertical'
       }"
     >
-      <span>{{ label }}</span>
+      <span v-if="props.label">{{ props.label }}</span>
       <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
       <span v-if="props.description" class="text-xs font-medium text-slate-400">
         {{ props.description }}
