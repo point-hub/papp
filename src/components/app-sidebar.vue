@@ -63,12 +63,12 @@ const onChooseApp = (path: string) => {
 }
 
 .is-sidebar-open .sidebar-backdrop {
-  @apply fixed inset-0 w-full h-full bg-black/50 z-50;
+  @apply fixed inset-0 w-full h-full bg-black/10 z-50 backdrop-blur-sm;
 }
 
 @screen lg {
   .is-sidebar-open .sidebar-backdrop {
-    @apply lg:bg-black/0 lg:w-0 lg:h-0;
+    @apply lg:bg-black/0 lg:w-0 lg:h-0 lg:backdrop-blur-0;
   }
 }
 </style>
