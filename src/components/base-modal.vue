@@ -39,7 +39,7 @@ defineExpose({ isOpen })
   <TransitionRoot appear :show="isOpen" as="template">
     <Dialog as="div" @close="close()" class="relative z-60">
       <!-- The backdrop, rendered as a fixed sibling to the panel container -->
-      <div class="fixed inset-0 bg-black/40" aria-hidden="true" />
+      <div class="fixed inset-0 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
       <TransitionChild
         as="template"
@@ -65,7 +65,7 @@ defineExpose({ isOpen })
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900"
+              class="w-full transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900"
               :class="{
                 'max-w-sm': props.size === 'sm',
                 'max-w-md': props.size === 'md',
@@ -78,6 +78,7 @@ defineExpose({ isOpen })
             >
               <base-button
                 type="button"
+                size="xs"
                 @click="close()"
                 variant="text"
                 color="danger"
