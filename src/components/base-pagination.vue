@@ -85,7 +85,7 @@ const isShowPageButton = (i: number) => {
 </script>
 
 <template>
-  <div class="flex w-full items-center justify-between" v-if="totalPage > 1">
+  <div class="flex w-full items-center justify-between">
     <div>
       <p class="text-sm text-slate-600 dark:text-slate-400">
         Showing {{ 1 + (value - 1) * pageSize }} to
@@ -93,11 +93,11 @@ const isShowPageButton = (i: number) => {
         {{ totalDocument }} entries
       </p>
     </div>
-    <div class="flex">
-      <base-button v-if="value > 1" variant="text" size="xs" @click="onClickFirst()">
+    <div v-if="totalPage > 1" class="flex">
+      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickFirst()">
         <base-icon icon="i-fas-angles-left" />
       </base-button>
-      <base-button v-if="value > 1" variant="text" size="xs" @click="onClickPrev()">
+      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickPrev()">
         <base-icon icon="i-fas-angle-left" />
       </base-button>
       <template v-for="i in totalPage" :key="i">
@@ -114,10 +114,10 @@ const isShowPageButton = (i: number) => {
           {{ i }}
         </base-button>
       </template>
-      <base-button v-if="value < totalPage" variant="text" size="xs" @click="onClickNext()">
+      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickNext()">
         <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
       </base-button>
-      <base-button v-if="value < totalPage" variant="text" size="xs" @click="onClickLast()">
+      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickLast()">
         <base-icon icon="i-fas-angles-right" />
       </base-button>
     </div>
