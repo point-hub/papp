@@ -88,7 +88,7 @@ const isShowPageButton = (i: number) => {
   <div class="flex w-full items-center justify-between">
     <div>
       <p class="text-sm text-slate-600 dark:text-slate-400">
-        Showing {{ 1 + (value - 1) * pageSize }} to
+        Showing {{ totalDocument ? 1 + (value - 1) * pageSize : 0 }} to
         {{ value * pageSize > totalDocument ? totalDocument : value * pageSize }} of
         {{ totalDocument }} entries
       </p>
