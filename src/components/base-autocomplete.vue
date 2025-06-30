@@ -36,6 +36,9 @@ export interface Props {
   dataTestid?: string
 }
 
+const selectedLabel = defineModel('selected-label')
+const selectedValue = defineModel('selected-value')
+
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
@@ -79,6 +82,8 @@ const inputRef = ref()
 watch(
   () => selected.value,
   () => {
+    selectedLabel.value = selected.value?.label ?? ""
+    selectedValue.value = selected.value?.value ?? ""
     if (errors.value?.length) errors.value = []
   }
 )

@@ -11,37 +11,36 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type BaseAutocompleteOptionInterface } from '@point-hub/papp'
 
-interface OptionInterface extends BaseAutocompleteOptionInterface {
+interface OptionInterface {
   id: number
   label: string
+  value: string
 }
 
 const options: OptionInterface[] = [
-  { id: 1, label: 'Durward Reynolds' },
-  { id: 2, label: 'Kenton Towne' },
-  { id: 3, label: 'Therese Wunsch' },
-  { id: 4, label: 'Benedict Kessler' }
+  { id: 1, label: 'Durward Reynolds', value: 'durward-reynolds' },
+  { id: 2, label: 'Kenton Towne', value: 'kenton-towne' },
+  { id: 3, label: 'Therese Wunsch', value: 'therese-wunsch' },
+  { id: 4, label: 'Benedict Kessler', value: 'benedict-kessler' }
 ]
 
 const selected = ref()
-
-const form = ref<{
-  name: string | null
-}>({
-  name: null
-})
-
-const onSubmit = () => {
-  form.value.name = selected.value?.label ?? null
-}
+const selectedLabel = ref('')
+const selectedValue = ref('')
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit()">
-    <base-autocomplete v-model="selected" :options="options" />
-  </form>
+  <Demo>
+    <form @submit.prevent="onSubmit()">
+      <base-autocomplete v-model="selected" :options="options" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
+      <div class="flex flex-col gap-4">
+        <div><span class="font-bold">v-model = </span><span>{{ selected }}</span></div>
+        <div><span class="font-bold">v-model:selectedLabel = </span><span>{{ selectedLabel }}</span></div>
+        <div><span class="font-bold">v-model:selectedValue = </span><span>{{ selectedValue }}</span></div>
+      </div>
+    </form>
+  </Demo>
 </template>
 ```
 
