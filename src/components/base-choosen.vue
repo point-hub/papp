@@ -4,6 +4,7 @@ import { computed, nextTick, ref, watch } from 'vue'
 interface IOption {
   [key: string]: unknown
   label: string
+  value: string
 }
 
 import { isEmpty } from '@point-hub/js-utils'
@@ -44,6 +45,9 @@ const search = defineModel<string>('search', { default: '' })
 const options = defineModel<IOption[]>('options')
 const errors = defineModel<string[]>('errors')
 
+const selectedLabel = defineModel('selected-label')
+const selectedValue = defineModel('selected-value')
+
 const showModal = ref(false)
 const inputRef = ref()
 const modalRef = ref()
@@ -81,6 +85,9 @@ const onSelect = (option: IOption) => {
 
 const onClear = () => {
   input.value = ''
+  selected.value = undefined
+  selectedLabel.value = ''
+  selectedValue.value = ''
   search.value = ''
   onClose()
 }
@@ -88,13 +95,9 @@ const onClear = () => {
 watch(
   selected,
   () => {
-    if (isEmpty(selected.value?.label)) {
-      input.value = ''
-      search.value = ''
-    } else {
-      input.value = selected.value?.label ?? ''
-      search.value = selected.value?.label ?? ''
-    }
+    input.value = selected.value?.label ?? ''
+    selectedLabel.value = selected.value?.label ?? ''
+    selectedValue.value = selected.value?.value ?? ''
     if (errors.value?.length) errors.value = []
   },
   { immediate: true }
@@ -153,16 +156,20 @@ const onClose = () => {
           border="full"
           v-model="search"
           :data-testid="`${dataTestid}-search`"
-        />
-        <base-button
-          class="absolute right-5 top-1/2 -translate-x-1/2 -translate-y-1/2 px-1!"
-          variant="filled"
-          color="danger"
-          size="xs"
-          :data-testid="`${dataTestid}-clear-button`"
         >
-          <base-icon icon="i-fas-xmark" @click="onClear" />
-        </base-button>
+          <template #suffix>
+            <base-button
+              class="absolute right-0 top-0 h-full"
+              variant="filled"
+              color="danger"
+              size="xs"
+              :data-testid="`${dataTestid}-clear-button`"
+              @click="onClear"
+            >
+              <base-icon icon="i-fas-xmark" />
+            </base-button>
+          </template>
+        </base-input>
       </div>
       <!-- Options -->
       <div class="space-y-8 mt-3 flex flex-col h-full overflow-y-auto">
@@ -179,7 +186,8 @@ const onClose = () => {
           <div
             v-for="(option, index) in filtered"
             :key="index"
-            class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selected?.value }"
             @click="onSelect(option)"
             :data-testid="`${dataTestid}-option-${option._id}`"
           >
