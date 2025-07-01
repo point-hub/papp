@@ -16,6 +16,7 @@ export interface Props {
   maxlength?: number
   autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   minHeight?: number
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -83,6 +85,7 @@ defineExpose({
       :placeholder="placeholder"
       :autofocus="autofocus"
       :required="required"
+      :readonly="readonly"
       :disabled="disabled"
       :maxlength="props.maxlength"
       class="form-input resize-none px-2"

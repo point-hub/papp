@@ -24,6 +24,7 @@ export interface Props {
   layout?: BaseFormLayoutType
   autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -35,6 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -104,6 +106,9 @@ watch(
 )
 
 const onOpen = () => {
+  if (props.readonly || props.disabled) {
+    return
+  }
   showModal.value = true
 }
 
@@ -198,3 +203,9 @@ const onClose = () => {
     </div>
   </base-modal>
 </template>
+
+<style scope>
+.form-input:read-only {
+  @apply hover:cursor-pointer! text-slate-900! dark:text-slate-100!;
+}
+</style>

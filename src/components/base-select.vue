@@ -30,7 +30,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
-  placeholder: 'Please select',
+  placeholder: 'Select',
   required: false,
   disabled: false
 })

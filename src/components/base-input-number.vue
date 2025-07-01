@@ -22,6 +22,7 @@ export interface Props {
   layout?: BaseFormLayoutType
   decimalLength?: number
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   autofocus?: boolean
 
@@ -41,6 +42,7 @@ const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
   required: false,
+  readonly: false,
   autofocus: false,
   disabled: false,
   resetErrorsOnUpdate: true
@@ -132,6 +134,7 @@ defineExpose({
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
       :required="props.required"
+      :readonly="props.readonly"
       :disabled="props.disabled"
       :data-testid="props.dataTestid"
       @click="selectAllText"

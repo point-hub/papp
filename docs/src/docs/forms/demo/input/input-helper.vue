@@ -7,7 +7,8 @@ const form = ref({
   name3: '',
   name4: '',
   name5: '',
-  name6: 'Disabled'
+  name6: 'Readonly',
+  name7: 'Disabled'
 })
 
 const errors = ref(['Error Example'])
@@ -21,7 +22,8 @@ const errors = ref(['Error Example'])
       <base-input v-model="form.name3" label="Label" description="Description example" />
       <base-input v-model="form.name4" label="Label" :helpers="['Helper example']" />
       <base-input v-model="form.name5" label="Label" v-model:errors="errors" />
-      <base-input v-model="form.name6" label="Label" description="Disabled" disabled />
+      <base-input v-model="form.name6" label="Label" description="Readonly" readonly />
+      <base-input v-model="form.name7" label="Label" description="Disabled" disabled />
     </form>
   </Demo>
 </template>

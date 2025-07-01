@@ -27,8 +27,8 @@ const props = withDefaults(defineProps<Props>(), {
       :for="id"
       class="font-bold flex"
       :class="{
-        'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15% items-center lg:items-start gap-1': props.layout === 'horizontal',
-        'text-sm items-center gap-1': props.layout === 'vertical'
+        'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-1': props.layout === 'horizontal',
+        'text-sm gap-1': props.layout === 'vertical'
       }"
     >
       <span v-if="props.label">{{ props.label }}</span>

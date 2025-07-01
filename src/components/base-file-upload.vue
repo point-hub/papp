@@ -16,6 +16,7 @@ export interface Props {
   multiple?: boolean
   autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -27,6 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   multiple: false,
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -74,6 +76,7 @@ defineExpose({
         :accept="props.accept"
         :autofocus="props.autofocus"
         :required="props.required"
+        :readonly="props.readonly"
         :disabled="props.disabled"
         :data-testid="props.dataTestid"
       />

@@ -20,6 +20,7 @@ export interface Props {
   layout?: BaseFormLayoutType
   theme?: BaseCheckboxThemeType
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   theme: 'primary',
   layout: 'vertical',
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -68,6 +70,7 @@ defineExpose({
         :id="uuid"
         v-model="modelValue"
         :data-testid="props.dataTestid"
+        :readonly="props.readonly"
         :disabled="props.disabled"
         :value="trueValue"
         :required="required"

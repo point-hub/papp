@@ -15,6 +15,7 @@ export interface Props {
   layout?: BaseFormLayoutType
   optionsLayout?: BaseRadioOptionsLayout
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   optionsLayout: 'horizontal',
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -64,7 +66,7 @@ const value = computed({
           as="div"
           v-for="option in options"
           :key="option.label"
-          :disabled="disabled"
+          :disabled="disabled || readonly"
           :value="option"
           v-slot="{ active, checked }"
           :data-testid="`${dataTestid}-${option.value}`"

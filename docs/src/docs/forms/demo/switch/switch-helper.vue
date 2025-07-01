@@ -38,6 +38,13 @@ const errors = ref(['Error Example'])
         v-model="form.checked5"
         label="Label"
         layout="horizontal"
+        description="Readonly"
+        readonly
+      />
+      <base-switch
+        v-model="form.checked5"
+        label="Label"
+        layout="horizontal"
         description="Disabled"
         disabled
       />

@@ -21,7 +21,8 @@ const form = ref({
   selected2: null,
   selected3: null,
   selected4: null,
-  selected5: options[0]
+  selected5: options[0],
+  selected6: options[0]
 })
 
 const errors = ref(['Error Example'])
@@ -52,6 +53,13 @@ const errors = ref(['Error Example'])
       <base-radio
         :options="options"
         v-model="form.selected5"
+        label="Label"
+        description="Readonly"
+        readonly
+      />
+      <base-radio
+        :options="options"
+        v-model="form.selected6"
         label="Label"
         description="Disabled"
         disabled

@@ -16,6 +16,7 @@ export interface Props {
   border?: BaseInputMaskBorderType
   layout?: BaseFormLayoutType
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -71,6 +73,7 @@ defineExpose({
       v-model.lazy="value"
       v-input-mask="options"
       :required="props.required"
+      :readonly="props.readonly"
       :disabled="props.disabled"
       :autofocus="props.autofocus"
       :placeholder="props.placeholder"

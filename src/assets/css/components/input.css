@@ -17,5 +17,8 @@
   @apply border border-solid;
 }
 .form-input:disabled {
-  @apply hover:cursor-not-allowed text-slate-400;
+  @apply hover:cursor-not-allowed text-slate-400!;
+}
+.form-input:read-only {
+  @apply hover:cursor-not-allowed text-slate-500 dark:text-slate-300;
 }

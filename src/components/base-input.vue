@@ -151,9 +151,9 @@ defineExpose({
       :maxlength="props.maxlength"
       :placeholder="props.placeholder"
       :autofocus="props.autofocus"
+      :required="props.required"
       :readonly="props.readonly"
       :disabled="props.disabled"
-      :required="props.required"
       :data-testid="props.dataTestid"
       :style="{
         paddingLeft: `${paddingLeft}px`,

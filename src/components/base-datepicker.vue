@@ -15,6 +15,7 @@ export interface Props {
   layout?: BaseFormLayoutType
   autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'vertical',
   autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
@@ -161,6 +163,7 @@ defineExpose({
       placeholder="YYYY-MM-DD"
       :autofocus="props.autofocus"
       :required="props.required"
+      :readonly="props.readonly"
       :disabled="props.disabled"
       :data-testid="props.dataTestid"
     />

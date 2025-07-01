@@ -17,6 +17,7 @@ export interface Props {
   size?: BaseSwitchSize
   layout?: BaseFormLayoutType
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -64,7 +65,7 @@ const value = computed({
           v-model="value"
           class="switch"
           type="checkbox"
-          :disabled="disabled"
+          :disabled="disabled || readonly"
           :class="[
             {
               'switch-sm': size === 'sm',
