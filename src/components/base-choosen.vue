@@ -187,7 +187,7 @@ const onClose = () => {
             v-for="(option, index) in filtered"
             :key="index"
             class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
-            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selected?.value }"
+            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.label === selected?.label }"
             @click="onSelect(option)"
             :data-testid="`${dataTestid}-option-${option._id}`"
           >
