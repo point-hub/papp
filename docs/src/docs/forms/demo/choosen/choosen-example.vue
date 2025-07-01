@@ -14,13 +14,14 @@ const options = ref([
 ])
 
 const selected = ref()
+const search = ref()
 const selectedLabel = ref('')
 const selectedValue = ref('')
 </script>
 
 <template>
   <Demo is-row>
-    <base-choosen title="Example" :options="options" v-model:selected="selected" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
+    <base-choosen title="Example" v-model:search="search" :options="options" v-model:selected="selected" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
     <div class="flex flex-col gap-4">
       <div><span class="font-bold">v-model = </span><span>{{ selected }}</span></div>
       <div><span class="font-bold">v-model:selectedLabel = </span><span>{{ selectedLabel }}</span></div>

@@ -52,17 +52,17 @@ const props = withDefaults(defineProps<Props>(), {
 
 const selected = defineModel<BaseAutocompleteOptionInterface>()
 const isLoading = defineModel<boolean>('isLoading', { default: false })
-const query = defineModel<string>('query', { default: '' })
+const search = defineModel<string>('search', { default: '' })
 const errors = defineModel<string[]>('errors')
 
 const filtered = computed(() =>
-  query.value === ''
+  search.value === ''
     ? props.options
     : props.options.filter((data) =>
         data?.label
           ?.toLowerCase()
           .replace(/\s+/g, '')
-          .includes(query.value.toLowerCase().replace(/\s+/g, ''))
+          .includes(search.value.toLowerCase().replace(/\s+/g, ''))
       )
 )
 
@@ -124,7 +124,7 @@ defineExpose({
               'border-none px-0!': border === 'none'
             }"
             :displayValue="() => selected?.label ?? ''"
-            @change="query = $event.target.value"
+            @change="search = $event.target.value"
             :data-testid="`${dataTestid}-input`"
           />
           <ComboboxButton
@@ -150,7 +150,7 @@ defineExpose({
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          @after-leave="query = ''"
+          @after-leave="search = ''"
         >
           <ComboboxOptions class="options">
             <div
@@ -160,7 +160,7 @@ defineExpose({
               Loading data...
             </div>
             <div
-              v-if="!isLoading && filtered.length === 0 && query !== ''"
+              v-if="!isLoading && filtered.length === 0 && search !== ''"
               class="relative cursor-default select-none px-4 py-2 text-gray-700"
             >
               Nothing found.
