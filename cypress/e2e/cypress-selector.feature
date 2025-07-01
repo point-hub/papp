@@ -18,9 +18,6 @@ Feature: Submit data
     And I click choosen "choosen-input"
     And I type "Charles" into "choosen-search"
     And I click choosen "choosen-option-3"
-    # Autocomplete
-    And I type "kenton" into "autocomplete-input"
-    And I click autocomplete "autocomplete-option-2"
     # Select
     And I click select "select-input"
     And I click select "select-option-1"

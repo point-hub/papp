@@ -74,11 +74,6 @@ export { default as BaseTooltip } from './components/base-tooltip.vue'
 export { default as BaseTreeview } from './components/base-treeview.vue'
 
 // Forms
-export {
-  default as BaseAutocomplete,
-  type BaseAutocompleteBorderType,
-  type BaseAutocompleteOptionInterface
-} from './components/base-autocomplete.vue'
 export { default as BaseCheckbox, type BaseCheckboxThemeType } from './components/base-checkbox.vue'
 export { default as BaseChoosen } from './components/base-choosen.vue'
 export {

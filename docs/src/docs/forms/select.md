@@ -11,7 +11,7 @@ import SelectHelper from './demo/select/select-helper.vue'
 
 # Select
 
-The select element is used to create a drop-down list. The select element is most often used in a form, to collect user input
+Select gives you a customizable select box with support for searching, tagging, remote data sets, infinite scrolling, and many other highly used options.
 
 ## Examples
 
@@ -36,30 +36,29 @@ The select element is used to create a drop-down list. The select element is mos
 ### Types
 
 ```ts
-export interface BaseSelectOptionInterface {
-  label: string
-  [key: string]: any
-}
 export type BaseSelectBorderType = 'none' | 'simple' | 'full'
 export type BaseFormLayoutType = 'vertical' | 'horizontal'
 ```
 
 ### Props
 
-| Name           | Type                      | Default    | Description                  |
-| -------------- | ------------------------- | ---------- | ---------------------------- |
-| v-model        | BaseSelectOptionInterface |            | v-model is `required`.       |
-| v-model:errors | string[]                  |            | Input error message.         |
-| id             | string                    |            | Input id.                    |
-| label          | string                    |            | Input label.                 |
-| description    | string                    |            | Input description.           |
-| placeholder    | string                    |            | Input placeholder.           |
-| border         | BaseSelectBorderType      | `simple`   | Input border.                |
-| layout         | BaseFormLayoutType        | `vertical` | Input layout.                |
-| required       | boolean                   | false      | if true input is `required`. |
-| disabled       | boolean                   | false      | if true input is `disabled`. |
-| helpers        | string[]                  |            | Input helper message.        |
-| data-testid    | string                    |            | Testing ID.                  |
+| Name                  | Type                       | Default    | Description                    |
+|-----------------------|----------------------------|------------|--------------------------------|
+| v-model               | object                     |            | v-model is `required`.         |
+| v-model:selectedLabel | string                     |            | v-model for label only.        |
+| v-model:selectedValue | string                     |            | v-model for value only.        |
+| v-model:errors        | string[]                   |            | Input error message.           |
+| id                    | string                     |            | Input ID.                      |
+| label                 | string                     |            | Input label.                   |
+| description           | string                     |            | Input description.             |
+| placeholder           | string                     |            | Input placeholder.             |
+| border                | BaseSelectBorderType | `simple`   | Input border.                  |
+| layout                | BaseFormLayoutType         | `vertical` | Input layout.                  |
+| autofocus             | boolean                    | `false`    | Focus input on page load.      |
+| required              | boolean                    | `false`    | if `true` input is `required`. |
+| disabled              | boolean                    | `false`    | if `true` input is `disabled`. |
+| helpers               | string[]                   |            | Input helper message.          |
+| data-testid           | string                     |            | Testing ID.                    |
 
 ## Automated Test Guide
 
@@ -67,8 +66,8 @@ If you pass a `data-testid` to the `<base-select>` component, it will automatica
 
 For example, if you set `data-testid="user-select"`, the component will generate the following attributes:
 
-| Element               | `data-testid`              |
-| --------------------- | -------------------------- |
+| Element               | `data-testid`                    |
+| --------------------- | -------------------------------- |
 | Input Field           | `user-select-input`        |
 | Option with `_id = 1` | `user-select-1`            |
 | Option with `_id = 2` | `user-select-2`            |
@@ -114,6 +113,10 @@ const userSelected = ref()
 </script>
 
 <template>
-  <base-select v-model="userSelected" :options="userOptions" data-testid="user-select" />
+  <base-select
+    v-model="userSelected"
+    :options="userOptions"
+    data-testid="user-select"
+  />
 </template>
 ```

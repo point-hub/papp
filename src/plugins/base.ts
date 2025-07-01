@@ -11,7 +11,6 @@ import AppSidebarPanel from '@/components/app-sidebar-panel.vue'
 import BaseAccordion from '@/components/base-accordion.vue'
 import BaseAccordionItem from '@/components/base-accordion-item.vue'
 import BaseAlert from '@/components/base-alert.vue'
-import BaseAutocomplete from '@/components/base-autocomplete.vue'
 import BaseAvatar from '@/components/base-avatar.vue'
 import BaseAvatarGroup from '@/components/base-avatar-group.vue'
 import BaseBadge from '@/components/base-badge.vue'
@@ -77,7 +76,6 @@ const PluginBaseComponents: any = {
     app.component('BaseAccordion', BaseAccordion)
     app.component('BaseAccordionItem', BaseAccordionItem)
     app.component('BaseAlert', BaseAlert)
-    app.component('BaseAutocomplete', BaseAutocomplete)
     app.component('BaseAvatar', BaseAvatar)
     app.component('BaseAvatarGroup', BaseAvatarGroup)
     app.component('BaseBadge', BaseBadge)

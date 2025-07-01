@@ -56,8 +56,12 @@ const sitemap = {
       name: 'Form',
       child: [
         {
-          link: '/library/papp/docs/form/autocomplete',
-          name: 'Autocomplete'
+          link: '/library/papp/docs/form/checkbox',
+          name: 'Checkbox'
+        },
+        {
+          link: '/library/papp/docs/form/choosen',
+          name: 'Choosen'
         }
       ]
     }

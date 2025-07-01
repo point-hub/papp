@@ -44,10 +44,6 @@ When('I click choosen {string}', (selector: string) => {
   cy.get(`[data-testid="${selector}"]`).click()
 })
 
-When('I click autocomplete {string}', (selector: string) => {
-  cy.get(`[data-testid="${selector}"]`).click()
-})
-
 When('I upload {string} into {string}', (file: string, selector: string) => {
   // file in cypress/fixtures
   cy.get(`[data-testid="${selector}"]`).attachFile(file)

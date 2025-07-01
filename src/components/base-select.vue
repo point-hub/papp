@@ -1,57 +1,99 @@
 <script setup lang="ts">
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
-import { computed } from 'vue'
+import {
+  Combobox,
+  ComboboxButton,
+  ComboboxInput,
+  ComboboxOption,
+  ComboboxOptions,
+  TransitionRoot
+} from '@headlessui/vue'
+import { isEmpty } from '@point-hub/js-utils'
+import { computed, ref } from 'vue'
+import { watch } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
+export type BaseSelectBorderType = 'none' | 'simple' | 'full'
+
 export interface BaseSelectOptionInterface {
-  label: string
+  label?: string
+  value?: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 
-export type BaseSelectBorderType = 'none' | 'simple' | 'full'
-
 export interface Props {
-  modelValue: BaseSelectOptionInterface | undefined | null
-  options: BaseSelectOptionInterface[]
   id?: string
+  options: BaseSelectOptionInterface[]
   label?: string
   description?: string
   placeholder?: string
   border?: BaseSelectBorderType
   layout?: BaseFormLayoutType
+  autofocus?: boolean
   required?: boolean
+  readonly?: boolean
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
 }
 
+const selectedLabel = defineModel('selected-label')
+const selectedValue = defineModel('selected-value')
+
 const props = withDefaults(defineProps<Props>(), {
   border: 'simple',
   layout: 'vertical',
-  placeholder: 'Select',
+  autofocus: false,
   required: false,
+  readonly: false,
   disabled: false
 })
 
+const selected = defineModel<BaseSelectOptionInterface>()
+const isLoading = defineModel<boolean>('isLoading', { default: false })
+const search = defineModel<string>('search', { default: '' })
 const errors = defineModel<string[]>('errors')
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: BaseSelectOptionInterface | undefined | null): void
-}>()
+const filtered = computed(() =>
+  search.value === ''
+    ? props.options
+    : props.options.filter((data) =>
+        data?.label
+          ?.toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(search.value.toLowerCase().replace(/\s+/g, ''))
+      )
+)
 
-const selected = computed<BaseSelectOptionInterface | undefined | null>({
-  set: (option) => {
-    emit('update:modelValue', option)
-    if (errors.value?.length) errors.value = []
-  },
-  get: () => props.modelValue
-})
-
-const clearSelect = () => {
-  if (!props.disabled) selected.value = null
+const onClear = () => {
+  if (!props.disabled) {
+    selected.value = undefined
+  }
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const buttonRef = ref<any>(null)
+const onInputClicked = () => {
+  if (buttonRef.value) {
+    buttonRef.value.el.click()
+  }
+}
+
+const inputRef = ref()
+
+watch(
+  () => selected.value,
+  () => {
+    selectedLabel.value = selected.value?.label ?? ""
+    selectedValue.value = selected.value?.value ?? ""
+    if (errors.value?.length) errors.value = []
+  }
+)
+
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
@@ -63,81 +105,110 @@ const clearSelect = () => {
     :helpers="props.helpers"
     :errors="errors"
   >
-    <Listbox v-model="selected" :disabled="props.disabled">
-      <div class="list-box">
-        <ListboxButton
-          class="list-box-button"
-          :class="{
-            'border-simple': border === 'simple',
-            'border-full': border === 'full',
-            'border-none': border === 'none'
-          }"
-          :data-testid="`${dataTestid}-input`"
+    <Combobox v-model="selected">
+      <div class="relative w-full">
+        <div class="relative">
+          <ComboboxInput
+            ref="inputRef"
+            class="form-input"
+            @click="onInputClicked"
+            autocomplete="off"
+            :autofocus="props.autofocus"
+            :required="props.required"
+            :readonly="props.readonly"
+            :disabled="props.disabled"
+            :placeholder="placeholder"
+            :class="{
+              'border-simple': border === 'simple',
+              'border-full': border === 'full',
+              'border-none px-0!': border === 'none'
+            }"
+            :displayValue="() => selected?.label ?? ''"
+            @change="search = $event.target.value"
+            :data-testid="`${dataTestid}-input`"
+          />
+          <ComboboxButton
+            v-if="isEmpty(selected)"
+            ref="buttonRef"
+            class="absolute inset-y-0 right-1 flex items-center"
+          >
+            <base-icon icon="i-far-angle-down" />
+          </ComboboxButton>
+          <base-button
+            v-else
+            size="none"
+            variant="text"
+            type="button"
+            class="absolute inset-y-0 right-1 flex items-center"
+            @click="onClear()"
+            :data-testid="`${dataTestid}-clear-button`"
+          >
+            <base-icon icon="i-far-xmark" />
+          </base-button>
+        </div>
+        <TransitionRoot
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+          @after-leave="search = ''"
         >
-          <span v-if="!selected?.label" class="block text-slate-400">
-            {{ props.placeholder }}
-          </span>
-          <span v-else class="block">{{ selected?.label }}</span>
-          <span class="list-box-button-icon">
-            <i v-if="!selected?.label" class="i-fas-angle-down block h-5 w-5 text-gray-400" />
-            <i
-              v-else
-              class="i-fas-xmark block h-5 w-5 text-gray-400"
-              @click="clearSelect()"
-              :data-testid="`${dataTestid}-clear-button`"
-            />
-          </span>
-        </ListboxButton>
-
-        <transition>
-          <ListboxOptions class="list-box-options">
-            <ListboxOption
-              v-slot="{ active, selected }"
-              v-for="(data, index) in options"
-              :key="index"
-              :value="data"
-              as="template"
-              :data-testid="`${dataTestid}-option-${data._id}`"
+          <ComboboxOptions class="options">
+            <div
+              v-if="isLoading"
+              class="relative cursor-default select-none px-4 py-2 text-gray-700"
             >
-              <li
-                :class="[
-                  active ? 'list-box-option-active' : 'list-box-option-inactive',
-                  'list-box-option'
-                ]"
+              Loading data...
+            </div>
+            <div
+              v-if="!isLoading && filtered.length === 0 && search !== ''"
+              class="relative cursor-default select-none px-4 py-2 text-gray-700"
+            >
+              Nothing found.
+            </div>
+            <template v-if="!isLoading">
+              <ComboboxOption
+                v-for="data in filtered"
+                as="template"
+                :key="data._id"
+                :value="data"
+                v-slot="{ selected, active }"
+                :data-testid="`${dataTestid}-option-${data._id}`"
               >
-                <span :class="[selected ? 'font-extrabold' : 'font-normal', 'block ']">
-                  {{ data.label }}
-                </span>
-              </li>
-            </ListboxOption>
-          </ListboxOptions>
-        </transition>
+                <li
+                  class="option"
+                  :class="{
+                    'option-active': active,
+                    'option-inactive': !active
+                  }"
+                >
+                  <span
+                    class="block"
+                    :class="{ 'font-medium': selected, 'font-normal': !selected }"
+                  >
+                    {{ data.label }}
+                  </span>
+                </li>
+              </ComboboxOption>
+            </template>
+          </ComboboxOptions>
+        </TransitionRoot>
       </div>
-    </Listbox>
+    </Combobox>
   </base-form>
 </template>
 
 <style scoped>
 @import url('../assets/css/components/input.css');
-.list-box {
-  @apply relative w-full cursor-pointer;
-}
-.list-box-button {
-  @apply relative w-full  dark:border-slate-600  py-2 pl-3 pr-10 text-left focus-visible:border-indigo-500 sm:text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-orange-300;
-}
-.list-box-button-icon {
-  @apply absolute inset-y-0 right-0 flex items-center pr-2;
-}
-.list-box-options {
+.options {
   @apply absolute dark:bg-slate-800 dark:border-slate-600 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm focus:outline-none z-1;
 }
-.list-box-option-active {
+.option {
+  @apply relative cursor-pointer select-none py-2 px-4;
+}
+.option-active {
   @apply bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100;
 }
-.list-box-option-inactive {
+.option-inactive {
   @apply text-gray-900 dark:text-gray-300;
-}
-.list-box-option {
-  @apply relative select-none py-2 pl-4 pr-4;
 }
 </style>

@@ -22,14 +22,6 @@ const choosenOptions = ref([
 ])
 const choosenSelected = ref()
 
-const autocompleteOptions = [
-  { _id: '1', label: 'Durward Reynolds' },
-  { _id: '2', label: 'Kenton Towne' },
-  { _id: '3', label: 'Therese Wunsch' },
-  { _id: '4', label: 'Benedict Kessler' }
-]
-const autocompleteSelected = ref()
-
 const selectOptions = [
   { _id: '1', label: 'Durward Reynolds' },
   { _id: '2', label: 'Kenton Towne' },
@@ -109,15 +101,6 @@ const onSubmit = () => {
           v-model:selected="choosenSelected"
           border="full"
           data-testid="choosen"
-        />
-
-        <base-autocomplete
-          label="Autocomplete"
-          layout="horizontal"
-          v-model="autocompleteSelected"
-          :options="autocompleteOptions"
-          border="full"
-          data-testid="autocomplete"
         />
 
         <base-select

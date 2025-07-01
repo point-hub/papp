@@ -1,21 +1,34 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const options = [
-  { id: 1, label: 'Durward Reynolds' },
-  { id: 2, label: 'Kenton Towne' },
-  { id: 3, label: 'Therese Wunsch' },
-  { id: 4, label: 'Benedict Kessler' }
-]
-const form = ref({
-  selected: null
-})
+interface OptionInterface {
+  id: number
+  label: string
+  value: string
+}
+
+const options: OptionInterface[] = ref([
+  { id: 1, label: 'Durward Reynolds', value: 'durward-reynolds' },
+  { id: 2, label: 'Kenton Towne', value: 'kenton-towne' },
+  { id: 3, label: 'Therese Wunsch', value: 'therese-wunsch' },
+  { id: 4, label: 'Benedict Kessler', value: 'benedict-kessler' }
+])
+
+const selected = ref()
+const search = ref('')
+const selectedLabel = ref('')
+const selectedValue = ref('')
 </script>
 
 <template>
   <Demo>
-    <form @submit.prevent="">
-      <base-select v-model="form.selected" :options="options" />
+    <form @submit.prevent="onSubmit()">
+      <base-select v-model="selected" v-model:search="search" :options="options" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
+      <div class="flex flex-col gap-4">
+        <div><span class="font-bold">v-model = </span><span>{{ selected }}</span></div>
+        <div><span class="font-bold">v-model:selectedLabel = </span><span>{{ selectedLabel }}</span></div>
+        <div><span class="font-bold">v-model:selectedValue = </span><span>{{ selectedValue }}</span></div>
+      </div>
     </form>
   </Demo>
 </template>

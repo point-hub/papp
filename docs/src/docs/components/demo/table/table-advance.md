@@ -151,7 +151,7 @@ const isCheckedAll = () => {
         <base-divider orientation="vertical" />
         <div class="space-y-2">
           <h3 class="font-extrabold text-lg">Pagination</h3>
-          <base-autocomplete
+          <base-select
             v-model="selected"
             :options="optionsPageSize"
             placeholder="Search"

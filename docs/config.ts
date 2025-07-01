@@ -129,7 +129,6 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
       text: 'Forms',
       collapsed: false,
       items: [
-        { text: 'Autocomplete', link: 'forms/autocomplete' },
         { text: 'Checkbox', link: 'forms/checkbox' },
         { text: 'Choosen', link: 'forms/choosen' },
         { text: 'Datepicker', link: 'forms/datepicker' },
