@@ -158,7 +158,6 @@ const isCheckedAll = () => {
           <th v-if="columns[0].isShow"></th>
           <th v-if="columns[1].isShow" class="basic-table-head font-normal!">
             <base-input
-              required
               v-model="search[0]"
               placeholder="Search"
               border="none"
@@ -176,7 +175,6 @@ const isCheckedAll = () => {
           </th>
           <th v-if="columns[3].isShow" class="basic-table-head font-normal!">
             <base-input-number
-              required
               v-model="searchNumber"
               placeholder="Search"
               border="none"
