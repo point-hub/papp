@@ -6,22 +6,22 @@
 
 /* button size */
 .btn-xs {
-  @apply px-2 py-1 text-xs;
+  @apply px-1.5 py-0.5 text-xs;
 }
 .btn-sm {
-  @apply px-2.5 py-1.5 text-sm;
+  @apply px-2 py-1 text-xs;
 }
 .btn-md {
-  @apply px-4 py-2;
+  @apply px-2.5 py-1.5 text-sm;
 }
 .btn-lg {
-  @apply px-7.5 py-2.5 text-lg;
+  @apply px-4 py-2;
 }
 .btn-xl {
-  @apply px-10 py-3 text-xl;
+  @apply px-7.5 py-2.5 text-lg;
 }
 .btn-2xl {
-  @apply px-15 py-4.5 text-2xl;
+  @apply px-10 py-3 text-xl;
 }
 
 /* button disabled */
