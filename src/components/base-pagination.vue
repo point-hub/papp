@@ -104,8 +104,9 @@ const isShowPageButton = (i: number) => {
         <base-button
           v-if="isShowPageButton(i)"
           type="button"
-          size="xs"
+          size="sm"
           variant="text"
+          shape="rounded"
           @click="onClickPage(i)"
           :class="{
             'bg-primary text-white!': i === value
