@@ -48,20 +48,20 @@ export const useSidebarMenuStore = defineStore('sidebar-menu', {
       if (appList) {
         this.appMenu = appList.map((link, index) => {
           this.choosenAppIndex = appList.findIndex(
-            (item) => item.name.toLowerCase() === appMenu[0].name.toLowerCase()
+            (item) => item.name.toLowerCase() === appMenu[0]?.name.toLowerCase()
           )
-          const match = appList[index].name.toLowerCase() === appMenu[0].name.toLowerCase()
+          const match = appList[index]?.name.toLowerCase() === appMenu[0]?.name.toLowerCase()
           return {
             ...link, // base from appList
             ...(match
-              ? { icon: appMenu[0].icon, path: appMenu[0].path, menu: appMenu[0].menu || [] }
+              ? { icon: appMenu[0]?.icon, path: appMenu[0]?.path, menu: appMenu[0]?.menu || [] }
               : {}) // override with icon, path, menu
           }
         })
-        this.choosenAppTitle = this.appMenu[this.choosenAppIndex].name
+        this.choosenAppTitle = this.appMenu[this.choosenAppIndex]?.name ?? ''
       } else {
         this.appMenu = appMenu
-        this.choosenAppTitle = appMenu[0].name
+        this.choosenAppTitle = appMenu[0]?.name ?? ''
         this.choosenAppIndex = 0
       }
     },

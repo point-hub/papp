@@ -36,7 +36,7 @@ export class EventEmitter {
     const l = this.events.length - 1
     for (let i = l; i >= 0; i--) {
       const event = this.events[i]
-      if (event.name == name) {
+      if (event?.name == name) {
         this.events.splice(i, 1)
       }
     }

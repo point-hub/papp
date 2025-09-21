@@ -32,6 +32,7 @@ import BaseInputNumber from '@/components/base-input-number.vue'
 import BaseLink from '@/components/base-link.vue'
 import BaseLoader from '@/components/base-loader.vue'
 import BaseMask from '@/components/base-mask.vue'
+import BaseMention from '@/components/base-mention.vue'
 import BaseModal from '@/components/base-modal.vue'
 import BasePagination from '@/components/base-pagination.vue'
 import BasePopover from '@/components/base-popover.vue'
@@ -97,6 +98,7 @@ const PluginBaseComponents: any = {
     app.component('BaseLink', BaseLink)
     app.component('BaseLoader', BaseLoader)
     app.component('BaseMask', BaseMask)
+    app.component('BaseMention', BaseMention)
     app.component('BaseModal', BaseModal)
     app.component('BasePagination', BasePagination)
     app.component('BasePopover', BasePopover)

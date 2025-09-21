@@ -85,7 +85,7 @@ const initial = (name: string) => {
   if (name) {
     const arrName = name.split(' ', 2)
     if (arrName.length === 2) {
-      return arrName[0].substring(0, 1) + arrName[1].substring(0, 1)
+      return arrName[0]!.substring(0, 1) + arrName[1]!.substring(0, 1)
     }
 
     return name.substring(0, 2)

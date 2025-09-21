@@ -157,44 +157,28 @@ onMounted(() => {
     <!-- Header -->
     <app-header>
       <template #left-header>
-        <header-sidebar-button
-          :on-toggle-sidebar="sidebarStore.toggleSidebar"
-          v-model:is-sidebar-open="sidebarStore.isSidebarOpen"
-        />
+        <header-sidebar-button :on-toggle-sidebar="sidebarStore.toggleSidebar"
+          v-model:is-sidebar-open="sidebarStore.isSidebarOpen" />
       </template>
       <template #right-header>
         <header-notification></header-notification>
         <base-divider class="h-10" orientation="horizontal" />
-        <header-menu
-          :organization="account.organization"
-          :username="account.username"
-          :avatar="account.avatar"
-        >
-          <header-menu-account
-            :organization="account.organization"
-            :username="account.username"
-            :avatar="account.avatar"
-          />
+        <header-menu :organization="account.organization" :username="account.username" :avatar="account.avatar">
+          <header-menu-account :organization="account.organization" :username="account.username"
+            :avatar="account.avatar" />
           <base-divider orientation="vertical" />
           <header-menu-switch-organization :organizations="organizations" />
-          <header-menu-dark-mode
-            :on-toggle-dark-mode="toggleDarkMode"
-            v-model:is-dark-mode="isDarkMode"
-          />
+          <header-menu-dark-mode :on-toggle-dark-mode="toggleDarkMode" v-model:is-dark-mode="isDarkMode" />
           <header-menu-signout :on-signout="onSignout" />
         </header-menu>
       </template>
     </app-header>
 
     <!-- Sidebar -->
-    <app-sidebar
-      :title="sidebarMenuStore.choosenAppTitle"
-      :apps="sidebarMenuStore.appMenu"
-      :menus="sidebarMenuStore.appMenu[sidebarMenuStore.choosenAppIndex].menu ?? []"
-      :is-sidebar-open="sidebarStore.isSidebarOpen"
-      :is-mobile="mobileBreakpoint.isMobile()"
-      @choose="sidebarMenuStore.onChooseApp"
-    />
+    <app-sidebar :title="sidebarMenuStore.choosenAppTitle" :apps="sidebarMenuStore.appMenu"
+      :menus="sidebarMenuStore.appMenu[sidebarMenuStore.choosenAppIndex]?.menu ?? []"
+      :is-sidebar-open="sidebarStore.isSidebarOpen" :is-mobile="mobileBreakpoint.isMobile()"
+      @choose="sidebarMenuStore.onChooseApp" />
 
     <!-- Main Container -->
     <div class="main-container">

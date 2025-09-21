@@ -137,6 +137,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Input Mask', link: 'forms/input-mask' },
         { text: 'Input Number', link: 'forms/input-number' },
         { text: 'Input', link: 'forms/input' },
+        { text: 'Mention', link: 'forms/mention' },
         { text: 'Radio', link: 'forms/radio' },
         { text: 'Range', link: 'forms/range' },
         { text: 'Select', link: 'forms/select' },

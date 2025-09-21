@@ -94,6 +94,10 @@ export {
   default as BaseInputNumber,
   type BaseInputNumberBorderType
 } from './components/base-input-number.vue'
+export {
+  default as BaseMention,
+  type BaseMentionBorderType
+} from './components/base-mention.vue'
 export { default as BaseRadio, type BaseRadioOptionsLayout } from './components/base-radio.vue'
 export { default as BaseRange } from './components/base-range.vue'
 export {
