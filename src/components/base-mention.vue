@@ -187,14 +187,15 @@ defineExpose({ textareaRef })
         }" :data-testid="dataTestid" @input="onInput" @keydown="onKeydown" />
 
       <!-- Suggestions dropdown -->
-      <ul v-if="showSuggestions" class="absolute bg-white border rounded shadow p-1 z-10 w-48"
+      <ul v-if="showSuggestions"
+        class="absolute bg-white dark:bg-gray-900 border dark:border-gray-500 rounded shadow p-1 z-10 w-48"
         :style="{ top: `${dropdownPos.top}px`, left: `${dropdownPos.left}px` }">
         <li v-if="loading" class="p-1 text-gray-400 italic">Searching...</li>
         <li v-else-if="!filteredOptions.length" class="p-1 text-gray-400 italic">No results</li>
         <template v-if="!loading">
           <li v-for="(opt, i) in filteredOptions" :key="opt.id" :class="[
             'p-1 cursor-pointer',
-            i === activeIndex ? 'bg-gray-200' : 'hover:bg-gray-100',
+            i === activeIndex ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700',
           ]" @click="selectMention(opt)">
             {{ opt.label }}
           </li>
