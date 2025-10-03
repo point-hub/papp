@@ -1,5 +1,5 @@
 .card {
-  @apply flex flex-col border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 p-8 w-full gap-2 rounded-none;
+  @apply flex flex-col border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800 p-4 w-full gap-2 rounded-none;
 }
 
 .card-shadow {
