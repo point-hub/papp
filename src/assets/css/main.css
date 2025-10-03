@@ -1,3 +1,62 @@
+:root {
+  @apply [--sidebar-panel-width:4.5rem] [--sidebar-menu-width:15rem];
+}
+
+html.dark {
+  @apply [color-scheme:dark];
+}
+
+body {
+  @apply font-open-sans text-slate-700 antialiased bg-slate-50;
+  @apply dark:bg-slate-900 dark:text-slate-300;
+}
+
+/* headings */
+h1 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-lg;
+}
+
+.scrollbar-hidden {
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Webkit-based browsers (Chrome, Safari, Edge) */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Internet Explorer/Edge */
+  -ms-overflow-style: none;
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+/* Style the track (the part the thumb slides within) */
+::-webkit-scrollbar-track {
+  @apply bg-none;
+}
+
+/* Style the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700;
+}
+
+/* Hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600;
+}
+
 @import './base.css';
 @import './utilities.css';
 @import './components.css';

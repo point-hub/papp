@@ -6,6 +6,10 @@
   @apply w-full text-left;
 }
 
+.table input.border-none {
+  @apply py-0!;
+}
+
 /* basic table */
 .basic-table tr {
   @apply dark:border-b-slate-500 border border-transparent border-b-slate-200;

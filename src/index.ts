@@ -1,5 +1,7 @@
 import '@unocss/reset/tailwind.css'
-import '@/assets/css/main.css'
+import '@/assets/css/base.css'
+import '@/assets/css/components.css'
+import '@/assets/css/utilities.css'
 import 'virtual:uno.css'
 
 // Components
