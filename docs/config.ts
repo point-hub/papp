@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import Unocss from 'unocss/vite'
 import { type DefaultTheme, defineConfig } from 'vitepress'
 
 import { version } from '../package.json'
@@ -16,7 +17,15 @@ export default defineConfig({
       alias: {
         '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
       }
-    }
+    },
+    plugins: [
+      Unocss({
+        configFile: resolve(__dirname, './uno.config.ts'),
+        content: {
+          filesystem: ['src/**/*.vue'],
+        },
+      }),
+    ],
   },
   sitemap: {
     hostname: 'https://dev.pointhub.net'

@@ -10,7 +10,11 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   plugins: [
     vue(),
-    UnoCSS(),
+    UnoCSS({
+      content: {
+        filesystem: ['src/**/*.vue'],
+      },
+    }),
     dts({
       entryRoot: './src/',
       tsconfigPath: './tsconfig.app.json'
