@@ -58,23 +58,20 @@ defineExpose({ toast, remove })
   <div class="toast-container" v-if="listData.length > 0" :data-testid="props.dataTestid">
     <template v-for="data in listData" :key="data">
       <slot :data="data">
-        <div
-          class="toast"
-          :class="{
-            'toast-primary': data.color === 'primary',
-            'toast-secondary': data.color === 'secondary',
-            'toast-info': data.color === 'info',
-            'toast-success': data.color === 'success',
-            'toast-warning': data.color === 'warning',
-            'toast-danger': data.color === 'danger'
-          }"
-        >
+        <div class="toast" :class="{
+          'toast-primary': data.color === 'primary',
+          'toast-secondary': data.color === 'secondary',
+          'toast-info': data.color === 'info',
+          'toast-success': data.color === 'success',
+          'toast-warning': data.color === 'warning',
+          'toast-danger': data.color === 'danger'
+        }">
           <div class="self-start mt-0.5">
-            <i v-if="data.color === 'primary'" class="i-fas-bell block w-4 h-4"></i>
-            <i v-if="data.color === 'info'" class="i-fas-circle-info block w-4 h-4"></i>
-            <i v-if="data.color === 'success'" class="i-fas-check block w-4 h-4"></i>
-            <i v-if="data.color === 'warning'" class="i-fas-circle-exclamation block w-4 h-4"></i>
-            <i v-if="data.color === 'danger'" class="i-fas-triangle-exclamation block w-4 h-4"></i>
+            <i v-if="data.color === 'primary'" class="i-fa7-solid:bell block w-4 h-4"></i>
+            <i v-if="data.color === 'info'" class="i-fa7-solid:circle-info block w-4 h-4"></i>
+            <i v-if="data.color === 'success'" class="i-fa7-solid:check block w-4 h-4"></i>
+            <i v-if="data.color === 'warning'" class="i-fa7-solid:circle-exclamation block w-4 h-4"></i>
+            <i v-if="data.color === 'danger'" class="i-fa7-solid:triangle-exclamation block w-4 h-4"></i>
           </div>
           <div class="ms-3 text-sm">
             {{ data.message }}
@@ -82,13 +79,8 @@ defineExpose({ toast, remove })
               <li v-for="list in data.lists" :key="list">- {{ list }}</li>
             </ul>
           </div>
-          <base-button
-            type="button"
-            @click="remove(data.id)"
-            variant="text"
-            class="toast-close-button"
-          >
-            <base-icon icon="i-fas-xmark" class="w-4 h-4" />
+          <base-button type="button" @click="remove(data.id)" variant="text" class="toast-close-button">
+            <base-icon icon="i-fa7-solid:xmark" class="w-4 h-4" />
           </base-button>
         </div>
       </slot>

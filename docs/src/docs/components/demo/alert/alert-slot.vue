@@ -3,7 +3,7 @@
     <base-alert color="danger">
       <template #title>
         <div class="flex items-center gap-2">
-          <base-icon icon="i-far-triangle-exclamation" class="text-2xl" />
+          <base-icon icon="i-fa7-regular:triangle-exclamation" class="text-2xl" />
           <span class="text-2xl font-extrabold">Alert</span>
         </div>
       </template>

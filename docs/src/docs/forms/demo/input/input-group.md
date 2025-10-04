@@ -23,13 +23,13 @@ const form = ref({
     <form @submit.prevent="">
       <base-input required v-model="form.name" label="Name" placeholder="Placeholder Name">
         <template #prefix>
-          <base-icon icon="i-far-user mx-2" />
+          <base-icon icon="i-fa7-regular:user mx-2" />
         </template>
       </base-input>
       <base-input required v-model="form.password" label="Password" type="password">
         <template #suffix>
           <base-button variant="text">
-            <base-icon icon="i-far-eye mx-2" />
+            <base-icon icon="i-fa7-regular:eye mx-2" />
           </base-button>
         </template>
       </base-input>

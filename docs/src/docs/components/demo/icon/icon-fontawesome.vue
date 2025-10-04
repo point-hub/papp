@@ -1,5 +1,5 @@
 <template>
   <Demo>
-    <base-icon icon="i-fad-books" />
+    <base-icon icon="i-fa7-duotone:books" />
   </Demo>
 </template>

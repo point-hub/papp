@@ -24,7 +24,7 @@ const value = computed({
 })
 
 const totalPage = computed({
-  set: () => {},
+  set: () => { },
   get: () => {
     return Math.ceil(props.totalDocument / props.pageSize)
   }
@@ -95,31 +95,24 @@ const isShowPageButton = (i: number) => {
     </div>
     <div v-if="totalPage > 1" class="flex">
       <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickFirst()">
-        <base-icon icon="i-fas-angles-left" />
+        <base-icon icon="i-fa7-solid:angles-left" />
       </base-button>
       <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickPrev()">
-        <base-icon icon="i-fas-angle-left" />
+        <base-icon icon="i-fa7-solid:angle-left" />
       </base-button>
       <template v-for="i in totalPage" :key="i">
-        <base-button
-          v-if="isShowPageButton(i)"
-          type="button"
-          size="sm"
-          variant="text"
-          shape="rounded"
-          @click="onClickPage(i)"
-          :class="{
+        <base-button v-if="isShowPageButton(i)" type="button" size="sm" variant="text" shape="rounded"
+          @click="onClickPage(i)" :class="{
             'bg-primary text-white!': i === value
-          }"
-        >
+          }">
           {{ i }}
         </base-button>
       </template>
       <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickNext()">
-        <base-icon icon="i-fas-angle-right flex items-center justify-center self-center" />
+        <base-icon icon="i-fa7-solid:angle-right flex items-center justify-center self-center" />
       </base-button>
       <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickLast()">
-        <base-icon icon="i-fas-angles-right" />
+        <base-icon icon="i-fa7-solid:angles-right" />
       </base-button>
     </div>
   </div>

@@ -41,7 +41,7 @@ const popoverRef = ref()
                 variant="text"
                 class="h-7 w-7 rounded-full p-0 -mr-1.5 active:bg-slate-300/25 focus:bg-slate-300/20 hover:bg-slate-300/20 dark:active:bg-slate-300/25 dark:focus:bg-slate-300/20 dark:hover:bg-slate-300/20"
               >
-                <base-icon icon="i-far-maximize" />
+                <base-icon icon="i-fa7-regular:maximize" />
               </base-button>
             </div>
 
@@ -79,7 +79,7 @@ const popoverRef = ref()
                 <div
                   class="bg-secondary/10 dark:bg-secondary-light/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
                 >
-                  <base-icon icon="i-far-user" />
+                  <base-icon icon="i-fa7-regular:user" />
                 </div>
                 <div>
                   <p class="font-medium text-slate-600 dark:text-slate-100">User Photo Changed</p>
@@ -92,7 +92,7 @@ const popoverRef = ref()
                 <div
                   class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
                 >
-                  <base-icon icon="i-far-pencil" />
+                  <base-icon icon="i-fa7-regular:pencil" />
                 </div>
                 <div>
                   <p class="font-medium text-slate-600 dark:text-slate-100">

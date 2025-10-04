@@ -57,7 +57,7 @@ const selected = ref()
                 </div>
               </div>
               <div v-show="checked" class="shrink-0 text-white">
-                <base-icon icon="i-fas-circle-check" />
+                <base-icon icon="i-fa7-solid:circle-check" />
               </div>
             </div>
           </div>

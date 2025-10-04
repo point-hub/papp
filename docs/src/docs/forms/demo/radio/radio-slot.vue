@@ -31,14 +31,11 @@ const selected = ref()
       <base-radio v-model="selected" :options="options" label="Label" layout="horizontal">
         <template v-slot="{ checked, option }">
           <div class="w-full cursor-pointer">
-            <div
-              :class="[
-                checked
-                  ? 'bg-blue-700 border-blue-700 text-white '
-                  : 'bg-white dark:bg-slate-700 dark:text-white text-slate-900 dark:border-slate-600'
-              ]"
-              class="border rounded p-4"
-            >
+            <div :class="[
+              checked
+                ? 'bg-blue-700 border-blue-700 text-white '
+                : 'bg-white dark:bg-slate-700 dark:text-white text-slate-900 dark:border-slate-600'
+            ]" class="border rounded p-4">
               <div class="w-full flex space-x-4 items-center justify-between">
                 <div class="flex flex-col">
                   <div class="text-base font-semibold">{{ option.name }}</div>
@@ -47,7 +44,7 @@ const selected = ref()
                   </div>
                 </div>
                 <div v-show="checked" class="shrink-0 text-white">
-                  <base-icon icon="i-fas-circle-check" />
+                  <base-icon icon="i-fa7-solid:circle-check" />
                 </div>
               </div>
             </div>

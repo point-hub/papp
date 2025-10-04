@@ -119,16 +119,16 @@ const isCheckedAll = () => {
     <div class="w-full flex items-center gap-4">
       <div class="w-full flex gap-2">
         <base-button color="primary" border="none" class="gap-1">
-          <base-icon icon="i-far-pen-to-square" />
+          <base-icon icon="i-fa7-regular:pen-to-square" />
           <span>New</span>
         </base-button>
         <base-input v-model="searchAll" placeholder="Search" border="full" class="flex-1">
           <template #prefix>
-            <base-icon icon="i-far-magnifying-glass" class="mx-3" />
+            <base-icon icon="i-fa7-regular:magnifying-glass" class="mx-3" />
           </template>
         </base-input>
         <base-button color="info" class="gap-1" @click="openTableSetting">
-          <base-icon class="i-far-gear" />
+          <base-icon class="i-fa7-regular:gear" />
         </base-button>
       </div>
     </div>

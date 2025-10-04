@@ -51,11 +51,11 @@ const onClose = () => {
   <div :class="classes" v-if="!closed">
     <div class="alert-icon-container">
       <div v-if="icon" class="alert-icon">
-        <i v-if="icon === 'success'" class="block i-far-circle-check"></i>
-        <base-icon v-if="icon === 'info'" icon="i-far-circle-info" />
-        <base-icon v-if="icon === 'success'" icon="i-far-circle-check" />
-        <base-icon v-if="icon === 'warning'" icon="i-far-circle-exclamation" />
-        <base-icon v-if="icon === 'danger'" icon="i-far-triangle-exclamation" />
+        <i v-if="icon === 'success'" class="block i-fa7-regular:circle-check"></i>
+        <base-icon v-if="icon === 'info'" icon="i-fa7-regular:circle-info" />
+        <base-icon v-if="icon === 'success'" icon="i-fa7-regular:circle-check" />
+        <base-icon v-if="icon === 'warning'" icon="i-fa7-regular:circle-exclamation" />
+        <base-icon v-if="icon === 'danger'" icon="i-fa7-regular:triangle-exclamation" />
       </div>
       <div class="alert-text">
         <div>
@@ -68,16 +68,9 @@ const onClose = () => {
         </div>
       </div>
     </div>
-    <base-button
-      v-if="isDismissable"
-      type="button"
-      @click="onClose()"
-      variant="text"
-      size="xs"
-      color="danger"
-      class="close-button"
-    >
-      <base-icon icon="i-fas-xmark" />
+    <base-button v-if="isDismissable" type="button" @click="onClose()" variant="text" size="xs" color="danger"
+      class="close-button">
+      <base-icon icon="i-fa7-solid:xmark" />
     </base-button>
   </div>
 </template>

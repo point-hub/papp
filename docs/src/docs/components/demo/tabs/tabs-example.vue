@@ -2,75 +2,58 @@
   <Demo>
     <base-tab-group as="div" class="bg-slate-100 dark:bg-slate-800">
       <base-tab-list
-        class="flex overflow-x-auto overflow-y-hidden pt-4 border-b border-slate-200 dark:border-[#191e3a] scrollbar-hidden"
-      >
+        class="flex overflow-x-auto overflow-y-hidden pt-4 border-b border-slate-200 dark:border-[#191e3a] scrollbar-hidden">
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
-            class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-house" />
+          <a href="javascript:void(0);" class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:house" />
             Home
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
-            class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-circle-user" />
+          <a href="javascript:void(0);" class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:circle-user" />
             Profile
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
+          <a href="javascript:void(0);"
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-phone" />
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 1
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
+          <a href="javascript:void(0);"
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-phone" />
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 2
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
+          <a href="javascript:void(0);"
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-phone" />
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 3
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
+          <a href="javascript:void(0);"
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-phone" />
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 4
           </a>
         </base-tab>
         <base-tab as="template" v-slot="{ selected }">
-          <a
-            href="javascript:void(0);"
+          <a href="javascript:void(0);"
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
-            :class="{ 'border-b-3 !border-slate-500': selected }"
-          >
-            <base-icon icon="i-far-phone" />
+            :class="{ 'border-b-3 !border-slate-500': selected }">
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 5
           </a>
         </base-tab>

@@ -31,12 +31,12 @@ const onUpload = (e: HTMLInputEvent) => {
   >
     <template v-slot="{ fileRef }">
       <base-button size="sm" @click="fileRef.click()">
-        <base-icon icon="i-far-arrow-up-from-bracket" /> Choose File
+        <base-icon icon="i-fa7-regular:arrow-up-from-bracket" /> Choose File
       </base-button>
       <p class="ml-2" v-if="files">
         {{ files.length === 1 ? files[0].name : files.length + ' files' }}
       </p>
-      <base-icon v-if="files" icon="i-far-xmark" class="ml-2 btn" @click="() => (files = null)" />
+      <base-icon v-if="files" icon="i-fa7-regular:xmark" class="ml-2 btn" @click="() => (files = null)" />
     </template>
   </base-file-upload>
 </template>

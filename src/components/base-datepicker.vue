@@ -121,71 +121,49 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
-    <input
-      ref="dateRef"
-      v-model="nativeDate"
-      type="date"
-      class="form-input absolute! -z-50 text-transparent bg-transparent"
-      :class="{
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
+    <input ref="dateRef" v-model="nativeDate" type="date"
+      class="form-input absolute! -z-50 text-transparent bg-transparent" :class="{
         'pl-0!': border === 'simple' || border === 'none'
-      }"
-    />
-    <base-button
-      variant="text"
-      type="button"
-      class="absolute left-0 px-0! py-2"
-      :class="{
-        'px-2!': border === 'full'
-      }"
-      @click="onClickDateRef()"
-    >
-      <base-icon icon="i-far-calendar" />
+      }" />
+    <base-button variant="text" type="button" class="absolute left-0 px-0! py-2" :class="{
+      'px-2!': border === 'full'
+    }" @click="onClickDateRef()">
+      <base-icon icon="i-fa7-regular:calendar" />
     </base-button>
-    <input
-      ref="inputRef"
-      v-model.lazy="value"
-      v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }"
-      type="text"
-      class="form-input bg-inherit"
-      :class="{
+    <input ref="inputRef" v-model.lazy="value"
+      v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }" type="text"
+      class="form-input bg-inherit" :class="{
         'border-simple pl-6!': border === 'simple',
         'border-full pl-8!': border === 'full',
         'border-none pl-6!': border === 'none'
-      }"
-      placeholder="YYYY-MM-DD"
-      :autofocus="props.autofocus"
-      :required="props.required"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
-      :data-testid="props.dataTestid"
-    />
+      }" placeholder="YYYY-MM-DD" :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly"
+      :disabled="props.disabled" :data-testid="props.dataTestid" />
   </base-form>
 </template>
 
 <style scoped>
 @import url('../assets/css/components/input.css');
+
 input[type='date']::-webkit-inner-spin-button,
 input[type='date']::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
 }
+
 input[type='date']::-webkit-datetime-edit-day-field {
   color: transparent;
 }
+
 input[type='date']::-webkit-datetime-edit-day-field:focus {
   background: transparent;
 }
+
 input[type='date']::-webkit-datetime-edit-month-field {
   color: transparent;
 }
+
 input[type='date']::-webkit-datetime-edit-year-field {
   color: transparent;
 }

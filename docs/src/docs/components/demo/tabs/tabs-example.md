@@ -21,7 +21,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-house" />
+            <base-icon icon="i-fa7-regular:house" />
             Home
           </a>
         </base-tab>
@@ -31,7 +31,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-circle-user" />
+            <base-icon icon="i-fa7-regular:circle-user" />
             Profile
           </a>
         </base-tab>
@@ -41,7 +41,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-phone" />
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 1
           </a>
         </base-tab>
@@ -51,7 +51,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-phone" />
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 2
           </a>
         </base-tab>
@@ -61,7 +61,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-phone" />
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 3
           </a>
         </base-tab>
@@ -71,7 +71,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-phone" />
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 4
           </a>
         </base-tab>
@@ -81,7 +81,7 @@
             class="flex pb-2 px-4 gap-2 items-center -mb-[1px] !outline-none whitespace-nowrap"
             :class="{ 'border-b-2 !border-slate-500': selected }"
           >
-            <base-icon icon="i-far-phone" />
+            <base-icon icon="i-fa7-regular:phone" />
             Contact 5
           </a>
         </base-tab>

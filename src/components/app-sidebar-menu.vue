@@ -71,15 +71,10 @@ const pathHandler = (path: string) => {
       <!-- Sidebar Panel Header -->
       <div class="sidebar-menu-header">
         <p class="text-base font-extrabold tracking-wider text-slate-100">{{ title }}</p>
-        <component
-          :is="BaseButton"
-          @click="sidebarStore.closeSidebar()"
-          v-if="isMobile"
-          class="mr-2"
-          data-testid="sidebar-button"
-        >
+        <component :is="BaseButton" @click="sidebarStore.closeSidebar()" v-if="isMobile" class="mr-2"
+          data-testid="sidebar-button">
           <div v-if="sidebarStore.isSidebarOpen">
-            <base-icon icon="i-fas-angle-left" class="text-white" />
+            <base-icon icon="i-fa7-solid:angle-left" class="text-white" />
           </div>
         </component>
       </div>
@@ -89,51 +84,26 @@ const pathHandler = (path: string) => {
           <li v-for="menu in menus" :key="menu.name">
             <!-- Sub Menu Wrapper -->
             <template v-if="menu.submenu">
-              <router-link
-                v-if="menu.path"
-                :to="menu.path"
-                class="menu-link-button"
-                @click="toggleMenu(menu.name)"
-                :data-testid="menu.dataTestid"
-              >
+              <router-link v-if="menu.path" :to="menu.path" class="menu-link-button" @click="toggleMenu(menu.name)"
+                :data-testid="menu.dataTestid">
                 <p>{{ menu.name }}</p>
-                <i
-                  v-if="menu.submenu"
-                  class="i-fas-angle-right"
-                  :class="{
-                    'rotate-90 transition transform-gpu': activeMenu === menu.name
-                  }"
-                />
+                <i v-if="menu.submenu" class="i-fa7-solid:angle-right" :class="{
+                  'rotate-90 transition transform-gpu': activeMenu === menu.name
+                }" />
               </router-link>
-              <div
-                v-else
-                class="menu-link-button"
-                @click="toggleMenu(menu.name)"
-                :class="{ 'text-slate-50': activeMenu === menu.name }"
-                :data-testid="menu.dataTestid"
-              >
+              <div v-else class="menu-link-button" @click="toggleMenu(menu.name)"
+                :class="{ 'text-slate-50': activeMenu === menu.name }" :data-testid="menu.dataTestid">
                 <p>{{ menu.name }}</p>
-                <i
-                  v-if="menu.submenu"
-                  class="i-fas-angle-right"
-                  :class="{
-                    'rotate-90 transition transform-gpu': activeMenu === menu.name
-                  }"
-                />
+                <i v-if="menu.submenu" class="i-fa7-solid:angle-right" :class="{
+                  'rotate-90 transition transform-gpu': activeMenu === menu.name
+                }" />
               </div>
-              <ul
-                class="submenu"
-                :class="{
-                  'max-h-[1000px]! overflow-auto bg-slate-700 px-2 py-1 w-[var(--sidebar-menu-width)] -mx-4':
-                    activeMenu === menu.name
-                }"
-              >
+              <ul class="submenu" :class="{
+                'max-h-[1000px]! overflow-auto bg-slate-700 px-2 py-1 w-[var(--sidebar-menu-width)] -mx-4':
+                  activeMenu === menu.name
+              }">
                 <li v-for="submenu in menu.submenu" :key="submenu.name" class="overflow-hidden">
-                  <router-link
-                    :to="submenu.path as string"
-                    class="submenu-link"
-                    :data-testid="submenu.dataTestid"
-                  >
+                  <router-link :to="submenu.path as string" class="submenu-link" :data-testid="submenu.dataTestid">
                     <div class="flex items-center space-x-2">
                       <p>{{ submenu.name }}</p>
                     </div>
@@ -144,25 +114,15 @@ const pathHandler = (path: string) => {
             </template>
             <template v-else>
               <!-- Internal Menu -->
-              <router-link
-                v-if="menu.path && pathHandler(menu.path) === 'internal'"
-                :to="menu.path"
-                class="menu-link-button"
-                @click="resetActiveMenu()"
-                :data-testid="menu.dataTestid"
-              >
+              <router-link v-if="menu.path && pathHandler(menu.path) === 'internal'" :to="menu.path"
+                class="menu-link-button" @click="resetActiveMenu()" :data-testid="menu.dataTestid">
                 {{ menu.name }}
               </router-link>
               <!-- External Menu -->
-              <a
-                v-if="menu.path && pathHandler(menu.path) === 'external'"
-                :href="menu.path"
-                @click="resetActiveMenu()"
-                target="_blank"
-                class="menu-link-button"
-              >
+              <a v-if="menu.path && pathHandler(menu.path) === 'external'" :href="menu.path" @click="resetActiveMenu()"
+                target="_blank" class="menu-link-button">
                 {{ menu.name }}
-                <base-icon icon="i-fas-up-right-from-square" />
+                <base-icon icon="i-fa7-solid:up-right-from-square" />
               </a>
             </template>
             <div v-if="menu.separator" class="menu-separator"></div>
@@ -210,7 +170,7 @@ const pathHandler = (path: string) => {
   @apply text-slate-50;
 }
 
-.menu-link-button.router-link-active > i {
+.menu-link-button.router-link-active>i {
   @apply rotate-90 transition transform-gpu;
 }
 

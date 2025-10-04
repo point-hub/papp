@@ -41,29 +41,16 @@ defineExpose({ isOpen })
       <!-- The backdrop, rendered as a fixed sibling to the panel container -->
       <div class="fixed inset-0 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
 
-      <TransitionChild
-        as="template"
-        enter="duration-300 ease-out"
-        enter-from="opacity-0"
-        enter-to="opacity-100"
-        leave="duration-200 ease-in"
-        leave-from="opacity-100"
-        leave-to="opacity-0"
-      >
+      <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
+        leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
         <div class="fixed inset-0 bg-black bg-opacity-25" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
         <div class="min-h-full flex items-center justify-center text-center">
-          <TransitionChild
-            as="template"
-            enter="duration-300 ease-out"
-            enter-from="opacity-0 scale-95"
-            enter-to="opacity-100 scale-100"
-            leave="duration-200 ease-in"
-            leave-from="opacity-100 scale-100"
-            leave-to="opacity-0 scale-95"
-          >
+          <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95">
             <DialogPanel
               class="w-full transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900"
               :class="{
@@ -74,17 +61,10 @@ defineExpose({ isOpen })
                 'max-w-2xl': props.size === '2xl',
                 'max-w-90%': props.size === 'full',
                 'w-100vh h-100vh rounded-none': props.size === 'maximize'
-              }"
-            >
-              <base-button
-                type="button"
-                size="xs"
-                @click="close()"
-                variant="text"
-                color="danger"
-                class="absolute right-2 top-2"
-              >
-                <base-icon icon="i-fas-xmark" />
+              }">
+              <base-button type="button" size="xs" @click="close()" variant="text" color="danger"
+                class="absolute right-2 top-2">
+                <base-icon icon="i-fa7-solid:xmark" />
               </base-button>
               <slot></slot>
             </DialogPanel>

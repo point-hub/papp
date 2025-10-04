@@ -34,7 +34,7 @@ const page = ref(1)
 const pageSize = ref(3)
 const totalDocument = ref(100)
 
-const updateData = () => {}
+const updateData = () => { }
 
 // Table Setting
 const showModal = ref(false)
@@ -106,16 +106,16 @@ const isCheckedAll = () => {
     <div class="w-full flex items-center gap-4">
       <div class="w-full flex gap-2">
         <base-button color="primary" border="none" class="gap-1">
-          <base-icon icon="i-far-pen-to-square" />
+          <base-icon icon="i-fa7-regular:pen-to-square" />
           <span>New</span>
         </base-button>
         <base-input v-model="searchAll" placeholder="Search" border="full" class="flex-1">
           <template #prefix>
-            <base-icon icon="i-far-magnifying-glass" class="mx-3" />
+            <base-icon icon="i-fa7-regular:magnifying-glass" class="mx-3" />
           </template>
         </base-input>
         <base-button color="info" class="gap-1" @click="openTableSetting">
-          <base-icon class="i-far-gear" />
+          <base-icon class="i-fa7-regular:gear" />
         </base-button>
       </div>
     </div>
@@ -125,27 +125,15 @@ const isCheckedAll = () => {
         <div class="space-y-2">
           <h3 class="font-extrabold text-lg">Column Chooser</h3>
           <div class="space-y-2">
-            <base-checkbox
-              v-for="(column, index) in columns"
-              :key="index"
-              :id="column.name"
-              :disabled="!column.isEditable"
-              v-model="column.isShow"
-              :text="column.name"
-            />
+            <base-checkbox v-for="(column, index) in columns" :key="index" :id="column.name"
+              :disabled="!column.isEditable" v-model="column.isShow" :text="column.name" />
           </div>
         </div>
         <base-divider orientation="vertical" />
         <div class="space-y-2">
           <h3 class="font-extrabold text-lg">Pagination</h3>
-          <base-select
-            v-model="selected"
-            :options="optionsPageSize"
-            placeholder="Search"
-            label="Page Size"
-            layout="horizontal"
-            description="data per page"
-          />
+          <base-select v-model="selected" :options="optionsPageSize" placeholder="Search" label="Page Size"
+            layout="horizontal" description="data per page" />
         </div>
         <base-button color="primary" size="md" is-block @click="showModal = false">
           Close
@@ -157,29 +145,16 @@ const isCheckedAll = () => {
         <tr>
           <th v-if="columns[0].isShow"></th>
           <th v-if="columns[1].isShow" class="basic-table-head font-normal!">
-            <base-input
-              v-model="search[0]"
-              placeholder="Search"
-              border="none"
-              class="font-normal text-slate-800 dark:text-slate-400"
-            />
+            <base-input v-model="search[0]" placeholder="Search" border="none"
+              class="font-normal text-slate-800 dark:text-slate-400" />
           </th>
           <th v-if="columns[2].isShow" class="basic-table-head font-normal!">
-            <base-choosen
-              title="Example"
-              :options="options"
-              v-model:selected="selected"
-              border="none"
-              placeholder="Search"
-            />
+            <base-choosen title="Example" :options="options" v-model:selected="selected" border="none"
+              placeholder="Search" />
           </th>
           <th v-if="columns[3].isShow" class="basic-table-head font-normal!">
-            <base-input-number
-              v-model="searchNumber"
-              placeholder="Search"
-              border="none"
-              class="font-light text-slate-800 dark:text-slate-400"
-            />
+            <base-input-number v-model="searchNumber" placeholder="Search" border="none"
+              class="font-light text-slate-800 dark:text-slate-400" />
           </th>
         </tr>
         <tr>
@@ -202,11 +177,7 @@ const isCheckedAll = () => {
         </tr>
       </tbody>
     </base-table>
-    <base-pagination
-      v-model="page"
-      :page-size="pageSize"
-      :totalDocument="totalDocument"
-      @update:model-value="updateData()"
-    />
+    <base-pagination v-model="page" :page-size="pageSize" :totalDocument="totalDocument"
+      @update:model-value="updateData()" />
   </Demo>
 </template>

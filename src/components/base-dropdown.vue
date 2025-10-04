@@ -20,15 +20,13 @@ const props = withDefaults(defineProps<Props>(), {
       <slot name="trigger">
         <div class="dropdown-trigger-button">
           <span>{{ text }}</span>
-          <base-icon icon="i-far-angle-down" />
+          <base-icon icon="i-fa7-regular:angle-down" />
         </div>
       </slot>
     </MenuButton>
     <transition>
-      <MenuItems
-        class="dropdown-items"
-        :class="{ 'left-0': props.position === 'left', 'right-0': props.position === 'right' }"
-      >
+      <MenuItems class="dropdown-items"
+        :class="{ 'left-0': props.position === 'left', 'right-0': props.position === 'right' }">
         <slot></slot>
       </MenuItems>
     </transition>

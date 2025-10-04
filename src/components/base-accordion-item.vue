@@ -56,23 +56,15 @@ const props = withDefaults(
       <slot name="title">
         <span>{{ props.title }}</span>
       </slot>
-      <i
-        class="accordion-collapse-item-icon i-fas-angle-down"
-        :class="{
-          'accordiont-collapse-item-icon-active': activeState
-        }"
-      ></i>
+      <i class="accordion-collapse-item-icon i-fa7-solid:angle-down" :class="{
+        'accordiont-collapse-item-icon-active': activeState
+      }"></i>
     </base-button>
-    <div
-      ref="contentRef"
-      class="accordion-content"
-      :class="{
-        'accordion-content-active': activeState
-      }"
-      :style="{
+    <div ref="contentRef" class="accordion-content" :class="{
+      'accordion-content-active': activeState
+    }" :style="{
         height: `${height}px`
-      }"
-    >
+      }">
       <slot>
         {{ props.content }}
       </slot>

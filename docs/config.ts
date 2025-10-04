@@ -21,9 +21,6 @@ export default defineConfig({
     plugins: [
       Unocss({
         configFile: resolve(__dirname, './uno.config.ts'),
-        content: {
-          filesystem: ['src/**/*.vue'],
-        },
       }),
     ],
   },
@@ -47,7 +44,7 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright ©2023-2025 Pointhub'
     }
-  }
+  },
 })
 
 function nav(): DefaultTheme.NavItem[] {

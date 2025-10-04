@@ -29,12 +29,9 @@ watch(
   <div class="">
     <base-button @click="toggleCollapse()" variant="text" is-block class="space-x-4">
       <slot name="header" :is-open="isOpenRef">
-        <i
-          class="i-fas-angle-right transform-gpu transition-all duration-200"
-          :class="{
-            'rotate-90': isOpenRef
-          }"
-        ></i>
+        <i class="i-fa7-solid:angle-right transform-gpu transition-all duration-200" :class="{
+          'rotate-90': isOpenRef
+        }"></i>
         <p class="flex-1 text-left">{{ props.title }}</p>
       </slot>
     </base-button>

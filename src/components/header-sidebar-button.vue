@@ -8,8 +8,8 @@ const isSidebarOpen = defineModel<boolean>('is-sidebar-open')
 
 <template>
   <a href="javascript:void(0)" @click="props.onToggleSidebar()">
-    <i v-if="!isSidebarOpen" class="block w-6 h-6 i-far-bars"></i>
-    <i v-else class="block w-6 h-6 i-far-xmark"></i>
+    <i v-if="!isSidebarOpen" class="block w-6 h-6 i-lucide-panel-right-close"></i>
+    <i v-else class="block w-6 h-6 i-lucide-panel-left-close"></i>
   </a>
 </template>
 

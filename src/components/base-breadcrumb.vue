@@ -22,15 +22,11 @@ const props = withDefaults(
       <span class="whitespace-nowrap" :class="{ 'breadcrumb-link': item.path }">
         <slot :index="index" :item="item"></slot>
       </span>
-      <i
-        v-if="index + 1 < props.items.length"
-        class="block breadcrumb-separator"
-        :class="{
-          'i-fas-angle-right': separator === 'angle',
-          'i-fas-arrow-right': separator === 'arrow',
-          'i-fas-slash-forward': separator === 'slash'
-        }"
-      ></i>
+      <i v-if="index + 1 < props.items.length" class="block breadcrumb-separator" :class="{
+        'i-fa7-solid:angle-right': separator === 'angle',
+        'i-fa7-solid:arrow-right': separator === 'arrow',
+        'i-fa7-solid:slash-forward': separator === 'slash'
+      }"></i>
     </li>
   </ul>
 </template>

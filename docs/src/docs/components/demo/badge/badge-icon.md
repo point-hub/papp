@@ -12,9 +12,9 @@ Badges can have an icon.
 
 ```vue
 <template>
-  <base-badge variant="filled"> Available Books <base-icon icon="i-fad-books" /> </base-badge>
+  <base-badge variant="filled"> Available Books <base-icon icon="i-fa7-duotone:books" /> </base-badge>
   <base-badge variant="filled" color="success">
-    <base-icon icon="i-far-check" /> Success
+    <base-icon icon="i-fa7-regular:check" /> Success
   </base-badge>
 </template>
 ```

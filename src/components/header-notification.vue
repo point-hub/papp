@@ -21,9 +21,7 @@ const notificationPopoverRef = ref()
       <BaseIcon icon="i-ph-bell-ringing" class="w-6 h-6" />
       <!-- ping -->
       <span class="absolute -mt-6 -mr-6 h-2 w-2 flex items-center justify-center">
-        <span
-          class="absolute h-full w-full inline-flex animate-ping rounded-full bg-red-400 opacity-80"
-        />
+        <span class="absolute h-full w-full inline-flex animate-ping rounded-full bg-red-400 opacity-80" />
         <span class="h-2 w-2 inline-flex rounded-full bg-red-400" />
       </span>
     </base-button>
@@ -31,24 +29,17 @@ const notificationPopoverRef = ref()
       <div class="popper-root">
         <BaseTabGroup as="div" class="bg-slate-100 dark:bg-slate-800">
           <BaseTabList
-            class="flex overflow-x-auto overflow-y-hidden pt-4 border-b border-slate-200 dark:border-[#191e3a] scrollbar-hidden"
-          >
+            class="flex overflow-x-auto overflow-y-hidden pt-4 border-b border-slate-200 dark:border-[#191e3a] scrollbar-hidden">
             <BaseTab as="template" v-slot="{ selected }">
-              <a
-                href="javascript:void(0);"
-                class="flex pb-1 px-2 gap-1 items-center !outline-none"
-                :class="{ 'border-b-2 !border-slate-500': selected }"
-              >
+              <a href="javascript:void(0);" class="flex pb-1 px-2 gap-1 items-center !outline-none"
+                :class="{ 'border-b-2 !border-slate-500': selected }">
                 <BaseIcon icon="i-ph-bell-duotone" />
                 <p>Notifications</p>
               </a>
             </BaseTab>
             <BaseTab as="template" v-slot="{ selected }">
-              <a
-                href="javascript:void(0);"
-                class="flex pb-1 px-2 gap-1 items-center !outline-none"
-                :class="{ 'border-b-2 !border-slate-500': selected }"
-              >
+              <a href="javascript:void(0);" class="flex pb-1 px-2 gap-1 items-center !outline-none"
+                :class="{ 'border-b-2 !border-slate-500': selected }">
                 <BaseIcon icon="i-ph-folder-notch-minus-duotone" />
                 <p>Logs</p>
               </a>
@@ -69,9 +60,8 @@ const notificationPopoverRef = ref()
               <div class="overflow-y-auto flex flex-col gap-4">
                 <div class="flex items-center space-x-3">
                   <div
-                    class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
-                  >
-                    <base-icon icon="i-far-pencil" />
+                    class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg">
+                    <base-icon icon="i-fa7-regular:pencil" />
                   </div>
                   <div>
                     <p class="font-medium text-slate-600 dark:text-slate-100">
@@ -84,9 +74,8 @@ const notificationPopoverRef = ref()
                 </div>
                 <div class="flex items-center space-x-3">
                   <div
-                    class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg"
-                  >
-                    <base-icon icon="i-far-pencil" />
+                    class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg">
+                    <base-icon icon="i-fa7-regular:pencil" />
                   </div>
                   <div>
                     <p class="font-medium text-slate-600 dark:text-slate-100">
