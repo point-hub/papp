@@ -12,13 +12,11 @@ Add or remove shadow using `shadow` property
 
 ```vue
 <template>
-  <base-card :shadow="true">
-    <template #header>With Shadow</template>
+  <base-card :title="'With Shadow'" shadow>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   </base-card>
 
-  <base-card>
-    <template #header>Without Shadow</template>
+  <base-card :title="'Without Shadow'">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
   </base-card>
 </template>

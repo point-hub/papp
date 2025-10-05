@@ -1,33 +1,34 @@
 <script setup lang="ts">
 export type BaseCardShapeType = 'sharp' | 'rounded'
 
-const bgColor = defineModel<string>('bgColor')
-const titleColor = defineModel<string>('titleColor')
-const bodyColor = defineModel<string>('bodyColor')
-
 withDefaults(
   defineProps<{
+    title?: string
+    bgColor?: string
+    titleColor?: string
+    bodyColor?: string
     shadow?: boolean
+    headerSeparator?: boolean
     shape?: BaseCardShapeType
   }>(),
   {
     shadow: false,
+    headerSeparator: true,
     shape: 'sharp'
   }
 )
 </script>
 
 <template>
-  <div
-    class="card"
-    :class="{ 'card-shadow ': shadow, 'card-rounded': shape === 'rounded' }"
-    :style="{ backgroundColor: bgColor, color: titleColor }"
-  >
+  <div class="card" :class="{ 'card-shadow ': shadow, 'card-rounded': shape === 'rounded' }"
+    :style="{ backgroundColor: bgColor, color: titleColor }">
     <div class="card-header">
-      <h1>
-        <slot name="header"></slot>
-      </h1>
+      <div class="flex justify-between items-center text-xs uppercase font-semibold">
+        <slot name="header">{{ title }}</slot>
+        <slot name="header-button"></slot>
+      </div>
     </div>
+    <div v-if="headerSeparator" class="border-b border-slate-200 dark:border-slate-700 -mx-4 my-4" />
     <div class="card-body" :style="{ color: bodyColor }">
       <slot></slot>
     </div>
