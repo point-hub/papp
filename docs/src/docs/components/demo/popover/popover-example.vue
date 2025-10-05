@@ -31,14 +31,14 @@ const popoverRef = ref()
 
             <div class="scrollbar-hidden flex shrink-0 overflow-x-auto px-3 text-sm">
               <base-button variant="text" :class="activeTab === 'all'
-                  ? 'border-primary dark:border-accent dark:text-white font-bold'
-                  : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
+                ? 'border-primary dark:border-accent dark:text-white font-bold'
+                : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
                 " class="shrink-0 border-b-2 rounded-none px-3.5 py-1" @click="activeTab = 'all'">
                 <span>All</span>
               </base-button>
               <base-button variant="text" :class="activeTab === 'logs'
-                  ? 'border-primary dark:border-accent dark:text-white font-bold'
-                  : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
+                ? 'border-primary dark:border-accent dark:text-white font-bold'
+                : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
                 " class="shrink-0 border-b-2 rounded-none px-3.5 py-1" @click="activeTab = 'logs'">
                 <span>Logs</span>
               </base-button>
@@ -92,6 +92,9 @@ const popoverRef = ref()
 
 <style scoped>
 .popper-root {
-  @apply border-slate-100 shadow dark:shadow-dark mx-4 mt-1 max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] flex flex-col border rounded-lg bg-white sm:m-0 sm:w-80 dark:border-slate-800 dark:bg-slate-700;
+  @apply border-slate-100 shadow dark:shadow-dark mx-4 mt-1 flex flex-col border rounded-lg bg-white sm:m-0 sm:w-80 dark:border-slate-800 dark:bg-slate-700;
+
+  max-height: calc(100vh - 6rem);
+  width: calc(100vw - 2rem);
 }
 </style>

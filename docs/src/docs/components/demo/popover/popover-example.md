@@ -123,7 +123,10 @@ const popoverRef = ref()
 
 <style scoped>
 .popper-root {
-  @apply border-slate-100 shadow dark:shadow-dark mx-4 mt-1 max-h-[calc(100vh-6rem)] w-[calc(100vw-2rem)] flex flex-col border rounded-lg bg-white sm:m-0 sm:w-80 dark:border-slate-800 dark:bg-slate-700;
+  @apply border-slate-100 shadow dark:shadow-dark mx-4 mt-1 flex flex-col border rounded-lg bg-white sm:m-0 sm:w-80 dark:border-slate-800 dark:bg-slate-700;
+
+  max-height: calc(100vh - 6rem);
+  width: calc(100vw - 2rem);
 }
 </style>
 ```
