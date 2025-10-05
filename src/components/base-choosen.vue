@@ -130,24 +130,20 @@ const onClose = () => {
     </div>
   </base-form>
 
-  <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose">
-    <div class="max-h-90vh h-full flex flex-col py-4">
-      <!-- Title -->
-      <h2 class="px-6 py-4 text-2xl font-bold">{{ props.title }}</h2>
+  <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose" :title="props.title">
+    <div class="max-h-90vh h-full flex flex-col pb-4">
       <!-- Search Text -->
-      <div class="px-6 py-2 relative">
-        <base-input placeholder="Search" ref="inputRef" border="full" v-model="search"
-          :data-testid="`${dataTestid}-search`">
-          <template #suffix>
-            <base-button class="absolute right-0 top-0 h-full" variant="filled" color="danger" size="xs"
-              :data-testid="`${dataTestid}-clear-button`" @click="onClear">
-              <base-icon icon="i-fa7-solid:xmark" />
-            </base-button>
-          </template>
-        </base-input>
-      </div>
+      <base-input placeholder="Search" ref="inputRef" border="full" v-model="search"
+        :data-testid="`${dataTestid}-search`">
+        <template #suffix>
+          <base-button class="absolute right-0 top-0 w-8 h-full" variant="filled" color="danger" size="xs"
+            :data-testid="`${dataTestid}-clear-button`" @click="onClear">
+            <base-icon icon="i-fa7-solid:xmark" />
+          </base-button>
+        </template>
+      </base-input>
       <!-- Options -->
-      <div class="space-y-8 mt-3 flex flex-col h-full overflow-y-auto">
+      <div class="gap-4 mt-3 flex flex-col h-full overflow-y-auto">
         <div class="flex flex-col w-full">
           <div v-if="isLoading" class="relative cursor-default select-none px-6 py-2 text-gray-700">
             Loading data...
@@ -157,7 +153,7 @@ const onClose = () => {
             Nothing found.
           </div>
           <div v-for="(option, index) in filtered" :key="index"
-            class="py-3 px-6 border-b first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            class="p-2 border-b first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
             :class="{ 'bg-blue-200 dark:bg-slate-700': option?.label === selected?.label }" @click="onSelect(option)"
             :data-testid="`${dataTestid}-option-${option._id}`">
             <slot :option="option">{{ option?.label }}</slot>
@@ -168,8 +164,8 @@ const onClose = () => {
   </base-modal>
 </template>
 
-<style scope>
+<style lang="postcss" scope>
 .form-input:read-only {
-  @apply hover:cursor-pointer ! text-slate-900 ! dark:text-slate-100 !;
+  @apply !hover:cursor-pointer !text-slate-900 !dark:text-slate-100;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const activeTab = ref('all')
+const activeTab = ref('notification')
 const popoverRef = ref()
 </script>
 
@@ -16,11 +16,7 @@ const popoverRef = ref()
           <div class="rounded-t-lg bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-200 shadow">
             <div class="flex items-center justify-between px-4 pt-2 mb-2">
               <div class="flex items-center space-x-2">
-                <h3 class="font-medium text-slate-700 dark:text-slate-100">Notifications</h3>
-                <div
-                  class="badge bg-primary/10 text-primary dark:bg-slate/15 dark:text-slate h-5 rounded-full px-1.5 text-sm">
-                  26
-                </div>
+                <h3 class="font-medium text-slate-700 dark:text-slate-100">Inbox</h3>
               </div>
 
               <base-button variant="text"
@@ -30,45 +26,65 @@ const popoverRef = ref()
             </div>
 
             <div class="scrollbar-hidden flex shrink-0 overflow-x-auto px-3 text-sm">
-              <base-button variant="text" :class="activeTab === 'all'
+              <base-button variant="text" @click="activeTab = 'notification'">
+                <span>Notification</span>
+                <div>
+                  10
+                </div>
+              </base-button>
+              <base-button variant="text" rounded="full" @click="activeTab = 'logs'">
+                <span>Logs</span>
+                <div>
+                  10
+                </div>
+              </base-button>
+            </div>
+
+            <!-- <div class="scrollbar-hidden flex shrink-0 overflow-x-auto px-3 text-sm">
+              <base-button variant="text" :class="activeTab === 'notification'
                 ? 'border-primary dark:border-accent dark:text-white font-bold'
                 : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
-                " class="shrink-0 border-b-2 rounded-none px-3.5 py-1" @click="activeTab = 'all'">
-                <span>All</span>
+                " class="shrink-0 border-b-2 rounded-none px-3.5 py-1" @click="activeTab = 'notification'">
+                <span>Notification</span>
+                <div class=" bg-danger text-white -mt-3 rounded text-0.5rem p-1 line-height-none">
+                  10
+                </div>
               </base-button>
-              <base-button variant="text" :class="activeTab === 'logs'
+              <base-button variant="text" rounded="full" :class="activeTab === 'logs'
                 ? 'border-primary dark:border-accent dark:text-white font-bold'
                 : 'border-transparent hover:text-slate-800 focus:text-slate-800 dark:hover:text-slate-100 dark:focus:text-slate-100'
                 " class="shrink-0 border-b-2 rounded-none px-3.5 py-1" @click="activeTab = 'logs'">
                 <span>Logs</span>
+                <div class=" bg-danger text-white -mt-3 rounded text-0.5rem p-1 line-height-none">
+                  10
+                </div>
               </base-button>
-            </div>
+            </div> -->
           </div>
 
           <div class="flex flex-col overflow-hidden shadow-lg">
-            <div v-if="activeTab === 'all'" class="overflow-y-auto p-4 space-y-4">
+            <div v-if="activeTab === 'notification'" class="overflow-y-auto p-4 space-y-4">
               <div class="flex items-center space-x-3">
-                <div
-                  class="bg-secondary/10 dark:bg-secondary-light/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg">
+                <div class="bg-red/10 h-8 w-8 flex shrink-0 items-center justify-center rounded-lg">
                   <base-icon icon="i-fa7-regular:user" />
                 </div>
                 <div>
-                  <p class="font-medium text-slate-600 dark:text-slate-100">User Photo Changed</p>
-                  <div class="line-clamp-1 mt-1 text-xs text-slate-400 dark:text-slate-300">
+                  <p class="font-medium text-slate-600 dark:text-slate-100 text-sm">User Photo Changed</p>
+                  <div class="line-clamp-1 text-xs text-slate-400 dark:text-slate-300">
                     John Doe changed his avatar photo
                   </div>
                 </div>
               </div>
               <div class="flex items-center space-x-3">
-                <div class="bg-info/10 dark:bg-info/15 h-10 w-10 flex shrink-0 items-center justify-center rounded-lg">
+                <div class="bg-info/10 h-8 w-8 flex shrink-0 items-center justify-center rounded-lg">
                   <base-icon icon="i-fa7-regular:pencil" />
                 </div>
                 <div>
-                  <p class="font-medium text-slate-600 dark:text-slate-100">
+                  <p class="font-medium text-slate-600 dark:text-slate-100 text-sm">
                     01 January 2022 <span class="text-xs font-light">08:00</span>
                   </p>
-                  <div class="mt-1 flex text-xs text-slate-400 dark:text-slate-300">
-                    <span class="line-clamp-1">Create new invoice</span>
+                  <div class="line-clamp-1 text-xs text-slate-400 dark:text-slate-300">
+                    Create new invoice
                   </div>
                 </div>
               </div>

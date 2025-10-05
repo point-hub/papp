@@ -6,6 +6,7 @@ export type BaseModalSizeType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'ma
 
 const props = withDefaults(
   defineProps<{
+    title?: string
     isOpen: boolean
     size?: BaseModalSizeType
   }>(),
@@ -52,7 +53,7 @@ defineExpose({ isOpen })
             enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95">
             <DialogPanel
-              class="w-full transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900"
+              class="w-full p-4 transform overflow-hidden bg-white text-left align-middle shadow-xl transition-all dark:bg-slate-900"
               :class="{
                 'max-w-sm': props.size === 'sm',
                 'max-w-md': props.size === 'md',
@@ -62,11 +63,15 @@ defineExpose({ isOpen })
                 'max-w-90%': props.size === 'full',
                 'w-100vh h-100vh rounded-none': props.size === 'maximize'
               }">
-              <base-button type="button" size="xs" @click="close()" variant="text" color="danger"
-                class="absolute right-2 top-2">
-                <base-icon icon="i-fa7-solid:xmark" />
-              </base-button>
-              <slot></slot>
+              <div class="flex justify-between">
+                <h2 class="text-xl font-bold">{{ title }}</h2>
+                <base-button type="button" @click="close()" variant="text" color="danger" rounded="full">
+                  <base-icon icon="i-fa7-solid:xmark" />
+                </base-button>
+              </div>
+              <div class="max-h-90vh overflow-auto mt-4">
+                <slot></slot>
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>

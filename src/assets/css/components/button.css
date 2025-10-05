@@ -1,7 +1,5 @@
 .btn {
   @apply inline-flex cursor-pointer items-center justify-center text-center tracking-wide outline-none gap-1;
-  @apply transition-all duration-200;
-  @apply focus:outline-none;
 }
 
 /* button size */
