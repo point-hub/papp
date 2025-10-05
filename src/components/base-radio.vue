@@ -60,12 +60,14 @@ const value = computed({
           :value="option" v-slot="{ active, checked }" :data-testid="`${dataTestid}-${option.value}`">
           <slot :active="active" :checked="checked" :option="option">
             <div class="cursor-pointer">
-              <div :class="[checked ? 'bg-primary text-white ' : 'bg-white text-slate-900']" class="border rounded p-2">
-                <div class="flex items-center justify-between gap-2">
-                  <div v-if="checked" class="shrink-0 text-white">
+              <div
+                :class="[checked ? 'bg-primary text-white ' : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white']"
+                class="border dark:border-slate-800 rounded p-2">
+                <div class="flex items-center justify-between gap-1">
+                  <div v-if="checked" class="flex items-center shrink-0 text-white">
                     <base-icon icon="i-fa7-solid:circle-check" />
                   </div>
-                  <div v-else class="shrink-0">
+                  <div v-else class="flex items-center shrink-0">
                     <base-icon icon="i-fa7-regular:circle" />
                   </div>
                   <div class="flex items-center">
