@@ -26,7 +26,7 @@ const props = withDefaults(
         'i-fa7-solid:angle-right': separator === 'angle',
         'i-fa7-solid:arrow-right': separator === 'arrow',
         'i-fa7-solid:slash-forward': separator === 'slash'
-      }"></i>
+      }" />
     </li>
   </ul>
 </template>
