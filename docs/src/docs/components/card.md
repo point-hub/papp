@@ -31,7 +31,8 @@ Use these responsive card components to show data entries and information to you
 ### Props
 
 | Name       | Type              | Default | Description            |
-| ---------- | ----------------- | ------- | ---------------------- |
+|------------|-------------------|---------|------------------------|
+| title      | string            |         | Title.                 |
 | shadow     | boolean           | false   | Card Shadow.           |
 | shape      | `rounded` `sharp` | `sharp` | Card Shape.            |
 | bgColor    | string            |         | Card Background Color. |

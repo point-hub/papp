@@ -8,12 +8,10 @@ withDefaults(
     titleColor?: string
     bodyColor?: string
     shadow?: boolean
-    headerSeparator?: boolean
     shape?: BaseCardShapeType
   }>(),
   {
     shadow: false,
-    headerSeparator: true,
     shape: 'sharp'
   }
 )
@@ -24,11 +22,15 @@ withDefaults(
     :style="{ backgroundColor: bgColor, color: titleColor }">
     <div class="card-header">
       <div class="flex justify-between items-center text-xs uppercase font-semibold">
-        <slot name="header">{{ title }}</slot>
-        <slot name="header-button"></slot>
+        <div>
+          <slot name="header">{{ title }}</slot>
+        </div>
+        <div>
+          <slot name="header-button"></slot>
+        </div>
       </div>
     </div>
-    <div v-if="headerSeparator" class="border-b border-slate-200 dark:border-slate-700 -mx-4 my-4" />
+    <div v-if="title" class="border-b border-slate-200 dark:border-slate-700 -mx-4 my-4" />
     <div class="card-body" :style="{ color: bodyColor }">
       <slot></slot>
     </div>
