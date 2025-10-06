@@ -122,11 +122,12 @@ const isCheckedAll = () => {
         </div>
       </div>
     </div>
-    <base-modal :is-open="showModal" @on-close="showModal = false" size="xl">
-      <div class="max-h-90vh overflow-auto p-8 space-y-6">
-        <h2 class="text-2xl font-bold">Table Setting</h2>
+    <base-modal title="Table Setting" :is-open="showModal" @on-close="showModal = false" size="xl">
+      <div class="max-h-90vh overflow-auto">
         <div class="space-y-2">
-          <h3 class="font-extrabold text-lg">Column Chooser</h3>
+          <div>
+            <p>Check the columns that should be shown in the table</p>
+          </div>
           <div class="space-y-2">
             <base-checkbox v-for="(column, index) in columns" :key="index" :id="column.name"
               :disabled="!column.isEditable" v-model="column.isShow" :text="column.name" />
@@ -138,6 +139,7 @@ const isCheckedAll = () => {
           <base-select v-model="selected" :options="optionsPageSize" placeholder="Search" label="Page Size"
             layout="horizontal" description="data per page" />
         </div>
+        <base-divider orientation="vertical" />
         <base-button color="primary" size="md" is-block @click="showModal = false">
           Close
         </base-button>
