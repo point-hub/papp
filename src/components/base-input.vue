@@ -130,46 +130,24 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
-    <input
-      ref="inputRef"
-      class="form-input"
-      :class="{
-        'border-simple': border === 'simple',
-        'border-full': border === 'full',
-        'border-none px-0!': border === 'none'
-      }"
-      v-model.trim="value"
-      :type="props.type"
-      :maxlength="props.maxlength"
-      :placeholder="props.placeholder"
-      :autofocus="props.autofocus"
-      :required="props.required"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
-      :data-testid="props.dataTestid"
-      :style="{
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
+    <input ref="inputRef" class="form-input" :class="{
+      'border-simple': border === 'simple',
+      'border-full': border === 'full',
+      'border-none px-0!': border === 'none'
+    }" v-model.trim="value" :type="props.type" :maxlength="props.maxlength" :placeholder="props.placeholder"
+      :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
+      :data-testid="props.dataTestid" :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
-      }"
-    />
-    <div
-      ref="suffixRef"
-      class="absolute right-0 h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
-    >
+      }" />
+    <div ref="suffixRef"
+      class="absolute h-full flex px-2 items-center justify-center text-slate-400 dark:text-slate-300 right-0">
       <slot name="suffix"></slot>
     </div>
-    <div
-      ref="prefixRef"
-      class="absolute h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
-    >
+    <div ref="prefixRef"
+      class="absolute h-full flex px-2 items-center justify-center text-slate-400 dark:text-slate-300">
       <slot name="prefix"></slot>
     </div>
   </base-form>
