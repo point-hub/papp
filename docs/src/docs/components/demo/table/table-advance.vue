@@ -104,19 +104,22 @@ const isCheckedAll = () => {
 <template>
   <Demo>
     <div class="w-full flex items-center gap-4">
-      <div class="w-full flex gap-2">
-        <base-button color="primary" border="none" class="gap-1">
-          <base-icon icon="i-fa7-regular:pen-to-square" />
-          <span>New</span>
-        </base-button>
-        <base-input v-model="searchAll" placeholder="Search" border="full" class="flex-1">
-          <template #prefix>
-            <base-icon icon="i-fa7-regular:magnifying-glass" class="mx-3" />
-          </template>
-        </base-input>
-        <base-button color="info" class="gap-1" @click="openTableSetting">
-          <base-icon class="i-fa7-regular:gear" />
-        </base-button>
+      <div class="flex gap-2 w-full justify-between">
+        <div class="flex-1">
+          <base-input v-model="searchAll" placeholder="Search" border="full" class="flex-1">
+            <template #prefix>
+              <base-icon icon="i-fa7-regular:magnifying-glass" />
+            </template>
+          </base-input>
+        </div>
+        <div class="flex gap-1">
+          <base-button color="primary" border="none" class="gap-1">
+            <base-icon class="i-lucide:square-plus" /> CREATE
+          </base-button>
+          <base-button color="info" class="gap-1" @click="openTableSetting">
+            <base-icon class="i-ph:sliders-horizontal-bold" />
+          </base-button>
+        </div>
       </div>
     </div>
     <base-modal :is-open="showModal" @on-close="showModal = false" size="xl">

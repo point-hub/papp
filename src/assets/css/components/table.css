@@ -18,7 +18,7 @@
   @apply dark:text-slate-100 font-semibold uppercase text-slate-800 p-2;
 }
 .basic-table td {
-  @apply align-top p-2;
+  @apply align-center p-2;
 }
 
 /* bordered table */
@@ -26,7 +26,7 @@
   @apply dark:border-slate-500 dark:text-slate-100 border border-slate-200 p-3! font-semibold uppercase text-slate-800;
 }
 .bordered-table-body {
-  @apply dark:border-slate-500 border border-slate-200 p-3! align-top;
+  @apply dark:border-slate-500 border border-slate-200 p-3! align-center;
 }
 
 table td.expand,

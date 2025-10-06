@@ -94,24 +94,24 @@ const isShowPageButton = (i: number) => {
       </p>
     </div>
     <div v-if="totalPage > 1" class="flex">
-      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickFirst()">
+      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="sm" @click="onClickFirst()">
         <base-icon icon="i-fa7-solid:angles-left" />
       </base-button>
-      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="xs" @click="onClickPrev()">
+      <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="sm" @click="onClickPrev()">
         <base-icon icon="i-fa7-solid:angle-left" />
       </base-button>
       <template v-for="i in totalPage" :key="i">
         <base-button v-if="isShowPageButton(i)" type="button" size="sm" variant="text" shape="rounded"
           @click="onClickPage(i)" :class="{
-            'bg-primary text-white!': i === value
+            'bg-primary text-white! px-2!': i === value
           }">
           {{ i }}
         </base-button>
       </template>
-      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickNext()">
+      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="sm" @click="onClickNext()">
         <base-icon icon="i-fa7-solid:angle-right flex items-center justify-center self-center" />
       </base-button>
-      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="xs" @click="onClickLast()">
+      <base-button v-if="totalPage > 5" :disabled="value === totalPage" variant="text" size="sm" @click="onClickLast()">
         <base-icon icon="i-fa7-solid:angles-right" />
       </base-button>
     </div>
