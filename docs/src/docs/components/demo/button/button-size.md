@@ -18,6 +18,7 @@ Button components can have various sizes.
     <base-button color="primary" size="md">Button md</base-button>
     <base-button color="primary" size="lg">Button lg</base-button>
     <base-button color="primary" size="xl">Button xl</base-button>
+    <base-button color="primary" size="2xl">Button 2xl</base-button>
   </div>
 </template>
 ```

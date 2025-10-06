@@ -66,7 +66,12 @@ if (props.shape === 'rounded') {
   buttonShape = 'rounded-lg'
 }
 if (props.shape === 'pill') {
-  buttonShape = 'rounded-full'
+  if (props.size === 'xs') buttonShape = 'rounded-full !px-2'
+  if (props.size === 'sm') buttonShape = 'rounded-full !px-2.5'
+  if (props.size === 'md') buttonShape = 'rounded-full !px-3'
+  if (props.size === 'lg') buttonShape = 'rounded-full !px-4'
+  if (props.size === 'xl') buttonShape = 'rounded-full !px-4.5'
+  if (props.size === '2xl') buttonShape = 'rounded-full !px-5'
 }
 classes.push(`${buttonShape}`)
 
@@ -87,24 +92,12 @@ if (props.align) {
 </script>
 
 <template>
-  <button
-    class="btn"
-    :type="type"
-    :class="classes"
-    :disabled="disabled || isLoading"
-    :data-testid="props.dataTestid"
-  >
+  <button class="btn" :type="type" :class="classes" :disabled="disabled || isLoading" :data-testid="props.dataTestid">
     <!-- Render Button Content -->
     <slot></slot>
     <!-- :Loading Spinner -->
-    <span
-      v-if="isLoading && (variant === 'text' || variant === 'outlined')"
-      class="spinner spinner-black spinner-xs"
-    />
-    <span
-      v-if="isLoading && (variant === 'filled' || variant === 'light')"
-      class="spinner spinner-white spinner-xs"
-    />
+    <span v-if="isLoading && (variant === 'text' || variant === 'outlined')" class="spinner spinner-black spinner-xs" />
+    <span v-if="isLoading && (variant === 'filled' || variant === 'light')" class="spinner spinner-white spinner-xs" />
   </button>
 </template>
 
