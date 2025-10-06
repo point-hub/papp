@@ -14,7 +14,7 @@ const accountPopoverRef = ref()
   <base-popover ref="accountPopoverRef" placement="bottom-end">
     <button type="button" class="flex gap-2" @click="accountPopoverRef.toggle()">
       <div class="hidden lg:flex flex-col justify-center items-end">
-        <p class="text-sm truncate font-semibold">{{ props.organization }}</p>
+        <p class="text-sm truncate font-extrabold">{{ props.organization }}</p>
         <p class="text-sm truncate">{{ props.username }}</p>
       </div>
       <base-avatar size="xs" :src="props.avatar" shape="squircle" :name="props.username" />

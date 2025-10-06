@@ -138,8 +138,12 @@ const account = ref({
 
 const organizations = ref([
   {
-    name: 'Organization ABC',
+    name: 'Company ABC',
     link: '?organization=abc'
+  },
+  {
+    name: 'Company DEF',
+    link: '?organization=def'
   }
 ])
 
@@ -166,7 +170,7 @@ onMounted(() => {
         <header-menu :organization="account.organization" :username="account.username" :avatar="account.avatar">
           <header-menu-account :organization="account.organization" :username="account.username"
             :avatar="account.avatar" />
-          <base-divider orientation="vertical" />
+          <base-divider orientation="vertical" class="my-2!" />
           <header-menu-switch-organization :organizations="organizations" />
           <header-menu-dark-mode :on-toggle-dark-mode="toggleDarkMode" v-model:is-dark-mode="isDarkMode" />
           <header-menu-signout :on-signout="onSignout" />
