@@ -24,7 +24,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  layout: 'vertical',
+  layout: 'horizontal',
   required: false,
   disabled: false,
   textPosition: 'left',
@@ -47,36 +47,21 @@ const value = computed({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
     <label>
-      <span
-        class="inline-flex cursor-pointer select-none items-center gap-2"
-        :class="{ 'flex-row-reverse ': textPosition === 'right' }"
-      >
+      <span class="inline-flex cursor-pointer select-none items-center gap-2"
+        :class="{ 'flex-row-reverse ': textPosition === 'right' }">
         <slot name="label">{{ text }}</slot>
-        <input
-          v-model="value"
-          class="switch"
-          type="checkbox"
-          :disabled="disabled || readonly"
-          :class="[
-            {
-              'switch-sm': size === 'sm',
-              'switch-md': size === 'md',
-              'switch-lg': size === 'lg',
-              'switch-xl': size === 'xl',
-              'switch-disabled': disabled
-            }
-          ]"
-          :data-testid="dataTestid"
-        />
+        <input v-model="value" class="switch" type="checkbox" :disabled="disabled || readonly" :class="[
+          {
+            'switch-sm': size === 'sm',
+            'switch-md': size === 'md',
+            'switch-lg': size === 'lg',
+            'switch-xl': size === 'xl',
+            'switch-disabled': disabled
+          }
+        ]" :data-testid="dataTestid" />
       </span>
     </label>
   </base-form>
@@ -102,12 +87,15 @@ const value = computed({
 .switch-sm {
   @apply h-4 w-8;
 }
+
 .switch-md {
   @apply h-5 w-10;
 }
+
 .switch-lg {
   @apply h-6 w-12;
 }
+
 .switch-xl {
   @apply h-7 w-14;
 }

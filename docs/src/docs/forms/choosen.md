@@ -20,23 +20,23 @@ Choosen is select with modal dialog gives you a customizable select box with sup
 
 ### Props
 
-| Name                  | Type                    | Default    | Description                    |
-|-----------------------|-------------------------|------------|--------------------------------|
-| v-model               | string                  |            | v-model is `required`.         |
-| v-model:selectedLabel | string                  |            | v-model for label only.        |
-| v-model:selectedValue | string                  |            | v-model for value only.        |
-| v-model:errors        | string[]                |            | Input error message.           |
-| mode                  | `input` `text`          | `input`    | Choosen mode.                  |
-| label                 | string                  |            | Choosen label.                 |
-| label                 | string                  |            | Choosen label.                 |
-| text                  | string                  |            | Choosen text.                  |
-| description           | string                  |            | Input description.             |
-| placeholder           | string                  |            | Input placeholder.             |
-| layout                | `horizontal` `vertical` | `vertical` | Input layout.                  |
-| required              | boolean                 | false      | if true choosen is `required`. |
-| disabled              | boolean                 | false      | if true choosen is `disabled`. |
-| helpers               | string[]                |            | Input helper message.          |
-| data-testid           | string                  |            | Testing ID.                    |
+| Name                  | Type                    | Default      | Description                    |
+|-----------------------|-------------------------|--------------|--------------------------------|
+| v-model               | string                  |              | v-model is `required`.         |
+| v-model:selectedLabel | string                  |              | v-model for label only.        |
+| v-model:selectedValue | string                  |              | v-model for value only.        |
+| v-model:errors        | string[]                |              | Input error message.           |
+| mode                  | `input` `text`          | `input`      | Choosen mode.                  |
+| label                 | string                  |              | Choosen label.                 |
+| label                 | string                  |              | Choosen label.                 |
+| text                  | string                  |              | Choosen text.                  |
+| description           | string                  |              | Input description.             |
+| placeholder           | string                  |              | Input placeholder.             |
+| layout                | `horizontal` `vertical` | `horizontal` | Input layout.                  |
+| required              | boolean                 | false        | if true choosen is `required`. |
+| disabled              | boolean                 | false        | if true choosen is `disabled`. |
+| helpers               | string[]                |              | Input helper message.          |
+| data-testid           | string                  |              | Testing ID.                    |
 
 ## Automated Test Guide
 

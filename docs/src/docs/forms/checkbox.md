@@ -35,19 +35,19 @@ The input element with a type attribute whose value is "text" represents a one-l
 
 ### Props
 
-| Name           | Type                    | Default    | Description                     |
-| -------------- | ----------------------- | ---------- | ------------------------------- |
-| v-model        | string                  |            | v-model is `required`.          |
-| v-model:errors | string[]                |            | Input error message.            |
-| true-value     | string                  | true       | Checkbox checked value.         |
-| false-value    | string                  | false      | Checkbox unchecked value.       |
-| label          | string                  |            | Checkbox label.                 |
-| text           | string                  |            | Checkbox text.                  |
-| description    | string                  |            | Input description.              |
-| layout         | `horizontal` `vertical` | `vertical` | Input layout.                   |
-| required       | boolean                 | false      | if true checkbox is `required`. |
-| helpers        | string[]                |            | Input helper message.           |
-| data-testid    | string                  |            | Testing ID.                     |
+| Name           | Type                    | Default      | Description                     |
+|----------------|-------------------------|--------------|---------------------------------|
+| v-model        | string                  |              | v-model is `required`.          |
+| v-model:errors | string[]                |              | Input error message.            |
+| true-value     | string                  | true         | Checkbox checked value.         |
+| false-value    | string                  | false        | Checkbox unchecked value.       |
+| label          | string                  |              | Checkbox label.                 |
+| text           | string                  |              | Checkbox text.                  |
+| description    | string                  |              | Input description.              |
+| layout         | `horizontal` `vertical` | `horizontal` | Input layout.                   |
+| required       | boolean                 | false        | if true checkbox is `required`. |
+| helpers        | string[]                |              | Input helper message.           |
+| data-testid    | string                  |              | Testing ID.                     |
 
 ## Automated Test Guide
 

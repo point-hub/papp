@@ -1,5 +1,8 @@
 <script setup lang="ts">
-export type BaseFormLayoutType = 'vertical' | 'horizontal'
+import { computed, useSlots } from 'vue'
+
+// Explicitly define all possible layout values for clarity
+export type BaseFormLayoutType = 'vertical' | 'v' | 'horizontal' | 'h'
 
 export interface Props {
   id?: string
@@ -12,18 +15,39 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  layout: 'vertical',
-  required: false
+  layout: 'horizontal',
+  required: false,
 })
+
+const slots = useSlots()
+
+/**
+ * Resolves the layout prop into the full string ('horizontal' or 'vertical').
+ * This centralizes the logic for handling shorthands ('h', 'v').
+ */
+const resolvedLayout = computed(() => {
+  switch (props.layout) {
+    case 'h':
+    case 'horizontal':
+      return 'horizontal'
+    case 'v':
+    case 'vertical':
+    default:
+      return 'vertical'
+  }
+})
+
+// Centralized check for the layout style
+const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
 </script>
 
 <template>
-  <div :class="{
-    'relative lg:flex lg:items-start lg:gap-5': props.layout === 'horizontal'
-  }">
-    <label :for="id" class="font-bold flex" :class="{
-      'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-1': props.layout === 'horizontal',
-      'text-sm gap-1': props.layout === 'vertical'
+  <div :class="{ 'relative lg:flex lg:items-start lg:gap-5': isHorizontal && props.label }">
+    <label :for="props.id" class="font-bold flex" :class="{
+      // Horizontal classes
+      'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-1': isHorizontal && props.label,
+      // Vertical classes (default)
+      'text-sm gap-1': !isHorizontal || !props.label,
     }">
       <span v-if="props.label">{{ props.label }}</span>
       <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
@@ -36,18 +60,20 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="relative flex items-center">
         <slot></slot>
       </div>
-      <div class="flex flex-col mt-1 gap-1" v-if="helpers">
+
+      <div class="flex flex-col mt-1 gap-1" v-if="props.helpers || slots.helper">
         <slot name="helper">
-          <div class="flex items-center gap-1" v-for="(helper, index) in helpers" :key="index">
+          <div class="flex items-center gap-1" v-for="(helper, index) in props.helpers" :key="index">
             <p class="text-xs text-slate-500">
               {{ helper }}
             </p>
           </div>
         </slot>
       </div>
-      <div class="flex flex-col mt-1 gap-1" v-if="errors">
+
+      <div class="flex flex-col mt-1 gap-1" v-if="props.errors || slots.error">
         <slot name="error">
-          <div class="flex items-center gap-1" v-for="(error, index) in errors" :key="index">
+          <div class="flex items-center gap-1" v-for="(error, index) in props.errors" :key="index">
             <base-icon icon="i-fa7-regular:triangle-exclamation" class="text-danger" />
             <p class="text-xs text-danger">
               {{ error }}

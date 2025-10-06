@@ -49,8 +49,8 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 | label          | string                    |            | Input label.                 |
 | description    | string                    |            | Input description.           |
 | align          | `left` `right`            | `right`    | Input align.                 |
-| border         | BaseInputNumberBorderType | `simple`   | Input border.                |
-| layout         | BaseFormLayoutType        | `vertical` | Input layout.                |
+| border         | BaseInputNumberBorderType | `full`   | Input border.                |
+| layout         | BaseFormLayoutType        | `horizontal` | Input layout.                |
 | decimalLength  | number                    | 0          | Input decimal length.        |
 | required       | boolean                   | false      | if true input is `required`. |
 | helpers        | string[]                  |            | Input helper message.        |

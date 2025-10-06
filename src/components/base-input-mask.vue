@@ -25,8 +25,8 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  border: 'simple',
-  layout: 'vertical',
+  border: 'full',
+  layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,
@@ -54,31 +54,15 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
-    <input
-      ref="inputRef"
-      class="form-input"
-      :class="{
-        'border-simple': border === 'simple',
-        'border-full': border === 'full',
-        'border-none px-0!': border === 'none'
-      }"
-      v-model.lazy="value"
-      v-input-mask="options"
-      :required="props.required"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
-      :autofocus="props.autofocus"
-      :placeholder="props.placeholder"
-      :data-testid="props.dataTestid"
-    />
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
+    <input ref="inputRef" class="form-input" :class="{
+      'border-simple': border === 'simple',
+      'border-full': border === 'full',
+      'border-none px-0!': border === 'none'
+    }" v-model.lazy="value" v-input-mask="options" :required="props.required" :readonly="props.readonly"
+      :disabled="props.disabled" :autofocus="props.autofocus" :placeholder="props.placeholder"
+      :data-testid="props.dataTestid" />
   </base-form>
 </template>
 

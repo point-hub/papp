@@ -26,15 +26,15 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name        | Type               | Default    | Description              |
-| ----------- | ------------------ | ---------- | ------------------------ |
-| id          | string             |            | Form id.                 |
-| label       | string             |            | Form label.              |
-| description | string             |            | Form description.        |
-| layout      | BaseFormLayoutType | `vertical` | Form layout.             |
-| required    | boolean            | false      | Form required indicator. |
-| helpers     | string[]           |            | Form helper message.     |
-| errors      | string[]           |            | Form error message.      |
+| Name        | Type               | Default      | Description              |
+|-------------|--------------------|--------------|--------------------------|
+| id          | string             |              | Form id.                 |
+| label       | string             |              | Form label.              |
+| description | string             |              | Form description.        |
+| layout      | BaseFormLayoutType | `horizontal` | Form layout.             |
+| required    | boolean            | false        | Form required indicator. |
+| helpers     | string[]           |              | Form helper message.     |
+| errors      | string[]           |              | Form error message.      |
 
 ### Slot
 

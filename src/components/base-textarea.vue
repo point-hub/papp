@@ -25,8 +25,8 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  border: 'simple',
-  layout: 'vertical',
+  border: 'full',
+  layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,
@@ -72,37 +72,19 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
-    <textarea
-      ref="textareaRef"
-      :placeholder="placeholder"
-      :autofocus="autofocus"
-      :required="required"
-      :readonly="readonly"
-      :disabled="disabled"
-      :maxlength="props.maxlength"
-      class="form-input resize-none px-2"
-      :class="{
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
+    <textarea ref="textareaRef" :placeholder="placeholder" :autofocus="autofocus" :required="required"
+      :readonly="readonly" :disabled="disabled" :maxlength="props.maxlength" class="form-input resize-none px-2" :class="{
         'border-simple': border === 'simple',
         'border-full': border === 'full',
         'border-none px-0!': border === 'none',
         'overflow-hidden': !maxHeight
-      }"
-      :style="{
+      }" :style="{
         height: height + 'px',
         minHeight: minHeight ? minHeight + 'px' : 'inherit',
         maxHeight: maxHeight ? maxHeight + 'px' : 'inherit'
-      }"
-      v-model="value"
-      :data-testid="dataTestid"
-    ></textarea>
+      }" v-model="value" :data-testid="dataTestid"></textarea>
   </base-form>
 </template>
 

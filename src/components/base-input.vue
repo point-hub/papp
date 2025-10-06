@@ -37,9 +37,9 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  border: 'simple',
+  border: 'full',
   type: 'text',
-  layout: 'vertical',
+  layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,

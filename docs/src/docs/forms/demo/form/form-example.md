@@ -24,7 +24,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  layout: 'vertical',
+  layout: 'horizontal',
   required: false
 })
 

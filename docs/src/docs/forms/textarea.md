@@ -3,7 +3,6 @@ outline: deep
 ---
 
 <script setup lang="ts">
-import TextareaExample from './demo/textarea/textarea-example.vue'
 import TextareaLabel from './demo/textarea/textarea-label.vue'
 import TextareaBorder from './demo/textarea/textarea-border.vue'
 import TextareaHelper from './demo/textarea/textarea-helper.vue'
@@ -15,10 +14,6 @@ import TextareaHeight from './demo/textarea/textarea-height.vue'
 The textarea component is an important part of any website or application that can be used to show the current location of a page in a hierarchical structure of pages.
 
 ## Examples
-
-### Textarea
-
-<!--@include: ./demo/textarea/textarea-example.md-->
 
 ### Label
 

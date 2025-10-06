@@ -28,7 +28,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   theme: 'primary',
-  layout: 'vertical',
+  layout: 'horizontal',
   required: false,
   readonly: false,
   disabled: false
@@ -56,28 +56,12 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
     <div class="flex gap-2 items-center">
-      <input
-        ref="inputRef"
-        :id="uuid"
-        v-model="modelValue"
-        :data-testid="props.dataTestid"
-        :readonly="props.readonly"
-        :disabled="props.disabled"
-        :value="trueValue"
-        :required="required"
-        :true-value="trueValue"
-        :false-value="falseValue"
-        class="form-checkbox"
-        :class="{
+      <input ref="inputRef" :id="uuid" v-model="modelValue" :data-testid="props.dataTestid" :readonly="props.readonly"
+        :disabled="props.disabled" :value="trueValue" :required="required" :true-value="trueValue"
+        :false-value="falseValue" class="form-checkbox" :class="{
           'checked:border-primary checked:bg-primary border-primary': props.theme === 'primary',
           'checked:border-secondary checked:bg-secondary border-secondary':
             props.theme === 'secondary',
@@ -86,9 +70,7 @@ defineExpose({
           'checked:border-warning checked:bg-warning border-warning': props.theme === 'warning',
           'checked:border-danger checked:bg-danger border-danger': props.theme === 'danger',
           'bg-slate-500!': props.disabled
-        }"
-        type="checkbox"
-      />
+        }" type="checkbox" />
       <label :for="uuid" class="cursor-pointer">
         <p v-if="text">{{ text }}</p>
       </label>

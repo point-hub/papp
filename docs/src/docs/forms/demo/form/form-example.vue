@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  layout: 'vertical',
+  layout: 'horizontal',
   required: false
 })
 
@@ -31,14 +31,8 @@ const inputValue = computed({
 
 <template>
   <Demo>
-    <base-form
-      :label="props.label"
-      :layout="props.layout"
-      :description="props.description"
-      :required="props.required"
-      :helpers="props.helpers"
-      :errors="props.errors"
-    >
+    <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+      :helpers="props.helpers" :errors="props.errors">
       <input class="form-input border-simple" v-model="inputValue" />
     </base-form>
   </Demo>

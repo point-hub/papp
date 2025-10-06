@@ -49,7 +49,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | id             | string             |            | Input id.                    |
 | label          | string             |            | Input label.                 |
 | description    | string             |            | Input description.           |
-| layout         | BaseFormLayoutType | `vertical` | Input layout.                |
+| layout         | BaseFormLayoutType | `horizontal` | Input layout.                |
 | show-text      | boolean            | false      | Show range value.            |
 | disabled       | boolean            | false      | if true range is `disabled`. |
 | helpers        | string[]           |            | Input helper message.        |

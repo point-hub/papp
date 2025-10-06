@@ -39,8 +39,8 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   decimalLength: 0,
   align: 'right',
-  border: 'simple',
-  layout: 'vertical',
+  border: 'full',
+  layout: 'horizontal',
   required: false,
   readonly: false,
   autofocus: false,
@@ -98,12 +98,12 @@ const onValueChanged = (e: { target: { rawValue: number } }) => {
 }
 
 const inputValue = computed({
-  set: () => {},
+  set: () => { },
   get: () =>
     modelValue.value
       ? new Intl.NumberFormat('en-US', {
-          maximumFractionDigits: props.decimalLength
-        }).format(modelValue.value as number)
+        maximumFractionDigits: props.decimalLength
+      }).format(modelValue.value as number)
       : ''
 })
 
@@ -113,46 +113,24 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
-    <input
-      ref="inputRef"
-      class="form-input"
-      :class="{
-        'text-right': align === 'right',
-        'border-simple': border === 'simple',
-        'border-full': border === 'full',
-        'border-none px-0!': border === 'none'
-      }"
-      v-model="inputValue"
-      :placeholder="props.placeholder"
-      :autofocus="props.autofocus"
-      :required="props.required"
-      :readonly="props.readonly"
-      :disabled="props.disabled"
-      :data-testid="props.dataTestid"
-      @click="selectAllText"
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
+    <input ref="inputRef" class="form-input" :class="{
+      'text-right': align === 'right',
+      'border-simple': border === 'simple',
+      'border-full': border === 'full',
+      'border-none px-0!': border === 'none'
+    }" v-model="inputValue" :placeholder="props.placeholder" :autofocus="props.autofocus" :required="props.required"
+      :readonly="props.readonly" :disabled="props.disabled" :data-testid="props.dataTestid" @click="selectAllText"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
-      }"
-    />
-    <div
-      ref="suffixRef"
-      class="absolute right-0 h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
-    >
+      }" />
+    <div ref="suffixRef"
+      class="absolute right-0 h-full flex items-center justify-center text-slate-400 dark:text-slate-300">
       <slot name="suffix"></slot>
     </div>
-    <div
-      ref="prefixRef"
-      class="absolute h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
-    >
+    <div ref="prefixRef" class="absolute h-full flex items-center justify-center text-slate-400 dark:text-slate-300">
       <slot name="prefix"></slot>
     </div>
   </base-form>

@@ -49,8 +49,8 @@ export type BaseRadioOptionsLayout = 'vertical' | 'horizontal'
 | id             | string                                                               |            | Input id.                    |
 | label          | string                                                               |            | Input label.                 |
 | description    | string                                                               |            | Input description.           |
-| layout         | BaseFormLayoutType                                                   | `vertical` | Input layout.                |
-| optionsLayout  | BaseRadioOptionsLayout                                               | `vertical` | Input layout.                |
+| layout         | BaseFormLayoutType                                                   | `horizontal` | Input layout.                |
+| optionsLayout  | BaseRadioOptionsLayout                                               | `horizontal` | Input layout.                |
 | required       | boolean                                                              | false      | if true input is `required`. |
 | disabled       | boolean                                                              | false      | if true input is `disabled`. |
 | helpers        | string[]                                                             |            | Input helper message.        |

@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  layout: 'vertical',
+  layout: 'horizontal',
   disabled: false,
   showText: false
 })
@@ -37,23 +37,11 @@ const value = computed({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :helpers="props.helpers"
+    :errors="errors">
     <div class="flex w-full gap-2 mt-0.2">
-      <input
-        type="range"
-        class="w-full"
-        min="0"
-        max="100"
-        v-model="value"
-        :disabled="disabled"
-        :data-testid="dataTestid"
-      />
+      <input type="range" class="w-full" min="0" max="100" v-model="value" :disabled="disabled"
+        :data-testid="dataTestid" />
       <p v-if="showText">{{ value }}</p>
     </div>
   </base-form>

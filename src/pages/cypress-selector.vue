@@ -49,37 +49,32 @@ const onSubmit = () => {
     <base-card title="Cypress Selector">
 
       <div class="flex flex-col gap-2">
-        <base-input layout="horizontal" label="Input Text" v-model="inputText" border="full" data-testid="input-text" />
+        <base-input label="Input Text" v-model="inputText" data-testid="input-text" />
 
-        <base-textarea layout="horizontal" label="Input Textarea" v-model="inputTextarea" border="full"
-          data-testid="input-textarea" />
+        <base-textarea label="Input Textarea" v-model="inputTextarea" data-testid="input-textarea" />
 
-        <base-input-mask layout="horizontal" label="Input Mask" v-model="inputMask" :options="{ creditCard: true }"
-          placeholder="**** **** **** ****" border="full" data-testid="input-mask" />
+        <base-input-mask label="Input Mask" v-model="inputMask" :options="{ creditCard: true }"
+          placeholder="**** **** **** ****" data-testid="input-mask" />
 
-        <base-input-number layout="horizontal" label="Input Number" v-model="inputNumber" border="full" align="left"
-          data-testid="input-number" />
+        <base-input-number label="Input Number" v-model="inputNumber" align="left" data-testid="input-number" />
 
-        <base-datepicker label="Input Date" layout="horizontal" v-model="inputDate" border="full"
-          data-testid="input-date" />
+        <base-datepicker label="Input Date" v-model="inputDate" data-testid="input-date" />
 
-        <base-choosen label="Choosen" layout="horizontal" title="Example" :options="choosenOptions"
-          v-model:selected="choosenSelected" border="full" data-testid="choosen" />
+        <base-choosen label="Choosen" title="Example" :options="choosenOptions" v-model:selected="choosenSelected"
+          data-testid="choosen" />
 
-        <base-select label="Select" layout="horizontal" v-model="selectSelected" :options="selectOptions" border="full"
-          data-testid="select" />
+        <base-select label="Select" v-model="selectSelected" :options="selectOptions" data-testid="select" />
 
-        <base-file-upload label="File Upload" layout="horizontal" data-testid="file-upload" />
+        <base-file-upload label="File Upload" data-testid="file-upload" />
 
-        <base-radio label="Radio" layout="horizontal" :options="radioOptions" v-model="radioSelected"
-          data-testid="radio" />
+        <base-radio label="Radio" :options="radioOptions" v-model="radioSelected" data-testid="radio" />
 
-        <base-switch label="Switch" layout="horizontal" v-model="inputSwitch" data-testid="switch" />
+        <base-switch label="Switch" v-model="inputSwitch" data-testid="switch" />
 
-        <base-checkbox label="Checkbox" layout="horizontal" text="Agree" v-model="inputCheckbox" align="left"
+        <base-checkbox label="Checkbox" text="Agree" v-model="inputCheckbox" align="left"
           data-testid="input-checkbox" />
 
-        <base-range label="Range" layout="horizontal" v-model="inputRange" data-testid="input-range" showText />
+        <base-range label="Range" v-model="inputRange" data-testid="input-range" showText />
       </div>
     </base-card>
 

@@ -52,8 +52,8 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | label                 | string                     |            | Input label.                   |
 | description           | string                     |            | Input description.             |
 | placeholder           | string                     |            | Input placeholder.             |
-| border                | BaseSelectBorderType | `simple`   | Input border.                  |
-| layout                | BaseFormLayoutType         | `vertical` | Input layout.                  |
+| border                | BaseSelectBorderType | `full`   | Input border.                  |
+| layout                | BaseFormLayoutType         | `horizontal` | Input layout.                  |
 | autofocus             | boolean                    | `false`    | Focus input on page load.      |
 | required              | boolean                    | `false`    | if `true` input is `required`. |
 | disabled              | boolean                    | `false`    | if `true` input is `disabled`. |

@@ -32,8 +32,8 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   mode: 'input',
-  border: 'simple',
-  layout: 'vertical',
+  border: 'full',
+  layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,

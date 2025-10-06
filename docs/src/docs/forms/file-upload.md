@@ -49,7 +49,7 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 | label          | string                   |            | Input label.                 |
 | description    | string                   |            | Input description.           |
 | border         | BaseFileUploadBorderType | `full`     | Input border.                |
-| layout         | BaseFormLayoutType       | `vertical` | Input layout.                |
+| layout         | BaseFormLayoutType       | `horizontal` | Input layout.                |
 | accept         | string                   |            | Accept mimetype.             |
 | multiple       | boolean                  | false      | Upload multiple files.       |
 | autofocus      | boolean                  | false      | Focus input on page load.    |

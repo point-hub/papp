@@ -42,8 +42,8 @@ const selectedLabel = defineModel('selected-label')
 const selectedValue = defineModel('selected-value')
 
 const props = withDefaults(defineProps<Props>(), {
-  border: 'simple',
-  layout: 'vertical',
+  border: 'full',
+  layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,

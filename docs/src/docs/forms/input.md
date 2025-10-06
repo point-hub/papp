@@ -47,17 +47,17 @@ export type BaseFormLayoutType = `horizontal` `vertical`
 
 ### Props
 
-| Name           | Type                | Default    | Description            |
-| -------------- | ------------------- | ---------- | ---------------------- |
-| v-model        | string              |            | v-model is `required`. |
-| v-model:errors | string[]            |            | Input error message.   |
-| label          | string              |            | Form label.            |
-| description    | string              |            | Input description.     |
-| required       | boolean             | `false`    | Input required.        |
-| border         | BaseInputBorderType | `simple`   | Input border.          |
-| layout         | BaseFormLayoutType  | `vertical` | Input layout.          |
-| helpers        | string[]            |            | Input helper message.  |
-| data-testid    | string              |            | Testing ID.            |
+| Name           | Type                | Default      | Description            |
+|----------------|---------------------|--------------|------------------------|
+| v-model        | string              |              | v-model is `required`. |
+| v-model:errors | string[]            |              | Input error message.   |
+| label          | string              |              | Form label.            |
+| description    | string              |              | Input description.     |
+| required       | boolean             | `false`      | Input required.        |
+| border         | BaseInputBorderType | `full`       | Input border.          |
+| layout         | BaseFormLayoutType  | `horizontal` | Input layout.          |
+| helpers        | string[]            |              | Input helper message.  |
+| data-testid    | string              |              | Testing ID.            |
 
 ### Slot
 

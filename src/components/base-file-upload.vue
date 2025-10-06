@@ -24,7 +24,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   border: 'full',
-  layout: 'vertical',
+  layout: 'horizontal',
   multiple: false,
   autofocus: false,
   required: false,
@@ -53,45 +53,19 @@ defineExpose({
 </script>
 
 <template>
-  <base-form
-    :label="props.label"
-    :layout="props.layout"
-    :description="props.description"
-    :required="props.required"
-    :helpers="props.helpers"
-    :errors="errors"
-  >
+  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
+    :helpers="props.helpers" :errors="errors">
     <slot :file-ref="fileRef">
-      <input
-        ref="inputRef"
-        class="form-input"
-        :class="{
-          'border-simple': border === 'simple',
-          'border-full': border === 'full',
-          'border-none': border === 'none'
-        }"
-        @change="onUpload($event)"
-        type="file"
-        :multiple="multiple"
-        :accept="props.accept"
-        :autofocus="props.autofocus"
-        :required="props.required"
-        :readonly="props.readonly"
-        :disabled="props.disabled"
-        :data-testid="props.dataTestid"
-      />
+      <input ref="inputRef" class="form-input" :class="{
+        'border-simple': border === 'simple',
+        'border-full': border === 'full',
+        'border-none': border === 'none'
+      }" @change="onUpload($event)" type="file" :multiple="multiple" :accept="props.accept"
+        :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
+        :data-testid="props.dataTestid" />
     </slot>
-    <input
-      ref="fileRef"
-      class="hidden"
-      @change="onUpload($event)"
-      type="file"
-      :multiple="multiple"
-      :accept="props.accept"
-      :required="props.required"
-      :disabled="props.disabled"
-      :data-testid="props.dataTestid"
-    />
+    <input ref="fileRef" class="hidden" @change="onUpload($event)" type="file" :multiple="multiple"
+      :accept="props.accept" :required="props.required" :disabled="props.disabled" :data-testid="props.dataTestid" />
   </base-form>
 </template>
 
