@@ -16,7 +16,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   layout: 'horizontal',
-  required: false,
+  required: false
 })
 
 const slots = useSlots()

@@ -65,7 +65,7 @@ classes.push(`${linkShape}`)
 
 // Button Block
 if (props.isBlock) {
-  classes.push(`link-block`)
+  classes.push('link-block')
 }
 
 // Button Size

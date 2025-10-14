@@ -85,8 +85,8 @@ const inputRef = ref()
 watch(
   () => selected.value,
   () => {
-    selectedLabel.value = selected.value?.label ?? ""
-    selectedValue.value = selected.value?.value ?? ""
+    selectedLabel.value = selected.value?.label ?? ''
+    selectedValue.value = selected.value?.value ?? ''
     if (errors.value?.length) errors.value = []
   }
 )

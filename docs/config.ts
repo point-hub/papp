@@ -20,9 +20,9 @@ export default defineConfig({
     },
     plugins: [
       Unocss({
-        configFile: resolve(__dirname, './uno.config.ts'),
-      }),
-    ],
+        configFile: resolve(__dirname, './uno.config.ts')
+      })
+    ]
   },
   sitemap: {
     hostname: 'https://dev.pointhub.net'
@@ -44,7 +44,7 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright ©2023-2025 Pointhub'
     }
-  },
+  }
 })
 
 function nav(): DefaultTheme.NavItem[] {

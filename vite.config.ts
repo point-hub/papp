@@ -12,8 +12,8 @@ export default defineConfig({
     vue(),
     UnoCSS({
       content: {
-        filesystem: ['src/**/*.vue'],
-      },
+        filesystem: ['src/**/*.vue']
+      }
     }),
     dts({
       entryRoot: './src/',

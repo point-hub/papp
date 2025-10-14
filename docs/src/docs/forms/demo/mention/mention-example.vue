@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { computed, ref } from 'vue'
 
 type Trigger = '@' | '#'
 
@@ -11,34 +11,34 @@ interface MentionOption {
 
 interface Token {
   text: string
-  type: "text" | "mention"
+  type: 'text' | 'mention'
   link?: string
 }
 
-const text = ref("")
+const text = ref('')
 const mentions = ref<MentionOption[]>([])
 
 const userOptions = ref<MentionOption[]>([
-  { id: 1, label: "alice" },
-  { id: 2, label: "bob" },
-  { id: 3, label: "charlie" },
-  { id: 4, label: "dwaynejohnson" },
+  { id: 1, label: 'alice' },
+  { id: 2, label: 'bob' },
+  { id: 3, label: 'charlie' },
+  { id: 4, label: 'dwaynejohnson' }
 ])
 const tagOptions = ref<MentionOption[]>([
-  { id: "t1", label: "vue" },
-  { id: "t2", label: "typescript" }
+  { id: 't1', label: 'vue' },
+  { id: 't2', label: 'typescript' }
 ])
 
 const loading = ref(false)
 
 function onSearch(payload: { trigger: Trigger; query: string }) {
-  console.log("Searching", payload)
+  console.log('Searching', payload)
 }
 
 // Quick lookup maps (trigger -> { label: link })
 const lookup = computed<Record<Trigger, Record<string, string | undefined>>>(() => ({
-  "@": Object.fromEntries(userOptions.value.map(u => [u.label.toLowerCase(), u.link])),
-  "#": Object.fromEntries(tagOptions.value.map(t => [t.label.toLowerCase(), t.link])),
+  '@': Object.fromEntries(userOptions.value.map(u => [u.label.toLowerCase(), u.link])),
+  '#': Object.fromEntries(tagOptions.value.map(t => [t.label.toLowerCase(), t.link]))
 }))
 
 // Tokenize preview
@@ -50,7 +50,7 @@ const tokens = computed<Token[]>(() => {
 
   while ((m = regex.exec(text.value)) !== null) {
     if (m.index > last) {
-      parts.push({ text: text.value.slice(last, m.index), type: "text" })
+      parts.push({ text: text.value.slice(last, m.index), type: 'text' })
     }
 
     const trig = m[0][0] as Trigger
@@ -58,15 +58,15 @@ const tokens = computed<Token[]>(() => {
 
     parts.push({
       text: m[0],
-      type: "mention",
-      link: lookup.value[trig]?.[lbl],
+      type: 'mention',
+      link: lookup.value[trig]?.[lbl]
     })
 
     last = regex.lastIndex
   }
 
   if (last < text.value.length) {
-    parts.push({ text: text.value.slice(last), type: "text" })
+    parts.push({ text: text.value.slice(last), type: 'text' })
   }
 
   return parts

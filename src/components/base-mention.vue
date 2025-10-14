@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import getCaretCoordinates from "textarea-caret"
-import { computed, nextTick, onMounted, ref, watch } from "vue"
+import getCaretCoordinates from 'textarea-caret'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
-import { type BaseFormLayoutType } from "./base-form.vue"
+import { type BaseFormLayoutType } from './base-form.vue'
 
-export type BaseMentionBorderType = "simple" | "full" | "none"
+export type BaseMentionBorderType = 'simple' | 'full' | 'none'
 
 export interface IMentionOption {
   id: number | string
@@ -39,33 +39,33 @@ export interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  border: "simple",
-  layout: "vertical",
+  border: 'simple',
+  layout: 'vertical',
   autofocus: false,
   required: false,
   readonly: false,
   disabled: false,
   options: () => ({}),
-  triggers: () => ["@"],
-  loading: false,
+  triggers: () => ['@'],
+  loading: false
 })
 
-const errors = defineModel<string[]>("errors")
+const errors = defineModel<string[]>('errors')
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void
-  (e: "update:mentions", mentions: IMentionOption[]): void
-  (e: "search", payload: { trigger: string; query: string }): void
+  (e: 'update:modelValue', value: string): void
+  (e: 'update:mentions', mentions: IMentionOption[]): void
+  (e: 'search', payload: { trigger: string; query: string }): void
 }>()
 
 /* Value binding */
 const value = computed({
   get: () => props.modelValue,
   set: (text: string) => {
-    emit("update:modelValue", text)
+    emit('update:modelValue', text)
     if (errors.value?.length) errors.value = []
     resize()
-  },
+  }
 })
 
 /* Auto-resize */
@@ -86,7 +86,7 @@ const showSuggestions = ref(false)
 const activeIndex = ref(0)
 const triggerChar = ref<string | null>(null)
 const triggerIndex = ref(-1)
-const query = ref("")
+const query = ref('')
 
 /* Filter options reactively */
 const filteredOptions = computed(() => {
@@ -101,7 +101,7 @@ function updateDropdownPosition() {
   const caret = getCaretCoordinates(textareaRef.value, triggerIndex.value)
   dropdownPos.value = {
     top: caret.top - textareaRef.value.scrollTop + caret.height,
-    left: caret.left - textareaRef.value.scrollLeft,
+    left: caret.left - textareaRef.value.scrollLeft
   }
 }
 
@@ -109,14 +109,14 @@ function onInput(e: Event) {
   const el = e.target as HTMLTextAreaElement
   const pos = el.selectionStart
   const textBefore = value.value.slice(0, pos)
-  const regex = new RegExp(`([${props.triggers.join("")}])(\\w*)$`)
+  const regex = new RegExp(`([${props.triggers.join('')}])(\\w*)$`)
   const match = textBefore.match(regex)
 
   if (match) {
     triggerChar.value = match[1]!
     triggerIndex.value = pos - match[2]!.length - 1
     query.value = match[2]!
-    emit("search", { trigger: triggerChar.value, query: query.value })
+    emit('search', { trigger: triggerChar.value, query: query.value })
     showSuggestions.value = true
     nextTick(updateDropdownPosition)
   } else {
@@ -126,11 +126,11 @@ function onInput(e: Event) {
 
 function onKeydown(e: KeyboardEvent) {
   if (!showSuggestions.value || !filteredOptions.value.length) return
-  if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key)) e.preventDefault()
-  if (e.key === "ArrowDown") activeIndex.value = (activeIndex.value + 1) % filteredOptions.value.length
-  if (e.key === "ArrowUp") activeIndex.value = (activeIndex.value - 1 + filteredOptions.value.length) % filteredOptions.value.length
-  if (e.key === "Enter") selectMention(filteredOptions.value[activeIndex.value]!)
-  if (e.key === "Escape") resetMention()
+  if (['ArrowDown', 'ArrowUp', 'Enter', 'Escape'].includes(e.key)) e.preventDefault()
+  if (e.key === 'ArrowDown') activeIndex.value = (activeIndex.value + 1) % filteredOptions.value.length
+  if (e.key === 'ArrowUp') activeIndex.value = (activeIndex.value - 1 + filteredOptions.value.length) % filteredOptions.value.length
+  if (e.key === 'Enter') selectMention(filteredOptions.value[activeIndex.value]!)
+  if (e.key === 'Escape') resetMention()
 }
 
 function selectMention(option: IMentionOption) {
@@ -149,7 +149,7 @@ function selectMention(option: IMentionOption) {
 function resetMention() {
   showSuggestions.value = false
   triggerIndex.value = -1
-  query.value = ""
+  query.value = ''
   triggerChar.value = null
   activeIndex.value = 0
 }
@@ -158,12 +158,12 @@ function resetMention() {
 watch(value, () => {
   const mentions: IMentionOption[] = []
   for (const char of props.triggers) {
-    const regex = new RegExp(`\\${char}(\\w+)`, "g")
+    const regex = new RegExp(`\\${char}(\\w+)`, 'g')
     const matches = Array.from(value.value.matchAll(regex)).map((m) => m[1]?.toLowerCase())
     const opts = props.options[char] || []
     mentions.push(...opts.filter((o) => matches.includes(o.label.toLowerCase())))
   }
-  emit("update:mentions", mentions)
+  emit('update:mentions', mentions)
 })
 
 defineExpose({ textareaRef })

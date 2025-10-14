@@ -127,19 +127,21 @@ defineExpose({
       class="form-input absolute! -z-50 text-transparent bg-transparent" :class="{
         'pl-0!': border === 'simple' || border === 'none'
       }" />
-    <base-button variant="text" type="button" class="absolute left-0 px-0! py-2" :class="{
-      'px-2!': border === 'full'
-    }" @click="onClickDateRef()">
-      <base-icon icon="i-fa7-regular:calendar" />
-    </base-button>
+
     <input ref="inputRef" v-model.lazy="value"
       v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }" type="text"
-      class="form-input bg-inherit" :class="{
-        'border-simple pl-6!': border === 'simple',
-        'border-full pl-8!': border === 'full',
-        'border-none pl-6!': border === 'none'
+      class="form-input pl-8! bg-inherit" :class="{
+        'border-simple': border === 'simple',
+        'border-full': border === 'full',
+        'border-none': border === 'none'
       }" placeholder="YYYY-MM-DD" :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly"
       :disabled="props.disabled" :data-testid="props.dataTestid" />
+
+    <base-button variant="text" type="button"
+      class="absolute h-full flex px-1 items-center justify-center text-slate-400 dark:text-slate-300"
+      @click="onClickDateRef()">
+      <base-icon icon="i-fa7-regular:calendar" />
+    </base-button>
   </base-form>
 </template>
 

@@ -135,7 +135,7 @@ defineExpose({
     <input ref="inputRef" class="form-input" :class="{
       'border-simple': border === 'simple',
       'border-full': border === 'full',
-      'border-none px-0!': border === 'none'
+      'border-none': border === 'none'
     }" v-model.trim="value" :type="props.type" :maxlength="props.maxlength" :placeholder="props.placeholder"
       :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
       :data-testid="props.dataTestid" :style="{
@@ -143,11 +143,10 @@ defineExpose({
         paddingRight: `${paddingRight}px`
       }" />
     <div ref="suffixRef"
-      class="absolute h-full flex px-2 items-center justify-center text-slate-400 dark:text-slate-300 right-0">
+      class="absolute flex px-2 items-center justify-center text-slate-400 dark:text-slate-300 right-0">
       <slot name="suffix"></slot>
     </div>
-    <div ref="prefixRef"
-      class="absolute h-full flex px-2 items-center justify-center text-slate-400 dark:text-slate-300">
+    <div ref="prefixRef" class="absolute flex px-2 items-center justify-center text-slate-400 dark:text-slate-300">
       <slot name="prefix"></slot>
     </div>
   </base-form>

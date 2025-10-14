@@ -46,17 +46,17 @@ if (props.shape === 'circle') {
 }
 
 if (props.color === 'primary') {
-  classes.push(`bg-primary text-white`)
+  classes.push('bg-primary text-white')
 } else if (props.color === 'secondary') {
-  classes.push(`bg-secondary text-white`)
+  classes.push('bg-secondary text-white')
 } else if (props.color === 'info') {
-  classes.push(`bg-info text-white`)
+  classes.push('bg-info text-white')
 } else if (props.color === 'success') {
-  classes.push(`bg-success text-white`)
+  classes.push('bg-success text-white')
 } else if (props.color === 'warning') {
-  classes.push(`bg-warning text-white`)
+  classes.push('bg-warning text-white')
 } else if (props.color === 'danger') {
-  classes.push(`bg-danger text-white`)
+  classes.push('bg-danger text-white')
 }
 
 const indicatorClasses: string[] = []
