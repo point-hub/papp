@@ -136,10 +136,9 @@ const onClose = () => {
       <base-input placeholder="Search" ref="inputRef" border="full" v-model="search"
         :data-testid="`${dataTestid}-search`">
         <template #suffix>
-          <base-button class="absolute right-0 top-0 w-8 h-full" variant="filled" color="danger" size="xs"
-            :data-testid="`${dataTestid}-clear-button`" @click="onClear">
+          <button class="w-8 h-8" :data-testid="`${dataTestid}-clear-button`" @click="onClear">
             <base-icon icon="i-fa7-solid:xmark" />
-          </base-button>
+          </button>
         </template>
       </base-input>
       <!-- Options -->
