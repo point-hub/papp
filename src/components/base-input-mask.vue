@@ -18,6 +18,8 @@ export interface Props {
   required?: boolean
   readonly?: boolean
   disabled?: boolean
+  size?: string
+  rounded?: boolean
   helpers?: string[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options?: any
@@ -30,7 +32,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  rounded: false
 })
 
 const emit = defineEmits<{
@@ -59,7 +62,9 @@ defineExpose({
     <input ref="inputRef" class="form-input" :class="{
       'border-simple': border === 'simple',
       'border-full': border === 'full',
-      'border-none px-0!': border === 'none'
+      'border-none px-0!': border === 'none',
+      'input-lg': size === 'lg',
+      'rounded': rounded
     }" v-model.lazy="value" v-input-mask="options" :required="props.required" :readonly="props.readonly"
       :disabled="props.disabled" :autofocus="props.autofocus" :placeholder="props.placeholder"
       :data-testid="props.dataTestid" />

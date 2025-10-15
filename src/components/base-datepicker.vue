@@ -17,6 +17,8 @@ export interface Props {
   required?: boolean
   readonly?: boolean
   disabled?: boolean
+  size?: string
+  rounded?: boolean
   helpers?: string[]
   dataTestid?: string
 }
@@ -27,7 +29,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  rounded: false
 })
 
 const emit = defineEmits<{
@@ -133,7 +136,9 @@ defineExpose({
       class="form-input pl-8! bg-inherit" :class="{
         'border-simple': border === 'simple',
         'border-full': border === 'full',
-        'border-none': border === 'none'
+        'border-none': border === 'none',
+        'input-lg': size === 'lg',
+        'rounded': rounded
       }" placeholder="YYYY-MM-DD" :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly"
       :disabled="props.disabled" :data-testid="props.dataTestid" />
 

@@ -25,6 +25,8 @@ export interface Props {
   readonly?: boolean
   disabled?: boolean
   autofocus?: boolean
+  size?: string
+  rounded?: boolean
 
   /**
    * Clearing or resetting errors when an update or change occurs.
@@ -45,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   readonly: false,
   autofocus: false,
   disabled: false,
+  rounded: false,
   resetErrorsOnUpdate: true
 })
 
@@ -119,7 +122,9 @@ defineExpose({
       'text-right': align === 'right',
       'border-simple': border === 'simple',
       'border-full': border === 'full',
-      'border-none px-0!': border === 'none'
+      'border-none px-0!': border === 'none',
+      'input-lg': size === 'lg',
+      'rounded': rounded
     }" v-model="inputValue" :placeholder="props.placeholder" :autofocus="props.autofocus" :required="props.required"
       :readonly="props.readonly" :disabled="props.disabled" :data-testid="props.dataTestid" @click="selectAllText"
       :style="{

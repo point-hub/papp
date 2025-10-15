@@ -20,6 +20,8 @@ export interface Props {
   required?: boolean
   readonly?: boolean
   disabled?: boolean
+  size?: string
+  rounded?: boolean
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -44,7 +46,8 @@ const props = withDefaults(defineProps<Props>(), {
   required: false,
   readonly: false,
   disabled: false,
-  resetErrorsOnUpdate: true
+  resetErrorsOnUpdate: true,
+  rounded: false
 })
 
 const emit = defineEmits<{
@@ -135,7 +138,9 @@ defineExpose({
     <input ref="inputRef" class="form-input" :class="{
       'border-simple': border === 'simple',
       'border-full': border === 'full',
-      'border-none': border === 'none'
+      'border-none': border === 'none',
+      'input-lg': size === 'lg',
+      'rounded': rounded
     }" v-model.trim="value" :type="props.type" :maxlength="props.maxlength" :placeholder="props.placeholder"
       :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
       :data-testid="props.dataTestid" :style="{
