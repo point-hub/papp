@@ -8,7 +8,7 @@ import {
   TransitionRoot
 } from '@headlessui/vue'
 import { isEmpty } from '@point-hub/js-utils'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { watch } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
@@ -81,6 +81,10 @@ const onInputClicked = () => {
 }
 
 const inputRef = ref()
+
+onMounted(() => {
+  if (props.autofocus) inputRef.value?.focus()
+})
 
 watch(
   () => selected.value,

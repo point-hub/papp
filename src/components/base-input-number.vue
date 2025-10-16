@@ -71,6 +71,8 @@ onMounted(() => {
     onValueChanged: onValueChanged
   })
 
+  if (props.autofocus) inputRef.value?.focus()
+
   fixPadding()
 
   setTimeout(() => {

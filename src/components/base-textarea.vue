@@ -56,6 +56,7 @@ watch(value, () => {
 })
 
 onMounted(() => {
+  if (props.autofocus) textareaRef.value?.focus()
   resize()
 })
 

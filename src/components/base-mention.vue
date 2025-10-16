@@ -78,7 +78,11 @@ function resize() {
   })
 }
 watch(value, resize)
-onMounted(resize)
+
+onMounted(() => {
+  if (props.autofocus) textareaRef.value?.focus()
+  resize()
+})
 
 /* Mention states */
 const dropdownPos = ref({ top: 0, left: 0 })

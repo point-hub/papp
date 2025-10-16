@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { formatDate, formatISO } from 'date-fns'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
@@ -117,6 +117,11 @@ watch(nativeDate, (newValue) => {
 })
 
 const inputRef = ref()
+
+onMounted(() => {
+  if (props.autofocus) inputRef.value?.focus()
+})
+
 defineExpose({
   inputRef,
   dateRef

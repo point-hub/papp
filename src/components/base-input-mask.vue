@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
@@ -50,6 +50,10 @@ const value = computed({
 
 const inputRef = ref()
 const errors = defineModel<string[]>('errors')
+
+onMounted(() => {
+  if (props.autofocus) inputRef.value?.focus()
+})
 
 defineExpose({
   inputRef

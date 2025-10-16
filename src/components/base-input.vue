@@ -101,6 +101,8 @@ const errors = defineModel<string[]>('errors')
  * Execute code after the component has been mounted to the DOM
  */
 onMounted(() => {
+  if (props.autofocus) inputRef.value?.focus()
+
   fixPadding()
 
   /**
