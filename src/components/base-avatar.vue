@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 export type BaseAvatarColorType =
   | 'primary'
   | 'secondary'
@@ -7,7 +9,6 @@ export type BaseAvatarColorType =
   | 'warning'
   | 'danger'
 export type BaseAvatarShapeType = 'square' | 'squircle' | 'circle'
-export type BaseAvatarSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 
 const props = withDefaults(
   defineProps<{
@@ -16,70 +17,82 @@ const props = withDefaults(
     color?: BaseAvatarColorType
     colorIndicator?: BaseAvatarColorType
     shape?: BaseAvatarShapeType
-    size?: BaseAvatarSizeType
+    size?: string | number
     indicator?: boolean
     animate?: boolean
+    indicatorScale?: string
   }>(),
   {
     color: 'secondary',
     colorIndicator: 'success',
     shape: 'circle',
-    size: 'md',
+    size: 64,
     indicator: false,
-    animate: false
+    animate: false,
+    indicatorScale: '15%'
   }
 )
 
-const avatarClasses: string[] = []
-const classes: string[] = []
+const avatarStyle = computed(() => {
+  let sizeValue = props.size
 
-if (props.animate) {
-  avatarClasses.push('animate-slide-y')
-}
+  if (typeof sizeValue === 'number' || /^\d+$/.test(String(sizeValue))) {
+    sizeValue = `${sizeValue}px`
+  }
 
-if (props.shape === 'circle') {
-  classes.push('rounded-full')
-} else if (props.shape === 'square') {
-  classes.push('rounded-lg')
-} else if (props.shape === 'squircle') {
-  classes.push('mask mask-squircle')
-}
+  return {
+    width: sizeValue,
+    height: sizeValue,
+    '--indicator-size': props.indicatorScale
+  }
+})
 
-if (props.color === 'primary') {
-  classes.push('bg-primary text-white')
-} else if (props.color === 'secondary') {
-  classes.push('bg-secondary text-white')
-} else if (props.color === 'info') {
-  classes.push('bg-info text-white')
-} else if (props.color === 'success') {
-  classes.push('bg-success text-white')
-} else if (props.color === 'warning') {
-  classes.push('bg-warning text-white')
-} else if (props.color === 'danger') {
-  classes.push('bg-danger text-white')
-}
+const avatarClasses = computed(() => {
+  const classes: string[] = []
 
-const indicatorClasses: string[] = []
-indicatorClasses.push(`bg-${props.colorIndicator}`)
-if (props.size === 'xs') {
-  indicatorClasses.push('h-3 w-3')
-  avatarClasses.push('avatar-xs')
-} else if (props.size === 'sm') {
-  indicatorClasses.push('h-3 w-3')
-  avatarClasses.push('avatar-sm')
-} else if (props.size === 'md') {
-  indicatorClasses.push('h-4 w-4')
-  avatarClasses.push('avatar-md')
-} else if (props.size === 'lg') {
-  indicatorClasses.push('h-5 w-5')
-  avatarClasses.push('avatar-lg')
-} else if (props.size === 'xl') {
-  indicatorClasses.push('h-6 w-6')
-  avatarClasses.push('avatar-xl')
-} else if (props.size === '2xl') {
-  indicatorClasses.push('h-7 w-7')
-  avatarClasses.push('avatar-2xl')
-}
+  if (props.animate) {
+    classes.push('animate-slide-y')
+  }
+
+  return classes
+})
+
+const shapeColorClasses = computed(() => {
+  const classes: string[] = []
+
+  // Shape classes
+  if (props.shape === 'circle') {
+    classes.push('rounded-full')
+  } else if (props.shape === 'square') {
+    classes.push('rounded-lg')
+  } else if (props.shape === 'squircle') {
+    classes.push('mask mask-squircle')
+  }
+
+  // Color classes
+  if (props.color === 'primary') {
+    classes.push('bg-primary text-white')
+  }
+  // ... (rest of color logic)
+  else if (props.color === 'secondary') {
+    classes.push('bg-secondary text-white')
+  } else if (props.color === 'info') {
+    classes.push('bg-info text-white')
+  } else if (props.color === 'success') {
+    classes.push('bg-success text-white')
+  } else if (props.color === 'warning') {
+    classes.push('bg-warning text-white')
+  } else if (props.color === 'danger') {
+    classes.push('bg-danger text-white')
+  }
+
+  return classes
+})
+
+const indicatorClasses = computed(() => {
+  return [`bg-${props.colorIndicator}`]
+})
+
 
 const initial = (name: string) => {
   if (name) {
@@ -90,13 +103,14 @@ const initial = (name: string) => {
 
     return name.substring(0, 2)
   }
+  return ''
 }
 </script>
 
 <template>
-  <div class="avatar" :class="avatarClasses">
-    <img v-if="src" class="avatar-ring avatar-2xl" :src="src" :class="classes" />
-    <span v-else class="avatar-initial" :class="classes">
+  <div class="avatar" :class="avatarClasses" :style="avatarStyle">
+    <img v-if="src" class="avatar-ring h-full w-full" :src="src" :class="shapeColorClasses" />
+    <span v-else class="avatar-initial h-full w-full" :class="shapeColorClasses">
       {{ initial(name) }}
     </span>
     <span v-if="indicator" class="avatar-indicator" :class="indicatorClasses"></span>

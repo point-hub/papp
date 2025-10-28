@@ -15,48 +15,11 @@ The Avatar component can have various size.
 
 <template>
   <div>
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="2xl"
-    />
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="xl"
-    />
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="lg"
-    />
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="md"
-    />
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="sm"
-    />
-    <base-avatar
-      indicator
-      src="https://placehold.co/150"
-      shape="circle"
-      name="John Doe"
-      size="xs"
-    />
+    <base-avatar indicator src="https://placehold.co/150" shape="circle" name="John Doe" :size="128" />
+    <base-avatar indicator src="https://placehold.co/150" shape="circle" name="John Doe" :size="96" />
+    <base-avatar indicator src="https://placehold.co/150" shape="circle" name="John Doe" :size="64" />
+    <base-avatar indicator src="https://placehold.co/150" shape="circle" name="John Doe" :size="48" />
+    <base-avatar indicator src="https://placehold.co/150" shape="circle" name="John Doe" :size="32" />
   </div>
 </template>
 ```

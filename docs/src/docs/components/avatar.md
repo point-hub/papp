@@ -65,17 +65,16 @@ export type BaseAvatarColorType =
   | 'warning'
   | 'danger'
 export type BaseAvatarShapeType = 'square' | 'squircle' | 'circle'
-export type BaseAvatarSizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 ```
 
 ### Props
 
 | Name           | Type                                                      | Default     | Description                |
-| -------------- | --------------------------------------------------------- | ----------- | -------------------------- |
+|----------------|-----------------------------------------------------------|-------------|----------------------------|
 | name           | string                                                    |             | Avatar name is `required`. |
 | src            | string                                                    |             | Avatar image source file.  |
 | color          | `primary` `secondary` `info` `success` `warning` `danger` | `secondary` | Avatar color.              |
-| size           | `xs` `sm` `base` `lg` `xl` `2xl`                          | `base`      | Avatar size.               |
+| size           | number                                                    | 64          | Avatar size.               |
 | shape          | `square` `circle` `squircle`                              | `circle`    | Avatar shape.              |
 | indicator      | boolean                                                   | false       | Avatar indicator.          |
 | colorIndicator | `primary` `secondary` `info` `success` `warning` `danger` | `success`   | Avatar color indicator.    |
