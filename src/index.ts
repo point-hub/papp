@@ -16,8 +16,7 @@ export {
 export {
   default as BaseAvatar,
   type BaseAvatarColorType,
-  type BaseAvatarShapeType,
-  type BaseAvatarSizeType
+  type BaseAvatarShapeType
 } from './components/base-avatar.vue'
 export { default as BaseAvatarGroup } from './components/base-avatar-group.vue'
 export {
