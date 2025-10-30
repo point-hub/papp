@@ -54,8 +54,8 @@ const value = computed({
 <template>
   <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
     :helpers="props.helpers" :errors="errors">
-    <RadioGroup v-model="value">
-      <div class="flex gap-2" :class="{ 'flex-col': props.optionsLayout === 'vertical' }">
+    <RadioGroup v-model="value" class="w-full">
+      <div class="flex w-full gap-2" :class="{ 'flex-col': props.optionsLayout === 'vertical' }">
         <RadioGroupOption as="div" v-for="option in options" :key="option.label" :disabled="disabled || readonly"
           :value="option" v-slot="{ active, checked }" :data-testid="`${dataTestid}-${option.value}`">
           <slot :active="active" :checked="checked" :option="option">
