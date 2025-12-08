@@ -17,7 +17,7 @@ const accountPopoverRef = ref()
         <p class="text-sm truncate font-extrabold">{{ props.organization }}</p>
         <p class="text-sm truncate">{{ props.username }}</p>
       </div>
-      <base-avatar size="xs" :src="props.avatar" shape="squircle" :name="props.username" />
+      <base-avatar :size="48" :src="props.avatar" shape="squircle" :name="props.username" />
     </button>
     <template #content>
       <div class="popper-root p-2">
