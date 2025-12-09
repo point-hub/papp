@@ -95,6 +95,14 @@ watch(
   }
 )
 
+watch(
+  () => selectedValue.value,
+  (val) => {
+    selected.value = props.options.find(o => o.value === val)
+  },
+  { immediate: true }
+)
+
 defineExpose({
   inputRef
 })

@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.140",
+  "version": "0.0.141",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
