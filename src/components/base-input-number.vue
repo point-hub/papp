@@ -27,6 +27,7 @@ export interface Props {
   autofocus?: boolean
   size?: string
   rounded?: boolean
+  paddingless?: boolean
 
   /**
    * Clearing or resetting errors when an update or change occurs.
@@ -48,7 +49,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   disabled: false,
   rounded: false,
-  resetErrorsOnUpdate: true
+  resetErrorsOnUpdate: true,
+  paddingless: false
 })
 
 const cleave = ref()
@@ -124,9 +126,10 @@ defineExpose({
       'text-right': align === 'right',
       'border-simple': border === 'simple',
       'border-full': border === 'full',
-      'border-none px-0!': border === 'none',
+      'border-none': border === 'none',
       'input-lg': size === 'lg',
-      'rounded': rounded
+      'rounded': rounded,
+      'px-0!': paddingless
     }" v-model="inputValue" :placeholder="props.placeholder" :autofocus="props.autofocus" :required="props.required"
       :readonly="props.readonly" :disabled="props.disabled" :data-testid="props.dataTestid" @click="selectAllText"
       :style="{

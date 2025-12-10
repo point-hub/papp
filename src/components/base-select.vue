@@ -34,6 +34,7 @@ export interface Props {
   required?: boolean
   readonly?: boolean
   disabled?: boolean
+  paddingless?: boolean
   helpers?: string[]
   dataTestid?: string
 }
@@ -47,7 +48,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  paddingless: false
 })
 
 const selected = defineModel<BaseSelectOptionInterface>()
@@ -119,7 +121,8 @@ defineExpose({
             :disabled="props.disabled" :placeholder="placeholder" :class="{
               'border-simple': border === 'simple',
               'border-full': border === 'full',
-              'border-none px-0!': border === 'none'
+              'border-none': border === 'none',
+              'px-0!': paddingless,
             }" :displayValue="() => selected?.label ?? ''" @change="search = $event.target.value"
             :data-testid="`${dataTestid}-input`" />
           <ComboboxButton v-if="isEmpty(selected)" ref="buttonRef" class="absolute inset-y-0 right-1 flex items-center">

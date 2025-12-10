@@ -22,6 +22,7 @@ export interface Props {
   disabled?: boolean
   size?: string
   rounded?: boolean
+  paddingless?: boolean
   /**
    * Clearing or resetting errors when an update or change occurs.
    *
@@ -47,7 +48,8 @@ const props = withDefaults(defineProps<Props>(), {
   readonly: false,
   disabled: false,
   resetErrorsOnUpdate: true,
-  rounded: false
+  rounded: false,
+  paddingless: false
 })
 
 const emit = defineEmits<{
@@ -142,7 +144,8 @@ defineExpose({
       'border-full': border === 'full',
       'border-none': border === 'none',
       'input-lg': size === 'lg',
-      'rounded': rounded
+      'rounded': rounded,
+      'px-0!': paddingless
     }" v-model.trim="value" :type="props.type" :maxlength="props.maxlength" :placeholder="props.placeholder"
       :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
       :data-testid="props.dataTestid" :style="{

@@ -27,6 +27,7 @@ export interface Props {
   readonly?: boolean
   disabled?: boolean
   helpers?: string[]
+  paddingless?: boolean
   dataTestid?: string
 }
 
@@ -37,7 +38,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  paddingless: false
 })
 
 const input = defineModel()
@@ -122,7 +124,7 @@ const onClose = () => {
     :helpers="props.helpers" :errors="errors" class="w-full">
     <!-- mode: input -->
     <base-input v-if="mode === 'input'" readonly v-model="input" @click="onOpen" :border="border"
-      :placeholder="placeholder" class="w-full" :data-testid="`${dataTestid}-input`" />
+      :placeholder="placeholder" class="w-full" :data-testid="`${dataTestid}-input`" :paddingless="paddingless" />
     <!-- mode: text -->
     <div v-if="mode === 'text'" class="border-b border-dashed cursor-pointer border-black dark:border-white"
       @click="onOpen" :data-testid="`${dataTestid}-input`">
