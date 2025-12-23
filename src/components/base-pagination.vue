@@ -93,7 +93,7 @@ const isShowPageButton = (i: number) => {
         {{ totalDocument }} entries
       </p>
     </div>
-    <div v-if="totalPage > 1" class="flex">
+    <div v-if="totalPage > 1" class="flex gap-2">
       <base-button v-if="totalPage > 5" :disabled="value === 1" variant="text" size="sm" @click="onClickFirst()">
         <base-icon icon="i-fa7-solid:angles-left" />
       </base-button>
