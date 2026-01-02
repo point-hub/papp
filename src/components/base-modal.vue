@@ -40,11 +40,9 @@ defineExpose({ isOpen })
   <TransitionRoot appear :show="isOpen" as="template">
     <Dialog as="div" @close="close()" class="relative z-60">
       <!-- The backdrop, rendered as a fixed sibling to the panel container -->
-      <div class="fixed inset-0 bg-black/10 backdrop-blur-sm" aria-hidden="true" />
-
       <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
         leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black/10 backdrop-blur-sm" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
