@@ -20,6 +20,7 @@ export interface Props {
   label?: string
   description?: string
   placeholder?: string
+  debounceTimer?: number
   border?: BaseMentionBorderType
   layout?: BaseFormLayoutType
   maxlength?: number
@@ -47,6 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   options: () => ({}),
   triggers: () => ['@'],
+  debounceTimer: 300,
   loading: false
 })
 
@@ -56,7 +58,17 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void
   (e: 'update:mentions', mentions: IMentionOption[]): void
   (e: 'search', payload: { trigger: string; query: string }): void
+  (e: 'showSuggestions', value: boolean): void
 }>()
+
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+const debouncedSearch = (payload: { trigger: string; query: string }) => {
+  if (searchTimer) clearTimeout(searchTimer)
+
+  searchTimer = setTimeout(() => {
+    emit('search', payload)
+  }, props.debounceTimer)
+}
 
 /* Value binding */
 const value = computed({
@@ -120,8 +132,14 @@ function onInput(e: Event) {
     triggerChar.value = match[1]!
     triggerIndex.value = pos - match[2]!.length - 1
     query.value = match[2]!
-    emit('search', { trigger: triggerChar.value, query: query.value })
+
+    debouncedSearch({
+      trigger: triggerChar.value,
+      query: query.value
+    })
+
     showSuggestions.value = true
+    emit('showSuggestions', true)
     nextTick(updateDropdownPosition)
   } else {
     resetMention()
@@ -151,7 +169,13 @@ function selectMention(option: IMentionOption) {
 }
 
 function resetMention() {
+  if (searchTimer) {
+    clearTimeout(searchTimer)
+    searchTimer = null
+  }
+
   showSuggestions.value = false
+  emit('showSuggestions', false)
   triggerIndex.value = -1
   query.value = ''
   triggerChar.value = null
@@ -188,7 +212,7 @@ defineExpose({ textareaRef })
           height: height + 'px',
           minHeight: minHeight ? minHeight + 'px' : 'inherit',
           maxHeight: maxHeight ? maxHeight + 'px' : 'inherit'
-        }" :data-testid="dataTestid" @input="onInput" @keydown="onKeydown" />
+        }" :data-testid="dataTestid" @input="onInput" @keydown="onKeydown" @blur="resetMention" />
 
       <!-- Suggestions dropdown -->
       <ul v-if="showSuggestions"
