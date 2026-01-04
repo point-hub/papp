@@ -153,12 +153,27 @@ function onInput(e: Event) {
 }
 
 function onKeydown(e: KeyboardEvent) {
-  if (!showSuggestions.value || !filteredOptions.value.length) return
-  if (['ArrowDown', 'ArrowUp', 'Enter', 'Escape'].includes(e.key)) e.preventDefault()
-  if (e.key === 'ArrowDown') activeIndex.value = (activeIndex.value + 1) % filteredOptions.value.length
-  if (e.key === 'ArrowUp') activeIndex.value = (activeIndex.value - 1 + filteredOptions.value.length) % filteredOptions.value.length
-  if (e.key === 'Enter') selectMention(filteredOptions.value[activeIndex.value]!)
-  if (e.key === 'Escape') resetMention()
+  if (!showSuggestions.value || !filteredOptions.value.length) {
+    return
+  }
+  if (['ArrowDown', 'ArrowUp', 'Enter', 'Escape'].includes(e.key)) {
+    e.preventDefault()
+  }
+  if (e.key === 'ArrowDown') {
+    activeIndex.value = (activeIndex.value + 1) % filteredOptions.value.length
+  }
+  if (e.key === 'ArrowUp') {
+    activeIndex.value = (activeIndex.value - 1 + filteredOptions.value.length) % filteredOptions.value.length
+  }
+  if (showSuggestions.value && e.key === 'Enter') {
+    e.preventDefault()
+    e.stopPropagation()
+    selectMention(filteredOptions.value[activeIndex.value]!)
+    return
+  }
+  if (e.key === 'Escape') {
+    resetMention()
+  }
 }
 
 function selectMention(option: IMentionOption) {

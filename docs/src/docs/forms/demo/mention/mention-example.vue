@@ -73,9 +73,9 @@ const tokens = computed<Token[]>(() => {
   return parts
 })
 
-const isShowSuggestions = ref()
-const showSuggestions = (val) => {
-  isShowSuggestions.value = val
+const isShowSuggestions = ref(false)
+function showSuggestions(val: boolean) {
+  console.log(val)
 }
 
 const onSubmit = () => {
