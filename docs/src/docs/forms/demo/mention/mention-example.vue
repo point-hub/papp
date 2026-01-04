@@ -16,6 +16,7 @@ interface Token {
 }
 
 const text = ref('')
+const loading = ref(false)
 const mentions = ref<MentionOption[]>([])
 
 const userOptions = ref<MentionOption[]>([
@@ -29,10 +30,10 @@ const tagOptions = ref<MentionOption[]>([
   { id: 't2', label: 'typescript' }
 ])
 
-const loading = ref(false)
-
 function onSearch(payload: { trigger: Trigger; query: string }) {
+  loading.value = true
   console.log('Searching', payload)
+  loading.value = false
 }
 
 // Quick lookup maps (trigger -> { label: link })
@@ -71,13 +72,24 @@ const tokens = computed<Token[]>(() => {
 
   return parts
 })
+
+const isShowSuggestions = ref()
+const showSuggestions = (val) => {
+  isShowSuggestions.value = val
+}
+
+const onSubmit = () => {
+  text.value = ''
+}
 </script>
 
 <template>
   <Demo>
-    <form @submit.prevent="">
+    <form @submit.prevent="onSubmit">
       <base-mention v-model="text" :options="{ '@': userOptions, '#': tagOptions }" :triggers="['@', '#']"
-        :loading="loading" @update:mentions="mentions = $event" @search="onSearch" :min-height="100" border="full" />
+        @show-suggestions="showSuggestions" :disabled="loading" @update:mentions="mentions = $event" @search="onSearch"
+        :min-height="100" border="full" />
+      <base-button color="primary" variant="filled" :disabled="loading || isShowSuggestions">Submit</base-button>
     </form>
 
     <div style="white-space: pre-wrap;">

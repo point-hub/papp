@@ -107,6 +107,10 @@ const triggerChar = ref<string | null>(null)
 const triggerIndex = ref(-1)
 const query = ref('')
 
+watch(() => showSuggestions.value, (val) => {
+  emit('showSuggestions', val)
+})
+
 /* Filter options reactively */
 const filteredOptions = computed(() => {
   if (!triggerChar.value) return []
@@ -142,7 +146,6 @@ function onInput(e: Event) {
     })
 
     showSuggestions.value = true
-    emit('showSuggestions', true)
     nextTick(updateDropdownPosition)
   } else {
     resetMention()
@@ -176,9 +179,7 @@ function resetMention() {
     clearTimeout(searchTimer)
     searchTimer = null
   }
-
   showSuggestions.value = false
-  emit('showSuggestions', false)
   triggerIndex.value = -1
   query.value = ''
   triggerChar.value = null
@@ -227,7 +228,7 @@ defineExpose({ textareaRef })
           <li v-for="(opt, i) in filteredOptions" :key="opt.id" :class="[
             'p-1 cursor-pointer flex items-center gap-1',
             i === activeIndex ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700',
-          ]" @click="selectMention(opt)">
+          ]" @mousedown="selectMention(opt)">
             <base-avatar v-if="props.showAvatar" :size="24" :src="opt.avatar_url" /> {{ opt.label }}
           </li>
         </template>
