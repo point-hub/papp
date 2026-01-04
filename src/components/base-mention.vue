@@ -9,6 +9,7 @@ export type BaseMentionBorderType = 'simple' | 'full' | 'none'
 export interface IMentionOption {
   id: number | string
   label: string
+  avatar_url?: string
   link?: string
 }
 export type MentionOptionsMap = Record<string, IMentionOption[]>
@@ -24,6 +25,7 @@ export interface Props {
   border?: BaseMentionBorderType
   layout?: BaseFormLayoutType
   maxlength?: number
+  showAvatar?: boolean
   autofocus?: boolean
   required?: boolean
   readonly?: boolean
@@ -46,6 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
   required: false,
   readonly: false,
   disabled: false,
+  showAvatar: true,
   options: () => ({}),
   triggers: () => ['@'],
   debounceTimer: 300,
@@ -222,10 +225,10 @@ defineExpose({ textareaRef })
         <li v-else-if="!filteredOptions.length" class="p-1 text-gray-400 italic">No results</li>
         <template v-if="!loading">
           <li v-for="(opt, i) in filteredOptions" :key="opt.id" :class="[
-            'p-1 cursor-pointer',
+            'p-1 cursor-pointer flex items-center gap-1',
             i === activeIndex ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-100 dark:hover:bg-gray-700',
           ]" @click="selectMention(opt)">
-            {{ opt.label }}
+            <base-avatar v-if="props.showAvatar" :size="24" :src="opt.avatar_url" /> {{ opt.label }}
           </li>
         </template>
       </ul>
