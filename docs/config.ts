@@ -13,9 +13,11 @@ export default defineConfig({
   srcDir: './src',
   base: '/library/papp/',
   vite: {
+    envDir: resolve(__dirname, '..'),
     resolve: {
       alias: {
-        '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
+        '@point-hub/papp': resolve(__dirname, '../src/index.ts'), // to load latest source files
+        '@': resolve(__dirname, '../src') // so @ references still work inside docs
       }
     },
     plugins: [
@@ -120,6 +122,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Popover', link: 'components/popover' },
         { text: 'Progress', link: 'components/progress' },
         { text: 'Sidebar', link: 'components/sidebar' },
+        { text: 'PDF Signer', link: 'components/pdf-signer' },
         { text: 'Sitemap', link: 'components/sitemap' },
         { text: 'Spinner', link: 'components/spinner' },
         { text: 'Steps', link: 'components/steps' },
