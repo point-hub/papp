@@ -11,7 +11,7 @@ export default defineConfig({
   description: 'Pointhub App Components',
   cleanUrls: true,
   srcDir: './src',
-  base: '/library/papp/',
+  base: '/',
   vite: {
     envDir: resolve(__dirname, '..'),
     resolve: {
