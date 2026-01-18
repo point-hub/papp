@@ -61,7 +61,7 @@ interface SignatureState {
 
 const DEFAULT_SIGNATURE_SIZE = {
   width: 180,
-  height: 60
+  height: 100
 }
 
 const props = withDefaults(
@@ -843,20 +843,27 @@ defineExpose({
               @mousedown="startDrag($event, sig)"
               @click="selectSignature(sig)"
             >
-              <div class="signature-content" :class="{ signed: sig.signed }">
-                <span class="signature-text" :class="{ pending: !sig.signed, done: sig.signed }">
-                  {{ sig.signed ? sig.initials : sig.name }}
-                </span>
-                <span v-if="!sig.signed && sig.label" class="signature-role">{{ sig.label }}</span>
+              <div class="signature-content" :class="{ signed: sig.signed, unsigned: !sig.signed }">
+                <template v-if="sig.signed">
+                  <span class="signature-text done">
+                    {{ sig.initials }}
+                  </span>
+                </template>
+                <template v-else>
+                  <span v-if="sig.label" class="signature-role">{{ sig.label }}</span>
+                  <button
+                    v-if="canSign(sig)"
+                    type="button"
+                    class="signature-action"
+                    @click.stop="signSignature(sig)"
+                  >
+                    Sign
+                  </button>
+                  <span class="signature-text pending signature-name">
+                    {{ sig.name }}
+                  </span>
+                </template>
               </div>
-              <button
-                v-if="canSign(sig)"
-                type="button"
-                class="signature-action"
-                @click.stop="signSignature(sig)"
-              >
-                Sign
-              </button>
             </div>
           </div>
         </div>
@@ -1190,15 +1197,13 @@ defineExpose({
   justify-content: center;
   cursor: move;
   user-select: none;
+  overflow: hidden;
   box-sizing: border-box;
   text-align: center;
 }
 
 .signature-action {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
   padding: 3px 10px;
   border: none;
   border-radius: 6px;
@@ -1212,20 +1217,22 @@ defineExpose({
 .signature-content {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   align-items: center;
-  padding-bottom: 20px;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 6px 8px;
 }
 
 .signature-content.signed {
-  height: 100%;
-  padding-bottom: 0;
   justify-content: center;
 }
 
 .signature-role {
   font-size: 10px;
   color: #475569;
+  line-height: 1.1;
 }
 
 .signature.active {
@@ -1240,6 +1247,8 @@ defineExpose({
 .signature-text.pending {
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
+  font-size: 12px;
+  line-height: 1.1;
 }
 
 .signature-text.done {
