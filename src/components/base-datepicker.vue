@@ -134,7 +134,7 @@ defineExpose({
     <input ref="dateRef" v-model="nativeDate" type="date"
       class="form-input absolute! -z-50 text-transparent bg-transparent" :class="{
         'pl-0!': border === 'simple' || border === 'none'
-      }" />
+      }" tabindex="-1" aria-hidden="true" />
 
     <input ref="inputRef" v-model.lazy="value"
       v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }" type="text"
