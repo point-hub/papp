@@ -1204,15 +1204,17 @@ defineExpose({
 
 .signature-action {
   position: static;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border: none;
   border-radius: 6px;
   background: #1e293b;
   color: white;
-  font-size: 11px;
+  font-size: clamp(10px, 1.8vw, 11px);
+  line-height: 1;
   cursor: pointer;
   opacity: 0.85;
 }
+
 
 .signature-content {
   display: flex;
@@ -1222,7 +1224,7 @@ defineExpose({
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 6px 8px;
+  padding: 4px 6px;
 }
 
 .signature-content.signed {
@@ -1230,10 +1232,11 @@ defineExpose({
 }
 
 .signature-role {
-  font-size: 10px;
+  font-size: clamp(9px, 1.6vw, 11px);
   color: #475569;
   line-height: 1.1;
 }
+
 
 .signature.active {
   border-color: #5b4fe5;
@@ -1247,16 +1250,18 @@ defineExpose({
 .signature-text.pending {
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  font-size: clamp(10px, 1.9vw, 12px);
   line-height: 1.1;
 }
+
 
 .signature-text.done {
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
-  font-size: 28px;
+  font-size: clamp(20px, 5vw, 28px);
   line-height: 1;
 }
+
 
 @media (max-width: 900px) {
   .content-grid {
