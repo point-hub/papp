@@ -43,14 +43,16 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
 
 <template>
   <div :class="{ 'relative lg:flex lg:items-start lg:gap-5': isHorizontal && props.label }">
-    <label :for="props.id" class="font-bold flex" :class="{
+    <label :for="props.id" class="font-bold flex flex-col lg:flex-row" :class="{
       // Horizontal classes
-      'lg:flex-col lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-1': isHorizontal && props.label,
+      'lg:flex-col lg:gap-0 lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-0': isHorizontal && props.label,
       // Vertical classes (default)
-      'text-sm gap-1': !isHorizontal || !props.label,
+      'text-sm gap-0 lg:gap-1': !isHorizontal || !props.label,
     }">
-      <span v-if="props.label">{{ props.label }}</span>
-      <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
+      <div class="space-x-1">
+        <span v-if="props.label">{{ props.label }}</span>
+        <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
+      </div>
       <span v-if="props.description" class="text-xs font-medium text-slate-400">
         {{ props.description }}
       </span>

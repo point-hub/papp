@@ -1,5 +1,5 @@
 .breadcrumb-ul {
-  @apply scrollbar-hidden flex items-center gap-1 overflow-x-auto text-sm text-slate-600;
+  @apply scrollbar-hidden [scrollbar-width:none] flex items-center gap-1 overflow-x-auto text-sm text-slate-600;
 }
 
 .breadcrumb-li {
