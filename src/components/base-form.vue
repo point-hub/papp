@@ -49,7 +49,7 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
       // Vertical classes (default)
       'text-sm gap-0 lg:gap-1': !isHorizontal || !props.label,
     }">
-      <div class="flex gap-1">
+      <div class="space-x-1">
         <span v-if="props.label">{{ props.label }}</span>
         <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
       </div>
@@ -63,15 +63,6 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
         <slot></slot>
       </div>
 
-      <div class="flex flex-col mt-1 gap-1" v-if="props.helpers || slots.helper">
-        <slot name="helper">
-          <div class="flex items-center gap-1" v-for="(helper, index) in props.helpers" :key="index">
-            <p class="text-xs text-slate-500">
-              {{ helper }}
-            </p>
-          </div>
-        </slot>
-      </div>
       <div class="flex flex-col mt-1 gap-1" v-if="props.helpers || slots.helper">
         <slot name="helper">
           <div class="flex items-center gap-1" v-for="(helper, index) in props.helpers" :key="index">
