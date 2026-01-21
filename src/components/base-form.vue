@@ -43,7 +43,7 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
 
 <template>
   <div :class="{ 'relative lg:flex lg:items-start lg:gap-5': isHorizontal && props.label }">
-    <label :for="props.id" class="font-bold flex flex-col lg:flex-row" :class="{
+    <label :for="props.id" class="font-bold flex flex-col" :class="{
       // Horizontal classes
       'lg:flex-col lg:gap-0 lg:w-20% xl:w-17% 2xl:w-15% lg:items-start gap-0': isHorizontal && props.label,
       // Vertical classes (default)
