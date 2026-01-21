@@ -32,17 +32,6 @@ export interface PdfSignerSignature {
   signed: boolean
 }
 
-export interface PdfSignerPersistence {
-  uploadPdf?: (file: File) => Promise<{ pdfUrl: string; fileUrl?: string; fileName?: string }>
-  createDocument?: (payload: { title: string; fileUrl?: string; ownerId: UserId | null }) => Promise<string>
-  saveSignatureField?: (payload: {
-    docId: string | null
-    signature: PdfSignerSignature
-    action: 'create' | 'update' | 'sign'
-  }) => Promise<void>
-  lockSignatures?: (docId: string | null, signatures: PdfSignerSignature[]) => Promise<void>
-}
-
 type Signature = PdfSignerSignature
 
 interface SignatureState {
@@ -64,18 +53,18 @@ const DEFAULT_SIGNATURE_SIZE = {
   height: 100
 }
 
+const DEFAULT_FONT_URL = dancingScriptUrl
+const DEFAULT_INITIAL_SCALE = 0.8
+const DEFAULT_MIN_SCALE = 0.6
+const DEFAULT_MAX_SCALE = 2.4
+
 const props = withDefaults(
   defineProps<{
     users?: SignPdfUser[]
-    fontUrl?: string
-    initialScale?: number
-    minScale?: number
-    maxScale?: number
     currentUser?: SignPdfUser | null
     pdfUrl?: string
-    documentId?: string | null
-    persistence?: PdfSignerPersistence
     enableUpload?: boolean
+    signaturesJson?: string
   }>(),
   {
     users: () => [
@@ -83,14 +72,9 @@ const props = withDefaults(
       { id: 2, initials: 'AI', name: 'Aini', role: 'Approval', label: 'Menyetujui' },
       { id: 3, initials: 'KA', name: 'Kartika', role: 'Viewer', label: 'Mengetahui' }
     ],
-    fontUrl: dancingScriptUrl,
-    initialScale: 0.8,
-    minScale: 0.6,
-    maxScale: 2.4,
     currentUser: null,
-    documentId: null,
-    persistence: undefined,
-    enableUpload: undefined
+    enableUpload: undefined,
+    signaturesJson: ''
   }
 )
 
@@ -98,25 +82,26 @@ const emit = defineEmits<{
   (event: 'signature:create', signature: Signature): void
   (event: 'signature:update', signature: Signature): void
   (event: 'signature:sign', signature: Signature): void
+  (event: 'update:signaturesJson', value: string): void
 }>()
 
 const canvas = ref<HTMLCanvasElement | null>(null)
 const canvasScroller = ref<HTMLDivElement | null>(null)
 const pdfDoc = shallowRef<any>(null)
 const pageSize = ref({ width: 0, height: 0 })
-const scale = ref(props.initialScale)
+const scale = ref(DEFAULT_INITIAL_SCALE)
 const pdfBytes = ref<Uint8Array | null>(null)
 const fileName = ref('')
 const errorMessage = ref('')
 const uploadError = ref('')
-const persistError = ref('')
+const signaturesJson = ref(props.signaturesJson ?? '')
+const signaturesJsonError = ref('')
+const skipJsonParse = ref(false)
 const autoFitActive = ref(true)
 const pageLayouts = ref<{ page: number; start: number; height: number }[]>([])
 const previewHeight = ref(0)
 const isPanning = ref(false)
-const internalPdfUrl = ref('')
 const isUploading = ref(false)
-const activeDocId = ref<string | null>(props.documentId ?? null)
 const isPositionLocked = ref(false)
 let panStartX = 0
 let panStartY = 0
@@ -146,9 +131,7 @@ const state = reactive<SignatureState>({
 
 const hasSelectedUser = computed(() => Boolean(state.currentUser.id))
 const currentSignerId = computed(() => props.currentUser?.id ?? state.currentUser.id)
-const showUpload = computed(
-  () => Boolean(props.persistence?.uploadPdf) && (props.enableUpload ?? true)
-)
+const showUpload = computed(() => props.enableUpload ?? true)
 
 const getInitials = (name: string) =>
   name
@@ -227,24 +210,6 @@ const clearUser = () => {
   }
 }
 
-const notePersistenceError = (err: unknown, fallback: string) => {
-  persistError.value = err instanceof Error ? err.message : fallback
-}
-
-const persistSignatureField = async (action: 'create' | 'update' | 'sign', sig: Signature) => {
-  if (!props.persistence?.saveSignatureField) return
-  persistError.value = ''
-  try {
-    await props.persistence.saveSignatureField({
-      docId: activeDocId.value,
-      signature: { ...sig },
-      action
-    })
-  } catch (err) {
-    notePersistenceError(err, 'Gagal menyimpan signature field.')
-  }
-}
-
 const buildSignature = (x: number, y: number, page: number, signer: SignerCandidate | null): Signature => ({
   id: crypto.randomUUID(),
   x,
@@ -273,7 +238,6 @@ const addSignatureAt = (x: number, y: number) => {
   state.signatures.push(sig)
   state.activeSignature = sig
   emit('signature:create', { ...sig })
-  void persistSignatureField('create', sig)
   return sig
 }
 
@@ -288,7 +252,6 @@ const signSignature = (sig: Signature) => {
   sig.signed = true
   emit('signature:sign', { ...sig })
   emit('signature:update', { ...sig })
-  void persistSignatureField('sign', sig)
   return true
 }
 
@@ -333,7 +296,6 @@ const stopDrag = () => {
   if (sig) {
     if (!isPositionLocked.value) {
       emit('signature:update', { ...sig })
-      void persistSignatureField('update', sig)
     }
   }
 }
@@ -411,33 +373,26 @@ const noteUploadError = (err: unknown, fallback: string) => {
   uploadError.value = err instanceof Error ? err.message : fallback
 }
 
-const handleUpload = async (event: Event) => {
-  const file = (event.target as HTMLInputElement)?.files?.[0]
-  if (!file || !props.persistence?.uploadPdf) return
+const processUpload = async (file: File) => {
   if (file.type !== 'application/pdf') {
     uploadError.value = 'File harus berupa PDF.'
     return
   }
   uploadError.value = ''
-  persistError.value = ''
   isUploading.value = true
   try {
-    const result = await props.persistence.uploadPdf(file)
-    internalPdfUrl.value = result.pdfUrl
-    await loadPdfBytes(new Uint8Array(await file.arrayBuffer()), result.fileName ?? file.name)
-    if (props.persistence.createDocument) {
-      const docId = await props.persistence.createDocument({
-        title: fileName.value,
-        fileUrl: result.fileUrl,
-        ownerId: currentSignerId.value ?? null
-      })
-      activeDocId.value = docId
-    }
+    await loadPdfBytes(new Uint8Array(await file.arrayBuffer()), file.name)
   } catch (err) {
     noteUploadError(err, 'Gagal upload PDF.')
   } finally {
     isUploading.value = false
   }
+}
+
+const handleUpload = async (event: Event) => {
+  const file = (event.target as HTMLInputElement)?.files?.[0]
+  if (!file) return
+  await processUpload(file)
 }
 
 const loadPdfFromUrl = async (url: string) => {
@@ -553,7 +508,9 @@ const signatureStyle = (sig: Signature) => ({
   width: `${sig.width * scale.value}px`,
   height: `${sig.height * scale.value}px`,
   left: `${sig.x * scale.value}px`,
-  top: `${sig.y * scale.value}px`
+  top: `${sig.y * scale.value}px`,
+  '--sig-height': `${sig.height * scale.value}px`,
+  '--sig-width': `${sig.width * scale.value}px`
 })
 
 let resizeObserver: ResizeObserver | null = null
@@ -564,8 +521,8 @@ const fitToWidth = () => {
   if (!containerWidth) return
   const widthScale = containerWidth / state.pageSize.width
   const desiredScale = Math.min(
-    props.maxScale,
-    Math.max(props.minScale, Math.min(widthScale, 0.8))
+    DEFAULT_MAX_SCALE,
+    Math.max(DEFAULT_MIN_SCALE, Math.min(widthScale, 0.8))
   )
   if (Math.abs(desiredScale - scale.value) < 0.001) {
     return desiredScale
@@ -592,12 +549,51 @@ const manualZoom = () => {
   autoFitActive.value = false
 }
 
-watch(
-  () => props.documentId,
-  (value) => {
-    activeDocId.value = value ?? null
+const normalizeSignatureInput = (value: any, index: number): Signature => {
+  if (!value || typeof value !== 'object') {
+    throw new Error(`Signature index ${index + 1} tidak valid.`)
   }
-)
+  const name = typeof value.name === 'string' ? value.name : ''
+  const initials =
+    typeof value.initials === 'string' && value.initials.trim()
+      ? value.initials
+      : getInitials(name)
+  return {
+    id: typeof value.id === 'string' ? value.id : crypto.randomUUID(),
+    x: Number(value.x) || 0,
+    y: Number(value.y) || 0,
+    width: Number(value.width) || DEFAULT_SIGNATURE_SIZE.width,
+    height: Number(value.height) || DEFAULT_SIGNATURE_SIZE.height,
+    page: Math.max(1, Number(value.page) || 1),
+    userId: value.userId ?? null,
+    name,
+    initials,
+    label: typeof value.label === 'string' ? value.label : '',
+    signed: Boolean(value.signed)
+  }
+}
+
+const updateJsonFromSignatures = () => {
+  skipJsonParse.value = true
+  signaturesJson.value = JSON.stringify(state.signatures, null, 2)
+  signaturesJsonError.value = ''
+  emit('update:signaturesJson', signaturesJson.value)
+}
+
+const applySignaturesFromJson = (value: string) => {
+  if (!value.trim()) {
+    clearSignatures()
+    signaturesJsonError.value = ''
+    return
+  }
+  const parsed = JSON.parse(value)
+  if (!Array.isArray(parsed)) {
+    throw new Error('JSON harus berupa array signature.')
+  }
+  const nextSignatures = parsed.map((item, index) => normalizeSignatureInput(item, index))
+  state.signatures.splice(0, state.signatures.length, ...nextSignatures)
+  state.activeSignature = null
+}
 
 watch(
   () => props.currentUser,
@@ -613,7 +609,6 @@ watch(
   () => props.pdfUrl,
   (value) => {
     if (value) {
-      internalPdfUrl.value = ''
       void loadPdfFromUrl(value)
     }
   },
@@ -622,20 +617,51 @@ watch(
 
 const zoomIn = () => {
   manualZoom()
-  scale.value = Math.min(props.maxScale, +(scale.value + 0.2).toFixed(2))
+  scale.value = Math.min(DEFAULT_MAX_SCALE, +(scale.value + 0.2).toFixed(2))
 }
 
 const zoomOut = () => {
   manualZoom()
-  scale.value = Math.max(props.minScale, +(scale.value - 0.2).toFixed(2))
+  scale.value = Math.max(DEFAULT_MIN_SCALE, +(scale.value - 0.2).toFixed(2))
 }
 
 const zoomReset = () => {
-  scale.value = props.initialScale
+  scale.value = DEFAULT_INITIAL_SCALE
 }
 
 watch(scale, () => {
   if (pdfDoc.value) void render()
+})
+
+watch(
+  () => props.signaturesJson,
+  (value) => {
+    if (typeof value === 'string' && value !== signaturesJson.value) {
+      signaturesJson.value = value
+    }
+  }
+)
+
+watch(
+  () => state.signatures,
+  () => {
+    updateJsonFromSignatures()
+  },
+  { deep: true }
+)
+
+watch(signaturesJson, (value) => {
+  if (skipJsonParse.value) {
+    skipJsonParse.value = false
+    return
+  }
+  signaturesJsonError.value = ''
+  try {
+    applySignaturesFromJson(value)
+  } catch (err) {
+    signaturesJsonError.value =
+      err instanceof Error ? err.message : 'JSON signature tidak valid.'
+  }
 })
 
 watch(
@@ -687,13 +713,14 @@ const exportSignedPdfFile = async ({
   const defaultFont = await doc.embedFont(StandardFonts.Helvetica)
 
   signatures.forEach((sig) => {
-    const label = (sig.signed ? sig.initials : sig.name)?.trim()
+    if (!sig.signed) return
+    const label = sig.initials?.trim()
     if (!label) return
 
-    const font = sig.signed ? scriptFont : defaultFont
+    const font = scriptFont
     const maxWidth = sig.width - 12
     const maxHeight = sig.height - 12
-    const startSize = sig.signed ? 26 : 14
+    const startSize = 26
     const size = fitFontSize(font, label, maxWidth, maxHeight, startSize)
     const textWidth = font.widthOfTextAtSize(label, size)
 
@@ -739,9 +766,9 @@ const exportSignedPdf = async () => {
     pdfBytes: pdfBytes.value,
     pageSize: pageSize.value,
     signatures: state.signatures,
-    fontUrl: props.fontUrl,
-    fileName: fileName.value
-  })
+  fontUrl: DEFAULT_FONT_URL,
+  fileName: fileName.value
+})
   downloadPdf(result)
 }
 
@@ -761,14 +788,22 @@ onBeforeUnmount(() => {
 onMounted(() => {
   window.addEventListener('mousemove', movePan)
   window.addEventListener('mouseup', stopPan)
+  updateJsonFromSignatures()
 })
 
 defineExpose({
   getSignatures: () => state.signatures.map((sig) => ({ ...sig })),
-  getDocumentId: () => activeDocId.value,
   lockPositions: () => {
     isPositionLocked.value = true
-  }
+  },
+  loadPdfFile: (file: File) => processUpload(file),
+  setDraggingUser: (user: SignPdfUser | null) => {
+    draggingUser.value = user
+  },
+  clearDraggingUser: () => {
+    draggingUser.value = null
+  },
+  selectUser
 })
 </script>
 
@@ -792,11 +827,7 @@ defineExpose({
         </div>
       </div>
 
-      <div class="topbar-actions">
-        <div class="page-controls">
-          <span class="page-label">Page</span>
-          <span class="page-select">1</span>
-        </div>
+        <div class="topbar-actions">
         <div class="zoom-controls">
           <button type="button" class="zoom-button" @click="zoomOut">-</button>
           <span class="zoom-label">{{ Math.round(scale * 100) }}%</span>
@@ -812,10 +843,6 @@ defineExpose({
     <div v-if="uploadError" class="error-banner">
       {{ uploadError }}
     </div>
-    <div v-if="persistError" class="error-banner">
-      {{ persistError }}
-    </div>
-
     <div class="content-grid">
       <section class="preview-panel">
         <div v-if="!pdfDoc" class="preview-empty">
@@ -890,6 +917,7 @@ defineExpose({
             <span class="signer-initial">{{ user.initials ?? getInitials(user.name) }}</span>
           </button>
         </div>
+
       </section>
     </div>
   </div>
@@ -991,31 +1019,6 @@ defineExpose({
   border: 1px solid #e2e8f0;
 }
 
-.page-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #f8fafc;
-  border-radius: 12px;
-  padding: 0 10px;
-  height: 40px;
-  border: 1px solid #e2e8f0;
-}
-
-.page-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #1e293b;
-}
-
-.page-select {
-  border: none;
-  background: transparent;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-  height: 28px;
-}
 
 .zoom-button {
   border: none;
@@ -1097,6 +1100,7 @@ defineExpose({
   gap: 8px;
   align-items: stretch;
 }
+
 
 .signer-card {
   display: flex;
@@ -1229,6 +1233,7 @@ defineExpose({
 
 .signature-content.signed {
   justify-content: center;
+  align-items: center;
 }
 
 .signature-role {
@@ -1257,9 +1262,11 @@ defineExpose({
 
 .signature-text.done {
   font-family: 'Dancing Script', cursive;
-  font-weight: 700;
-  font-size: clamp(20px, 5vw, 28px);
+  font-weight: 600;
+  font-size: calc(var(--sig-height, 100px) * 0.26);
   line-height: 1;
+  color: #1a75d1;
+  transform: translateY(4px);
 }
 
 
