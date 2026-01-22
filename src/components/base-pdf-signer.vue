@@ -11,7 +11,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker
 
 type UserId = number | string
 
-export interface SignPdfUser {
+export interface PdfSignerUser {
   id: UserId
   name: string
   initials?: string
@@ -61,8 +61,8 @@ const DEFAULT_MAX_SCALE = 2.4
 
 const props = withDefaults(
   defineProps<{
-    users?: SignPdfUser[]
-    currentUser?: SignPdfUser | null
+    users?: PdfSignerUser[]
+    currentUser?: PdfSignerUser | null
     pdfUrl?: string
     enableUpload?: boolean
     signaturesJson?: string
@@ -116,8 +116,8 @@ const shouldSkipPan = (target: EventTarget | null) => {
   if (target.closest('.signature-action')) return true
   return false
 }
-type SignerCandidate = SignPdfUser | { id: UserId | null; name: string; initials: string }
-const draggingUser = ref<SignPdfUser | null>(null)
+type SignerCandidate = PdfSignerUser | { id: UserId | null; name: string; initials: string }
+const draggingUser = ref<PdfSignerUser | null>(null)
 
 const state = reactive<SignatureState>({
   signatures: [],
@@ -184,7 +184,7 @@ const dragging = reactive<{
   lastValidPos: null
 })
 
-const setCurrentUser = (user: SignPdfUser | null) => {
+const setCurrentUser = (user: PdfSignerUser | null) => {
   state.currentUser.id = user?.id ?? null
   state.currentUser.name = user?.name ?? ''
   state.currentUser.initials = user?.initials ?? getInitials(user?.name || '')
@@ -220,7 +220,7 @@ const buildSignature = (x: number, y: number, page: number, signer: SignerCandid
   userId: signer?.id ?? state.currentUser.id,
   name: signer?.name ?? state.currentUser.name,
   initials: (signer?.initials ?? state.currentUser.initials) || getInitials(signer?.name || state.currentUser.name || ''),
-  label: (signer as SignPdfUser | null)?.label ?? '',
+  label: (signer as PdfSignerUser | null)?.label ?? '',
   signed: false
 })
 
@@ -300,7 +300,7 @@ const stopDrag = () => {
   }
 }
 
-const selectUser = async (user: SignPdfUser) => {
+const selectUser = async (user: PdfSignerUser) => {
   if (!props.currentUser) {
     setCurrentUser(user)
   }
@@ -310,7 +310,7 @@ const selectUser = async (user: SignPdfUser) => {
   }
 }
 
-const handleUserDragStart = (user: SignPdfUser, event: DragEvent) => {
+const handleUserDragStart = (user: PdfSignerUser, event: DragEvent) => {
   draggingUser.value = user
   void selectUser(user)
   if (event.dataTransfer) {
@@ -787,7 +787,7 @@ defineExpose({
     isPositionLocked.value = true
   },
   loadPdfFile: (file: File) => processUpload(file),
-  setDraggingUser: (user: SignPdfUser | null) => {
+  setDraggingUser: (user: PdfSignerUser | null) => {
     draggingUser.value = user
   },
   clearDraggingUser: () => {

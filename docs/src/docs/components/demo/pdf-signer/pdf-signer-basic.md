@@ -1,4 +1,4 @@
-Drag user chips into the canvas area to pin a signature where it belongs. This demo keeps signature positions in JSON so you can copy/paste them to restore after refresh. `SignPdf` handles upload, drag/drop, and signing UI.
+Drag user chips into the canvas area to pin a signature where it belongs. This demo keeps signature positions in JSON so you can copy/paste them to restore after refresh. `BasePdfSigner` handles upload, drag/drop, and signing UI.
 
 ::: raw
 
@@ -12,29 +12,43 @@ Drag user chips into the canvas area to pin a signature where it belongs. This d
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
 import { BasePdfSigner } from '@point-hub/papp'
+import { computed, ref } from 'vue'
 
-const demoUsers = [
-  { id: 'alya', name: 'Alya Rahma', initials: 'AR', label: 'Menyetujui' },
-  { id: 'dimas', name: 'Dimas Pratama', initials: 'DP', label: 'Mengetahui' }
+type IUser = { id: string; name: string; initials: string; role: string; label: string }
+const users: IUser[] = [
+  { id: 'alya', name: 'Alya Rahma', initials: 'AR', role: 'Approval', label: 'Approved By' },
+  { id: 'dimas', name: 'Dimas Pratama', initials: 'DP', role: 'Approval', label: 'Approved By' },
+  { id: 'nadia', name: 'Nadia Kusuma', initials: 'NK', role: 'Viewer', label: 'Custom Label' }
 ]
-const currentUser = demoUsers[0]
+
+const currentUserId = ref(users[0]?.id ?? '')
+const currentUser = computed(
+  () => users.find((user) => user.id === currentUserId.value) ?? users[0]
+)
 const signaturesJson = ref('')
 </script>
 
 <template>
-  <SignPdf v-model:signaturesJson="signaturesJson" :users="demoUsers" :current-user="currentUser" />
-  <base-textarea
-    v-model="signaturesJson"
-    label="Signature JSON"
-    layout="vertical"
-    description="Paste to restore positions."
-    class="mt-4"
-    :minHeight="180"
-    placeholder="Paste signature JSON di sini..."
-    spellcheck="false"
-  />
+  <Demo>
+    <div class="mb-4 grid gap-3 rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-lg">
+      <div class="flex flex-wrap items-center gap-3 justify-between">
+        <div class="flex flex-col gap-1">
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Active User</span>
+          <select v-model="currentUserId"
+            class="w-fit rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm">
+            <option v-for="user in users" :key="user.id" :value="user.id">
+              {{ user.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <BasePdfSigner v-model:signaturesJson="signaturesJson" :users="users" :current-user="currentUser"
+      :enable-upload="true" />
+    <base-textarea v-model="signaturesJson" label="Signature JSON" layout="vertical" description="Sample JSON."
+      class="mt-4" :minHeight="180" spellcheck="false" />
+  </Demo>
 </template>
 ```
 
