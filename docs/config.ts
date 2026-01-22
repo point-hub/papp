@@ -11,13 +11,11 @@ export default defineConfig({
   description: 'Pointhub App Components',
   cleanUrls: true,
   srcDir: './src',
-  base: '/',
+  base: '/library/papp/',
   vite: {
-    envDir: resolve(__dirname, '..'),
     resolve: {
       alias: {
-        '@point-hub/papp': resolve(__dirname, '../src/index.ts'), // to load latest source files
-        '@': resolve(__dirname, '../src') // so @ references still work inside docs
+        '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
       }
     },
     plugins: [

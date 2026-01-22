@@ -13,7 +13,7 @@ Drag user chips into the canvas area to pin a signature where it belongs. This d
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import { SignPdf } from '@point-hub/papp'
+import { BasePdfSigner } from '@point-hub/papp'
 
 const demoUsers = [
   { id: 'alya', name: 'Alya Rahma', initials: 'AR', label: 'Menyetujui' },

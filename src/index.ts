@@ -46,6 +46,7 @@ export { default as BaseLoader } from './components/base-loader.vue'
 export { default as BaseMask, type BaseMaskShapeType } from './components/base-mask.vue'
 export { default as BaseModal, type BaseModalSizeType } from './components/base-modal.vue'
 export { default as BasePagination } from './components/base-pagination.vue'
+export { default as BasePdfSigner } from './components/base-pdf-signer.vue'
 export {
   default as BasePopover,
   type BasePopoverPlacementType
@@ -73,8 +74,6 @@ export { default as BaseTimelineContent } from './components/base-timeline-conte
 export { default as BaseToast, type BaseToastColorType } from './components/base-toast.vue'
 export { default as BaseTooltip } from './components/base-tooltip.vue'
 export { default as BaseTreeview } from './components/base-treeview.vue'
-export { default as PdfSigner } from './components/PdfSigner.vue'
-export { default as SignPdf } from './components/PdfSigner.vue'
 
 // Forms
 export { default as BaseCheckbox, type BaseCheckboxThemeType } from './components/base-checkbox.vue'

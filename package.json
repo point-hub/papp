@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.0.155",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -35,8 +35,7 @@
     "lint:fix": "eslint . --fix",
     "clean-dist": "rimraf dist",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "run-s build:lib docs:build:only",
-    "docs:build:only": "vitepress build docs",
+    "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
@@ -51,7 +50,7 @@
     "cleave.js": "^1.6.0",
     "date-fns": "^4.1.0",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^4.10.38",
+    "pdfjs-dist": "^5.4.530",
     "pinia": "^3.0.4",
     "textarea-caret": "^3.1.0",
     "uuid": "^13.0.0",
@@ -65,10 +64,9 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
-    "@iconify-json/ph": "^1.2.2",
     "@types/cleave.js": "^1.4.12",
     "@types/jsdom": "^27.0.0",
-    "@types/node": "^25.0.9",
+    "@types/node": "^25.0.10",
     "@types/pdfjs-dist": "^2.10.378",
     "@types/textarea-caret": "^3.0.4",
     "@types/uuid": "^11.0.0",
@@ -97,7 +95,7 @@
     "vite": "^7.3.1",
     "vite-plugin-dts": "4.5.4",
     "vitepress": "^2.0.0-alpha.15",
-    "vitest": "^4.0.17",
+    "vitest": "^4.0.18",
     "vue": "^3.5.27",
     "vue-tsc": "^3.2.2"
   },

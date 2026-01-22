@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, markRaw, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
+import fontkit from '@pdf-lib/fontkit'
+import { PDFDocument, rgb } from 'pdf-lib'
 import * as pdfjsLib from 'pdfjs-dist'
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-import fontkit from '@pdf-lib/fontkit'
+import { computed, markRaw, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
+
 import dancingScriptUrl from '@/assets/fonts/DancingScript.ttf?url'
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker
@@ -129,7 +130,6 @@ const state = reactive<SignatureState>({
   pageSize: { width: 0, height: 0 }
 })
 
-const hasSelectedUser = computed(() => Boolean(state.currentUser.id))
 const currentSignerId = computed(() => props.currentUser?.id ?? state.currentUser.id)
 const showUpload = computed(() => props.enableUpload ?? true)
 
@@ -625,10 +625,6 @@ const zoomOut = () => {
   scale.value = Math.max(DEFAULT_MIN_SCALE, +(scale.value - 0.2).toFixed(2))
 }
 
-const zoomReset = () => {
-  scale.value = DEFAULT_INITIAL_SCALE
-}
-
 watch(scale, () => {
   if (pdfDoc.value) void render()
 })
@@ -680,11 +676,6 @@ watch(
   { flush: 'post' }
 )
 
-const signActive = () => {
-  if (!state.activeSignature) return
-  signSignature(state.activeSignature)
-}
-
 const fitFontSize = (font: any, text: string, maxWidth: number, maxHeight: number, startSize: number) => {
   let size = Math.min(startSize, maxHeight)
   while (size > 6 && font.widthOfTextAtSize(text, size) > maxWidth) {
@@ -710,7 +701,6 @@ const exportSignedPdfFile = async ({
   doc.registerFontkit(fontkit)
   const scriptBytes = await fetch(fontUrl).then((r) => r.arrayBuffer())
   const scriptFont = await doc.embedFont(scriptBytes)
-  const defaultFont = await doc.embedFont(StandardFonts.Helvetica)
 
   signatures.forEach((sig) => {
     if (!sig.signed) return
@@ -766,9 +756,9 @@ const exportSignedPdf = async () => {
     pdfBytes: pdfBytes.value,
     pageSize: pageSize.value,
     signatures: state.signatures,
-  fontUrl: DEFAULT_FONT_URL,
-  fileName: fileName.value
-})
+    fontUrl: DEFAULT_FONT_URL,
+    fileName: fileName.value
+  })
   downloadPdf(result)
 }
 
@@ -816,18 +806,13 @@ defineExpose({
         <div v-if="showUpload" class="upload-control">
           <label class="upload-button">
             Upload PDF
-            <input
-              class="upload-input"
-              type="file"
-              accept="application/pdf"
-              :disabled="isUploading"
-              @change="handleUpload"
-            />
+            <input class="upload-input" type="file" accept="application/pdf" :disabled="isUploading"
+              @change="handleUpload" />
           </label>
         </div>
       </div>
 
-        <div class="topbar-actions">
+      <div class="topbar-actions">
         <div class="zoom-controls">
           <button type="button" class="zoom-button" @click="zoomOut">-</button>
           <span class="zoom-label">{{ Math.round(scale * 100) }}%</span>
@@ -848,28 +833,14 @@ defineExpose({
         <div v-if="!pdfDoc" class="preview-empty">
           Upload a PDF to preview and start signing.
         </div>
-        <div
-          v-else
-          class="canvas-scroller"
-          :class="{ grabbing: isPanning }"
-          ref="canvasScroller"
-          :style="{ height: previewHeight ? `${previewHeight}px` : 'auto' }"
-          @dragover.prevent
-          @drop="onDrop"
-          @mousedown="startPan"
-          @mouseleave="stopPan"
-        >
+        <div v-else class="canvas-scroller" :class="{ grabbing: isPanning }" ref="canvasScroller"
+          :style="{ height: previewHeight ? `${previewHeight}px` : 'auto' }" @dragover.prevent @drop="onDrop"
+          @mousedown="startPan" @mouseleave="stopPan">
           <div class="canvas-wrapper">
             <canvas ref="canvas"></canvas>
-            <div
-              v-for="sig in state.signatures"
-              :key="sig.id"
-              class="signature"
-              :class="{ signed: sig.signed, active: sig === state.activeSignature }"
-              :style="signatureStyle(sig)"
-              @mousedown="startDrag($event, sig)"
-              @click="selectSignature(sig)"
-            >
+            <div v-for="sig in state.signatures" :key="sig.id" class="signature"
+              :class="{ signed: sig.signed, active: sig === state.activeSignature }" :style="signatureStyle(sig)"
+              @mousedown="startDrag($event, sig)" @click="selectSignature(sig)">
               <div class="signature-content" :class="{ signed: sig.signed, unsigned: !sig.signed }">
                 <template v-if="sig.signed">
                   <span class="signature-text done">
@@ -878,12 +849,7 @@ defineExpose({
                 </template>
                 <template v-else>
                   <span v-if="sig.label" class="signature-role">{{ sig.label }}</span>
-                  <button
-                    v-if="canSign(sig)"
-                    type="button"
-                    class="signature-action"
-                    @click.stop="signSignature(sig)"
-                  >
+                  <button v-if="canSign(sig)" type="button" class="signature-action" @click.stop="signSignature(sig)">
                     Sign
                   </button>
                   <span class="signature-text pending signature-name">
@@ -903,16 +869,9 @@ defineExpose({
           <p class="signers-hint">Drag into page to place a signature.</p>
         </div>
         <div class="signers-list">
-          <button
-            v-for="user in props.users"
-            :key="user.id"
-            type="button"
-            class="signer-card"
-            :class="{ active: state.currentUser.id === user.id }"
-            draggable="true"
-            @click="selectUser(user)"
-            @dragstart="handleUserDragStart(user, $event)"
-          >
+          <button v-for="user in props.users" :key="user.id" type="button" class="signer-card"
+            :class="{ active: state.currentUser.id === user.id }" draggable="true" @click="selectUser(user)"
+            @dragstart="handleUserDragStart(user, $event)">
             <span class="signer-name">{{ user.name }}</span>
             <span class="signer-initial">{{ user.initials ?? getInitials(user.name) }}</span>
           </button>

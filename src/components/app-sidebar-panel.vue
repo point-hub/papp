@@ -33,53 +33,25 @@ const chooseApp = (path: string) => {
       <div class="sidebar-panel-body">
         <template v-for="(app, index) in props.apps">
           <!-- Internal Menu -->
-          <router-link
-            v-if="pathHandler(app.path) === 'internal'"
-            :key="`internal-${index}`"
-            :to="app.path"
-            @click="chooseApp(app.path)"
-            :exact="false"
-            class="sidebar-panel-link"
-          >
+          <router-link v-if="pathHandler(app.path) === 'internal'" :key="`internal-${index}`" :to="app.path"
+            @click="chooseApp(app.path)" :exact="false" class="sidebar-panel-link">
             <div class="flex flex-col items-center">
-              <img
-                v-if="app.icon && iconHandler(app.icon) === 'img'"
-                :src="app.icon"
-                class="pt-2 px-1 max-w-12 max-h-12"
-              />
-              <img
-                v-else
-                src="@/assets/images/placeholder-app-icon.png"
-                class="pt-2 px-1 max-w-12 max-h-12"
-              />
-              <div
-                class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere"
-              >
+              <img v-if="app.icon && iconHandler(app.icon) === 'img'" :src="app.icon"
+                class="pt-2 px-1 max-w-12 max-h-12" />
+              <img v-else src="@/assets/images/placeholder-app-icon.png" class="pt-2 px-1 max-w-12 max-h-12" />
+              <div class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere">
                 {{ app.name }}
               </div>
             </div>
           </router-link>
           <!-- External Menu -->
-          <a
-            v-else-if="pathHandler(app.path) === 'external'"
-            :key="`external-${index}`"
-            :href="app.path"
-            class="sidebar-panel-link"
-          >
+          <a v-else-if="pathHandler(app.path) === 'external'" :key="`external-${index}`" :href="app.path"
+            class="sidebar-panel-link">
             <div class="flex flex-col items-center">
-              <img
-                v-if="app.icon && iconHandler(app.icon) === 'img'"
-                :src="app.icon"
-                class="pt-2 px-1 max-w-12 max-h-12"
-              />
-              <img
-                v-else
-                src="@/assets/images/placeholder-app-icon.png"
-                class="pt-2 px-1 max-w-12 max-h-12"
-              />
-              <div
-                class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere"
-              >
+              <img v-if="app.icon && iconHandler(app.icon) === 'img'" :src="app.icon"
+                class="pt-2 px-1 max-w-12 max-h-12" />
+              <img v-else src="@/assets/images/placeholder-app-icon.png" class="pt-2 px-1 max-w-12 max-h-12" />
+              <div class="text-center px-1 py-2 text-9px font-semibold line-height-tight break-anywhere">
                 {{ app.name }}
               </div>
             </div>
@@ -115,7 +87,7 @@ const chooseApp = (path: string) => {
 }
 
 .sidebar-panel-link {
-  @apply flex w-full text-xs items-center justify-center  outline-none transition-colors duration-200 hover:bg-slate-300/20;
+  @apply flex w-full text-xs items-center justify-center outline-none transition-colors duration-200 hover:bg-slate-300/20;
 }
 
 .sidebar-panel-link.router-link-active {
