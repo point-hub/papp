@@ -1,7 +1,7 @@
 import '@unocss/reset/tailwind.css'
-import '@/assets/css/base.css'
-import '@/assets/css/components.css'
-import '@/assets/css/utilities.css'
+import './assets/css/base.css'
+import './assets/css/components.css'
+import './assets/css/utilities.css'
 import 'virtual:uno.css'
 
 // Components
@@ -73,6 +73,8 @@ export { default as BaseTimelineContent } from './components/base-timeline-conte
 export { default as BaseToast, type BaseToastColorType } from './components/base-toast.vue'
 export { default as BaseTooltip } from './components/base-tooltip.vue'
 export { default as BaseTreeview } from './components/base-treeview.vue'
+export { default as PdfSigner } from './components/PdfSigner.vue'
+export { default as SignPdf } from './components/PdfSigner.vue'
 
 // Forms
 export { default as BaseCheckbox, type BaseCheckboxThemeType } from './components/base-checkbox.vue'

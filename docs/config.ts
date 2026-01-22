@@ -11,11 +11,13 @@ export default defineConfig({
   description: 'Pointhub App Components',
   cleanUrls: true,
   srcDir: './src',
-  base: '/library/papp/',
+  base: '/',
   vite: {
+    envDir: resolve(__dirname, '..'),
     resolve: {
       alias: {
-        '@point-hub/papp': resolve(__dirname, '../dist/index.js') // to resolve @ inside docs
+        '@point-hub/papp': resolve(__dirname, '../src/index.ts'), // to load latest source files
+        '@': resolve(__dirname, '../src') // so @ references still work inside docs
       }
     },
     plugins: [
@@ -117,6 +119,7 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Mask', link: 'components/mask' },
         { text: 'Modal', link: 'components/modal' },
         { text: 'Pagination', link: 'components/pagination' },
+        { text: 'PDF Signer', link: 'components/pdf-signer' },
         { text: 'Popover', link: 'components/popover' },
         { text: 'Progress', link: 'components/progress' },
         { text: 'Sidebar', link: 'components/sidebar' },
