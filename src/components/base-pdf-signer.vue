@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import fontkit from '@pdf-lib/fontkit'
 import { PDFDocument, rgb } from 'pdf-lib'
-import * as pdfjsLib from 'pdfjs-dist'
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs'
 import { computed, markRaw, nextTick, onBeforeUnmount, onMounted, reactive, ref, shallowRef, watch } from 'vue'
 
 import dancingScriptUrl from '@/assets/fonts/DancingScript.ttf?url'

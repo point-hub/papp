@@ -31,7 +31,7 @@ const signaturesJson = ref('')
         </div>
       </div>
     </div>
-    <BasePdfSigner v-model:signaturesJson="signaturesJson" :users="users" :current-user="currentUser"
+    <base-pdf-signer v-model:signaturesJson="signaturesJson" :users="users" :current-user="currentUser"
       :enable-upload="true" />
     <base-textarea v-model="signaturesJson" label="Signature JSON" layout="vertical" description="Sample JSON."
       class="mt-4" :minHeight="180" spellcheck="false" />
