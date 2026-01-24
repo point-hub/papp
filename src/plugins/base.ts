@@ -60,6 +60,7 @@ import BaseTreeview from '@/components/base-treeview.vue'
 import HeaderMenu from '@/components/header-menu.vue'
 import HeaderMenuAccount from '@/components/header-menu-account.vue'
 import HeaderMenuDarkMode from '@/components/header-menu-dark-mode.vue'
+import HeaderMenuLink from '@/components/header-menu-link.vue'
 import HeaderMenuSignout from '@/components/header-menu-signout.vue'
 import HeaderMenuSwitchOrganization from '@/components/header-menu-switch-organization.vue'
 import HeaderNotification from '@/components/header-notification.vue'
@@ -125,6 +126,7 @@ const PluginBaseComponents: any = {
     app.component('HeaderMenu', HeaderMenu)
     app.component('HeaderMenuAccount', HeaderMenuAccount)
     app.component('HeaderMenuDarkMode', HeaderMenuDarkMode)
+    app.component('HeaderMenuLink', HeaderMenuLink)
     app.component('HeaderMenuSignout', HeaderMenuSignout)
     app.component('HeaderMenuSwitchOrganization', HeaderMenuSwitchOrganization)
     app.component('HeaderNotification', HeaderNotification)
