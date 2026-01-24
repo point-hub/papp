@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { isDefined } from '@vueuse/core'
 
 const props = defineProps<{
   organization: string
@@ -7,12 +7,22 @@ const props = defineProps<{
   avatar: string
 }>()
 
-const accountPopoverRef = ref()
+const isOpen = defineModel('is-open', { default: false })
+const toggle = (val?: boolean) => {
+  if (isDefined(val)) {
+    isOpen.value = val
+    return
+  }
+
+  isOpen.value = !isOpen.value
+}
+
+defineExpose({ toggle, isOpen })
 </script>
 
 <template>
-  <base-popover ref="accountPopoverRef" placement="bottom-end">
-    <button type="button" class="flex gap-2" @click="accountPopoverRef.toggle()">
+  <base-popover ref="accountPopoverRef" placement="bottom-end" v-model:is-open="isOpen">
+    <button type="button" class="flex gap-2" @click="toggle()">
       <div class="hidden lg:flex flex-col justify-center items-end">
         <p class="text-sm truncate font-extrabold">{{ props.organization }}</p>
         <p class="text-sm truncate">{{ props.username }}</p>

@@ -41,20 +41,20 @@ const onClickOutsideHandler: [(evt: any) => void, OnClickOutsideOptions] = [
   }
 ]
 
-const show = ref(false)
-const toggle = (val: boolean) => {
+const isOpen = defineModel('is-open', { default: false })
+const toggle = (val?: boolean) => {
   if (isDefined(val)) {
-    show.value = false
+    isOpen.value = val
     return
   }
-  show.value = !show.value
+  isOpen.value = !isOpen.value
 }
 
-defineExpose({ toggle })
+defineExpose({ toggle, isOpen })
 </script>
 
 <template>
-  <component :is="Popper" v-bind="$attrs" :placement="props.placement" :show="show">
+  <component :is="Popper" v-bind="$attrs" :placement="props.placement" :show="isOpen">
     <button ref="ignoreOutsideRef">
       <slot />
     </button>

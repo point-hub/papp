@@ -8,6 +8,7 @@ import AppSidebar from '@/components/app-sidebar.vue'
 import HeaderMenu from '@/components/header-menu.vue'
 import HeaderMenuAccount from '@/components/header-menu-account.vue'
 import HeaderMenuDarkMode from '@/components/header-menu-dark-mode.vue'
+import HeaderMenuLink from '@/components/header-menu-link.vue'
 import HeaderMenuSignout from '@/components/header-menu-signout.vue'
 import HeaderMenuSwitchOrganization from '@/components/header-menu-switch-organization.vue'
 import HeaderNotification from '@/components/header-notification.vue'
@@ -147,6 +148,8 @@ const organizations = ref([
   }
 ])
 
+const isHeaderMenuOpen = ref(false)
+
 const onSignout = () => {
   // Handle signout
 }
@@ -167,10 +170,13 @@ onMounted(() => {
       <template #right-header>
         <header-notification></header-notification>
         <base-divider class="h-10" orientation="horizontal" />
-        <header-menu :organization="account.organization" :username="account.username" :avatar="account.avatar">
+        <header-menu v-model:is-open="isHeaderMenuOpen" :organization="account.organization"
+          :username="account.username" :avatar="account.avatar">
           <header-menu-account :organization="account.organization" :username="account.username"
             :avatar="account.avatar" />
           <base-divider orientation="vertical" class="my-2!" />
+          <header-menu-link label="My Account" icon="i-ph:user-circle-gear-duotone" path="/"
+            @click="() => isHeaderMenuOpen = false" />
           <header-menu-switch-organization :organizations="organizations" />
           <header-menu-dark-mode :on-toggle-dark-mode="toggleDarkMode" v-model:is-dark-mode="isDarkMode" />
           <header-menu-signout :on-signout="onSignout" />
