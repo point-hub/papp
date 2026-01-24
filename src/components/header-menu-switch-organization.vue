@@ -19,7 +19,7 @@ const isOpen = ref(false)
 <template>
   <base-button variant="text" color="primary" size="lg" class="text-slate-900 dark:text-slate-50 flex justify-left!"
     @click="toggle">
-    <base-icon icon="i-ph:buildings-duotone" class="w-1.25em" />
+    <base-icon icon="i-ph:buildings-duotone" class="w-5" />
     <p>Switch Organization</p>
   </base-button>
   <base-card class="p-0! gap-0! overflow-y-auto max-h-50" v-if="isOpen">

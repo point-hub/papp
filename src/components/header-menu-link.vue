@@ -10,7 +10,7 @@ defineProps<{
   <router-link :to="path" class="w-full">
     <base-button variant="text" color="primary" size="lg"
       class="text-slate-900 dark:text-slate-50 flex justify-left! w-full">
-      <base-icon :icon="icon" class="w-1.25em" />
+      <base-icon :icon="icon" class="w-5" />
       <p>{{ label }}</p>
     </base-button>
   </router-link>
