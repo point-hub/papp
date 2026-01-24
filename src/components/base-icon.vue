@@ -1,15 +1,9 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    icon: string
-    fixedWidth?: boolean
-  }>(),
-  {
-    fixedWidth: true
-  }
-)
+defineProps<{
+  icon: string
+}>()
 </script>
 
 <template>
-  <span :class="[icon, 'inline-block', 'text-xl', { 'w-1.2em': fixedWidth }]"></span>
+  <span :class="[icon, 'inline-block', 'text-xl']"></span>
 </template>
