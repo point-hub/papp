@@ -117,7 +117,6 @@ function sidebarDocs(): DefaultTheme.SidebarItem[] {
         { text: 'Mask', link: 'components/mask' },
         { text: 'Modal', link: 'components/modal' },
         { text: 'Pagination', link: 'components/pagination' },
-        { text: 'PDF Signer', link: 'components/pdf-signer' },
         { text: 'Popover', link: 'components/popover' },
         { text: 'Progress', link: 'components/progress' },
         { text: 'Sidebar', link: 'components/sidebar' },

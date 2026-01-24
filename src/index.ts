@@ -46,7 +46,6 @@ export { default as BaseLoader } from './components/base-loader.vue'
 export { default as BaseMask, type BaseMaskShapeType } from './components/base-mask.vue'
 export { default as BaseModal, type BaseModalSizeType } from './components/base-modal.vue'
 export { default as BasePagination } from './components/base-pagination.vue'
-export { default as BasePdfSigner } from './components/base-pdf-signer.vue'
 export {
   default as BasePopover,
   type BasePopoverPlacementType

@@ -38,17 +38,14 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue', 'pinia', 'vue-router', 'pdfjs-dist', 'pdf-lib', '@pdf-lib/fontkit'],
+      external: ['vue', 'pinia', 'vue-router'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
           pinia: 'pinia',
-          'vue-router': 'vueRouter',
-          'pdfjs-dist': 'pdfjsLib',
-          'pdf-lib': 'PDFLib',
-          '@pdf-lib/fontkit': 'fontkit'
+          'vue-router': 'vueRouter'
         }
       }
     }

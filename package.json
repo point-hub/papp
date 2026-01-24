@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
-    "@pdf-lib/fontkit": "^1.1.1",
     "@point-hub/js-utils": "^0.0.6",
     "@point-hub/preset-papp-icon": "^0.0.12",
     "@tsconfig/node22": "^22.0.5",
@@ -49,8 +48,6 @@
     "@vueuse/core": "^14.1.0",
     "cleave.js": "^1.6.0",
     "date-fns": "^4.1.0",
-    "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^5.4.530",
     "pinia": "^3.0.4",
     "textarea-caret": "^3.1.0",
     "uuid": "^13.0.0",
@@ -67,7 +64,6 @@
     "@types/cleave.js": "^1.4.12",
     "@types/jsdom": "^27.0.0",
     "@types/node": "^25.0.10",
-    "@types/pdfjs-dist": "^2.10.378",
     "@types/textarea-caret": "^3.0.4",
     "@types/uuid": "^11.0.0",
     "@unocss/preset-web-fonts": "^66.6.0",
