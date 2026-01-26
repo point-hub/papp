@@ -24,6 +24,8 @@ export interface Props {
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
+  trueValue?: boolean | string | number
+  falseValue?: boolean | string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,12 +33,12 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'horizontal',
   required: false,
   readonly: false,
-  disabled: false
+  disabled: false,
+  trueValue: true,
+  falseValue: false
 })
 
 const modelValue = defineModel()
-const trueValue = defineModel('true-value', { default: true })
-const falseValue = defineModel('false-value', { default: false })
 
 watch(
   () => modelValue.value,
