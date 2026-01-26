@@ -107,6 +107,15 @@ watch(
   { immediate: true }
 )
 
+
+watch(
+  () => selectedValue.value,
+  (val) => {
+    selected.value = options.value?.find(o => o.value === val)
+  },
+  { immediate: true }
+)
+
 const onOpen = () => {
   if (props.readonly || props.disabled) {
     return
@@ -135,14 +144,16 @@ const onClose = () => {
   <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose" :title="props.title">
     <div class="max-h-90vh h-full flex flex-col pb-4">
       <!-- Search Text -->
-      <base-input placeholder="Search" ref="inputRef" border="full" v-model="search"
-        :data-testid="`${dataTestid}-search`">
-        <template #suffix>
-          <button class="w-8 h-8" :data-testid="`${dataTestid}-clear-button`" @click="onClear">
-            <base-icon icon="i-fa7-solid:xmark" />
-          </button>
-        </template>
-      </base-input>
+      <div class="flex w-full">
+        <base-input class="flex-1" placeholder="Search" ref="inputRef" border="full" v-model="search"
+          :data-testid="`${dataTestid}-search`">
+          <template #suffix>
+          </template>
+        </base-input>
+        <base-button color="danger" :data-testid="`${dataTestid}-clear-button`" @click="onClear">
+          CLEAR
+        </base-button>
+      </div>
       <!-- Options -->
       <div class="gap-4 mt-3 flex flex-col h-full overflow-y-auto">
         <div class="flex flex-col w-full">
@@ -154,8 +165,8 @@ const onClose = () => {
             Nothing found.
           </div>
           <div v-for="(option, index) in filtered" :key="index"
-            class="p-2 border-b first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
-            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.label === selected?.label }" @click="onSelect(option)"
+            class="p-2 border-b border-slate-200 first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
+            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selected?.value }" @click="onSelect(option)"
             :data-testid="`${dataTestid}-option-${option._id}`">
             <slot :option="option">{{ option?.label }}</slot>
           </div>
