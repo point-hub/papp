@@ -7,8 +7,6 @@ interface IOption {
   value: string
 }
 
-import { isEmpty } from '@point-hub/js-utils'
-
 import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseChoosenBorderType = 'none' | 'simple' | 'full'
@@ -44,13 +42,13 @@ const props = withDefaults(defineProps<Props>(), {
 
 const input = defineModel()
 const isLoading = defineModel<boolean>('isLoading')
-const selected = defineModel<IOption>('selected')
 const search = defineModel<string>('search', { default: '' })
 const options = defineModel<IOption[]>('options')
 const errors = defineModel<string[]>('errors')
 
-const selectedLabel = defineModel('selected-label')
-const selectedValue = defineModel('selected-value')
+const selectedLabel = defineModel<string>('selected-label')
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const selectedValue = defineModel<any>('selected-value')
 
 const showModal = ref(false)
 const inputRef = ref()
@@ -82,36 +80,32 @@ const filtered = computed<any>(() => {
 })
 
 const onSelect = (option: IOption) => {
-  selected.value = option
+  selectedLabel.value = option.label
+  selectedValue.value = option.value
   input.value = option.label
+  emit('selected', option)
   onClose()
 }
 
 const onClear = () => {
   input.value = ''
-  selected.value = undefined
   selectedLabel.value = ''
   selectedValue.value = ''
   search.value = ''
+  emit('selected', undefined)
   onClose()
 }
 
-watch(
-  selected,
-  () => {
-    input.value = selected.value?.label ?? ''
-    selectedLabel.value = selected.value?.label ?? ''
-    selectedValue.value = selected.value?.value ?? ''
-    if (errors.value?.length) errors.value = []
-  },
-  { immediate: true }
-)
-
+const emit = defineEmits<{
+  (e: 'selected', value: IOption | undefined): void
+}>()
 
 watch(
   () => selectedValue.value,
   (val) => {
-    selected.value = options.value?.find(o => o.value === val)
+    const selected = options.value?.find(o => o.value === val)
+    selectedLabel.value = selected?.label
+    input.value = selected?.label
   },
   { immediate: true }
 )
@@ -137,7 +131,7 @@ const onClose = () => {
     <!-- mode: text -->
     <div v-if="mode === 'text'" class="border-b border-dashed cursor-pointer border-black dark:border-white"
       @click="onOpen" :data-testid="`${dataTestid}-input`">
-      {{ selected && !isEmpty(selected.label) ? selected.label : 'SELECT' }}
+      {{ selectedLabel ?? 'SELECT' }}
     </div>
   </base-form>
 
@@ -145,12 +139,19 @@ const onClose = () => {
     <div class="max-h-90vh h-full flex flex-col pb-4">
       <!-- Search Text -->
       <div class="flex w-full">
-        <base-input class="flex-1" placeholder="Search" ref="inputRef" border="full" v-model="search"
-          :data-testid="`${dataTestid}-search`">
-          <template #suffix>
-          </template>
-        </base-input>
-        <base-button color="danger" :data-testid="`${dataTestid}-clear-button`" @click="onClear">
+        <base-input
+          class="flex-1"
+          placeholder="Search"
+          ref="inputRef"
+          border="full"
+          v-model="search"
+          :data-testid="`${dataTestid}-search`" 
+        />
+        <base-button
+          color="danger"
+          :data-testid="`${dataTestid}-clear-button`"
+          @click="onClear"
+        >
           CLEAR
         </base-button>
       </div>
@@ -160,14 +161,17 @@ const onClose = () => {
           <div v-if="isLoading" class="relative cursor-default select-none px-6 py-2 text-gray-700">
             Loading data...
           </div>
-          <div v-if="!isLoading && filtered.length === 0"
-            class="relative cursor-default select-none px-6 py-2 text-gray-700">
+          <div v-if="!isLoading && filtered.length === 0" class="relative cursor-default select-none px-6 py-2 text-gray-700">
             Nothing found.
           </div>
-          <div v-for="(option, index) in filtered" :key="index"
+          <div
+            v-for="(option, index) in filtered"
+            :key="index"
             class="p-2 border-b border-slate-200 first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
-            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selected?.value }" @click="onSelect(option)"
-            :data-testid="`${dataTestid}-option-${option._id}`">
+            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selectedValue?.value }"
+            @click="onSelect(option)"
+            :data-testid="`${dataTestid}-option-${option._id}`"
+          >
             <slot :option="option">{{ option?.label }}</slot>
           </div>
         </div>
