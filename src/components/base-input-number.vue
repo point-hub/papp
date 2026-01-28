@@ -21,6 +21,8 @@ export interface Props {
   border?: BaseInputNumberBorderType
   layout?: BaseFormLayoutType
   decimalLength?: number
+  min?: number
+  max?: number
   required?: boolean
   readonly?: boolean
   disabled?: boolean
@@ -132,6 +134,7 @@ defineExpose({
       'px-0!': paddingless
     }" v-model="inputValue" :placeholder="props.placeholder" :autofocus="props.autofocus" :required="props.required"
       :readonly="props.readonly" :disabled="props.disabled" :data-testid="props.dataTestid" @click="selectAllText"
+      :min="min" :max="max"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
