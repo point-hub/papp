@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import Cleave from 'cleave.js'
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
 defineOptions({
-  // This disables auto-inheriting attrs on the root element
   inheritAttrs: false
 })
 
@@ -30,12 +29,6 @@ export interface Props {
   size?: string
   rounded?: boolean
   paddingless?: boolean
-
-  /**
-   * Clearing or resetting errors when an update or change occurs.
-   *
-   * @default true
-   */
   resetErrorsOnUpdate?: boolean
   helpers?: string[]
   dataTestid?: string
@@ -48,73 +41,115 @@ const props = withDefaults(defineProps<Props>(), {
   layout: 'horizontal',
   required: false,
   readonly: false,
-  autofocus: false,
   disabled: false,
+  autofocus: false,
   rounded: false,
   resetErrorsOnUpdate: true,
   paddingless: false
 })
 
-const cleave = ref()
-const inputRef = ref()
+/* ---------------- state ---------------- */
 
-const selectAllText = () => {
-  inputRef.value.select()
+const inputRef = ref<HTMLInputElement | null>(null)
+const cleave = ref<Cleave | null>(null)
+
+const modelValue = defineModel<number | undefined>()
+const errors = defineModel<string[]>('errors')
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: number | undefined): void
+}>()
+
+/* ---------------- helpers ---------------- */
+
+const clamp = (value: number) => {
+  if (props.min !== undefined && value < props.min) return props.min
+  if (props.max !== undefined && value > props.max) return props.max
+  return value
 }
 
-const prefixRef = ref()
-const suffixRef = ref()
-const paddingLeft = ref(0)
-const paddingRight = ref(0)
+const selectAllText = () => {
+  inputRef.value?.select()
+}
+
+/* ---------------- cleave ---------------- */
 
 onMounted(() => {
+  if (!inputRef.value) return
+
   cleave.value = new Cleave(inputRef.value, {
     numeral: true,
     numeralThousandsGroupStyle: 'thousand',
     numeralDecimalScale: props.decimalLength,
-    onValueChanged: onValueChanged
+    numeralDecimalMark: '.',
+    delimiter: ',',
+    onValueChanged
   })
 
-  if (props.autofocus) inputRef.value?.focus()
+  if (props.autofocus) {
+    inputRef.value.focus()
+  }
+
+  // initial sync
+  if (modelValue.value !== undefined) {
+    cleave.value.setRawValue(String(modelValue.value))
+  }
 
   fixPadding()
 
   setTimeout(() => {
     fixPadding()
   }, 1000)
+
 })
+
+const onValueChanged = (e: { target: { rawValue: string } }) => {
+  if (!cleave.value) return
+
+  const raw = Number(e.target.rawValue)
+  if (Number.isNaN(raw)) {
+    emit('update:modelValue', undefined)
+    return
+  }
+
+  const clamped = clamp(raw)
+
+  // prevent duplication (100 → 1000)
+  if (clamped !== raw) {
+    cleave.value.setRawValue(String(clamped))
+  }
+
+  emit('update:modelValue', clamped)
+
+  if (props.resetErrorsOnUpdate && errors.value?.length) {
+    errors.value = []
+  }
+}
+
+/* ---------------- external sync ---------------- */
+
+watch(
+  () => modelValue.value,
+  (val) => {
+    if (!cleave.value) return
+
+    if (val === undefined || val === null) {
+      cleave.value.setRawValue('')
+    } else {
+      cleave.value.setRawValue(String(val))
+    }
+  }
+)
+
+const prefixRef = ref()
+const suffixRef = ref()
+const paddingLeft = ref(0)
+const paddingRight = ref(0)
 
 const fixPadding = () => {
   paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 16 : prefixRef.value?.clientWidth
   paddingRight.value = suffixRef.value?.clientWidth === 0 ? 16 : suffixRef.value?.clientWidth
 }
-
-const modelValue = defineModel<string | number>()
-const errors = defineModel<string[]>('errors')
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: number): void
-}>()
-
-const onValueChanged = (e: { target: { rawValue: number } }) => {
-  emit('update:modelValue', Number(e.target.rawValue))
-  /**
-   * Reset errors value when props resetErrorsOnUpdate value is true and errors value is not empty
-   */
-  if (props.resetErrorsOnUpdate === true && errors.value?.length) {
-    errors.value = []
-  }
-}
-
-const inputValue = computed({
-  set: () => { },
-  get: () =>
-    modelValue.value
-      ? new Intl.NumberFormat('en-US', {
-        maximumFractionDigits: props.decimalLength
-      }).format(modelValue.value as number)
-      : ''
-})
 
 defineExpose({
   inputRef
@@ -122,29 +157,50 @@ defineExpose({
 </script>
 
 <template>
-  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
-    :helpers="props.helpers" :errors="errors">
-    <input ref="inputRef" class="form-input" :class="{
-      'text-right': align === 'right',
-      'border-simple': border === 'simple',
-      'border-full': border === 'full',
-      'border-none': border === 'none',
-      'input-lg': size === 'lg',
-      'rounded': rounded,
-      'px-0!': paddingless
-    }" v-model="inputValue" :placeholder="props.placeholder" :autofocus="props.autofocus" :required="props.required"
-      :readonly="props.readonly" :disabled="props.disabled" :data-testid="props.dataTestid" @click="selectAllText"
-      :min="min" :max="max"
+  <base-form
+    :label="label"
+    :layout="layout"
+    :description="description"
+    :required="required"
+    :helpers="helpers"
+    :errors="errors"
+  >
+    <input
+      ref="inputRef"
+      class="form-input"
+      :class="{
+        'text-right': align === 'right',
+        'border-simple': border === 'simple',
+        'border-full': border === 'full',
+        'border-none': border === 'none',
+        'input-lg': size === 'lg',
+        'rounded': rounded,
+        'px-0!': paddingless
+      }"
+      :placeholder="placeholder"
+      :required="required"
+      :readonly="readonly"
+      :disabled="disabled"
+      :data-testid="dataTestid"
+      @click="selectAllText"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
-      }" />
-    <div ref="suffixRef"
-      class="absolute right-0 h-full flex items-center justify-center text-slate-400 dark:text-slate-300">
-      <slot name="suffix"></slot>
+      }"
+    />
+
+    <div
+      ref="suffixRef" 
+      class="absolute right-0 h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
+    >
+      <slot name="suffix" />
     </div>
-    <div ref="prefixRef" class="absolute h-full flex items-center justify-center text-slate-400 dark:text-slate-300">
-      <slot name="prefix"></slot>
+
+    <div
+      ref="prefixRef" 
+      class="absolute h-full flex items-center justify-center text-slate-400 dark:text-slate-300"
+    >
+      <slot name="prefix" />
     </div>
   </base-form>
 </template>
