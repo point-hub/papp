@@ -63,9 +63,9 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
         <slot></slot>
       </div>
 
-      <div class="flex flex-col mt-1 gap-1" v-if="props.helpers || slots.helper">
+      <div class="flex flex-col gap-1" v-if="props.helpers || slots.helper">
         <slot name="helper">
-          <div class="flex items-center gap-1" v-for="(helper, index) in props.helpers" :key="index">
+          <div class="flex items-center gap-1 pt-1" v-for="(helper, index) in props.helpers" :key="index">
             <p class="text-xs text-slate-500">
               {{ helper }}
             </p>
@@ -73,9 +73,9 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
         </slot>
       </div>
 
-      <div class="flex flex-col mt-1 gap-1" v-if="props.errors || slots.error">
+      <div class="flex flex-col gap-1" v-if="props.errors || slots.error">
         <slot name="error">
-          <div class="flex items-center gap-1" v-for="(error, index) in props.errors" :key="index">
+          <div class="flex items-center gap-1 pt-1" v-for="(error, index) in props.errors" :key="index">
             <base-icon icon="i-fa7-regular:triangle-exclamation" class="text-danger" />
             <p class="text-xs text-danger">
               {{ error }}
