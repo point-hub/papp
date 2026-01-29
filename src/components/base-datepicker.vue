@@ -80,7 +80,7 @@ const value = computed({
 const dateRef = ref()
 
 const onClickDateRef = () => {
-  if (!props.disabled) {
+  if (!props.disabled && !props.readonly) {
     dateRef.value.focus()
     dateRef.value.showPicker()
   }
