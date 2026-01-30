@@ -137,17 +137,33 @@ defineExpose({
 </script>
 
 <template>
-  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
-    :helpers="props.helpers" :errors="errors">
-    <input ref="inputRef" class="form-input" :class="{
-      'border-simple': border === 'simple',
-      'border-full': border === 'full',
-      'border-none': border === 'none',
-      'input-lg': size === 'lg',
-      'rounded': rounded,
-      'px-0!': paddingless
-    }" v-model.trim="value" :type="props.type" :maxlength="props.maxlength" :placeholder="props.placeholder"
-      :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly" :disabled="props.disabled"
+  <base-form
+    :label="props.label"
+    :layout="props.layout"
+    :description="props.description"
+    :required="props.required"
+    :helpers="props.helpers"
+    :errors="errors"
+  >
+    <input
+      ref="inputRef"
+      class="form-input"
+      :class="{
+        'border-simple': border === 'simple',
+        'border-full': border === 'full',
+        'border-none': border === 'none',
+        'input-lg': size === 'lg',
+        'rounded': rounded,
+        'px-0!': paddingless
+      }"
+      v-model.trim="value"
+      :type="props.type"
+      :maxlength="props.maxlength"
+      :placeholder="props.placeholder"
+      :autofocus="props.autofocus"
+      :required="props.required"
+      :readonly="props.readonly"
+      :disabled="props.disabled"
       :data-testid="props.dataTestid" :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`

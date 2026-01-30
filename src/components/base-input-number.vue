@@ -120,10 +120,6 @@ const onValueChanged = (e: { target: { rawValue: string } }) => {
   }
 
   emit('update:modelValue', clamped)
-
-  if (props.resetErrorsOnUpdate && errors.value?.length) {
-    errors.value = []
-  }
 }
 
 /* ---------------- external sync ---------------- */
@@ -149,6 +145,12 @@ const paddingRight = ref(0)
 const fixPadding = () => {
   paddingLeft.value = prefixRef.value?.clientWidth === 0 ? 16 : prefixRef.value?.clientWidth
   paddingRight.value = suffixRef.value?.clientWidth === 0 ? 16 : suffixRef.value?.clientWidth
+}
+
+const clearError = () => {
+  if (props.resetErrorsOnUpdate && errors.value?.length) {
+    errors.value = []
+  }
 }
 
 defineExpose({
@@ -183,6 +185,8 @@ defineExpose({
       :disabled="disabled"
       :data-testid="dataTestid"
       @click="selectAllText"
+      @keyup="clearError"
+      @keydown="clearError"
       :style="{
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`
