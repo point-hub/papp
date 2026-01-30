@@ -8,8 +8,7 @@ import {
   TransitionRoot
 } from '@headlessui/vue'
 import { isEmpty } from '@point-hub/js-utils'
-import { computed, onMounted, ref } from 'vue'
-import { watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
@@ -39,9 +38,6 @@ export interface Props {
   dataTestid?: string
 }
 
-const selectedLabel = defineModel('selected-label')
-const selectedValue = defineModel('selected-value')
-
 const props = withDefaults(defineProps<Props>(), {
   border: 'full',
   layout: 'horizontal',
@@ -52,72 +48,78 @@ const props = withDefaults(defineProps<Props>(), {
   paddingless: false
 })
 
-const selected = defineModel<BaseSelectOptionInterface>()
+const selected = defineModel<BaseSelectOptionInterface | undefined>()
+const selectedValue = defineModel<string | undefined>('selected-value')
+const selectedLabel = defineModel<string | undefined>('selected-label')
 const isLoading = defineModel<boolean>('isLoading', { default: false })
 const search = defineModel<string>('search', { default: '' })
 const errors = defineModel<string[]>('errors')
 
-const filtered = computed(() =>
-  search.value === ''
-    ? props.options
-    : props.options.filter((data) =>
-      data?.label
-        ?.toLowerCase()
-        .replace(/\s+/g, '')
-        .includes(search.value.toLowerCase().replace(/\s+/g, ''))
-    )
-)
+const filtered = computed(() => {
+  if (!search.value) return props.options
 
-const onClear = () => {
-  if (!props.disabled) {
-    selected.value = undefined
-  }
-}
+  const q = search.value.toLowerCase().replace(/\s+/g, '')
 
+  return props.options.filter(o =>
+    o.label
+      ?.toLowerCase()
+      .replace(/\s+/g, '')
+      .includes(q)
+  )
+})
+
+const inputRef = ref<HTMLInputElement>()
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const buttonRef = ref<any>(null)
-const onInputClicked = () => {
-  if (buttonRef.value) {
-    buttonRef.value.el.click()
-  }
-}
-
-const inputRef = ref()
 
 onMounted(() => {
   if (props.autofocus) inputRef.value?.focus()
 })
 
-watch(() => selected.value, (val) => {
-  if (selectedValue.value !== val?.value) {
-    selectedValue.value = val?.value
-  }
-  if (selectedLabel.value !== val?.label) {
-    selectedLabel.value = val?.label
-  }
-  if (errors.value?.length) errors.value = []
-}, { immediate: true })
+const onClear = () => {
+  if (props.disabled) return
+
+  selected.value = undefined
+  selectedValue.value = undefined
+  selectedLabel.value = undefined
+}
+
+const onInputClicked = () => {
+  buttonRef.value?.el?.click()
+}
 
 watch(
-  () => selectedValue.value,
-  (val) => {
-    const sel = props.options?.find(o => o.value === val)
-    if (sel) {
-      selected.value = {
-        value: sel?.value,
-        label: sel?.label
-      }
-    } else {
+  [() => selectedValue.value, () => props.options],
+  ([val, options]) => {
+    if (!val || !options?.length) {
       selected.value = undefined
+      return
     }
+
+    const sel = options.find(o => o.value === val)
+
+    selected.value = sel
+      ? { value: sel.value, label: sel.label }
+      : undefined
   },
   { immediate: true }
+)
+
+watch(
+  () => selected.value,
+  val => {
+    selectedValue.value = val?.value
+    selectedLabel.value = val?.label
+
+    if (errors.value?.length) errors.value = []
+  }
 )
 
 defineExpose({
   inputRef
 })
 </script>
+
 
 <template>
   <base-form
