@@ -88,12 +88,28 @@ onMounted(() => {
   if (props.autofocus) inputRef.value?.focus()
 })
 
+watch(() => selected.value, (val) => {
+  if (selectedValue.value !== val?.value) {
+    selectedValue.value = val?.value
+  }
+  if (selectedLabel.value !== val?.label) {
+    selectedLabel.value = val?.label
+  }
+  if (errors.value?.length) errors.value = []
+}, { immediate: true })
+
 watch(
-  () => [selectedValue.value, props.options],
-  () => {
-    console.log('a')
-    selected.value = props.options.find(o => o.value === selectedValue.value)
-    selectedLabel.value = selected.value?.label
+  () => selectedValue.value,
+  (val) => {
+    const sel = props.options?.find(o => o.value === val)
+    if (sel) {
+      selected.value = {
+        value: sel?.value,
+        label: sel?.label
+      }
+    } else {
+      selected.value = undefined
+    }
   },
   { immediate: true }
 )
@@ -104,8 +120,14 @@ defineExpose({
 </script>
 
 <template>
-  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
-    :helpers="props.helpers" :errors="errors">
+  <base-form
+    :label="props.label"
+    :layout="props.layout"
+    :description="props.description"
+    :required="props.required"
+    :helpers="props.helpers"
+    :errors="errors"
+  >
     <Combobox v-model="selected">
       <div class="relative w-full">
         <div class="relative">
