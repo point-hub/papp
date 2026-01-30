@@ -89,18 +89,11 @@ onMounted(() => {
 })
 
 watch(
-  () => selected.value,
+  () => [selectedValue.value, props.options],
   () => {
-    selectedLabel.value = selected.value?.label ?? ''
-    selectedValue.value = selected.value?.value ?? ''
-    if (errors.value?.length) errors.value = []
-  }
-)
-
-watch(
-  () => selectedValue.value,
-  (val) => {
-    selected.value = props.options.find(o => o.value === val)
+    console.log('a')
+    selected.value = props.options.find(o => o.value === selectedValue.value)
+    selectedLabel.value = selected.value?.label
   },
   { immediate: true }
 )
@@ -137,7 +130,7 @@ defineExpose({
         <TransitionRoot leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0"
           @after-leave="search = ''">
           <ComboboxOptions class="options">
-            <div v-if="isLoading" class="relative cursor-default select-none px-4 py-2 text-gray-700">
+            <div v-if="isLoading  && filtered.length === 0 && search !== ''" class="relative cursor-default select-none px-4 py-2 text-gray-700">
               Loading data...
             </div>
             <div v-if="!isLoading && filtered.length === 0 && search !== ''"
