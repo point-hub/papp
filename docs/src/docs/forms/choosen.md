@@ -20,23 +20,40 @@ Choosen is select with modal dialog gives you a customizable select box with sup
 
 ### Props
 
-| Name                  | Type                    | Default      | Description                    |
-|-----------------------|-------------------------|--------------|--------------------------------|
-| v-model               | string                  |              | v-model is `required`.         |
-| v-model:selectedLabel | string                  |              | v-model for label only.        |
-| v-model:selectedValue | string                  |              | v-model for value only.        |
-| v-model:errors        | string[]                |              | Input error message.           |
-| mode                  | `input` `text`          | `input`      | Choosen mode.                  |
-| label                 | string                  |              | Choosen label.                 |
-| label                 | string                  |              | Choosen label.                 |
-| text                  | string                  |              | Choosen text.                  |
-| description           | string                  |              | Input description.             |
-| placeholder           | string                  |              | Input placeholder.             |
-| layout                | `horizontal` `vertical` | `horizontal` | Input layout.                  |
-| required              | boolean                 | false        | if true choosen is `required`. |
-| disabled              | boolean                 | false        | if true choosen is `disabled`. |
-| helpers               | string[]                |              | Input helper message.          |
-| data-testid           | string                  |              | Testing ID.                    |
+| Name           | Type                                      | Default      | Description                                                    |
+| -------------- | ----------------------------------------- | ------------ | -------------------------------------------------------------- |
+| v-model        | `string \| null`                          | —            | **Required.** Selected option value (id).                      |
+| v-model:search | `string`                                  | `''`         | Search keyword inside modal.                                   |
+| v-model:errors | `string[]`                                | —            | Input error messages.                                          |
+| options        | `IOption[]`                               | `[]`         | Available options (can be partial / paginated).                |
+| resolveOption  | `(value: string) => IOption \| undefined` | —            | Resolve option when value exists but option is not loaded yet. |
+| title          | `string`                                  | —            | Modal title.                                                   |
+| label          | `string`                                  | —            | Input label.                                                   |
+| description    | `string`                                  | —            | Input description.                                             |
+| placeholder    | `string`                                  | —            | Input placeholder.                                             |
+| border         | `BorderType`                              | `full`       | Input border style.                                            |
+| layout         | `BaseFormLayoutType`                      | `horizontal` | Form layout.                                                   |
+| autofocus      | `boolean`                                 | `false`      | Focus search input when modal opens.                           |
+| required       | `boolean`                                 | `false`      | Mark input as required.                                        |
+| disabled       | `boolean`                                 | `false`      | Disable interaction.                                           |
+| readonly       | `boolean`                                 | `false`      | Read-only mode.                                                |
+| helpers        | `string[]`                                | —            | Helper messages below input.                                   |
+| paddingless    | `boolean`                                 | `false`      | Remove input padding.                                          |
+| isLoading      | `boolean`                                 | `false`      | Show loading state in option list.                             |
+| data-testid    | `string`                                  | —            | Testing identifier.                                            |
+
+### Events
+
+| Name   | Payload                | Description                                                         |
+| ------ | ---------------------- | ------------------------------------------------------------------- |
+| select | `IOption \| undefined` | Emits full option object when selected or `undefined` when cleared. |
+
+### Slots
+
+| Name    | Props                 | Description                              |
+| ------- | --------------------- | ---------------------------------------- |
+| default | `{ option: IOption }` | Customize option rendering inside modal. |
+
 
 ## Automated Test Guide
 

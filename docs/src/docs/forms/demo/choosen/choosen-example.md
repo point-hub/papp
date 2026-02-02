@@ -10,7 +10,9 @@
 
 ```vue
 <script setup lang="ts">
+import type { BaseChoosenOptionInterface } from '@point-hub/papp'
 import { ref } from 'vue'
+
 const options = ref([
   {
     _id: '1',
@@ -24,20 +26,41 @@ const options = ref([
   }
 ])
 
+const modelId = ref()
 const selected = ref()
-const selectedLabel = ref('')
-const selectedValue = ref('')
+const search = ref()
+
+function onSelect(option?: BaseChoosenOptionInterface) {
+  selected.value = option ?? null
+}
 </script>
 
 <template>
-  <Demo is-row>
-    <base-choosen title="Example" :options="options" v-model:selected="selected" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
-    <div class="flex flex-col gap-4">
-      <div><span class="font-bold">v-model = </span><span>{{ selected }}</span></div>
-      <div><span class="font-bold">v-model:selectedLabel = </span><span>{{ selectedLabel }}</span></div>
-      <div><span class="font-bold">v-model:selectedValue = </span><span>{{ selectedValue }}</span></div>
+  <base-choosen
+    title="Example"
+    v-model="modelId" 
+    v-model:search="search"
+    :options="options"
+    @select="onSelect"
+  />
+  <div class="flex flex-col gap-4">
+    <div class="space-x-4">
+      <span class="font-bold">Options</span>
+      <span>{{ options }}</span>
     </div>
-  </Demo>
+    <div class="space-x-4">
+      <span class="font-bold">v-model</span>
+      <span>{{ modelId }}</span>
+    </div>
+    <div class="space-x-4">
+      <span class="font-bold">search</span>
+      <span>{{ search }}</span>
+    </div>
+    <div class="space-x-4">
+      <span class="font-bold">selected</span>
+      <span>{{ selected }}</span>
+    </div>
+  </div>
 </template>
 ```
 

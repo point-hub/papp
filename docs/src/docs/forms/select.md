@@ -4,9 +4,6 @@ outline: deep
 
 <script setup lang="ts">
 import SelectExample from './demo/select/select-example.vue'
-import SelectLabel from './demo/select/select-label.vue'
-import SelectBorder from './demo/select/select-border.vue'
-import SelectHelper from './demo/select/select-helper.vue'
 </script>
 
 # Select
@@ -15,21 +12,7 @@ Select gives you a customizable select box with support for searching, tagging, 
 
 ## Examples
 
-### Select
-
 <!--@include: ./demo/select/select-example.md-->
-
-### Label
-
-<!--@include: ./demo/select/select-label.md-->
-
-### Border
-
-<!--@include: ./demo/select/select-border.md-->
-
-### Helper
-
-<!--@include: ./demo/select/select-helper.md-->
 
 ## Select API
 
@@ -42,23 +25,25 @@ export type BaseFormLayoutType = 'vertical' | 'horizontal'
 
 ### Props
 
-| Name                  | Type                       | Default    | Description                    |
-|-----------------------|----------------------------|------------|--------------------------------|
-| v-model               | object                     |            | v-model is `required`.         |
-| v-model:selectedLabel | string                     |            | v-model for label only.        |
-| v-model:selectedValue | string                     |            | v-model for value only.        |
-| v-model:errors        | string[]                   |            | Input error message.           |
-| id                    | string                     |            | Input ID.                      |
-| label                 | string                     |            | Input label.                   |
-| description           | string                     |            | Input description.             |
-| placeholder           | string                     |            | Input placeholder.             |
-| border                | BaseSelectBorderType | `full`   | Input border.                  |
-| layout                | BaseFormLayoutType         | `horizontal` | Input layout.                  |
-| autofocus             | boolean                    | `false`    | Focus input on page load.      |
-| required              | boolean                    | `false`    | if `true` input is `required`. |
-| disabled              | boolean                    | `false`    | if `true` input is `disabled`. |
-| helpers               | string[]                   |            | Input helper message.          |
-| data-testid           | string                     |            | Testing ID.                    |
+| Name           | Type                                               | Default      | Description                                                         |
+| -------------- | -------------------------------------------------- | ------------ | ------------------------------------------------------------------- |
+| v-model        | `string \| null`                                   | —            | **Required.** Selected option value.                                |
+| v-model:search | `string`                                           | `''`         | Search keyword (optional, controlled).                              |
+| v-model:errors | `string[]`                                         | —            | Input error messages.                                               |
+| options        | `BaseSelectOptionInterface[]`                               | `[]`         | Available options (can be partial / paginated).                     |
+| resolveOption  | `(value: string) => BaseSelectOptionInterface \| undefined` | —            | Resolve full option when value exists but option is not loaded yet. |
+| label          | `string`                                           | —            | Input label.                                                        |
+| description    | `string`                                           | —            | Input description.                                                  |
+| placeholder    | `string`                                           | —            | Input placeholder.                                                  |
+| border         | `BaseSelectBorderType`                             | `full`       | Input border style.                                                 |
+| layout         | `BaseFormLayoutType`                               | `horizontal` | Form layout.                                                        |
+| autofocus      | `boolean`                                          | `false`      | Focus input on mount.                                               |
+| required       | `boolean`                                          | `false`      | Mark input as required.                                             |
+| disabled       | `boolean`                                          | `false`      | Disable input interaction.                                          |
+| readonly       | `boolean`                                          | `false`      | Read-only mode.                                                     |
+| helpers        | `string[]`                                         | —            | Helper messages below input.                                        |
+| isLoading      | `boolean`                                          | `false`      | Show loading state in options list.                                 |
+| data-testid    | `string`                                           | —            | Testing identifier.                                                 |
 
 ## Automated Test Guide
 

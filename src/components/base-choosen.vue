@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
 
-interface IOption {
-  [key: string]: unknown
+import { type BaseFormLayoutType } from './base-form.vue'
+
+/* -------------------------------------------------------------------------- */
+/* Types                                                                      */
+/* -------------------------------------------------------------------------- */
+
+export interface BaseChoosenOptionInterface {
   label: string
   value: string
+  [key: string]: unknown
 }
-
-import { type BaseFormLayoutType } from './base-form.vue'
 
 export type BaseChoosenBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   id?: string
-  mode?: 'input' | 'text'
   title?: string
   label?: string
   description?: string
@@ -27,170 +30,192 @@ export interface Props {
   helpers?: string[]
   paddingless?: boolean
   dataTestid?: string
+
+  /** options may be partial (pagination) */
+  options?: BaseChoosenOptionInterface[]
+
+  /** fallback when option not loaded yet */
+  resolveOption?: (value: string) => BaseChoosenOptionInterface | undefined
+
+  isLoading?: boolean
 }
 
+/* -------------------------------------------------------------------------- */
+/* Props & Emits                                                               */
+/* -------------------------------------------------------------------------- */
+
 const props = withDefaults(defineProps<Props>(), {
-  mode: 'input',
   border: 'full',
   layout: 'horizontal',
   autofocus: false,
   required: false,
   readonly: false,
   disabled: false,
-  paddingless: false
+  paddingless: false,
+  options: () => [],
+  isLoading: false
 })
 
-const input = defineModel()
-const isLoading = defineModel<boolean>('isLoading')
+const emit = defineEmits<{
+  (e: 'select', option: BaseChoosenOptionInterface | undefined): void
+}>()
+
+/* -------------------------------------------------------------------------- */
+/* Models (SOURCE OF TRUTH)                                                    */
+/* -------------------------------------------------------------------------- */
+
+const modelValue = defineModel<string | null>()
 const search = defineModel<string>('search', { default: '' })
-const options = defineModel<IOption[]>('options')
 const errors = defineModel<string[]>('errors')
 
-const selectedLabel = defineModel<string>('selected-label')
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const selectedValue = defineModel<any>('selected-value')
+/* -------------------------------------------------------------------------- */
+/* State                                                                      */
+/* -------------------------------------------------------------------------- */
 
 const showModal = ref(false)
-const inputRef = ref()
-const modalRef = ref()
+const inputRef = ref<HTMLInputElement | null>(null)
+const modalRef = ref<{ isOpen: boolean } | null>(null)
 
-// focus on search text when modal opened
-watch(
-  () => modalRef.value?.isOpen,
-  () => {
-    if (modalRef.value.isOpen) {
-      nextTick(() => {
-        inputRef.value.inputRef.focus()
-      })
-    }
-  }
-)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const filtered = computed<any>(() => {
-  if (!search.value || search.value === '') {
-    return options.value
-  }
+/* -------------------------------------------------------------------------- */
+/* Derived State (IMPORTANT PART)                                              */
+/* -------------------------------------------------------------------------- */
 
-  return options.value?.filter((data) =>
-    data.label
-      .toLowerCase()
-      .replace(/\s+/g, '')
-      .includes(search.value.toLowerCase().replace(/\s+/g, ''))
+/** real selected option (loaded OR fallback) */
+const selectedOption = computed<BaseChoosenOptionInterface | undefined>(() => {
+  if (!modelValue.value) return undefined
+
+  return (
+    props.options?.find(o => o.value === modelValue.value) ??
+    props.resolveOption?.(modelValue.value)
   )
 })
 
-const onSelect = (option: IOption) => {
-  selectedLabel.value = option.label
-  selectedValue.value = option.value
-  input.value = option.label
-  emit('selected', option)
-  onClose()
-}
+/** display label (derived, no logic leak) */
+const selectedLabel = computed(() => selectedOption.value?.label ?? '')
 
-const onClear = () => {
-  input.value = ''
-  selectedLabel.value = ''
-  selectedValue.value = ''
-  search.value = ''
-  emit('selected', undefined)
-  onClose()
-}
+/* -------------------------------------------------------------------------- */
+/* Filtering                                                                  */
+/* -------------------------------------------------------------------------- */
 
-const emit = defineEmits<{
-  (e: 'selected', value: IOption | undefined): void
-}>()
+const filteredOptions = computed(() => {
+  if (!search.value) return props.options ?? []
+
+  const keyword = search.value.toLowerCase().replace(/\s+/g, '')
+  return (props.options ?? []).filter(opt =>
+    opt.label.toLowerCase().replace(/\s+/g, '').includes(keyword)
+  )
+})
+
+/* -------------------------------------------------------------------------- */
+/* Watchers                                                                   */
+/* -------------------------------------------------------------------------- */
 
 watch(
-  [() => selectedValue.value, () => options.value],
-  ([val, opts]) => {
-    if (!val || !opts?.length) {
-      selectedLabel.value = ''
-      input.value = ''
-      return
+  () => modalRef.value?.isOpen,
+  (open) => {
+    if (open) {
+      nextTick(() => inputRef.value?.focus())
     }
-
-    const selected = opts.find(o => o.value === val)
-
-    if (selected) {
-      selectedLabel.value = selected.label
-      input.value = selected.label
-    }
-  },
-  { immediate: true }
+  }
 )
 
-const onOpen = () => {
-  if (props.readonly || props.disabled) {
-    return
-  }
+/* -------------------------------------------------------------------------- */
+/* Actions                                                                    */
+/* -------------------------------------------------------------------------- */
+
+function open() {
+  if (props.readonly || props.disabled) return
   showModal.value = true
 }
 
-const onClose = () => {
+function close() {
   showModal.value = false
+}
+
+function select(option: BaseChoosenOptionInterface) {
+  modelValue.value = option.value
+  emit('select', option)
+  close()
+}
+
+function clear() {
+  modelValue.value = null
+  search.value = ''
+  emit('select', undefined)
+  close()
 }
 </script>
 
 <template>
-  <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
-    :helpers="props.helpers" :errors="errors" class="w-full">
-    <!-- mode: input -->
-    <base-input v-if="mode === 'input'" readonly v-model="input" @click="onOpen" :border="border"
-      :placeholder="placeholder" class="w-full" :data-testid="`${dataTestid}-input`" :paddingless="paddingless" />
-    <!-- mode: text -->
-    <div v-if="mode === 'text'" class="border-b border-dashed cursor-pointer border-black dark:border-white"
-      @click="onOpen" :data-testid="`${dataTestid}-input`">
-      {{ selectedLabel ?? 'SELECT' }}
-    </div>
+  <base-form
+    :label="label"
+    :layout="layout"
+    :description="description"
+    :required="required"
+    :helpers="helpers"
+    :errors="errors"
+    class="w-full"
+  >
+    <base-input
+      readonly
+      :model-value="selectedLabel"
+      @click="open"
+      :border="border"
+      :placeholder="placeholder"
+      class="w-full"
+      :data-testid="`${dataTestid}-input`"
+      :paddingless="paddingless"
+    />
   </base-form>
 
-  <base-modal ref="modalRef" size="lg" :is-open="showModal" @on-close="onClose" :title="props.title">
-    <div class="max-h-90vh h-full flex flex-col pb-4">
-      <!-- Search Text -->
-      <div class="flex w-full">
+  <base-modal
+    ref="modalRef"
+    size="lg"
+    :is-open="showModal"
+    @on-close="close"
+    :title="title"
+  >
+    <div class="flex flex-col h-full pb-4">
+      <!-- Search -->
+      <div class="flex gap-2">
         <base-input
+          ref="inputRef"
           class="flex-1"
           placeholder="Search"
-          ref="inputRef"
           border="full"
           v-model="search"
-          :data-testid="`${dataTestid}-search`" 
+          autofocus
         />
-        <base-button
-          color="danger"
-          :data-testid="`${dataTestid}-clear-button`"
-          @click="onClear"
-        >
+        <base-button color="danger" @click="clear">
           CLEAR
         </base-button>
       </div>
+
       <!-- Options -->
-      <div class="gap-4 mt-3 flex flex-col h-full overflow-y-auto">
-        <div class="flex flex-col w-full">
-          <div v-if="isLoading" class="relative cursor-default select-none px-6 py-2 text-gray-700">
-            Loading data...
-          </div>
-          <div v-if="!isLoading && filtered.length === 0" class="relative cursor-default select-none px-6 py-2 text-gray-700">
-            Nothing found.
-          </div>
-          <div
-            v-for="(option, index) in filtered"
-            :key="index"
-            class="p-2 border-b border-slate-200 first:border-t dark:border-b-slate-800 dark:border-t-slate-800 hover:bg-blue-100 dark:hover-bg-slate-800 cursor-pointer"
-            :class="{ 'bg-blue-200 dark:bg-slate-700': option?.value === selectedValue?.value }"
-            @click="onSelect(option)"
-            :data-testid="`${dataTestid}-option-${option._id}`"
-          >
-            <slot :option="option">{{ option?.label }}</slot>
-          </div>
+      <div class="mt-3 flex-1 overflow-y-auto">
+        <div v-if="isLoading" class="px-6 py-2 text-gray-500">
+          Loading data…
+        </div>
+
+        <div
+          v-else-if="filteredOptions.length === 0"
+          class="px-6 py-2 text-gray-500"
+        >
+          Nothing found.
+        </div>
+
+        <div
+          v-for="option in filteredOptions"
+          :key="option.value"
+          class="p-2 border-b cursor-pointer hover:bg-blue-100"
+          :class="{ 'bg-blue-200': option.value === modelValue }"
+          @click="select(option)"
+        >
+          <slot :option="option">
+            {{ option.label }}
+          </slot>
         </div>
       </div>
     </div>
   </base-modal>
 </template>
-
-<style lang="postcss" scope>
-.form-input:read-only {
-  @apply !hover:cursor-pointer !text-slate-900 !dark:text-slate-100;
-}
-</style>

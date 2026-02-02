@@ -76,7 +76,11 @@ export { default as BaseTreeview } from './components/base-treeview.vue'
 
 // Forms
 export { default as BaseCheckbox, type BaseCheckboxThemeType } from './components/base-checkbox.vue'
-export { default as BaseChoosen } from './components/base-choosen.vue'
+export { 
+  default as BaseChoosen, 
+  type BaseChoosenBorderType,
+  type BaseChoosenOptionInterface 
+} from './components/base-choosen.vue'
 export {
   default as BaseDatepicker,
   type BaseDatepickerBorderType

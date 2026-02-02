@@ -1,34 +1,56 @@
 <script setup lang="ts">
+import type { BaseSelectOptionInterface } from '@point-hub/papp'
 import { ref } from 'vue'
 
-interface OptionInterface {
-  id: number
-  label: string
-  value: string
-}
-
-const options: OptionInterface[] = ref([
-  { id: 1, label: 'Durward Reynolds', value: 'durward-reynolds' },
-  { id: 2, label: 'Kenton Towne', value: 'kenton-towne' },
-  { id: 3, label: 'Therese Wunsch', value: 'therese-wunsch' },
-  { id: 4, label: 'Benedict Kessler', value: 'benedict-kessler' }
+const options = ref([
+  {
+    _id: '1',
+    label: 'Jane',
+    value: 'jane'
+  },
+  {
+    _id: '2',
+    label: 'John Doe',
+    value: 'john-doe'
+  }
 ])
 
+const modelId = ref()
 const selected = ref()
-const search = ref('')
-const selectedLabel = ref('')
-const selectedValue = ref('')
+const search = ref()
+
+function onSelect(option?: BaseSelectOptionInterface) {
+  selected.value = option ?? null
+}
 </script>
 
 <template>
   <Demo>
-    <form @submit.prevent="onSubmit()">
-      <base-select v-model="selected" v-model:search="search" :options="options" v-model:selectedLabel="selectedLabel" v-model:selectedValue="selectedValue" />
-      <div class="flex flex-col gap-4">
-        <div><span class="font-bold">v-model = </span><span>{{ selected }}</span></div>
-        <div><span class="font-bold">v-model:selectedLabel = </span><span>{{ selectedLabel }}</span></div>
-        <div><span class="font-bold">v-model:selectedValue = </span><span>{{ selectedValue }}</span></div>
+    <base-select
+      title="Example"
+      placeholder="Select"
+      v-model="modelId" 
+      v-model:search="search"
+      :options="options"
+      @select="onSelect"
+    />
+    <div class="flex flex-col gap-4">
+      <div class="space-x-4">
+        <span class="font-bold">options</span>
+        <span>{{ options }}</span>
       </div>
-    </form>
+      <div class="space-x-4">
+        <span class="font-bold">v-model</span>
+        <span>{{ modelId }}</span>
+      </div>
+      <div class="space-x-4">
+        <span class="font-bold">search</span>
+        <span>{{ search }}</span>
+      </div>
+      <div class="space-x-4">
+        <span class="font-bold">selected</span>
+        <span>{{ selected }}</span>
+      </div>
+    </div>
   </Demo>
 </template>
