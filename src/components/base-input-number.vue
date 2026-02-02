@@ -30,6 +30,7 @@ export interface Props {
   rounded?: boolean
   paddingless?: boolean
   resetErrorsOnUpdate?: boolean
+  allowNegative?: boolean
   helpers?: string[]
   dataTestid?: string
 }
@@ -45,7 +46,8 @@ const props = withDefaults(defineProps<Props>(), {
   autofocus: false,
   rounded: false,
   resetErrorsOnUpdate: true,
-  paddingless: false
+  paddingless: false,
+  allowNegative: false
 })
 
 /* ---------------- state ---------------- */
@@ -83,6 +85,7 @@ onMounted(() => {
     numeralDecimalScale: props.decimalLength,
     numeralDecimalMark: '.',
     delimiter: ',',
+    numeralPositiveOnly: !props.allowNegative,
     onValueChanged
   })
 
@@ -106,7 +109,15 @@ onMounted(() => {
 const onValueChanged = (e: { target: { rawValue: string } }) => {
   if (!cleave.value) return
 
-  const raw = Number(e.target.rawValue)
+  const rawValue = e.target.rawValue
+
+  // user typing "-"
+  if (rawValue === '-' || rawValue === '') {
+    emit('update:modelValue', undefined)
+    return
+  }
+
+  const raw = Number(rawValue)
   if (Number.isNaN(raw)) {
     emit('update:modelValue', undefined)
     return
@@ -114,7 +125,6 @@ const onValueChanged = (e: { target: { rawValue: string } }) => {
 
   const clamped = clamp(raw)
 
-  // prevent duplication (100 → 1000)
   if (clamped !== raw) {
     cleave.value.setRawValue(String(clamped))
   }
@@ -184,7 +194,7 @@ defineExpose({
       :readonly="readonly"
       :disabled="disabled"
       :data-testid="dataTestid"
-      @click="selectAllText"
+      @focus="selectAllText"
       @keyup="clearError"
       @keydown="clearError"
       :style="{
