@@ -101,11 +101,20 @@ const emit = defineEmits<{
 }>()
 
 watch(
-  () => selectedValue.value,
-  (val) => {
-    const selected = options.value?.find(o => o.value === val)
-    selectedLabel.value = selected?.label
-    input.value = selected?.label
+  [() => selectedValue.value, () => options.value],
+  ([val, opts]) => {
+    if (!val || !opts?.length) {
+      selectedLabel.value = ''
+      input.value = ''
+      return
+    }
+
+    const selected = opts.find(o => o.value === val)
+
+    if (selected) {
+      selectedLabel.value = selected.label
+      input.value = selected.label
+    }
   },
   { immediate: true }
 )
