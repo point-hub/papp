@@ -69,7 +69,10 @@ function nav(): DefaultTheme.NavItem[] {
         // },
         {
           text: 'Libraries',
-          items: [{ text: 'UI Library', link: 'https://dev.pointhub.net/library/papp' }]
+          items: [
+            { text: 'UI Library', link: 'https://dev.pointhub.net/library/papp' },
+            { text: 'PDF Signer', link: 'https://dev.pointhub.net/library/pdf-signer' }
+          ]
         }
       ]
     },
