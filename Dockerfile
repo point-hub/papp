@@ -1,14 +1,29 @@
 # ---------------------------------------------------------------------------
 # stage 1 - builder
 # ---------------------------------------------------------------------------
-FROM node:22 as builder
+FROM node:24-slim AS builder
 
-# install bun
-RUN npm install -g bun
+# install curl (required for bun install)
+RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 # setup default user and working directory
 USER node
 WORKDIR /home/node/app
+
+# install requirements for Bun
+RUN curl -fsSL https://bun.sh/install | bash
+
+# ensure Bun is in the PATH
+ENV PATH="/home/node/.bun/bin:${PATH}"
+
+# environment variable
+ARG VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ARG VITE_API_TIMEOUT
+ENV VITE_API_TIMEOUT=$VITE_API_TIMEOUT
 
 # install dependencies
 COPY --chown=node:node package.json bun.lock ./
@@ -17,13 +32,13 @@ RUN bun install --frozen-lockfile
 # copy source code
 COPY --chown=node:node . .
 
-# build docs
+# build app
 RUN bun run build
 
 # ---------------------------------------------------------------------------
 # stage 2 - runner
 # ---------------------------------------------------------------------------
-FROM nginx:1.29.0-alpine as runner
+FROM nginx:1.29-alpine as runner
 
 # copy nginx configuration server block file
 COPY .nginx/default.conf /etc/nginx/conf.d/default.conf
