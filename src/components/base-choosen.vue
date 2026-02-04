@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 
 import { type BaseFormLayoutType } from './base-form.vue'
 
@@ -105,19 +105,6 @@ const filteredOptions = computed(() => {
     opt.label.toLowerCase().replace(/\s+/g, '').includes(keyword)
   )
 })
-
-/* -------------------------------------------------------------------------- */
-/* Watchers                                                                   */
-/* -------------------------------------------------------------------------- */
-
-watch(
-  () => modalRef.value?.isOpen,
-  (open) => {
-    if (open) {
-      nextTick(() => inputRef.value?.focus())
-    }
-  }
-)
 
 /* -------------------------------------------------------------------------- */
 /* Actions                                                                    */
