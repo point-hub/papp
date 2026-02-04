@@ -194,8 +194,8 @@ function clear() {
         <div
           v-for="option in filteredOptions"
           :key="option.value"
-          class="p-2 border-b cursor-pointer hover:bg-blue-100"
-          :class="{ 'bg-blue-200': option.value === modelValue }"
+          class="p-2 border-b border-b-slate-300 dark:border-b-slate-700 cursor-pointer hover:bg-blue-100 dark:hover:bg-slate-800"
+          :class="{ 'bg-blue-200 dark:bg-slate-800': option.value === modelValue }"
           @click="select(option)"
         >
           <slot :option="option">

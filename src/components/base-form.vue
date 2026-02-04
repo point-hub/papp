@@ -49,7 +49,7 @@ const isHorizontal = computed(() => resolvedLayout.value === 'horizontal')
       // Vertical classes (default)
       'text-sm gap-0 lg:gap-1': !isHorizontal || !props.label,
     }">
-      <div class="space-x-1">
+      <div class="flex flex-wrap gap-1">
         <span v-if="props.label">{{ props.label }}</span>
         <span v-if="props.required" class="text-xs font-bold text-slate-400">(required)</span>
       </div>
