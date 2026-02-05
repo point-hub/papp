@@ -131,26 +131,46 @@ defineExpose({
 <template>
   <base-form :label="props.label" :layout="props.layout" :description="props.description" :required="props.required"
     :helpers="props.helpers" :errors="errors">
-    <input ref="dateRef" v-model="nativeDate" type="date"
-      class="form-input absolute! -z-50 text-transparent bg-transparent" :class="{
-        'pl-0!': border === 'simple' || border === 'none'
-      }" tabindex="-1" aria-hidden="true" />
-
-    <input ref="inputRef" v-model.lazy="value"
-      v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }" type="text"
-      class="form-input pl-8! bg-inherit" :class="{
+    <input
+      ref="dateRef"
+      v-model="nativeDate"
+      type="date"
+      class="form-input border-0! absolute! -z-50 text-transparent bg-transparent"
+      :class="{
+        'pl-1.5!': border === 'simple' || border === 'none'
+      }"
+      tabindex="-1"
+      aria-hidden="true"
+    />
+    <input
+      ref="inputRef"
+      v-model.lazy="value"
+      v-input-mask="{ date: true, delimiter: '-', datePattern: ['Y', 'm', 'd'] }"
+      type="text"
+      class="form-input pl-8! bg-inherit"
+      :class="{
         'border-simple': border === 'simple',
         'border-full': border === 'full',
         'border-none': border === 'none',
         'input-lg': size === 'lg',
+        'text-blue-600': !disabled && border === 'none',
         'rounded': rounded
-      }" placeholder="YYYY-MM-DD" :autofocus="props.autofocus" :required="props.required" :readonly="props.readonly"
-      :disabled="props.disabled" :data-testid="props.dataTestid" />
+      }"
+      placeholder="YYYY-MM-DD"
+      :autofocus="props.autofocus"
+      :required="props.required"
+      :readonly="props.readonly"
+      :disabled="props.disabled"
+      :data-testid="props.dataTestid" 
+    />
 
-    <base-button variant="text" type="button"
+    <base-button
+      variant="text"
+      type="button"
       class="absolute h-full flex px-1 items-center justify-center text-slate-400 dark:text-slate-300"
-      @click="onClickDateRef()">
-      <base-icon icon="i-fa7-regular:calendar" />
+      @click="onClickDateRef()"
+    >
+      <base-icon :class="{'text-blue-600': !disabled && border === 'none'}" icon="i-fa7-regular:calendar" />
     </base-button>
   </base-form>
 </template>

@@ -17,6 +17,7 @@ export type BaseChoosenBorderType = 'none' | 'simple' | 'full'
 
 export interface Props {
   id?: string
+  type?: 'input' | 'text'
   title?: string
   label?: string
   description?: string
@@ -143,7 +144,16 @@ function clear() {
     :errors="errors"
     class="w-full"
   >
+    <div 
+      v-if="type === 'text'"
+      @click="open"
+      class="cursor-pointer"
+      :class="{'text-blue-600': !disabled }"
+    >
+      {{ selectedLabel || 'Select' }}
+    </div>
     <base-input
+      v-else
       readonly
       :model-value="selectedLabel"
       @click="open"

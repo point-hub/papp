@@ -187,6 +187,7 @@ defineExpose({
         'border-none': border === 'none',
         'input-lg': size === 'lg',
         'rounded': rounded,
+        'text-blue-600': !disabled && border === 'none',
         'px-0!': paddingless
       }"
       :placeholder="placeholder"

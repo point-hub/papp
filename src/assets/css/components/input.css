@@ -22,6 +22,9 @@
 .border-full {
   @apply border border-solid;
 }
+.border-none {
+  @apply border-0;
+}
 .form-input:disabled {
   @apply hover:cursor-not-allowed text-slate-600! dark:text-slate-500!;
 }
