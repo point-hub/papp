@@ -37,7 +37,7 @@ const refreshMenu = () => {
     }
     if (menu.submenu) {
       for (const submenu of menu.submenu) {
-        if (route.path.includes(submenu.path)) {
+        if (route.path?.includes(submenu.path)) {
           activeMenu.value = menu.name
         }
       }
@@ -46,7 +46,7 @@ const refreshMenu = () => {
 }
 
 watch(
-  () => route.path,
+  () => route?.path,
   () => {
     resetActiveMenu()
     refreshMenu()

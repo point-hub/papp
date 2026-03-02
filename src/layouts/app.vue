@@ -155,7 +155,7 @@ const onSignout = () => {
 }
 
 onMounted(() => {
-  sidebarMenuStore.onChooseApp(route.path)
+  sidebarMenuStore.onChooseApp(route?.path)
 })
 </script>
 
