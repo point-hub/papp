@@ -5,9 +5,8 @@ import {
   ComboboxInput,
   ComboboxOption,
   ComboboxOptions,
-  TransitionRoot
 } from '@headlessui/vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import type { BaseFormLayoutType } from './base-form.vue'
 
@@ -60,6 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   (e: 'select', option: BaseSelectOptionInterface | undefined): void
+  (e: 'search', value: string): void
 }>()
 
 /* -------------------------------------------------------------------------- */
@@ -67,13 +67,13 @@ const emit = defineEmits<{
 /* -------------------------------------------------------------------------- */
 
 const modelValue = defineModel<string | null>()
-const search = defineModel<string>('search', { default: '' })
 const errors = defineModel<string[]>('errors')
 
 /* -------------------------------------------------------------------------- */
 /* Refs                                                                      */
 /* -------------------------------------------------------------------------- */
 
+const search = ref('')
 const inputEl = ref<HTMLInputElement | null>(null)
 
 /* -------------------------------------------------------------------------- */
@@ -104,7 +104,6 @@ function displayValue(item: unknown): string {
   return ''
 }
 
-
 /* -------------------------------------------------------------------------- */
 /* Filtering                                                                  */
 /* -------------------------------------------------------------------------- */
@@ -133,6 +132,8 @@ onMounted(() => {
 function select(option: BaseSelectOptionInterface) {
   modelValue.value = option.value ?? null
   emit('select', option)
+
+  search.value = ''
   if (errors.value?.length) errors.value = []
 }
 
@@ -144,6 +145,10 @@ function clear() {
 function focus() {
   inputEl.value?.focus()
 }
+
+watch(search, (val) => {
+  emit('search', val)
+})
 
 /* -------------------------------------------------------------------------- */
 /* Expose                                                                    */
@@ -174,18 +179,19 @@ defineExpose({ focus })
             :placeholder="placeholder"
             :displayValue="displayValue"
             @input="search = ($event.target as HTMLInputElement).value"
+            :disabled="disabled"
             :data-testid="`${dataTestid}-input`"
           />
 
           <ComboboxButton
-            v-if="!modelValue"
+            v-if="!modelValue && !disabled"
             class="absolute inset-y-0 right-1 flex items-center"
           >
             <base-icon icon="i-fa7-regular:angle-down" />
           </ComboboxButton>
 
           <base-button
-            v-else
+            v-else-if="!disabled"
             size="none"
             variant="text"
             type="button"
@@ -196,40 +202,38 @@ defineExpose({ focus })
           </base-button>
         </div>
 
-        <TransitionRoot @after-leave="search = ''">
-          <ComboboxOptions class="options">
-            <div
-              v-if="isLoading && filteredOptions.length === 0"
-              class="px-4 py-2 text-gray-500"
-            >
-              Loading data…
-            </div>
+        <ComboboxOptions class="options">
+          <div
+            v-if="isLoading && filteredOptions.length === 0"
+            class="px-4 py-2 text-gray-500"
+          >
+            Loading data…
+          </div>
 
-            <div
-              v-else-if="!isLoading && filteredOptions.length === 0"
-              class="px-4 py-2 text-gray-500"
-            >
-              Nothing found.
-            </div>
+          <div
+            v-else-if="!isLoading && filteredOptions.length === 0"
+            class="px-4 py-2 text-gray-500"
+          >
+            Nothing found.
+          </div>
 
-            <ComboboxOption
-              v-for="opt in filteredOptions"
-              :key="opt.value"
-              :value="opt"
-              v-slot="{ active, selected }"
+          <ComboboxOption
+            v-for="opt in filteredOptions"
+            :key="opt.value"
+            :value="opt"
+            v-slot="{ active, selected }"
+          >
+            <li
+              class="option"
+              :class="{
+                'option-active': active,
+                'font-medium': selected
+              }"
             >
-              <li
-                class="option"
-                :class="{
-                  'option-active': active,
-                  'font-medium': selected
-                }"
-              >
-                {{ opt.label }}
-              </li>
-            </ComboboxOption>
-          </ComboboxOptions>
-        </TransitionRoot>
+              {{ opt.label }}
+            </li>
+          </ComboboxOption>
+        </ComboboxOptions>
       </div>
     </Combobox>
   </base-form>
