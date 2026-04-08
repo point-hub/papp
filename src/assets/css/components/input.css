@@ -29,5 +29,5 @@
   @apply hover:cursor-not-allowed text-slate-600! dark:text-slate-500!;
 }
 .form-input:read-only {
-  @apply hover:cursor-not-allowed text-slate-500! dark:text-slate-400!;
+  @apply text-slate-500! dark:text-slate-400!;
 }
