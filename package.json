@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -48,13 +48,13 @@
     "@vueuse/core": "^14.2.1",
     "cleave.js": "^1.6.0",
     "date-fns": "^4.1.0",
-    "pinia": "^3.0.4",
     "textarea-caret": "^3.1.0",
     "uuid": "^13.0.0",
     "vue-tippy": "^6.7.1",
     "vue3-popper": "^1.5.0"
   },
   "peerDependencies": {
+    "pinia": "^4.0.3",
     "vue-router": "5",
     "vue": "^3.5.14"
   },
@@ -92,8 +92,8 @@
     "vite-plugin-dts": "4.5.4",
     "vitepress": "^2.0.0-alpha.17",
     "vitest": "^4.0.18",
-    "vue": "^3.5.29",
-    "vue-tsc": "^3.2.5"
+    "vue": "^3.5.42",
+    "vue-tsc": "^3.3.11"
   },
   "repository": {
     "type": "git",
