@@ -1,6 +1,6 @@
 {
   "name": "@point-hub/papp",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -41,7 +41,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@point-hub/js-utils": "^0.0.6",
-    "@point-hub/preset-papp-icon": "^0.0.12",
+    "@point-hub/preset-papp-icon": "^0.0.13",
     "@tsconfig/node22": "^22.0.5",
     "@unocss/vite": "^66.6.3",
     "@vueuse/components": "^14.2.1",
