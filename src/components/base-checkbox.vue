@@ -24,8 +24,8 @@ export interface Props {
   disabled?: boolean
   helpers?: string[]
   dataTestid?: string
-  trueValue?: boolean | string | number
-  falseValue?: boolean | string | number
+  trueValue?: boolean | string | number | object
+  falseValue?: boolean | string | number | object
 }
 
 const props = withDefaults(defineProps<Props>(), {
