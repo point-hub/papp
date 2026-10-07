@@ -59,7 +59,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   (e: 'select', option: BaseSelectOptionInterface | undefined): void
-  (e: 'search', value: string): void
 }>()
 
 /* -------------------------------------------------------------------------- */
@@ -68,12 +67,14 @@ const emit = defineEmits<{
 
 const modelValue = defineModel<string | null>()
 const errors = defineModel<string[]>('errors')
+const search = defineModel<string>('search', {
+  default: '',
+})
 
 /* -------------------------------------------------------------------------- */
 /* Refs                                                                      */
 /* -------------------------------------------------------------------------- */
 
-const search = ref('')
 const inputEl = ref<HTMLInputElement | null>(null)
 
 /* -------------------------------------------------------------------------- */
@@ -145,10 +146,6 @@ function clear() {
 function focus() {
   inputEl.value?.focus()
 }
-
-watch(search, (val) => {
-  emit('search', val)
-})
 
 /* -------------------------------------------------------------------------- */
 /* Expose                                                                    */

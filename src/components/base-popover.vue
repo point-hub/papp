@@ -41,7 +41,7 @@ const onClickOutsideHandler: [(evt: any) => void, OnClickOutsideOptions] = [
   }
 ]
 
-const isOpen = defineModel('is-open', { default: false })
+const isOpen = defineModel<boolean>('is-open', { default: false })
 const toggle = (val?: boolean) => {
   if (isDefined(val)) {
     isOpen.value = val
