@@ -178,6 +178,13 @@ defineExpose({ focus })
             @input="search = ($event.target as HTMLInputElement).value"
             :disabled="disabled"
             :data-testid="`${dataTestid}-input`"
+            :class="{
+              'border-simple': border === 'simple',
+              'border-full': border === 'full',
+              'border-none': border === 'none',
+              'text-blue-600': !disabled && border === 'none',
+              'px-0!': paddingless
+            }"
           />
 
           <ComboboxButton
