@@ -183,7 +183,7 @@ function clear() {
           v-model="search"
           autofocus
         />
-        <base-button color="danger" @click="clear">
+        <base-button v-if="!required" color="danger" @click="clear">
           CLEAR
         </base-button>
       </div>

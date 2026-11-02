@@ -6,7 +6,7 @@ import {
   ComboboxOption,
   ComboboxOptions,
 } from '@headlessui/vue'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import type { BaseFormLayoutType } from './base-form.vue'
 
@@ -43,7 +43,7 @@ export interface Props {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Props & Emits                                                               */
+/* Props & Emits                                                              */
 /* -------------------------------------------------------------------------- */
 
 const props = withDefaults(defineProps<Props>(), {
@@ -54,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
   readonly: false,
   disabled: false,
   paddingless: false,
-  isLoading: false
+  isLoading: false,
 })
 
 const emit = defineEmits<{
@@ -62,7 +62,7 @@ const emit = defineEmits<{
 }>()
 
 /* -------------------------------------------------------------------------- */
-/* Model (SOURCE OF TRUTH)                                                     */
+/* Model (SOURCE OF TRUTH)                                                    */
 /* -------------------------------------------------------------------------- */
 
 const modelValue = defineModel<string | null>()
@@ -72,13 +72,14 @@ const search = defineModel<string>('search', {
 })
 
 /* -------------------------------------------------------------------------- */
-/* Refs                                                                      */
+/* Refs                                                                       */
 /* -------------------------------------------------------------------------- */
 
 const inputEl = ref<HTMLInputElement | null>(null)
+const buttonEl = ref<{ $el: HTMLButtonElement } | null>(null)
 
 /* -------------------------------------------------------------------------- */
-/* Selected / Display Logic (IMPORTANT PART)                                   */
+/* Selected / Display Logic                                                   */
 /* -------------------------------------------------------------------------- */
 
 /** real option from loaded list */
@@ -114,7 +115,7 @@ const filteredOptions = computed(() => {
 
   const q = search.value.toLowerCase().replace(/\s+/g, '')
   return props.options.filter(o =>
-    o.label.toLowerCase().replace(/\s+/g, '').includes(q)
+    o.label.toLowerCase().replace(/\s+/g, '').includes(q),
   )
 })
 
@@ -140,7 +141,17 @@ function select(option: BaseSelectOptionInterface) {
 
 function clear() {
   if (props.disabled) return
+
   modelValue.value = null
+  emit('select', undefined)
+}
+
+/** open the options when the input is clicked */
+function openOptions(isOpen: boolean) {
+  if (props.disabled || props.readonly || isOpen) return
+
+  search.value = '' // show the full list, not just the selected label
+  buttonEl.value?.$el.click()
 }
 
 function focus() {
@@ -148,7 +159,7 @@ function focus() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Expose                                                                    */
+/* Expose                                                                     */
 /* -------------------------------------------------------------------------- */
 
 defineExpose({ focus })
@@ -164,6 +175,7 @@ defineExpose({ focus })
     :errors="errors"
   >
     <Combobox
+      v-slot="{ open }"
       :model-value="selectedOption"
       @update:model-value="select"
     >
@@ -171,31 +183,35 @@ defineExpose({ focus })
         <div class="relative">
           <ComboboxInput
             ref="inputEl"
-            class="form-input"
+            class="form-input cursor-pointer"
             autocomplete="off"
             :placeholder="placeholder"
             :displayValue="displayValue"
-            @input="search = ($event.target as HTMLInputElement).value"
             :disabled="disabled"
+            :readonly="readonly"
             :data-testid="`${dataTestid}-input`"
             :class="{
               'border-simple': border === 'simple',
               'border-full': border === 'full',
               'border-none': border === 'none',
               'text-blue-600': !disabled && border === 'none',
-              'px-0!': paddingless
+              'px-0!': paddingless,
             }"
+            @input="search = ($event.target as HTMLInputElement).value"
+            @click="openOptions(open)"
           />
 
+          <!-- always mounted so it can be clicked from code -->
           <ComboboxButton
-            v-if="!modelValue && !disabled"
+            v-show="!modelValue && !disabled"
+            ref="buttonEl"
             class="absolute inset-y-0 right-1 flex items-center"
           >
             <base-icon icon="i-fa7-regular:angle-down" />
           </ComboboxButton>
 
           <base-button
-            v-else-if="!disabled"
+            v-if="modelValue && !disabled"
             size="none"
             variant="text"
             type="button"
@@ -206,38 +222,41 @@ defineExpose({ focus })
           </base-button>
         </div>
 
-        <ComboboxOptions class="options">
-          <div
-            v-if="isLoading && filteredOptions.length === 0"
-            class="px-4 py-2 text-gray-500"
-          >
-            Loading data…
-          </div>
-
-          <div
-            v-else-if="!isLoading && filteredOptions.length === 0"
-            class="px-4 py-2 text-gray-500"
-          >
-            Nothing found.
-          </div>
-
-          <ComboboxOption
-            v-for="opt in filteredOptions"
-            :key="opt.value"
-            :value="opt"
-            v-slot="{ active, selected }"
-          >
-            <li
-              class="option"
-              :class="{
-                'option-active': active,
-                'font-medium': selected
-              }"
+        <!-- only the options are toggled, never the input -->
+        <div v-show="open">
+          <ComboboxOptions static class="options">
+            <div
+              v-if="isLoading && filteredOptions.length === 0"
+              class="px-4 py-2 text-gray-500"
             >
-              {{ opt.label }}
-            </li>
-          </ComboboxOption>
-        </ComboboxOptions>
+              Loading data…
+            </div>
+
+            <div
+              v-else-if="!isLoading && filteredOptions.length === 0"
+              class="px-4 py-2 text-gray-500"
+            >
+              Nothing found.
+            </div>
+
+            <ComboboxOption
+              v-for="opt in filteredOptions"
+              :key="opt.value"
+              v-slot="{ active, selected }"
+              :value="opt"
+            >
+              <li
+                class="option"
+                :class="{
+                  'option-active': active,
+                  'font-medium': selected,
+                }"
+              >
+                {{ opt.label }}
+              </li>
+            </ComboboxOption>
+          </ComboboxOptions>
+        </div>
       </div>
     </Combobox>
   </base-form>
@@ -245,6 +264,7 @@ defineExpose({ focus })
 
 <style scoped>
 @import url('../assets/css/components/input.css');
+
 .options {
   @apply absolute dark:bg-slate-800 dark:border-slate-600 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm focus:outline-none z-1;
 }
